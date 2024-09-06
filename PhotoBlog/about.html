@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Amanda - Free Bootstrap Website Template for Blog Template</title>
+
+
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
+
+
+  <!-- Google Fonts ================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jaldi&family=Merriweather:wght@300;400;700&display=swap"
+    rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/index-ix7uzjuy.css">
+
+
+</head>
+
+<body>
+
+    <nav class="fixed navbar w-full z-10">
+        <div class=" py-6 px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between ">
+            <div class="flex items-center justify-between">
+              <div class="flex-shrink-0">
+                <a href="index.html"><img class="" src="images/Amanda.png" alt="Your Company"></a> 
+            </div>
+            </div>
+            <div class="hidden md:block">
+              <div class="flex items-baseline ">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="index.html" class="font-heading uppercase text-base text-black hover:text-gray-500 py-2"
+                  aria-current="page">Home</a>
+                  <div class="group relative cursor-pointer">
+                    <div class="flex items-center justify-between">
+                      <a class="menu-hover font-heading uppercase text-base text-black hover:text-gray-500 px-10 py-2" onClick="">
+                        Pages <iconify-icon
+                        icon="iconamoon:arrow-down-2-fill"></iconify-icon>
+                      </a>
+                    </div>
+                    <div
+                      class="invisible absolute z-50 flex w-full flex-col bg-gray-100 py-1 ps-1 text-gray-800 shadow-xl group-hover:visible"
+                      onClick="">
+                      <a href="about.html"
+                        class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">About Us</a>
+                      <a href="blog.html"
+                        class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">Blog</a>
+                      <a href="blog-single.html"
+                        class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">Single Post
+                      </a>
+                      <a href="contact.html"
+                        class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">Contact
+                      </a>
+                      <a href="faq.html"
+                        class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">FAQs
+                      </a>
+                      <a href="gallary.html"
+                        class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">Gallery
+                      </a>
+                    </div>
+                  </div>
+                <a href="about.html" class="font-heading uppercase text-base text-black hover:text-gray-500 py-2 pe-5">About</a>
+                <a href="blog.html" class="font-heading uppercase text-base text-black hover:text-gray-500 py-2 px-5">Blog</a>
+                <a href="contact.html" class="font-heading uppercase text-base text-black hover:text-gray-500 py-2 ps-5">Contact</a>
+                <a href="#" class="font-heading font-bold uppercase text-base text-black hover:text-gray-500 py-2 ps-5" target="_blank">Button</a>
+
+              </div>
+            </div>
+    
+            <div class="-mr-2 flex md:hidden mobile-menu-button">
+              <!-- Mobile menu button -->
+              <button type="button"
+                class="relative inline-flex items-center justify-center rounded-md  p-2 text-black hover:bg-slate-700 hover:text-white"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="absolute -inset-0.5"></span>
+                <span class="sr-only">Open main menu</span>
+                <!-- Menu open: "hidden", Menu closed: "block" -->
+                <svg class="open-icon block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <!-- Menu open: "block", Menu closed: "hidden" -->
+                <svg class="close-icon hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+    
+          </div>
+        </div>
+    
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="md:hidden hidden bg-white" id="mobile-menu">
+          <div class="space-y-1 px-2 pb-3 pt-2 h-screen sm:px-3">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="index.html" class="font-heading block uppercase text-base text-black hover:text-gray-500 p-2"
+            aria-current="page">Home</a>
+            <div class="group relative cursor-pointer">
+              <div class="flex items-center justify-between">
+                <a class="menu-hover font-heading block uppercase text-base text-black hover:text-gray-500 p-2" onClick="">
+                  Pages <iconify-icon
+                  icon="iconamoon:arrow-down-2-fill"></iconify-icon>
+                </a>
+              </div>
+              <div
+                class="invisible absolute z-50 flex w-full flex-col bg-gray-100 py-1 px-2 text-gray-800 shadow-xl group-hover:visible"
+                onClick="">
+                <a href="about.html"
+                  class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">About Us</a>
+                <a href="blog.html"
+                  class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">Blog</a>
+                <a href="blog-single.html"
+                  class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">Single Post
+                </a>
+                <a href="contact.html"
+                  class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">Contact
+                </a>
+                <a href="faq.html"
+                  class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">FAQs
+                </a>
+                <a href="gallary.html"
+                  class="my-2 font-heading uppercase text-sm text-black hover:text-gray-500 md:mx-2">Gallery
+                </a>
+              </div>
+            </div>
+          <a href="about.html" class="font-heading block uppercase text-base text-black hover:text-gray-500 p-2 ">About</a>
+          <a href="blog.html" class="font-heading block uppercase text-base text-black hover:text-gray-500 p-2 ">Blog</a>
+          <a href="contact.html" class="font-heading block uppercase text-base text-black hover:text-gray-500 p-2 ">Contact</a>
+          <a href="#" class="font-heading font-bold block uppercase text-base text-black hover:text-gray-500 p-2" target="_blank">Button</a>
+  
+        </div>
+    
+        </div>
+      </nav>
+
+  <!-- hero Section Starts -->
+  <section id="hero">
+    <div class="py-60 xl:px-96 text-center">
+      <h2 class="font-heading text-5xl sm:text-4xl lg:text-6xl font-thin">About Us</h2>
+      <p class=" xl:px-40 pt-5 text-stone-700"><span class="blog-date text-uppercase"><a href="index.html" class="">Home</a></span> &nbsp; / &nbsp;
+        <span class="item">About</span> </p>
+    </div>
+  </section>
+
+  <section id="about-content" >
+    <div class="container mx-auto"> 
+
+            <div class="">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut cursus leo vel orci malesuada, id
+                    sodales em volutpat. Vivamus sagittis pulvinar dignissim. Mauris tempus a lacus eu aliquet.
+                    Mauris gravida at ectus quis venenatis. Aenean quis feugiat turpis. Etiam lacinia interdum nibh,
+                    non convallis magna lementum vel. Phasellus varius quam ligula, in lobortis risus porttitor ut.
+                    Praesent ipsum elit, lobortis n tincidunt a, dapibus et lorem. Praesent eget dui a est fringilla
+                    rutrum sit amet in eros. Vestibulum ut ros sed enim feugiat lobortis. Suspendisse fermentum nunc
+                    in est mattis molestie. Mauris ut placerat isus. Aenean mollis neque libero, ut pellentesque
+                    arcu dapibus vel.</p>
+                    <br>
+                <p>Praesent nec nisl euismod, lacinia tellus eget, bibendum ex. Maecenas imperdiet gravida pulvinar.
+                    aecenas feugiat id tellus sed sodales. Praesent maximus ultricies elit eget accumsan. Proin
+                    tortor ante, ltrices a aliquet a, facilisis quis sapien. Donec eu turpis at velit scelerisque
+                    faucibus id eget dolor. tiam lobortis ante ipsum, sed venenatis ligula facilisis quis. Fusce
+                    blandit commodo mauris, sed fringilla isi congue et. Nunc eu eros ex.</p>
+
+            </div>
+
+
+            <div class="grid grid-cols-3 justify-items-center my-20">
+                    <div class=""><img src="images/blog11.png" class="img-fluid" alt="About us"></div>
+                    <div class=""><img src="images/blog10.png" class="img-fluid" alt="About us"></div>
+                    <div class=""><img src="images/blog9.png" class="img-fluid" alt="About us"></div>
+
+            </div>
+
+
+
+            <div class="">
+                <h3 class="font-heading text-4xl font-thin mb-5">Learn More About Us</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
+                    unde omnis iste. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
+                    unde omnis iste.
+                </p>
+                <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut cursus leo vel orci malesuada, id
+                    sodales em volutpat. Vivamus sagittis pulvinar dignissim. Mauris tempus a lacus eu aliquet.
+                    Mauris gravida at ectus quis venenatis. Aenean quis feugiat turpis. Etiam lacinia interdum nibh,
+                    non convallis magna lementum vel. Phasellus varius quam ligula, in lobortis risus porttitor ut.
+                    Praesent ipsum elit, lobortis n tincidunt a, dapibus et lorem. Praesent eget dui a est fringilla
+                    rutrum sit amet in eros. Vestibulum ut ros sed enim feugiat lobortis. Suspendisse fermentum nunc
+                    in est mattis molestie. Mauris ut placerat isus. Aenean mollis neque libero, ut pellentesque
+                    arcu dapibus vel.</p>
+
+            </div>
+
+    </div>
+</section>
+
+
+  <!-- Blog-block Section Starts -->
+  <section id="blog-block">
+    <div class="columns-5 gap-0 pt-40">
+
+      <figure class="blog-block-content image-zoom relative">
+        <a href="blog-single.html" class=" ">
+          <img class="blog-block-img " src="images/blog7.png" alt="">
+          <div class="header-overlay hidden lg:flex absolute inset-x-0 bottom-0 justify-center">
+            <h5 class="font-heading text-white text-xl p-12">5 Helpful Tips for Living Healthy Life</h5>
+          </div>
+        </a>
+      </figure>
+      <figure class="blog-block-content image-zoom relative">
+        <a href="blog-single.html" class=" ">
+          <img class="blog-block-img " src="images/blog8.png" alt="">
+          <div class="header-overlay hidden lg:flex absolute inset-x-0 bottom-0 justify-center">
+            <h5 class="font-heading text-white text-xl p-12">5 Helpful Tips for Living Healthy Life</h5>
+          </div>
+        </a>
+      </figure>
+      <figure class="blog-block-content image-zoom relative">
+        <a href="blog-single.html" class=" ">
+          <img class="blog-block-img " src="images/blog9.png" alt="">
+          <div class="header-overlay hidden lg:flex absolute inset-x-0 bottom-0 justify-center">
+            <h5 class="font-heading text-white text-xl p-12">5 Helpful Tips for Living Healthy Life</h5>
+          </div>
+        </a>
+      </figure>
+      <figure class="blog-block-content image-zoom relative">
+        <a href="blog-single.html" class=" ">
+          <img class="blog-block-img " src="images/blog10.png" alt="">
+          <div class="header-overlay hidden lg:flex absolute inset-x-0 bottom-0 justify-center">
+            <h5 class="font-heading text-white text-xl p-12">5 Helpful Tips for Living Healthy Life</h5>
+          </div>
+        </a>
+      </figure>
+      <figure class="blog-block-content image-zoom relative">
+        <a href="blog-single.html" class=" ">
+          <img class="blog-block-img " src="images/blog11.png" alt="">
+          <div class="header-overlay hidden lg:flex absolute inset-x-0 bottom-0 justify-center">
+            <h5 class="font-heading text-white text-xl p-12">5 Helpful Tips for Living Healthy Life</h5>
+          </div>
+        </a>
+      </figure>
+
+
+    </div>
+  </section>
+
+  <!-- cta Section Starts -->
+  <section id="cta" class="bg-gray-50">
+    <div class="container mx-auto xl:px-60 py-40 px-5 ">
+      <div class="lg:grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-subgrid col-span-2">
+          <div class="col-span-2">
+            <h2 class="font-heading text-6xl">Never miss a Post <br> Subscribe Now</h2>
+            <p class="pt-5">I am so happy, my dear friend, so absorbed in the exquisite sense of
+              mere tranquil existence, that I neglect my talents. I should be incapable of drawing</p>
+          </div>
+        </div>
+        <div class="mt-6 lg:0">
+          <div class="grid grid-cols-1 gap-2">
+            <label class="block">
+              <input type="text"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500  focus:ring-gray-300 focus:ring-opacity-50"
+                placeholder="Your Name">
+            </label>
+            <label class="block">
+              <input type="email"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500  focus:ring-gray-300 focus:ring-opacity-50"
+                placeholder="E-mail Address">
+            </label>
+            <button class="bg-primary rounded-md text-white uppercase p-3 w-full" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section Starts -->
+  <section id="footer" class="relative">
+
+    <div class="pattern-overlay pattern-left absolute -z-10">
+      <img src="images/leaf-img-pattern-left.png" alt="pattern">
+    </div>
+    <div class="pattern-overlay pattern-right absolute bottom-0 right-0 -z-10">
+      <img src="images/leaf-img-pattern-right.png" alt="pattern">
+    </div>
+
+    <div class="container mx-auto footer-container py-40 px-5 lg:px-0">
+      <footer class="grid grid-cols-2 lg:grid-cols-6 gap-6 pb-20">
+
+        <div class="">
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Twitter</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Facebook</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Instagram</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Linkedin</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Youtube</a></li>
+          </ul>
+        </div>
+
+        <div class="">
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">About</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Contact</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Blog</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Policy</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Terms</a></li>
+          </ul>
+        </div>
+
+        <div class="">
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Spirituality</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Life</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Relationships</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Travel</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Health</a></li>
+          </ul>
+        </div>
+
+        <div class="">
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Yoga</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Gardening</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Love</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Books</a></li>
+            <li class="nav-item mb-2"><a href="#" class="uppercase hover:text-gray-500">Meditation</a></li>
+          </ul>
+        </div>
+
+        <div class="grid grid-cols-subgrid col-span-2 ">
+          <div class="col-span-2 lg:text-right">
+            <p class="m-0"> <b>info@yourcompany.com</b> </p>
+            <p class="m-0">15Th Street Avenue, New York, USA</p>
+            <p class="m-0">011-554-8798-6556</p>
+
+            <div class=" mt-3 d-flex justify-content-md-end">
+              <a href="#" class="social-link text-xl hover:text-gray-500 me-4" target="_blank"><iconify-icon
+                  class="social-icon" icon="mdi:facebook"></iconify-icon></a>
+              <a href="#" class="social-link text-xl hover:text-gray-500 me-4" target="_blank"><iconify-icon
+                  class="social-icon" icon="mdi:instagram"></iconify-icon></a>
+              <a href="#" class="social-link text-xl hover:text-gray-500 me-4" target="_blank"><iconify-icon
+                  class="social-icon" icon="mdi:twitter"></iconify-icon></a>
+              <a href="#" class="social-link text-xl hover:text-gray-500 me-4" target="_blank"><iconify-icon
+                  class="social-icon" icon="mdi:linkedin"></iconify-icon></a>
+              <a href="#" class="social-link text-xl hover:text-gray-500 me-4" target="_blank"><iconify-icon
+                  class="social-icon" icon="mdi:youtube"></iconify-icon></a>
+            </div>
+          </div>
+        </div>
+
+      </footer>
+
+      <footer class="border-t ">
+        <div class="flex justify-center pt-10">
+          <p class="mb-0">©  All rights reserved.</p>
+        </div>
+        <div class="flex justify-center">
+          <p class=""><a target="_blank" href="http://www.mobanwang.com/" title="网页模板" class="website-link">网页模板</a></p>
+        </div>
+      </footer>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- script ================================================== -->
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js"></script>
+
+  <!--iconify script ================================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+
+</body>
+
+</html>

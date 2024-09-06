@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  /* Image zoom effect on hover */
+.image-zoom {
+  overflow: hidden;
+}
+
+.image-zoom img {
+  transition: transform 0.3s ease-out;
+}
+
+.image-zoom:hover img {
+  transform: scale(1.1);
+}
+
+  /* featured section style start  */
+button.filter-button.active {
+  color: white;
+  background: #B7C177;
+}
+
+}
