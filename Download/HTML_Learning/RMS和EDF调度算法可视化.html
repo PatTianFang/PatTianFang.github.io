@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RMS 调度算法可视化</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(135deg, #E0F7FA, #80DEEA); /* 淡蓝色渐变背景 */
+      color: #333;
+      overflow-x: hidden; /* 防止水平滚动条 */
+    }
+    h1 {
+      margin: 20px 0;
+      color: #005662; /* 深蓝绿色标题颜色 */
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 增加标题阴影 */
+      text-align: center;
+    }
+    #task-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px 0; /* 调整上下间距，避免与按钮重叠 */
+      justify-content: center;
+      position: relative; /* 使任务卡片的绝对定位基于容器 */
+      min-height: 200px; /* 设置最小高度，避免内容重叠 */
+      width: 100%; /* 确保容器宽度占满父级 */
+    }
+    .task-card {
+      width: 200px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #d4e4ff, #a8c8ff); /* 浅蓝色渐变 */
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s, opacity 0.5s;
+      opacity: 0; /* 初始透明度为 0 */
+      transform: scale(0.9); /* 初始缩放 */
+      position: relative; /* 修改为相对定位，避免绝对定位导致重叠 */
+    }
+    .task-card.show {
+      opacity: 1; /* 浮现效果 */
+      transform: scale(1); /* 恢复正常大小 */
+    }
+    .task-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(135deg, #a8c8ff, #7aaeff); /* 悬浮时背景渐变 */
+    }
+    .task-card p:first-child {
+      font-size: 2rem; /* 增大字体 */
+      font-weight: bold;
+      color: #5C6BC0; /* 调整为淡紫蓝色，与其他色彩更协调 */
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 增加轻微阴影效果 */
+    }
+    .task-card input {
+      width: 85%;
+      margin-top: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .delete-task-btn {
+      margin-top: 15px;
+      padding: 8px 15px;
+      background-color: #ff5252;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .delete-task-btn:hover {
+      background-color: #e53935;
+      transform: scale(1.1); /* 悬浮时放大 */
+    }
+    #add-task-btn {
+      margin: 20px auto; /* 调整按钮的上下间距，避免与任务卡片重叠 */
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #4caf50, #81c784);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: block; /* 居中显示按钮 */
+      transition: background 0.3s, transform 0.3s;
+    }
+    #add-task-btn:hover {
+      background: linear-gradient(135deg, #388e3c, #66bb6a);
+      transform: scale(1.1); /* 悬浮时放大 */
+    }
+    #control-buttons {
+      margin: 20px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      z-index: 10; /* 确保按钮显示在最前面 */
+    }
+    #control-buttons button {
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #007bff, #64b5f6);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+    #control-buttons button:hover {
+      background: linear-gradient(135deg, #0056b3, #42a5f5);
+      transform: scale(1.1); /* 悬浮时放大 */
+    }
+    #animation-container {
+      width: 90%;
+      max-width: 1200px;
+      height: auto;
+      margin: 20px 0;
+      position: relative;
+      background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+      backdrop-filter: blur(10px); /* 背景模糊效果 */
+      overflow-x: auto;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 10px;
+      z-index: 5; /* 确保动画区域不被卡片遮挡 */
+    }
+    .task-bar {
+      position: absolute;
+      height: 30px;
+      line-height: 30px;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    #task-stats, #priority-distribution {
+      margin: 20px 0;
+      padding: 15px 25px;
+      background: rgba(255, 255, 255, 0.3); /* 调整为更浅的背景色 */
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #0288D1; /* 调整为淡蓝色字体，与界面更协调 */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    #timeline-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px 0;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow-x: auto;
+      position: relative;
+    }
+    .timeline {
+      display: flex;
+      position: relative;
+      height: 50px;
+      align-items: center;
+    }
+    .timeline .time-slot {
+      flex: 1;
+      height: 100%;
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #0288D1; /* 调整为淡蓝色字体 */
+      position: relative;
+    }
+    .timeline .time-slot:last-child {
+      border-right: none;
+    }
+    .timeline .time-slot.active {
+      background: linear-gradient(135deg, #64b5f6, #42a5f5);
+      color: #fff;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+    .task-status {
+      margin: 20px 0;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .task-card {
+        width: 160px;
+        padding: 15px;
+      }
+      .task-card p:first-child {
+        font-size: 1.5rem;
+      }
+      .task-card input {
+        width: 90%;
+      }
+      .delete-task-btn {
+        font-size: 0.8rem;
+      }
+      #add-task-btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+      #control-buttons button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+      #animation-container {
+        width: 95%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .task-card {
+        width: 100%;
+        padding: 10px;
+      }
+      .task-card p:first-child {
+        font-size: 1.2rem;
+      }
+      .task-card input {
+        width: 100%;
+      }
+      .delete-task-btn {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
+      #add-task-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+      #control-buttons button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+      #animation-container {
+        width: 100%;
+      }
+    }
+    #algorithm-selector {
+      margin: 20px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #FFB74D, #FF9800); /* 橙色渐变背景 */
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    #algorithm-selector:hover {
+      background: linear-gradient(135deg, #FB8C00, #F57C00);
+      transform: scale(1.05); /* 悬浮时放大 */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    #algorithm-selector:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 152, 0, 0.8);
+    }
+
+    #add-task-btn, #control-buttons button {
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #4CAF50, #81C784); /* 绿色渐变背景 */
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    #add-task-btn:hover, #control-buttons button:hover {
+      background: linear-gradient(135deg, #388E3C, #66BB6A);
+      transform: scale(1.05); /* 悬浮时放大 */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    #add-task-btn:focus, #control-buttons button:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
+    }
+
+    .task-card input[type="number"] {
+      width: 85%;
+      margin-top: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+    .task-card input[type="number"]:focus {
+      outline: none;
+      border: 1px solid #0288D1; /* 聚焦时边框变为淡蓝色 */
+      box-shadow: 0 0 8px rgba(2, 136, 209, 0.5);
+    }
+
+    #timeline-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px 0;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow-x: auto;
+      position: relative;
+      scrollbar-width: thin; /* Firefox */
+      scrollbar-color: #0288D1 rgba(255, 255, 255, 0.3); /* 滑动条颜色 */
+    }
+    #timeline-container::-webkit-scrollbar {
+      height: 8px; /* 滑动条高度 */
+    }
+    #timeline-container::-webkit-scrollbar-thumb {
+      background: #0288D1; /* 滑动条颜色 */
+      border-radius: 10px;
+    }
+    #timeline-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.3); /* 滑动条轨道颜色 */
+    }
+  </style>
+</head>
+<body>
+  <h1>RMS和EDF调度算法可视化</h1>
+  <select id="algorithm-selector">
+    <option value="RMS">RMS 调度算法</option>
+    <option value="EDF">EDF 调度算法</option>
+  </select>
+  <div id="task-stats">当前任务数: <span id="task-count">0</span></div>
+  <div id="priority-distribution">优先级分布: <span id="priority-stats">无</span></div>
+  <div id="task-container"></div>
+  <button id="add-task-btn">添加任务</button>
+  <div id="control-buttons">
+    <button id="start-btn">开始动画</button>
+    <button id="pause-btn">暂停动画</button>
+    <button id="stop-btn">结束动画</button>
+  </div>
+  <div id="animation-container"></div>
+  <div id="timeline-container">
+    <div class="timeline" id="timeline"></div>
+  </div>
+  <script>
+    const taskContainer = document.getElementById('task-container');
+    const addTaskBtn = document.getElementById('add-task-btn');
+    const animationContainer = document.getElementById('animation-container');
+    const algorithmSelector = document.getElementById('algorithm-selector');
+    let taskId = 1;
+    let currentTime = 0;
+    let animationInterval = null;
+    let isPaused = false;
+    let tasks = []; // 全局变量，用于存储任务信息
+    let timeline = []; // 全局变量，用于存储时间轴
+    let selectedAlgorithm = "RMS"; // 默认算法为 RMS
+
+    // 动态生成任务卡片
+    function createTask(period, executionTime, deadline = period) {
+      if (period <= 0 || executionTime <= 0 || deadline <= 0) {
+        alert('周期、执行时间和 Deadline 必须大于 0');
+        return;
+      }
+
+      const taskCard = document.createElement('div');
+      taskCard.classList.add('task-card');
+      taskCard.innerHTML = `
+        <p>任务 ${taskId}</p>
+        <p>周期: <input type="number" value="${period}" class="task-period" min="1"></p>
+        <p>执行时间: <input type="number" value="${executionTime}" class="task-execution" min="1"></p>
+        <p>Deadline: <input type="number" value="${deadline}" class="task-deadline" min="1"></p>
+        <p>优先级: <span class="task-priority">-</span></p>
+        <button class="delete-task-btn">删除任务</button>
+      `;
+      taskCard.dataset.id = taskId;
+      taskContainer.appendChild(taskCard);
+
+      // 添加浮现效果
+      setTimeout(() => {
+        taskCard.classList.add('show');
+      }, 50);
+
+      taskId++;
+
+      // 更新优先级和颜色
+      updatePriorities();
+
+      // 绑定删除按钮事件
+      taskCard.querySelector('.delete-task-btn').addEventListener('click', () => {
+        deleteTask(taskCard);
+      });
+
+      // 绑定参数修改事件
+      taskCard.querySelector('.task-period').addEventListener('input', () => {
+        if (taskCard.querySelector('.task-period').value <= 0) {
+          alert('周期必须大于 0');
+          taskCard.querySelector('.task-period').value = 1;
+        }
+        updatePriorities();
+        visualizeExecution(); // 动画随参数调整
+      });
+
+      taskCard.querySelector('.task-execution').addEventListener('input', () => {
+        if (taskCard.querySelector('.task-execution').value <= 0) {
+          alert('执行时间必须大于 0');
+          taskCard.querySelector('.task-execution').value = 1;
+        }
+        visualizeExecution(); // 动画随参数调整
+      });
+
+      taskCard.querySelector('.task-deadline').addEventListener('input', () => {
+        if (taskCard.querySelector('.task-deadline').value <= 0) {
+          alert('Deadline 必须大于 0');
+          taskCard.querySelector('.task-deadline').value = 1;
+        }
+        visualizeExecution(); // 动画随参数调整
+      });
+
+      updateTaskStats(); // 更新任务统计
+      updatePriorityStats(); // 更新优先级分布统计
+    }
+
+    // 删除任务函数
+    function deleteTask(taskCard) {
+      taskCard.classList.remove('show'); // 隐藏卡片
+      setTimeout(() => {
+        taskCard.remove(); // 从 DOM 中移除任务卡片
+        updateTaskStats(); // 更新任务统计
+        updatePriorityStats(); // 更新优先级分布统计
+        updatePriorities(); // 更新优先级
+        visualizeExecution(); // 动画随任务删除调整
+      }, 300); // 等待动画完成
+    }
+
+    // 更新任务优先级和颜色
+    function updatePriorities() {
+      const tasks = Array.from(document.querySelectorAll('.task-card'));
+
+      tasks.sort((a, b) => {
+        const periodA = parseInt(a.querySelector('.task-period').value);
+        const periodB = parseInt(b.querySelector('.task-period').value);
+        return periodA - periodB; // 周期越短优先级越高
+      });
+
+      tasks.forEach((task, index) => {
+        const period = parseInt(task.querySelector('.task-period').value);
+        const priority = index + 1; // 优先级从 1 开始
+        task.querySelector('.task-priority').textContent = priority;
+
+        // 根据优先级设置渐变颜色
+        const colorIntensity = 255 - (priority * 20); // 颜色深浅变化
+        task.style.background = `linear-gradient(135deg, rgb(${colorIntensity}, ${colorIntensity + 50}, 255), rgb(${colorIntensity + 30}, ${colorIntensity + 80}, 255))`;
+
+        task.classList.toggle('high-priority', priority === 1);
+        task.classList.toggle('low-priority', priority > 1);
+      });
+
+      // 重新排序 DOM
+      tasks.forEach(task => taskContainer.appendChild(task));
+
+      updatePriorityStats(); // 更新优先级分布统计
+    }
+
+    // 动画执行函数
+    function visualizeExecution() {
+      animationContainer.innerHTML = ''; // 清空动画区域
+      currentTime = 0; // 重置时间
+      tasks = Array.from(document.querySelectorAll('.task-card')).map(task => ({
+        id: task.dataset.id,
+        period: parseInt(task.querySelector('.task-period').value),
+        executionTime: parseInt(task.querySelector('.task-execution').value),
+        priority: parseInt(task.querySelector('.task-priority').textContent),
+        deadline: parseInt(task.querySelector('.task-deadline').value), // 使用用户输入的 Deadline
+        instanceCounter: 0, // 用于记录任务实例编号，从 0 开始
+        nextReleaseTime: 0, // 下一个实例的释放时间
+        remainingExecutionTime: 0, // 剩余执行时间
+        currentDeadline: 0 // 当前实例的截止时间
+      }));
+
+      // 按优先级排序任务（优先级越小越高）
+      tasks.sort((a, b) => a.priority - b.priority);
+
+      timeline = []; // 重置时间轴
+      const totalTime = 200; // 模拟总时间单位
+      for (let time = 0; time < totalTime; time++) {
+        let taskToRun = null;
+
+        if (selectedAlgorithm === "RMS") {
+          // RMS 算法：按优先级选择任务
+          for (let i = 0; i < tasks.length; i++) {
+            if (time === tasks[i].nextReleaseTime) {
+              tasks[i].remainingExecutionTime = tasks[i].executionTime; // 周期到达时重置剩余执行时间
+              tasks[i].nextReleaseTime += tasks[i].period; // 更新下一个释放时间
+              tasks[i].currentDeadline = time + tasks[i].deadline; // 更新当前实例的截止时间
+              tasks[i].instanceCounter++; // 新实例编号递增
+            }
+            if (tasks[i].remainingExecutionTime > 0) {
+              if (taskToRun === null || tasks[i].priority < tasks[taskToRun].priority) {
+                taskToRun = i; // 按优先级选择任务
+              }
+            }
+          }
+        } else if (selectedAlgorithm === "EDF") {
+          // EDF 算法：按最早截止时间选择任务
+          let earliestDeadline = Infinity;
+          for (let i = 0; i < tasks.length; i++) {
+            if (time === tasks[i].nextReleaseTime) {
+              tasks[i].remainingExecutionTime = tasks[i].executionTime; // 周期到达时重置剩余执行时间
+              tasks[i].currentDeadline = time + tasks[i].deadline; // 更新当前实例的截止时间
+              tasks[i].nextReleaseTime += tasks[i].period; // 更新下一个释放时间
+              tasks[i].instanceCounter++; // 新实例编号递增
+            }
+            if (tasks[i].remainingExecutionTime > 0 && tasks[i].currentDeadline < earliestDeadline) {
+              earliestDeadline = tasks[i].currentDeadline;
+              taskToRun = i;
+            }
+          }
+        }
+
+        if (taskToRun !== null) {
+          timeline.push({ id: tasks[taskToRun].id, instance: tasks[taskToRun].instanceCounter }); // 记录运行的任务实例
+          tasks[taskToRun].remainingExecutionTime--; // 执行任务，减少剩余时间
+        } else {
+          timeline.push(null); // 空闲时间
+        }
+      }
+
+      initializeTimeline(0, 19); // 初始化时间轴为 19 个单位
+      animationContainer.style.height = `${tasks.length * 40}px`; // 动态调整动画区域高度
+    }
+
+    // 修改 renderNextTask 函数，移除饥饿任务相关逻辑
+    function renderNextTask() {
+      if (currentTime >= timeline.length || isPaused) return; // 动画结束或暂停
+
+      const taskInstance = timeline[currentTime];
+      if (taskInstance !== null && taskInstance !== undefined) {
+        const task = tasks.find(t => t.id === String(taskInstance.id)); // 修复任务 ID 类型问题
+        if (task) {
+          const taskBar = document.createElement('div');
+          taskBar.classList.add('task-bar');
+          taskBar.style.backgroundColor = task.priority === 1 ? '#ff6b6b' : '#6bafff';
+          taskBar.style.width = '100px'; // 每单位时间宽度调整为 100px
+          taskBar.style.left = `${currentTime * 100}px`; // 设置任务条的起始位置
+          taskBar.style.top = `${(task.priority - 1) * 40}px`; // 不同优先级任务显示在不同的行
+          taskBar.textContent = `任务${taskInstance.id}-${taskInstance.instance}`;
+          animationContainer.appendChild(taskBar);
+        }
+      } else {
+        // 显示空闲时间的灰色方框
+        const idleBar = document.createElement('div');
+        idleBar.classList.add('task-bar');
+        idleBar.style.backgroundColor = '#B0BEC5'; // 灰色表示空闲时间
+        idleBar.style.width = '100px';
+        idleBar.style.left = `${currentTime * 100}px`;
+        idleBar.style.top = '0px'; // 显示在顶部
+        idleBar.textContent = '空闲';
+        animationContainer.appendChild(idleBar);
+      }
+
+      updateTimelineAndStatus(currentTime); // 更新时间轴
+      currentTime++;
+    }
+
+    function startAnimation() {
+      if (animationInterval) return; // 防止重复启动
+      isPaused = false;
+      animationInterval = setInterval(() => {
+        renderNextTask();
+        if (currentTime >= timeline.length) stopAnimation(); // 动画结束
+      }, 300); // 每 300ms 显示一个时间单位
+    }
+
+    function pauseAnimation() {
+      isPaused = true;
+      clearInterval(animationInterval);
+      animationInterval = null;
+    }
+
+    // 修改 stopAnimation 函数，使时间轴回到 0-18 的状态
+    function stopAnimation() {
+      clearInterval(animationInterval);
+      animationInterval = null;
+      currentTime = 0;
+      animationContainer.innerHTML = ''; // 清空动画区域
+      initializeTimeline(0, 19); // 重置时间轴为 0-18
+    }
+
+    // 初始化时间轴
+    function initializeTimeline(start = 0, length = 19) {
+      const timeline = document.getElementById('timeline');
+      timeline.innerHTML = ''; // 清空时间轴
+      for (let i = start; i < start + length; i++) {
+        const timeSlot = document.createElement('div');
+        timeSlot.classList.add('time-slot');
+        timeSlot.textContent = i;
+        timeline.appendChild(timeSlot);
+      }
+    }
+
+    // 更新时间轴和任务状态
+    function updateTimelineAndStatus(currentTime) {
+      const timeline = document.getElementById('timeline');
+      const timeSlots = timeline.querySelectorAll('.time-slot');
+      const visibleStart = parseInt(timeSlots[0]?.textContent || 0);
+      const visibleEnd = visibleStart + timeSlots.length - 1;
+
+      // 如果当前时间超出可见范围，刷新时间轴
+      if (currentTime > visibleEnd) {
+        initializeTimeline(currentTime, 19);
+        updateTimelineAndStatus(currentTime); // 递归调用以更新新时间轴
+        return;
+      }
+
+      timeSlots.forEach((slot, index) => {
+        const slotTime = visibleStart + index;
+        slot.classList.toggle('active', slotTime === currentTime);
+      });
+    }
+
+    // 更新任务统计
+    function updateTaskStats() {
+      const taskCount = document.querySelectorAll('.task-card').length;
+      document.getElementById('task-count').textContent = taskCount;
+    }
+
+    // 更新优先级分布统计
+    function updatePriorityStats() {
+      const tasks = Array.from(document.querySelectorAll('.task-card'));
+      if (tasks.length === 0) {
+        document.getElementById('priority-stats').textContent = '无';
+        return;
+      }
+      const priorityCounts = {};
+      tasks.forEach(task => {
+        const priority = task.querySelector('.task-priority').textContent;
+        priorityCounts[priority] = (priorityCounts[priority] || 0) + 1;
+      });
+      const stats = Object.entries(priorityCounts)
+        .map(([priority, count]) => `优先级 ${priority}: ${count} 个`)
+        .join('，');
+      document.getElementById('priority-stats').textContent = stats;
+    }
+
+    // 按钮事件绑定
+    document.getElementById('start-btn').addEventListener('click', startAnimation);
+    document.getElementById('pause-btn').addEventListener('click', pauseAnimation);
+    document.getElementById('stop-btn').addEventListener('click', stopAnimation);
+
+    // 添加任务按钮事件
+    addTaskBtn.addEventListener('click', () => {
+      const randomPeriod = Math.floor(Math.random() * 10) + 1;
+      const randomExecution = Math.floor(Math.random() * randomPeriod) + 1;
+      createTask(randomPeriod, randomExecution);
+      visualizeExecution();
+    });
+
+    // 切换算法事件绑定
+    algorithmSelector.addEventListener('change', (e) => {
+      selectedAlgorithm = e.target.value; // 更新选中的算法
+      visualizeExecution(); // 重新生成动画
+    });
+
+    // 初始化示例任务
+    createTask(5, 2, 5); // 第一个任务：周期 5，执行时间 2，Deadline 5
+    createTask(7, 4, 7); // 第二个任务：周期 7，执行时间 4，Deadline 7
+    createTask(3, 1);    // 第三个任务：周期 3，执行时间 1，默认 Deadline 为周期
+
+    // 初始化时间轴和动画轴
+    visualizeExecution();
+    updateTaskStats(); // 初始化任务统计
+    updatePriorityStats(); // 初始化优先级分布统计
+  </script>
+</body>
+</html>
