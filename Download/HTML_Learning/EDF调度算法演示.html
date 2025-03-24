@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDF调度算法可视化</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #f5f6fa;
+            --card-bg: #ecf0f1;
+            --text-color: #2c3e50;
+            --border-color: #bdc3c7;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-container {
+            position: relative;
+            height: 100px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #dddddd; /* 动画背景改为灰色 */
+        }
+
+        .timeline {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .task {
+            position: absolute;
+            height: 40px; /* 缩小任务图标高度 */
+            width: 40px; /* 缩小任务图标宽度 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem; /* 调整字体大小 */
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .task:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .info-panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .task-info {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+            padding: 15px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .control-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--secondary-color);
+            width: 0;
+            transition: width 0.5s ease;
+        }
+
+        .task-completed {
+            background-color: #27ae60 !important;
+        }
+
+        @media (max-width: 768px) {
+            .control-panel {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .task {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+
+            .timeline-container {
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>EDF调度算法可视化</h1>
+        </header>
+
+        <div class="card">
+            <div class="timeline-container">
+                <div class="timeline" id="timeline"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>任务信息</h3>
+            <div class="info-panel" id="task-info"></div>
+        </div>
+
+        <div class="card">
+            <h3>任务控制面板</h3>
+            <div class="control-panel">
+                <div class="form-group">
+                    <label>任务ID:</label>
+                    <input type="text" id="task-id" placeholder="任务ID">
+                    
+                    <label>到达时间:</label>
+                    <input type="number" id="arrival-time" placeholder="到达时间" min="0">
+                    
+                    <label>截止时间:</label>
+                    <input type="number" id="deadline" placeholder="截止时间" min="0">
+                    
+                    <label>执行时间:</label>
+                    <input type="number" id="exec-time" placeholder="执行时间" min="0">
+                    
+                    <label>任务颜色:</label>
+                    <input type="color" id="task-color" value="#3498db">
+                    
+                    <button id="add-task-btn" class="algorithm-btn">添加任务</button>
+                </div>
+                
+                <div class="form-group">
+                    <label>删除任务:</label>
+                    <select id="delete-task-select"></select>
+                    <button id="delete-task-btn" class="algorithm-btn">删除</button>
+                    
+                    <label>更新任务:</label>
+                    <select id="update-task-select"></select>
+                    <button id="update-task-btn" class="algorithm-btn">更新</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <button id="start-btn" class="algorithm-btn">开始动画</button>
+            <button id="reset-btn" class="algorithm-btn">重置</button>
+        </div>
+    </div>
+
+    <script>
+        // 任务数据
+        let tasks = [
+            { id: 'A', arrivalTime: 0, deadline: 10, execTime: 5, color: '#3498db' },
+            { id: 'B', arrivalTime: 0, deadline: 15, execTime: 8, color: '#e74c3c' },
+            { id: 'C', arrivalTime: 0, deadline: 20, execTime: 12, color: '#2ecc71' }
+        ];
+
+        // 当前时间
+        let currentTime = 0;
+
+        // 当前执行的任务
+        let currentTask = null;
+
+        // 动画定时器
+        let animationTimer = null;
+
+        // 获取DOM元素
+        const timeline = document.getElementById('timeline');
+        const taskInfo = document.getElementById('task-info');
+        const startBtn = document.getElementById('start-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const deleteTaskSelect = document.getElementById('delete-task-select');
+        const deleteTaskBtn = document.getElementById('delete-task-btn');
+        const updateTaskSelect = document.getElementById('update-task-select');
+        const updateTaskBtn = document.getElementById('update-task-btn');
+
+        // 初始化任务信息显示
+        function initTaskInfo() {
+            taskInfo.innerHTML = '';
+            tasks.forEach(task => {
+                const taskInfoElement = document.createElement('div');
+                taskInfoElement.className = 'task-info';
+                taskInfoElement.innerHTML = `
+                    <h4 style="color: ${task.color};">${task.id}</h4>
+                    <p>到达时间: ${task.arrivalTime}</p>
+                    <p>截止时间: ${task.deadline}</p>
+                    <p>执行时间: ${task.execTime}</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0;"></div>
+                    </div>
+                `;
+                taskInfo.appendChild(taskInfoElement);
+            });
+        }
+
+        // 更新任务位置
+        function updateTaskPosition() {
+            if (currentTask) {
+                const taskElement = document.getElementById(`task-${currentTask.id}`);
+                if (taskElement) {
+                    // 计算任务应该移动的总距离（像素）
+                    const taskWidth = 40; // 每个任务方块的宽度
+                    const newPosition = currentTime * taskWidth;
+                    
+                    // 更新任务的位置
+                    taskElement.style.transform = `translateX(${newPosition}px)`;
+                    
+                    // 更新进度条
+                    const progressElement = document.querySelector(`.task-info h4:contains("${currentTask.id}") + p + p + p + .progress-bar .progress`);
+                    if (progressElement) {
+                        const progressWidth = ((currentTask.execTimeOriginal - currentTask.execTime) / currentTask.execTimeOriginal) * 100;
+                        progressElement.style.width = `${progressWidth}%`;
+                        
+                        if (currentTask.execTime === 0) {
+                            taskElement.classList.add('task-completed');
+                        }
+                    }
+                }
+            }
+        }
+
+        // 执行EDF调度算法
+        function executeEDF() {
+            // 过滤已到达且未完成的任务
+            const readyTasks = tasks.filter(task => task.arrivalTime <= currentTime && task.execTime > 0);
+            
+            if (readyTasks.length === 0) {
+                // 没有可执行的任务，时间推进
+                currentTime++;
+                updateTaskPosition();
+                return;
+            }
+            
+            // 按照截止时间升序排序，选择截止时间最早的
+            readyTasks.sort((a, b) => a.deadline - b.deadline);
+            currentTask = readyTasks[0];
+            
+            // 更新任务执行时间
+            currentTask.execTime--;
+            
+            // 更新时间
+            currentTime++;
+            
+            // 更新任务位置
+            updateTaskPosition();
+            
+            // 检查任务是否完成
+            if (currentTask.execTime === 0) {
+                currentTask = null;
+            }
+        }
+
+        // 开始动画
+        function startAnimation() {
+            if (animationTimer) {
+                clearInterval(animationTimer);
+            }
+            
+            // 保存原始执行时间
+            tasks.forEach(task => {
+                task.execTimeOriginal = task.execTime;
+            });
+            
+            // 清空时间线
+            timeline.innerHTML = '';
+            
+            // 创建任务元素
+            tasks.forEach(task => {
+                const taskElement = document.createElement('div');
+                taskElement.className = 'task';
+                taskElement.id = `task-${task.id}`;
+                taskElement.style.backgroundColor = task.color;
+                taskElement.textContent = task.id;
+                timeline.appendChild(taskElement);
+            });
+            
+            // 初始化任务信息
+            initTaskInfo();
+            
+            // 开始定时器，每秒执行一次EDF调度
+            animationTimer = setInterval(executeEDF, 1000);
+        }
+
+        // 重置动画
+        function resetAnimation() {
+            clearInterval(animationTimer);
+            timeline.innerHTML = '';
+            currentTime = 0;
+            currentTask = null;
+            tasks.forEach(task => {
+                task.execTime = task.execTimeOriginal;
+                const taskElement = document.getElementById(`task-${task.id}`);
+                if (taskElement) {
+                    taskElement.style.transform = 'translateX(0)';
+                    taskElement.classList.remove('task-completed');
+                }
+            });
+            initTaskInfo();
+        }
+
+        // 添加任务
+        function addTask() {
+            const taskId = document.getElementById('task-id').value;
+            const arrivalTime = parseInt(document.getElementById('arrival-time').value) || 0;
+            const deadline = parseInt(document.getElementById('deadline').value) || 0;
+            const execTime = parseInt(document.getElementById('exec-time').value) || 0;
+            const taskColor = document.getElementById('task-color').value;
+            
+            if (taskId && !isNaN(arrivalTime) && !isNaN(deadline) && !isNaN(execTime)) {
+                tasks.push({ 
+                    id: taskId, 
+                    arrivalTime, 
+                    deadline, 
+                    execTime, 
+                    color: taskColor,
+                    execTimeOriginal: execTime 
+                });
+                updateTaskSelects();
+                resetAnimation();
+            }
+        }
+
+        // 删除任务
+        function deleteTask() {
+            const taskId = deleteTaskSelect.value;
+            tasks = tasks.filter(task => task.id !== taskId);
+            updateTaskSelects();
+            resetAnimation();
+        }
+
+        // 更新任务
+        function updateTask() {
+            const taskId = updateTaskSelect.value;
+            const task = tasks.find(t => t.id === taskId);
+            if (task) {
+                const arrivalTime = parseInt(document.getElementById('arrival-time').value);
+                const deadline = parseInt(document.getElementById('deadline').value);
+                const execTime = parseInt(document.getElementById('exec-time').value);
+                const taskColor = document.getElementById('task-color').value;
+                
+                if (!isNaN(arrivalTime)) task.arrivalTime = arrivalTime;
+                if (!isNaN(deadline)) task.deadline = deadline;
+                if (!isNaN(execTime)) task.execTime = execTime;
+                task.color = taskColor;
+                
+                resetAnimation();
+            }
+        }
+
+        // 更新任务下拉菜单
+        function updateTaskSelects() {
+            // 更新删除任务下拉菜单
+            deleteTaskSelect.innerHTML = '';
+            tasks.forEach(task => {
+                const option = document.createElement('option');
+                option.value = task.id;
+                option.textContent = task.id;
+                deleteTaskSelect.appendChild(option);
+            });
+            
+            // 更新更新任务下拉菜单
+            updateTaskSelect.innerHTML = '';
+            tasks.forEach(task => {
+                const option = document.createElement('option');
+                option.value = task.id;
+                option.textContent = task.id;
+                updateTaskSelect.appendChild(option);
+            });
+        }
+
+        // 绑定事件
+        startBtn.addEventListener('click', startAnimation);
+        resetBtn.addEventListener('click', resetAnimation);
+        addTaskBtn.addEventListener('click', addTask);
+        deleteTaskBtn.addEventListener('click', deleteTask);
+        updateTaskBtn.addEventListener('click', updateTask);
+
+        // 初始化任务下拉菜单
+        updateTaskSelects();
+
+        // 初始化任务信息
+        initTaskInfo();
+    </script>
+</body>
+</html>
