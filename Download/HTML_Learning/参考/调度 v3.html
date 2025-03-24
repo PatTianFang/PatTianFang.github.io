@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>实时任务调度可视化</title>
+    <style>
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .param-section { background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .task-input { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .gantt-container { display: flex; flex-direction: column; gap: 40px; margin-top: 20px; }
+        .gantt-chart { position: relative; height: 200px; border: 1px solid #ddd; padding: 30px 0 20px 80px; }
+        .time-marker { position: absolute; height: calc(100% - 50px); border-left: 1px dashed #999; }
+        .legend { display: flex; gap: 15px; margin: 10px 0; }
+        .legend-item { display: flex; align-items: center; }
+        .legend-color { width: 20px; height: 15px; margin-right: 5px; }
+        button { background: #4CAF50; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #45a049; }
+        .input-label { font-weight: bold; color: #666; min-width: 80px; }
+        .control-bar { margin: 15px 0; display: flex; gap: 20px; align-items: center; }
+        .task-label { position: absolute; left: -70px; width: 60px; text-align: right; font-size: 0.9em; }
+        .speed-control { display: flex; align-items: center; gap: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="param-section">
+            <h2>实时任务调度系统</h2>
+            
+            <div class="control-bar">
+                <div>
+                    <button onclick="addTaskField()">+ 添加任务</button>
+                    <button onclick="runScheduler()">▶ 开始调度</button>
+                </div>
+                <div>
+                    <span class="input-label">最大时间：</span>
+                    <input type="number" id="maxTime" value="20" min="5" max="100" style="width: 70px;">
+                </div>
+                <div class="speed-control">
+                    <span class="input-label">动画速度：</span>
+                    <input type="number" id="animationSpeed" value="250" min="50" max="2000" step="50" style="width: 90px;">
+                    <span>ms</span>
+                </div>
+            </div>
+
+            <div id="taskContainer">
+                <div class="task-input">
+                    <span class="input-label">任务1：</span>
+                    <input type="text" class="task-name" value="Task1">
+                    <span class="input-label">周期：</span>
+                    <input type="number" class="task-period" value="4" min="1">
+                    <span class="input-label">执行时间：</span>
+                    <input type="number" class="task-exec" value="1" min="1">
+                    <button onclick="removeTask(this)">×</button>
+                </div>
+                <div class="task-input">
+                    <span class="input-label">任务2：</span>
+                    <input type="text" class="task-name" value="Task2">
+                    <span class="input-label">周期：</span>
+                    <input type="number" class="task-period" value="6" min="1">
+                    <span class="input-label">执行时间：</span>
+                    <input type="number" class="task-exec" value="2" min="1">
+                    <button onclick="removeTask(this)">×</button>
+                </div>
+                <div class="task-input">
+                    <span class="input-label">任务3：</span>
+                    <input type="text" class="task-name" value="Task3">
+                    <span class="input-label">周期：</span>
+                    <input type="number" class="task-period" value="8" min="1">
+                    <span class="input-label">执行时间：</span>
+                    <input type="number" class="task-exec" value="3" min="1">
+                    <button onclick="removeTask(this)">×</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="gantt-container">
+            <div>
+                <h3>EDF调度算法（最早截止时间优先）</h3>
+                <div class="gantt-chart" id="edfGantt"></div>
+            </div>
+            <div>
+                <h3>RMS调度算法（速率单调调度）</h3>
+                <div class="gantt-chart" id="rmsGantt"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 任务管理功能
+        function removeTask(btn) {
+            const tasks = document.querySelectorAll('.task-input');
+            if (tasks.length > 1) {
+                btn.closest('.task-input').remove();
+            } else {
+                alert('系统需要至少保留一个任务！');
+            }
+        }
+
+        function addTaskField() {
+            const newIndex = document.querySelectorAll('.task-input').length + 1;
+            const div = document.createElement('div');
+            div.className = 'task-input';
+            div.innerHTML = `
+                <span class="input-label">任务${newIndex}：</span>
+                <input type="text" class="task-name" placeholder="Task${newIndex}">
+                <span class="input-label">周期：</span>
+                <input type="number" class="task-period" min="1">
+                <span class="input-label">执行时间：</span>
+                <input type="number" class="task-exec" min="1">
+                <button onclick="removeTask(this)">×</button>
+            `;
+            document.getElementById('taskContainer').appendChild(div);
+        }
+
+        // 调度算法核心实现
+        class TaskInstance {
+            constructor(name, arrival, period, execTime, instance) {
+                this.name = name;
+                this.arrival = arrival;
+                this.deadline = arrival + period;
+                this.period = period;
+                this.remaining = execTime;
+                this.instance = instance;
+            }
+        }
+
+        function generateInstances(tasks, time) {
+            return tasks.flatMap(task => {
+                if (time >= task.start && (time - task.start) % task.period === 0) {
+                    const instanceNum = (time - task.start) / task.period + 1;
+                    return [new TaskInstance(
+                        task.name,
+                        time,
+                        task.period,
+                        task.execTime,
+                        instanceNum
+                    )];
+                }
+                return [];
+            });
+        }
+
+        function edfScheduler(tasks, maxTime) {
+            let schedule = [];
+            let readyQueue = [];
+            let current = null;
+
+            for (let t = 0; t < maxTime; t++) {
+                readyQueue.push(...generateInstances(tasks, t));
+                readyQueue.sort((a, b) => a.deadline - b.deadline);
+
+                if (!current && readyQueue.length) {
+                    current = readyQueue.shift();
+                } else if (current && readyQueue.length && readyQueue[0].deadline < current.deadline) {
+                    readyQueue.push(current);
+                    readyQueue.sort((a, b) => a.deadline - b.deadline);
+                    current = readyQueue.shift();
+                }
+
+                if (current) {
+                    schedule.push({ time: t, task: current.name, instance: current.instance });
+                    current.remaining--;
+                    if (current.remaining === 0) current = null;
+                }
+            }
+            return schedule;
+        }
+
+        function rmsScheduler(tasks, maxTime) {
+            let schedule = [];
+            let readyQueue = [];
+            let current = null;
+            const sortedTasks = [...tasks].sort((a, b) => a.period - b.period);
+
+            for (let t = 0; t < maxTime; t++) {
+                readyQueue.push(...generateInstances(sortedTasks, t));
+                readyQueue.sort((a, b) => a.period - b.period);
+
+                if (!current && readyQueue.length) {
+                    current = readyQueue.shift();
+                } else if (current && readyQueue.length && readyQueue[0].period < current.period) {
+                    readyQueue.push(current);
+                    readyQueue.sort((a, b) => a.period - b.period);
+                    current = readyQueue.shift();
+                }
+
+                if (current) {
+                    schedule.push({ time: t, task: current.name, instance: current.instance });
+                    current.remaining--;
+                    if (current.remaining === 0) current = null;
+                }
+            }
+            return schedule;
+        }
+
+        // 可视化功能
+        async function animateSchedule(schedule, containerId, maxTime, tasks) {
+            const colors = ['#87CEEB', '#90EE90', '#FFA07A', '#D8BFD8', '#FFD700'];
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            // 创建任务标签
+            const taskMap = new Map();
+            tasks.forEach((t, i) => {
+                const label = document.createElement('div');
+                label.className = 'task-label';
+                label.style.top = `${i * 30 + 40}px`;
+                label.style.color = colors[i % colors.length];
+                label.textContent = t.name;
+                container.appendChild(label);
+                taskMap.set(t.name, i);
+            });
+
+            // 创建时间轴
+            for (let t = 0; t <= maxTime; t++) {
+                const marker = document.createElement('div');
+                marker.className = 'time-marker';
+                marker.style.left = `${(t/maxTime)*100}%`;
+                marker.innerHTML = `<div style="position:absolute;top:-25px">${t}</div>`;
+                container.appendChild(marker);
+            }
+
+            // 执行动画
+            const speed = document.getElementById('animationSpeed').valueAsNumber;
+            for (let t = 0; t < maxTime; t++) {
+                await new Promise(resolve => setTimeout(resolve, speed));
+                schedule.filter(e => e.time === t).forEach(e => {
+                    const block = document.createElement('div');
+                    block.style.cssText = `
+                        position: absolute;
+                        height: 20px;
+                        width: ${100/maxTime}%;
+                        left: ${(e.time/maxTime)*100}%;
+                        top: ${taskMap.get(e.task) * 30 + 40}px;
+                        background: ${colors[taskMap.get(e.task) % colors.length]};
+                        border-radius: 3px;
+                    `;
+                    block.title = `${e.task} 实例#${e.instance}`;
+                    container.appendChild(block);
+                });
+            }
+        }
+
+        // 主控制流程
+        async function runScheduler() {
+            const tasks = Array.from(document.querySelectorAll('.task-input'))
+                .map(div => ({
+                    name: div.querySelector('.task-name').value,
+                    period: +div.querySelector('.task-period').value,
+                    execTime: +div.querySelector('.task-exec').value,
+                    start: 0
+                }))
+                .filter(t => t.name && t.period && t.execTime);
+
+            const maxTime = document.getElementById('maxTime').valueAsNumber;
+            
+            // 清除旧结果
+            ['edfGantt', 'rmsGantt'].forEach(id => document.getElementById(id).innerHTML = '');
+
+            // 并行执行两种调度算法的动画
+            await Promise.all([
+                animateSchedule(edfScheduler(tasks, maxTime), 'edfGantt', maxTime, tasks),
+                animateSchedule(rmsScheduler(tasks, maxTime), 'rmsGantt', maxTime, tasks)
+            ]);
+        }
+    </script>
+</body>
+</html>

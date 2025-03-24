@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>实时任务调度可视化</title>
+    <style>
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .param-section { background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .task-input { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .gantt-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .gantt-chart { position: relative; height: 200px; border: 1px solid #ddd; padding: 15px; }
+        .time-marker { position: absolute; height: 100%; border-left: 1px dashed #999; }
+        .legend { display: flex; gap: 15px; margin: 10px 0; }
+        .legend-item { display: flex; align-items: center; }
+        .legend-color { width: 20px; height: 15px; margin-right: 5px; }
+        button { background: #4CAF50; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #45a049; }
+        .input-label { font-weight: bold; color: #666; min-width: 80px; }
+        .control-bar { margin: 15px 0; display: flex; gap: 20px; align-items: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="param-section">
+            <h2>实时任务调度系统</h2>
+            
+            <div class="control-bar">
+                <div>
+                    <button onclick="addTaskField()">+ 添加任务</button>
+                    <button onclick="runScheduler()">▶ 开始调度</button>
+                </div>
+                <div>
+                    <span class="input-label">最大时间：</span>
+                    <input type="number" id="maxTime" value="20" style="width: 60px;">
+                </div>
+            </div>
+
+            <div id="taskContainer">
+                <!-- 默认任务 -->
+                <div class="task-input">
+                    <span class="input-label">任务1：</span>
+                    <input type="text" class="task-name" value="Task1" readonly>
+                    <span class="input-label">周期：</span>
+                    <input type="number" class="task-period" value="4" min="1">
+                    <span class="input-label">执行时间：</span>
+                    <input type="number" class="task-exec" value="1" min="1">
+                </div>
+                <div class="task-input">
+                    <span class="input-label">任务2：</span>
+                    <input type="text" class="task-name" value="Task2" readonly>
+                    <span class="input-label">周期：</span>
+                    <input type="number" class="task-period" value="6" min="1">
+                    <span class="input-label">执行时间：</span>
+                    <input type="number" class="task-exec" value="2" min="1">
+                </div>
+                <div class="task-input">
+                    <span class="input-label">任务3：</span>
+                    <input type="text" class="task-name" value="Task3" readonly>
+                    <span class="input-label">周期：</span>
+                    <input type="number" class="task-period" value="8" min="1">
+                    <span class="input-label">执行时间：</span>
+                    <input type="number" class="task-exec" value="3" min="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="gantt-container">
+            <div>
+                <h3>EDF调度算法</h3>
+                <div class="gantt-chart" id="edfGantt"></div>
+            </div>
+            <div>
+                <h3>RMS调度算法</h3>
+                <div class="gantt-chart" id="rmsGantt"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class TaskInstance {
+            constructor(name, arrival, period, execTime, instance) {
+                this.name = name;
+                this.arrival = arrival;
+                this.deadline = arrival + period;
+                this.period = period;
+                this.remaining = execTime;
+                this.instance = instance;
+            }
+        }
+
+        // 生成任务实例
+        function generateInstances(tasks, time) {
+            return tasks.flatMap(task => {
+                if (time >= task.start && (time - task.start) % task.period === 0) {
+                    const instanceNum = (time - task.start) / task.period + 1;
+                    return [new TaskInstance(
+                        task.name,
+                        time,
+                        task.period,
+                        task.execTime,
+                        instanceNum
+                    )];
+                }
+                return [];
+            });
+        }
+
+        // EDF调度算法
+        function edfScheduler(tasks, maxTime) {
+            let schedule = [];
+            let readyQueue = [];
+            let current = null;
+
+            for (let t = 0; t < maxTime; t++) {
+                readyQueue.push(...generateInstances(tasks, t));
+                readyQueue.sort((a, b) => a.deadline - b.deadline);
+
+                if (!current && readyQueue.length) {
+                    current = readyQueue.shift();
+                } else if (current && readyQueue.length && readyQueue[0].deadline < current.deadline) {
+                    readyQueue.push(current);
+                    readyQueue.sort((a, b) => a.deadline - b.deadline);
+                    current = readyQueue.shift();
+                }
+
+                if (current) {
+                    schedule.push({ time: t, task: current.name, instance: current.instance });
+                    current.remaining--;
+                    if (current.remaining === 0) current = null;
+                }
+            }
+            return schedule;
+        }
+
+        // RMS调度算法
+        function rmsScheduler(tasks, maxTime) {
+            let schedule = [];
+            let readyQueue = [];
+            let current = null;
+            const sortedTasks = [...tasks].sort((a, b) => a.period - b.period);
+
+            for (let t = 0; t < maxTime; t++) {
+                readyQueue.push(...generateInstances(sortedTasks, t));
+                readyQueue.sort((a, b) => a.period - b.period);
+
+                if (!current && readyQueue.length) {
+                    current = readyQueue.shift();
+                } else if (current && readyQueue.length && readyQueue[0].period < current.period) {
+                    readyQueue.push(current);
+                    readyQueue.sort((a, b) => a.period - b.period);
+                    current = readyQueue.shift();
+                }
+
+                if (current) {
+                    schedule.push({ time: t, task: current.name, instance: current.instance });
+                    current.remaining--;
+                    if (current.remaining === 0) current = null;
+                }
+            }
+            return schedule;
+        }
+
+        // 添加任务输入框
+        function addTaskField() {
+            const div = document.createElement('div');
+            div.className = 'task-input';
+            div.innerHTML = `
+                <span class="input-label">新任务：</span>
+                <input type="text" class="task-name" placeholder="名称">
+                <span class="input-label">周期：</span>
+                <input type="number" class="task-period" min="1">
+                <span class="input-label">执行时间：</span>
+                <input type="number" class="task-exec" min="1">
+                <button onclick="this.parentElement.remove()">×</button>
+            `;
+            document.getElementById('taskContainer').appendChild(div);
+        }
+
+        // 运行动画
+        async function animateSchedule(schedule, containerId, maxTime) {
+            const colors = ['#87CEEB', '#90EE90', '#FFA07A', '#DDA0DD', '#FFD700'];
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            // 创建时间轴
+            for (let t = 0; t <= maxTime; t++) {
+                const marker = document.createElement('div');
+                marker.className = 'time-marker';
+                marker.style.left = `${(t/maxTime)*100}%`;
+                marker.innerHTML = `<div style="position: absolute; top: -20px;">${t}</div>`;
+                container.appendChild(marker);
+            }
+
+            // 逐步显示调度过程
+            for (let t = 0; t < maxTime; t++) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                const events = schedule.filter(e => e.time === t);
+                
+                events.forEach(event => {
+                    const block = document.createElement('div');
+                    block.style.position = 'absolute';
+                    block.style.height = '30px';
+                    block.style.width = `${(1/maxTime)*100}%`;
+                    block.style.left = `${(event.time/maxTime)*100}%`;
+                    block.style.top = '50%';
+                    block.style.backgroundColor = colors[event.task.charCodeAt(4)-49]; // 根据Task1-3分配颜色
+                    block.title = `${event.task} (实例 ${event.instance})`;
+                    container.appendChild(block);
+                });
+            }
+        }
+
+        // 主运行函数
+        async function runScheduler() {
+            const tasks = Array.from(document.getElementsByClassName('task-input'))
+                .map(div => ({
+                    name: div.querySelector('.task-name').value,
+                    period: parseInt(div.querySelector('.task-period').value),
+                    execTime: parseInt(div.querySelector('.task-exec').value),
+                    start: 0
+                }))
+                .filter(t => t.name && t.period && t.execTime);
+
+            const maxTime = parseInt(document.getElementById('maxTime').value);
+
+            // 同时运行两种算法
+            const edfSchedule = edfScheduler(tasks, maxTime);
+            const rmsSchedule = rmsScheduler(tasks, maxTime);
+
+            // 并行执行动画
+            await Promise.all([
+                animateSchedule(edfSchedule, 'edfGantt', maxTime),
+                animateSchedule(rmsSchedule, 'rmsGantt', maxTime)
+            ]);
+        }
+    </script>
+</body>
+</html>
