@@ -19,21 +19,21 @@
   <meta name="author" content="Pat Tian Fang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="title: 视频二维码检测date: 2025-04-01 17:56:52categories:tags:   任务三使用计算机读取视频或者摄像头，实时检测图像中的二维码（可用手机屏幕显示二维码），并将二维码的四角位置实时叠加在显示画面中，控制台打印输出二维码内容。 代码1234567891011121314151617181920212223242526272829303132333435">
+    <meta name="description" content="任务三使用计算机读取视频或者摄像头，实时检测图像中的二维码（可用手机屏幕显示二维码），并将二维码的四角位置实时叠加在显示画面中，控制台打印输出二维码内容。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859import cv2f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FangTian&#39;s Blog">
+<meta property="og:title" content="视频二维码检测">
 <meta property="og:url" content="https://pattianfang.github.io/2025/04/01/%E8%A7%86%E9%A2%91%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="FangTian&#39;s Blog">
-<meta property="og:description" content="title: 视频二维码检测date: 2025-04-01 17:56:52categories:tags:   任务三使用计算机读取视频或者摄像头，实时检测图像中的二维码（可用手机屏幕显示二维码），并将二维码的四角位置实时叠加在显示画面中，控制台打印输出二维码内容。 代码1234567891011121314151617181920212223242526272829303132333435">
+<meta property="og:description" content="任务三使用计算机读取视频或者摄像头，实时检测图像中的二维码（可用手机屏幕显示二维码），并将二维码的四角位置实时叠加在显示画面中，控制台打印输出二维码内容。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859import cv2f">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-01T09:56:02.191Z">
-<meta property="article:modified_time" content="2025-04-01T09:56:52.373Z">
+<meta property="article:published_time" content="2025-04-01T09:56:52.000Z">
+<meta property="article:modified_time" content="2025-04-01T10:03:10.434Z">
 <meta property="article:author" content="Pat Tian Fang">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>FangTian&#39;s Blog</title>
+  <title>视频二维码检测 - FangTian&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="视频二维码检测"></span>
           
         </div>
 
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.4k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          13 分钟
+          12 分钟
         
       </span>
     
@@ -270,15 +270,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">视频二维码检测</h1>
             
             
               <div class="markdown-body">
                 
-                <hr>
-<p>title: 视频二维码检测<br>date: 2025-04-01 17:56:52<br>categories:<br>tags: </p>
-<hr>
-<h2 id="任务三"><a href="#任务三" class="headerlink" title="任务三"></a>任务三</h2><p>使用计算机读取视频或者摄像头，实时检测图像中的二维码（可用手机屏幕显示二维码），并将二维码的四角位置实时叠加在显示画面中，控制台打印输出二维码内容。</p>
+                <h2 id="任务三"><a href="#任务三" class="headerlink" title="任务三"></a>任务三</h2><p>使用计算机读取视频或者摄像头，实时检测图像中的二维码（可用手机屏幕显示二维码），并将二维码的四角位置实时叠加在显示画面中，控制台打印输出二维码内容。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image, ImageDraw, ImageFont<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 定义 draw_text 函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_text</span>(<span class="hljs-params">img, text, pos, font, color</span>):<br>    img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))<br>    draw = ImageDraw.Draw(img_pil)<br>    draw.text(pos, text, font=font, fill=color)<br>    <span class="hljs-keyword">return</span> cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)<br><br><span class="hljs-comment"># 初始化摄像头</span><br>cap = cv2.VideoCapture(<span class="hljs-number">0</span>)<br><br><span class="hljs-comment"># 创建二维码检测器</span><br>qr_code_detector = cv2.QRCodeDetector()<br><br><span class="hljs-comment"># 加载中文字体</span><br>font_path = <span class="hljs-string">&quot;simhei.ttf&quot;</span>  <span class="hljs-comment"># 请确保路径正确，simhei.ttf 是黑体字体文件</span><br>font = ImageFont.truetype(font_path, <span class="hljs-number">24</span>)<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    <span class="hljs-comment"># 读取摄像头帧</span><br>    ret, frame = cap.read()<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ret:<br>        <span class="hljs-keyword">break</span><br><br>    <span class="hljs-comment"># 检测二维码</span><br>    retval, decoded_info, points, straight_qrcode = qr_code_detector.detectAndDecodeMulti(frame)<br><br>    <span class="hljs-keyword">if</span> retval:<br>        <span class="hljs-comment"># 打印二维码内容</span><br>        <span class="hljs-keyword">for</span> info <span class="hljs-keyword">in</span> decoded_info:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;QR Code Content:&quot;</span>, info)<br><br>        <span class="hljs-comment"># 绘制二维码的四角位置</span><br>        <span class="hljs-keyword">if</span> points <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>            points = points.astype(<span class="hljs-built_in">int</span>)<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(points)):<br>                <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):<br>                    cv2.line(frame, <span class="hljs-built_in">tuple</span>(points[i][j]), <span class="hljs-built_in">tuple</span>(points[i][(j + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span>]), (<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">3</span>)<br>                <span class="hljs-comment"># 在屏幕左上角显示四角的位置坐标</span><br>                text = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;points[i]&#125;</span>&quot;</span><br>                frame = draw_text(frame, text, (<span class="hljs-number">10</span>, <span class="hljs-number">30</span> + i * <span class="hljs-number">30</span>), font, (<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>))<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-comment"># 在屏幕左上角显示“未检测到二维码”</span><br>        frame = draw_text(frame, <span class="hljs-string">&quot;未检测到二维码&quot;</span>, (<span class="hljs-number">10</span>, <span class="hljs-number">30</span>), font, (<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>))<br><br>    <span class="hljs-comment"># 显示帧</span><br>    cv2.imshow(<span class="hljs-string">&quot;QR Code Detection&quot;</span>, frame)<br><br>    <span class="hljs-comment"># 按下 &#x27;q&#x27; 键退出</span><br>    <span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">1</span>) &amp; <span class="hljs-number">0xFF</span> == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;q&#x27;</span>):<br>        <span class="hljs-keyword">break</span><br><br><span class="hljs-comment"># 释放摄像头并关闭窗口</span><br>cap.release()<br>cv2.destroyAllWindows()<br><br></code></pre></td></tr></table></figure>
 
 <h2 id="代码思路"><a href="#代码思路" class="headerlink" title="代码思路"></a>代码思路</h2><p>先将需要的资源进行初始化，初始化摄像头资源，二维码检测器，并预先写好字体显示函数，要注意PIL库和openCV库的色彩顺序分别为RGB和BGR。然后在循环内持续读取视频帧实现连续播放，退出循环后的release()和destroyAllWindows()函数释放资源。循环内部先读取视频帧，然后对视频帧使用detectAndDecodeMulti()函数进行检测读取内容。使用line()函数依次连接判断出的二维码四角。。</p>
@@ -391,7 +388,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>视频二维码检测</div>
       <div>https://pattianfang.github.io/2025/04/01/视频二维码检测/</div>
     </div>
     <div class="license-meta">
@@ -441,9 +438,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/01/%E9%9C%8D%E5%A4%AB%E5%9C%86%E6%A3%80%E6%B5%8B/" title="霍夫圆检测">
+                      <a href="/2025/04/01/Anaconda%E5%BB%BA%E7%AB%8BPython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" title="Anaconda建立Python虚拟环境">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">霍夫圆检测</span>
+                        <span class="hidden-mobile">Anaconda建立Python虚拟环境</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -451,8 +448,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2025/04/01/%E9%9C%8D%E5%A4%AB%E5%9C%86%E6%A3%80%E6%B5%8B/" title="霍夫圆检测">
+                        <span class="hidden-mobile">霍夫圆检测</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
