@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Copilot配合PyQt制作UI</title>
+    <link href="/2025/04/11/Python01-Copilot%E9%85%8D%E5%90%88PyQt%E5%88%B6%E4%BD%9CUI/"/>
+    <url>/2025/04/11/Python01-Copilot%E9%85%8D%E5%90%88PyQt%E5%88%B6%E4%BD%9CUI/</url>
+    
+    <content type="html"><![CDATA[<p>主要思路是使用<code>Python</code>写逻辑，<code>PyQt</code>写界面UI，最后通过<code>Copilot</code>对UI进行美化。</p><p>关键的提示词是<strong>WindowsFluent</strong>设计风格</p><p>先使用<code>conda</code>创建虚拟环境<code>UI</code></p><p><img src="/../image/Pasted%20image%2020250411191725.png"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs conda">conda create -n UI python=3.11<br></code></pre></td></tr></table></figure><p>激活环境</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs conda">conda activate UI<br></code></pre></td></tr></table></figure><p>然后下载第三方库<code>PyQt</code></p><p><img src="/../image/Pasted%20image%2020250411191858.png"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pip">pip install PyQt5<br></code></pre></td></tr></table></figure><p>在<code>Copilot</code>中输入你想要的关键词，比如<br><code>使用Pyqt5和WindowsFluent设计风格制作一个2048游戏</code></p><p><img src="/../image/Pasted%20image%2020250411193328.png"></p><p><img src="/../image/Pasted%20image%2020250411194314.png"></p><hr><p>#DeepSeek #Python #UI #WindowsFluent</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Copilot</tag>
+      
+      <tag>Python</tag>
+      
+      <tag>UI</tag>
+      
+      <tag>WindowsFluent</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基础概述</title>
     <link href="/2025/04/11/%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/"/>
     <url>/2025/04/11/%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/</url>
