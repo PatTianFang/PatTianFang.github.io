@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2025/05/03/%E6%9C%80%E5%90%8E%E4%B8%80%E6%AC%A1%E6%B5%8B%E8%AF%95/"/>
-    <url>/2025/05/03/%E6%9C%80%E5%90%8E%E4%B8%80%E6%AC%A1%E6%B5%8B%E8%AF%95/</url>
+    <title>20250503测试</title>
+    <link href="/2025/05/03/20250503%E6%B5%8B%E8%AF%95/"/>
+    <url>/2025/05/03/20250503%E6%B5%8B%E8%AF%95/</url>
     
-    <content type="html"><![CDATA[<p><img src="file-20250503142440135.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<p>今天更新了博客文章中的图片的连接方式，增加了对$Latex$公式的支持，特别进行测试</p><h3 id="下面是图片测试"><a href="#下面是图片测试" class="headerlink" title="下面是图片测试"></a>下面是图片测试</h3><p><img src="file-20250503131140597.png" alt="图片测试"></p><h2 id="下面是行内LaTex公式测试"><a href="#下面是行内LaTex公式测试" class="headerlink" title="下面是行内LaTex公式测试"></a>下面是行内LaTex公式测试</h2><p>对嵌入公式进行测试$Latex$</p><p>有空格$ evidence_{i}=\sum_{j}W_{ij}x_{j}+b_{i} $</p><p>无空格$evidence_{i}=\sum_{j}W_{ij}x_{j}+b_{i}$</p><p><strong>注意在$符号中间不能有空格</strong></p><h2 id="下面是LaTex公式测试"><a href="#下面是LaTex公式测试" class="headerlink" title="下面是LaTex公式测试"></a>下面是LaTex公式测试</h2>$$Latex$$<p><strong>在网页上，为了Hexo正常显示独立的LeTex公式需要在前后加上代码</strong></p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">raw</span> %&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">endraw</span> %&#125;</span><br></code></pre></td></tr></table></figure>]]></content>
     
     
     
@@ -17,13 +17,29 @@
   
   
   <entry>
-    <title>20250503测试</title>
-    <link href="/2025/05/03/20250503%E6%B5%8B%E8%AF%95/"/>
-    <url>/2025/05/03/20250503%E6%B5%8B%E8%AF%95/</url>
+    <title>02-2-VSCode中Jupyter Notebook的使用</title>
+    <link href="/2025/05/03/02-2-VSCode%E4%B8%ADJupyter%20Notebook%E7%9A%84%E4%BD%BF%E7%94%A82%201/"/>
+    <url>/2025/05/03/02-2-VSCode%E4%B8%ADJupyter%20Notebook%E7%9A%84%E4%BD%BF%E7%94%A82%201/</url>
     
-    <content type="html"><![CDATA[<p>今天更新了博客文章中的图片的连接方式，增加了对$Latex$公式的支持，特别进行测试</p><h3 id="下面是图片测试"><a href="#下面是图片测试" class="headerlink" title="下面是图片测试"></a>下面是图片测试</h3><p><img src="file-20250503131140597.png" alt="图片测试"></p><h2 id="下面是行内LaTex公式测试"><a href="#下面是行内LaTex公式测试" class="headerlink" title="下面是行内LaTex公式测试"></a>下面是行内LaTex公式测试</h2><p>对嵌入公式进行测试$Latex$</p><p>有空格$ evidence_{i}=\sum_{j}W_{ij}x_{j}+b_{i} $</p><p>无空格$evidence_{i}=\sum_{j}W_{ij}x_{j}+b_{i}$</p><p><strong>注意在$符号中间不能有空格</strong></p><h2 id="下面是LaTex公式测试"><a href="#下面是LaTex公式测试" class="headerlink" title="下面是LaTex公式测试"></a>下面是LaTex公式测试</h2>$$Latex$$<p><strong>在网页上，为了Hexo正常显示独立的LeTex公式需要在前后加上代码</strong></p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">raw</span> %&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">endraw</span> %&#125;</span><br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>可以参考VS Code官方给出的文档<a href="https://vscode.github.net.cn/docs/datascience/jupyter-notebooks">在 Visual Studio Code 中使用 Jupyter Notebook_Vscode中文网</a></p><h1 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h1><p><img src="file-20250503142721147.png" alt=""></p>]]></content>
     
     
+    <categories>
+      
+      <category>AI</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VSCode</tag>
+      
+      <tag>JupyterNotebook</tag>
+      
+      <tag>AI</tag>
+      
+    </tags>
     
   </entry>
   
