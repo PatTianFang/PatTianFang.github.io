@@ -17,35 +17,6 @@
   
   
   <entry>
-    <title>02-2-VSCode中Jupyter Notebook的使用</title>
-    <link href="/2025/05/03/02-2-VSCode%E4%B8%ADJupyter%20Notebook%E7%9A%84%E4%BD%BF%E7%94%A82%201/"/>
-    <url>/2025/05/03/02-2-VSCode%E4%B8%ADJupyter%20Notebook%E7%9A%84%E4%BD%BF%E7%94%A82%201/</url>
-    
-    <content type="html"><![CDATA[<p>可以参考VS Code官方给出的文档<a href="https://vscode.github.net.cn/docs/datascience/jupyter-notebooks">在 Visual Studio Code 中使用 Jupyter Notebook_Vscode中文网</a></p><h1 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h1><p><img src="file-20250503142721147.png" alt=""></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>AI</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>VSCode</tag>
-      
-      <tag>JupyterNotebook</tag>
-      
-      <tag>AI</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>02-利用MathType在Markdown插入数学公式</title>
     <link href="/2025/05/02/02-%E5%88%A9%E7%94%A8MathType%E5%9C%A8Markdown%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/"/>
     <url>/2025/05/02/02-%E5%88%A9%E7%94%A8MathType%E5%9C%A8Markdown%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</url>
@@ -100,7 +71,7 @@
   
   
   <entry>
-    <title>02-1-VSCode中Jupyter Notebook的使用</title>
+    <title>02-1-VSCode中Jupyter Notebook的使用1</title>
     <link href="/2025/05/01/02-1-VSCode%E4%B8%ADJupyter%20Notebook%E7%9A%84%E4%BD%BF%E7%94%A81/"/>
     <url>/2025/05/01/02-1-VSCode%E4%B8%ADJupyter%20Notebook%E7%9A%84%E4%BD%BF%E7%94%A81/</url>
     
