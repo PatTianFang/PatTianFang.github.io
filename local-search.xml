@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>01-VSCode使用Ctrl+滚轮实现代码编辑的放大和缩小</title>
+    <link href="/2025/05/05/01-VSCode%E4%BD%BF%E7%94%A8Ctrl+%E6%BB%9A%E8%BD%AE%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E7%9A%84%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F/"/>
+    <url>/2025/05/05/01-VSCode%E4%BD%BF%E7%94%A8Ctrl+%E6%BB%9A%E8%BD%AE%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E7%9A%84%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F/</url>
+    
+    <content type="html"><![CDATA[<p>文章主要参考CSDN从入门到躺下的文章《VScode使用Ctrl+滚轮实现代码编辑的放大和缩小》^[<a href="https://blog.csdn.net/qq_45078197">https://blog.csdn.net/qq_45078197</a>]</p><p>打开VSCode，点击左下角的设置。</p><p><img src="file-20250505092053081.png" alt=""></p><p>点击设置</p><p><img src="file-20250505092131571.png" alt=""></p><p>在搜素框输入“zoom”</p><p><img src="file-20250505092519695.png" alt=""></p><p>勾上文本编辑选项</p><p><img src="file-20250505092552477.png" alt=""></p><p>即可实现代码编辑的放大和缩小</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tips</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VSCode</tag>
+      
+      <tag>技巧</tag>
+      
+      <tag>设置</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>05-Git进行代码托管</title>
     <link href="/2025/05/04/05-Git%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1/"/>
     <url>/2025/05/04/05-Git%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1/</url>
