@@ -8,7 +8,7 @@
     <link href="/2025/05/10/20250510%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/"/>
     <url>/2025/05/10/20250510%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/</url>
     
-    <content type="html"><![CDATA[<h3 id="文章在首页的封面图"><a href="#文章在首页的封面图" class="headerlink" title="文章在首页的封面图"></a>文章在首页的封面图</h3><p>对于单篇文章，在文章开头 front-matter 中配置<code>index_img</code>属性能够单独设置文章在首页的显示图片</p><p>效果如图</p><p><img src="file-20250510141930284.png" alt=""></p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章标题</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Fluid</span>]<br><span class="hljs-attr">index_img:</span> <span class="hljs-string">/img/example.jpg</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2019-10-10 10:00:00</span><br><span class="hljs-meta">---</span><br><span class="hljs-string">以下是文章内容</span><br></code></pre></td></tr></table></figure><p>/img/example.jpg 对应的是存放在 /source/img/example.jpg 目录下的图片（目录也可自定义，但必须在 source 目录下）。</p><p>![[20250510-1-Cover.jpg]]</p><h3 id="文章页顶部大图"><a href="#文章页顶部大图" class="headerlink" title="文章页顶部大图"></a>文章页顶部大图</h3><p>对于单篇文章，在文章开头 front-matter 中配置<code>banner_img</code>属性。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章标题</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Fluid</span>]<br><span class="hljs-attr">banner_img:</span> <span class="hljs-string">/img/example.jpg</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2019-10-10 10:00:00</span><br><span class="hljs-meta">---</span><br><span class="hljs-string">以下是文章内容</span><br></code></pre></td></tr></table></figure><p>![[20250510-2-Cover.jpg]]</p><p>效果如图</p><p><img src="file-20250510143045149.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="文章在首页的封面图"><a href="#文章在首页的封面图" class="headerlink" title="文章在首页的封面图"></a>文章在首页的封面图</h3><p>对于单篇文章，在文章开头 front-matter 中配置<code>index_img</code>属性能够单独设置文章在首页的显示图片</p><p>效果如图</p><p><img src="file-20250510141930284.png" alt=""></p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章标题</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Fluid</span>]<br><span class="hljs-attr">index_img:</span> <span class="hljs-string">/img/example.jpg</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2019-10-10 10:00:00</span><br><span class="hljs-meta">---</span><br><span class="hljs-string">以下是文章内容</span><br></code></pre></td></tr></table></figure><p>/img/example.jpg 对应的是存放在 /source/img/example.jpg 目录下的图片（目录也可自定义，但必须在 source 目录下）。</p><p>![[20250510-1-Cover.jpg]]</p><h3 id="文章页顶部大图"><a href="#文章页顶部大图" class="headerlink" title="文章页顶部大图"></a>文章页顶部大图</h3><p>对于单篇文章，在文章开头 front-matter 中配置<code>banner_img</code>属性。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章标题</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Fluid</span>]<br><span class="hljs-attr">banner_img:</span> <span class="hljs-string">/img/example.jpg</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2019-10-10 10:00:00</span><br><span class="hljs-meta">---</span><br><span class="hljs-string">以下是文章内容</span><br></code></pre></td></tr></table></figure><p>![[20250510-2-Cover.jpg]]</p><p>效果如图</p><p><img src="file-20250510143045149.png" alt=""></p><h1 id="B站视频嵌入"><a href="#B站视频嵌入" class="headerlink" title="B站视频嵌入"></a>B站视频嵌入</h1><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114482537828033&bvid=BV1EFVZz1Ekr&cid=29886842614&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>]]></content>
     
     
     
@@ -33,9 +33,9 @@
     
     <tags>
       
-      <tag>CSharp</tag>
-      
       <tag>UI</tag>
+      
+      <tag>CSharp</tag>
       
     </tags>
     
@@ -436,11 +436,11 @@
     
     <tags>
       
-      <tag>UI</tag>
-      
       <tag>Copilot</tag>
       
       <tag>python</tag>
+      
+      <tag>UI</tag>
       
       <tag>WindowsFluent</tag>
       
