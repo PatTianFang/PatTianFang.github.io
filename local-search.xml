@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>20250510博客更新</title>
+    <link href="/2025/05/10/20250510%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/"/>
+    <url>/2025/05/10/20250510%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/</url>
+    
+    <content type="html"><![CDATA[<p>对于单篇文章，在文章开头 front-matter 中配置<code>index_img</code>属性能够单独设置文章的封面图片</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章标题</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Fluid</span>]<br><span class="hljs-attr">index_img:</span> <span class="hljs-string">/img/example.jpg</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2019-10-10 10:00:00</span><br><span class="hljs-meta">---</span><br><span class="hljs-string">以下是文章内容</span><br></code></pre></td></tr></table></figure><p>/img/example.jpg 对应的是存放在 /source/img/example.jpg 目录下的图片（目录也可自定义，但必须在 source 目录下）。</p><p>![[20250510-1-Cover.jpg]]</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>01-C Sharp应用程序界面开发</title>
     <link href="/2025/05/10/01-C%20Sharp%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%95%8C%E9%9D%A2%E5%BC%80%E5%8F%91/"/>
     <url>/2025/05/10/01-C%20Sharp%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%95%8C%E9%9D%A2%E5%BC%80%E5%8F%91/</url>
@@ -20,9 +33,9 @@
     
     <tags>
       
-      <tag>CSharp</tag>
-      
       <tag>UI</tag>
+      
+      <tag>CSharp</tag>
       
     </tags>
     
@@ -423,11 +436,11 @@
     
     <tags>
       
-      <tag>UI</tag>
-      
       <tag>Copilot</tag>
       
       <tag>python</tag>
+      
+      <tag>UI</tag>
       
       <tag>WindowsFluent</tag>
       
