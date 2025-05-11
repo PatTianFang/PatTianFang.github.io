@@ -19,23 +19,55 @@
   <meta name="author" content="Pat Tian Fang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="文章在首页的封面图对于单篇文章，在文章开头 front-matter 中配置index_img属性能够单独设置文章在首页的显示图片 效果如图  1234567---title: 文章标题tags: [Hexo, Fluid]index_img: &#x2F;img&#x2F;example.jpgdate: 2019-10-10 10:00:00---以下是文章内容 &#x2F;img&#x2F;example.jpg 对应的是存放在">
+    <meta name="description" content="一、R和Rstudio的下载与安装1-R的下载点击链接进入官网，选与自己电脑匹配的版本下载The Comprehensive R Archive Network  点击第一次安装R语言  点击下载安装包  安装完成  2-Rstudio的下载点击链接下载RStudio Desktop - Posit  下载完成  二、安装R和Rstudio必须先安装R之后，再安装Rstudio，R是Rstudio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20250510博客更新">
-<meta property="og:url" content="https://pattianfang.github.io/2025/05/10/20250510%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/index.html">
+<meta property="og:title" content="01-R语言入门-R和Rstudio安装与使用">
+<meta property="og:url" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="FangTian&#39;s Blogs">
-<meta property="og:description" content="文章在首页的封面图对于单篇文章，在文章开头 front-matter 中配置index_img属性能够单独设置文章在首页的显示图片 效果如图  1234567---title: 文章标题tags: [Hexo, Fluid]index_img: &#x2F;img&#x2F;example.jpgdate: 2019-10-10 10:00:00---以下是文章内容 &#x2F;img&#x2F;example.jpg 对应的是存放在">
+<meta property="og:description" content="一、R和Rstudio的下载与安装1-R的下载点击链接进入官网，选与自己电脑匹配的版本下载The Comprehensive R Archive Network  点击第一次安装R语言  点击下载安装包  安装完成  2-Rstudio的下载点击链接下载RStudio Desktop - Posit  下载完成  二、安装R和Rstudio必须先安装R之后，再安装Rstudio，R是Rstudio">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pattianfang.github.io/img/20250510-1-Cover.jpg">
-<meta property="article:published_time" content="2025-05-10T06:08:13.000Z">
-<meta property="article:modified_time" content="2025-05-10T08:19:27.352Z">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511231415121.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511231448282.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511231532412.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511231642904.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511232126088.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511232709763.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511232907708.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511232849197.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511232928495.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511232949978.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511233012764.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511233029918.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511233136252.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511233147223.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511233156557.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511233321095.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511234908405.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511234923594.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511234937480.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511235811854.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511235953714.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250512000621526.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250512000644134.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250512000816891.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250512000835523.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250512000844204.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250512000937806.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250512000950799.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250512001327450.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250512001529981.png">
+<meta property="article:published_time" content="2025-05-11T15:09:57.000Z">
+<meta property="article:modified_time" content="2025-05-11T16:15:32.362Z">
 <meta property="article:author" content="Pat Tian Fang">
+<meta property="article:tag" content="R语言">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="Rstudio">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pattianfang.github.io/img/20250510-1-Cover.jpg">
+<meta name="twitter:image" content="https://pattianfang.github.io/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/file-20250511231415121.png">
   
   
   
-  <title>20250510博客更新 - FangTian&#39;s Blogs</title>
+  <title>01-R语言入门-R和Rstudio安装与使用 - FangTian&#39;s Blogs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,13 +229,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/20250510-2-Cover.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="20250510博客更新"></span>
+            <span id="subtitle" data-typed-text="01-R语言入门-R和Rstudio安装与使用"></span>
           
         </div>
 
@@ -214,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-10 14:08" pubdate>
-          2025年5月10日 下午
+        <time datetime="2025-05-11 23:09" pubdate>
+          2025年5月11日 晚上
         </time>
       </span>
     
@@ -226,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          174 字
+          310 字
         
       </span>
     
@@ -237,7 +269,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -274,23 +306,68 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">20250510博客更新</h1>
+            <h1 id="seo-header">01-R语言入门-R和Rstudio安装与使用</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="文章在首页的封面图"><a href="#文章在首页的封面图" class="headerlink" title="文章在首页的封面图"></a>文章在首页的封面图</h3><p>对于单篇文章，在文章开头 front-matter 中配置<code>index_img</code>属性能够单独设置文章在首页的显示图片</p>
-<p>效果如图</p>
-<p><img src="file-20250510141930284.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章标题</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Fluid</span>]<br><span class="hljs-attr">index_img:</span> <span class="hljs-string">/img/example.jpg</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2019-10-10 10:00:00</span><br><span class="hljs-meta">---</span><br><span class="hljs-string">以下是文章内容</span><br></code></pre></td></tr></table></figure>
-<p>/img/example.jpg 对应的是存放在 /source/img/example.jpg 目录下的图片（目录也可自定义，但必须在 source 目录下）。</p>
-<p>![[20250510-1-Cover.jpg]]</p>
-<h3 id="文章页顶部大图"><a href="#文章页顶部大图" class="headerlink" title="文章页顶部大图"></a>文章页顶部大图</h3><p>对于单篇文章，在文章开头 front-matter 中配置<code>banner_img</code>属性。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">文章标题</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">Hexo</span>, <span class="hljs-string">Fluid</span>]<br><span class="hljs-attr">banner_img:</span> <span class="hljs-string">/img/example.jpg</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2019-10-10 10:00:00</span><br><span class="hljs-meta">---</span><br><span class="hljs-string">以下是文章内容</span><br></code></pre></td></tr></table></figure>
-<p>![[20250510-2-Cover.jpg]]</p>
-<p>效果如图</p>
-<p><img src="file-20250510143045149.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1 id="B站视频嵌入"><a href="#B站视频嵌入" class="headerlink" title="B站视频嵌入"></a>B站视频嵌入</h1><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114482537828033&bvid=BV1EFVZz1Ekr&cid=29886842614&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                <h1 id="一、R和Rstudio的下载与安装"><a href="#一、R和Rstudio的下载与安装" class="headerlink" title="一、R和Rstudio的下载与安装"></a>一、R和Rstudio的下载与安装</h1><h2 id="1-R的下载"><a href="#1-R的下载" class="headerlink" title="1-R的下载"></a>1-R的下载</h2><p>点击链接进入官网，选与自己电脑匹配的版本下载<a target="_blank" rel="noopener" href="https://cloud.r-project.org/">The Comprehensive R Archive Network</a></p>
+<p><img src="file-20250511231415121.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击第一次安装R语言</p>
+<p><img src="file-20250511231448282.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击下载安装包</p>
+<p><img src="file-20250511231532412.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>安装完成</p>
+<p><img src="file-20250511231642904.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-Rstudio的下载"><a href="#2-Rstudio的下载" class="headerlink" title="2-Rstudio的下载"></a>2-Rstudio的下载</h2><p>点击链接下载<a target="_blank" rel="noopener" href="https://posit.co/download/rstudio-desktop/">RStudio Desktop - Posit</a></p>
+<p><img src="file-20250511232126088.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>下载完成</p>
+<p><img src="file-20250511232709763.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="二、安装R和Rstudio"><a href="#二、安装R和Rstudio" class="headerlink" title="二、安装R和Rstudio"></a>二、安装R和Rstudio</h1><p>必须先安装R之后，再安装Rstudio，R是Rstudio的基础，两者都安装在C盘（windows电脑）。在安装过程中，弹出选项为默认，即安装过程中不要做任何更改，鼠标傻瓜式地点点就可以。</p>
+<h2 id="1-安装R"><a href="#1-安装R" class="headerlink" title="1-安装R"></a>1-安装R</h2><p>打开安装包</p>
+<p><img src="file-20250511232907708.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击确定</p>
+<p><img src="file-20250511232849197.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击下一步</p>
+<p><img src="file-20250511232928495.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>安装到默认位置</p>
+<p><img src="file-20250511232949978.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击下一步</p>
+<p><img src="file-20250511233012764.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>下一步</p>
+<p><img src="file-20250511233029918.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>下一步</p>
+<p><img src="file-20250511233136252.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>下一步</p>
+<p><img src="file-20250511233147223.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250511233156557.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>安装完成</p>
+<p><img src="file-20250511233321095.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-安装Rstudio"><a href="#2-安装Rstudio" class="headerlink" title="2-安装Rstudio"></a>2-安装Rstudio</h2><p>打开安装包</p>
+<p><img src="file-20250511234908405.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>下一步</p>
+<p><img src="file-20250511234923594.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>默认位置</p>
+<p><img src="file-20250511234937480.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>安装</p>
+<p><img src="file-20250511235811854.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>安装完成</p>
+<p><img src="file-20250511235953714.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>一般使用Rtudio，很少用R，因为Rtudio为图形界面，比R的功能多。两者的界面如下：</p>
+<p><img src="file-20250512000621526.png" srcset="/img/loading.gif" lazyload alt="R语言"></p>
+<p><img src="file-20250512000644134.png" srcset="/img/loading.gif" lazyload alt="RStudio"></p>
+<h1 id="三、Rstudio和R脚本的简单使用"><a href="#三、Rstudio和R脚本的简单使用" class="headerlink" title="三、Rstudio和R脚本的简单使用"></a>三、Rstudio和R脚本的简单使用</h1><h2 id="1-在Rstudio中新建项目Rproject"><a href="#1-在Rstudio中新建项目Rproject" class="headerlink" title="1-在Rstudio中新建项目Rproject"></a>1-在Rstudio中新建项目Rproject</h2><p>依次点击<code>File</code>—-<code>New Project</code>—-<code>NewDirectory</code>—-<code>New Project</code>—-<code>Directory name</code>—- <code>Create Project</code></p>
+<p><img src="file-20250512000816891.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250512000835523.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250512000844204.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250512000937806.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250512000950799.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-创建脚本"><a href="#2-创建脚本" class="headerlink" title="2-创建脚本"></a>2-创建脚本</h2><p>脚本：存放代码的文件，代码是和R语言交流且符合一定的规则。</p>
+<p>依次点击<code>File</code>&gt;<code>New File</code>&gt;<code>R Script</code>或者使用快捷键<code>Ctrl</code>+<code>Shift</code>+<code>N</code></p>
+<p><img src="file-20250512001327450.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>创建完成</p>
+<p><img src="file-20250512001529981.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
                 
               </div>
             
@@ -298,6 +375,38 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/R%E8%AF%AD%E8%A8%80/" class="category-chain-item">R语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/R%E8%AF%AD%E8%A8%80/" class="print-no-link">#R语言</a>
+      
+        <a href="/tags/R/" class="print-no-link">#R</a>
+      
+        <a href="/tags/Rstudio/" class="print-no-link">#Rstudio</a>
+      
+    </div>
   
 </div>
 
@@ -307,8 +416,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>20250510博客更新</div>
-      <div>https://pattianfang.github.io/2025/05/10/20250510博客更新/</div>
+      <div>01-R语言入门-R和Rstudio安装与使用</div>
+      <div>https://pattianfang.github.io/2025/05/11/01-R语言入门-R和Rstudio安装与使用/</div>
     </div>
     <div class="license-meta">
       
@@ -320,13 +429,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月10日</div>
+          <div>2025年5月11日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年5月10日</div>
+          <div>2025年5月12日</div>
         </div>
       
       
@@ -357,18 +466,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/11/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="01-R语言入门-R和Rstudio安装与使用">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">01-R语言入门-R和Rstudio安装与使用</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/05/10/01-C%20Sharp%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%95%8C%E9%9D%A2%E5%BC%80%E5%8F%91/" title="01-C Sharp应用程序界面开发">
-                        <span class="hidden-mobile">01-C Sharp应用程序界面开发</span>
+                      <a href="/2025/05/10/20250510%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/" title="20250510博客更新">
+                        <span class="hidden-mobile">20250510博客更新</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
