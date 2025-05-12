@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>02-Cursor帮助部署Github软件</title>
+    <link href="/2025/05/12/02-Cursor%E5%B8%AE%E5%8A%A9%E9%83%A8%E7%BD%B2Github%E8%BD%AF%E4%BB%B6/"/>
+    <url>/2025/05/12/02-Cursor%E5%B8%AE%E5%8A%A9%E9%83%A8%E7%BD%B2Github%E8%BD%AF%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<h1 id="一、Cursor安装"><a href="#一、Cursor安装" class="headerlink" title="一、Cursor安装"></a>一、Cursor安装</h1><p>进入Cursor官网下载软件<a href="https://www.cursor.com/cn">Cursor - The AI Code Editor</a></p><p><img src="file-20250512221109173.png" alt=""></p><p>打开exe文件</p><p><img src="file-20250512221145352.png" alt=""></p><p>选择同意协议</p><p><img src="file-20250512221238119.png" alt=""></p><p>选择安装位置</p><p><img src="file-20250512221313152.png" alt=""></p><p>点击下一步</p><p><img src="file-20250512221349670.png" alt=""></p><p>按照需求选择</p><p><img src="file-20250512221413165.png" alt=""></p><p>点击安装</p><p><img src="file-20250512221425691.png" alt=""></p><p><img src="file-20250512221436336.png" alt=""></p><p>安装完成</p><p><img src="file-20250512221522975.png" alt=""></p><h1 id="二、设置Cursor"><a href="#二、设置Cursor" class="headerlink" title="二、设置Cursor"></a>二、设置Cursor</h1><p>打开软件</p><p><img src="file-20250512221552895.png" alt=""></p><p>注册账号后自由选择</p><p><img src="file-20250512221903879.png" alt=""></p><p>内部各项选择按照自己喜好选择即可</p><p><img src="file-20250512222254400.png" alt=""></p><h1 id="三、部署项目"><a href="#三、部署项目" class="headerlink" title="三、部署项目"></a>三、部署项目</h1><p>创建并打开文件夹</p><p><img src="file-20250512222411306.png" alt=""></p><p>找到想要的Github项目</p><p><img src="file-20250512222544670.png" alt=""></p><p>复制web URL</p><p><img src="file-20250512222618114.png" alt=""></p><p>输入提示语</p><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less">为我部署<span class="hljs-variable">@https:</span><span class="hljs-comment">//github.com/NangInShell/VSET.git 的项目</span><br></code></pre></td></tr></table></figure><p><img src="file-20250512222704826.png" alt=""></p><p>最后效果</p><p><img src="file-20250512223349571.png" alt=""></p><h1 id="四、使用VScode尝试"><a href="#四、使用VScode尝试" class="headerlink" title="四、使用VScode尝试"></a>四、使用VScode尝试</h1><p><img src="file-20250512223508336.png" alt=""></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tips</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Cursor</tag>
+      
+      <tag>GitHub</tag>
+      
+      <tag>部署</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>04-虚拟机的安装</title>
     <link href="/2025/05/12/04-%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%AE%89%E8%A3%85/"/>
     <url>/2025/05/12/04-%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%AE%89%E8%A3%85/</url>
@@ -151,9 +180,9 @@
       
       <tag>ROS</tag>
       
-      <tag>Git</tag>
-      
       <tag>GitHub</tag>
+      
+      <tag>Git</tag>
       
       <tag>Gitee</tag>
       
