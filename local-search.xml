@@ -122,9 +122,9 @@
     
     <tags>
       
-      <tag>UI</tag>
-      
       <tag>CSharp</tag>
+      
+      <tag>UI</tag>
       
     </tags>
     
@@ -525,11 +525,11 @@
     
     <tags>
       
+      <tag>UI</tag>
+      
       <tag>Copilot</tag>
       
       <tag>python</tag>
-      
-      <tag>UI</tag>
       
       <tag>WindowsFluent</tag>
       
