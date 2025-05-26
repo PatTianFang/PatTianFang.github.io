@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>05-Gazebo启动失败无虚拟无人机的解决</title>
+    <link href="/2025/05/22/05-Gazebo%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5%E6%97%A0%E8%99%9A%E6%8B%9F%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%9A%84%E8%A7%A3%E5%86%B3/"/>
+    <url>/2025/05/22/05-Gazebo%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5%E6%97%A0%E8%99%9A%E6%8B%9F%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%9A%84%E8%A7%A3%E5%86%B3/</url>
+    
+    <content type="html"><![CDATA[<p>在虚拟机中启动Gazebo后报错</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">[vehicle_spawn_fang_15423_8266973064116550980-<span class="hljs-number">5</span>] process has died [pid <span class="hljs-number">15501</span>, <span class="hljs-keyword">exit</span> code <span class="hljs-number">1</span>, cmd <span class="hljs-regexp">/opt/</span>ros<span class="hljs-regexp">/noetic/</span>lib<span class="hljs-regexp">/gazebo_ros/</span>spawn_model -sdf -file <span class="hljs-regexp">/home/</span>jetson<span class="hljs-regexp">/catkin_ws/</span>src<span class="hljs-regexp">/tutorials/</span>tutorial_gazebo<span class="hljs-regexp">/models/m</span>agpie360<span class="hljs-regexp">/magpie360.sdf -model iris -x 0 -y 0 -z 0 -R 0 -P 0 -Y 0 __name:=vehicle_spawn_fang_15423_8266973064116550980 __log:=/</span>home<span class="hljs-regexp">/jetson/</span>.ros<span class="hljs-regexp">/log/</span><span class="hljs-number">33</span>e82792-<span class="hljs-number">3706</span>-<span class="hljs-number">11</span>f0-<span class="hljs-number">9</span>d90-e59abc5778f4/vehicle_spawn_fang_15423_8266973064116550980-<span class="hljs-number">5</span>.log].<br>log file: <span class="hljs-regexp">/home/</span>jetson<span class="hljs-regexp">/.ros/</span>log<span class="hljs-regexp">/33e82792-3706-11f0-9d90-e59abc5778f4/</span>vehicle_spawn_fang_15423_8266973064116550980-<span class="hljs-number">5</span>*.log<br><br></code></pre></td></tr></table></figure><p><img src="file-20250522204729650.png" alt=""></p><p>而且在Gazebo中不显示无人机</p><p><img src="file-20250522204804790.png" alt=""></p><p><img src="file-20250522205012465.png" alt=""></p><p><strong>关键在于缺少了模块</strong></p><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-symbol">ModuleNotFoundError:</span> No <span class="hljs-keyword">module</span> named <span class="hljs-comment">&#x27;rospkg&#x27;</span><br></code></pre></td></tr></table></figure><p>最简单的方法是使用 _pip_ 安装 _rospkg_ 模块。尝试使用 pip 安装 rospkg</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> rospkg<br></code></pre></td></tr></table></figure><p><img src="file-20250522205037124.png" alt=""></p><p>但是仍无法启动</p><p>最终发现是因为安装完ROS和Gazebo后安装了Anaconda导致环境和配置出现问题，解决方法有两种</p><h3 id="一、退出BASE环境"><a href="#一、退出BASE环境" class="headerlink" title="一、退出BASE环境"></a>一、退出BASE环境</h3><p>每次运行前先退出conda</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">conda deactivate</span><br></code></pre></td></tr></table></figure><p><img src="file-20250526204828861.png" alt=""></p><h3 id="二、删除Anaconda"><a href="#二、删除Anaconda" class="headerlink" title="二、删除Anaconda"></a>二、删除Anaconda</h3><p>可以参考<a href="06-删除Anaconda.md">06-删除Anaconda</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>无人机</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>无人机</tag>
+      
+      <tag>Gazebo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>02-Cursor帮助部署Github软件</title>
     <link href="/2025/05/12/02-Cursor%E5%B8%AE%E5%8A%A9%E9%83%A8%E7%BD%B2Github%E8%BD%AF%E4%BB%B6/"/>
     <url>/2025/05/12/02-Cursor%E5%B8%AE%E5%8A%A9%E9%83%A8%E7%BD%B2Github%E8%BD%AF%E4%BB%B6/</url>
