@@ -1,0 +1,1005 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Pat Tian Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基础概述 课程介绍 Linux系统介绍及安装 Linux系统基础操作 C++&#x2F;Python极简基础 安装ROS系统    Linux系统基础操作输入法中英文切换启动后，处于英文输入状态  同时按下WIN+空格可以切换输入法  在中文（智能拼音）输入法下，按下Shift键能够在输入中文和英文中转换  文件系统  打开文件图标   这个是主文件夹（home）的位置，根目录处+其他位置内的计算机内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01-基础概述">
+<meta property="og:url" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="FangTian&#39;s Blogs">
+<meta property="og:description" content="基础概述 课程介绍 Linux系统介绍及安装 Linux系统基础操作 C++&#x2F;Python极简基础 安装ROS系统    Linux系统基础操作输入法中英文切换启动后，处于英文输入状态  同时按下WIN+空格可以切换输入法  在中文（智能拼音）输入法下，按下Shift键能够在输入中文和英文中转换  文件系统  打开文件图标   这个是主文件夹（home）的位置，根目录处+其他位置内的计算机内">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250328173855.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250328174346.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250328173758.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Ubuntu%2064%20%E4%BD%8D%20%E6%97%A0%E4%BA%BA%E6%9C%BA-2025-03-28-17-47-30.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Ubuntu%2064%20%E4%BD%8D%20%E6%97%A0%E4%BA%BA%E6%9C%BA-2025-03-28-17-47-302222.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Ubuntu%2064%20%E4%BD%8D%20%E6%97%A0%E4%BA%BA%E6%9C%BA-2025-03-28-17-49-04.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Ubuntu%2064%20%E4%BD%8D%20%E6%97%A0%E4%BA%BA%E6%9C%BA-2025-03-28-17-50-25.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250328175205.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329073721.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329082307.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329172458.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329082629.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329151949.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329152315.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329153014.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329152809.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329153115.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329153133.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329153704.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329152507.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329152517.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329172910.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329173251.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329173515.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329155137.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329155302.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329155357.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329155431.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329160033.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329160140.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329160824.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329161759.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329162022.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329162209.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329163024.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329163709.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329163824.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329165656.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329165925.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329170159.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329170514.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329170620.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329171546.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250329171603.png">
+<meta property="article:published_time" content="2025-04-11T08:53:50.000Z">
+<meta property="article:modified_time" content="2025-05-04T12:39:53.965Z">
+<meta property="article:author" content="Pat Tian Fang">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="ROS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pattianfang.github.io/2025/04/11/01-%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/Pasted%20image%2020250328173855.png">
+  
+  
+  
+  <title>01-基础概述 - FangTian&#39;s Blogs</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"pattianfang.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FangTian&#39;s Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="01-基础概述"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-11 16:53" pubdate>
+          2025年4月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">01-基础概述</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <ul>
+<li>基础概述<ul>
+<li>课程介绍</li>
+<li>Linux系统介绍及安装</li>
+<li>Linux系统基础操作</li>
+<li>C++/Python极简基础</li>
+<li>安装ROS系统</li>
+</ul>
+</li>
+</ul>
+<h1 id="Linux系统基础操作"><a href="#Linux系统基础操作" class="headerlink" title="Linux系统基础操作"></a>Linux系统基础操作</h1><h3 id="输入法中英文切换"><a href="#输入法中英文切换" class="headerlink" title="输入法中英文切换"></a>输入法中英文切换</h3><p>启动后，处于英文输入状态</p>
+<p><img src="Pasted%20image%2020250328173855.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>同时按下<code>WIN</code>+<code>空格</code>可以切换输入法</p>
+<p><img src="Pasted%20image%2020250328174346.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在中文（智能拼音）输入法下，按下<code>Shift</code>键能够在输入中文和英文中转换</p>
+<p><img src="Pasted%20image%2020250328173758.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><p><img src="Ubuntu%2064%20位%20无人机-2025-03-28-17-47-30.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Ubuntu%2064%20位%20无人机-2025-03-28-17-47-302222.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>打开文件图标</p>
+<p> <img src="Ubuntu%2064%20位%20无人机-2025-03-28-17-49-04.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这个是主文件夹（home）的位置，根目录处<code>+其他位置</code>内的<code>计算机</code>内</p>
+<p><img src="Ubuntu%2064%20位%20无人机-2025-03-28-17-50-25.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如图，才是根目录的位置</p>
+<p><img src="Pasted%20image%2020250328175205.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>一般操作在主文件夹中进行即可</strong></p>
+<h3 id="终端程序和常用指令"><a href="#终端程序和常用指令" class="headerlink" title="终端程序和常用指令"></a>终端程序和常用指令</h3><h4 id="打开终端"><a href="#打开终端" class="headerlink" title="打开终端"></a>打开终端</h4><p>在Linux系统中，可以通过终端程序输入指令来进行各项操作。</p>
+<p>可以从开始菜单启动终端程序</p>
+<p><img src="Pasted%20image%2020250329073721.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>也可以按下<code>Ctrl</code>+<code>Alt</code>+<code>T</code>打开</p>
+<p><img src="Pasted%20image%2020250329082307.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><h5 id="Tab键补全"><a href="#Tab键补全" class="headerlink" title="Tab键补全"></a>Tab键补全</h5><p>按下<code>Tab</code>键可以快速补全代码（当唯一时）</p>
+<h5 id="pwd查看当前路径"><a href="#pwd查看当前路径" class="headerlink" title="pwd查看当前路径"></a>pwd查看当前路径</h5><p><img src="Pasted%20image%2020250329172458.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="ls列出当前文件夹下的内容"><a href="#ls列出当前文件夹下的内容" class="headerlink" title="ls列出当前文件夹下的内容"></a>ls列出当前文件夹下的内容</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">ls<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250329082629.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>ls = list 列出清单</p>
+</blockquote>
+<p>终端程序启动后，默认位置是当前用户的“主文件夹”</p>
+<h5 id="mkdir创建新的目录"><a href="#mkdir创建新的目录" class="headerlink" title="mkdir创建新的目录"></a>mkdir创建新的目录</h5><blockquote>
+<p>mkdir = make directory 创建新的目录</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">mkdir name<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250329151949.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="cd改变当前目录"><a href="#cd改变当前目录" class="headerlink" title="cd改变当前目录"></a>cd改变当前目录</h5><blockquote>
+<p>cd = change directory 改变当前目录</p>
+</blockquote>
+<p>使用<code>cd</code>+<code>目录名</code>可以进入指定目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">cd directory_name<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250329152315.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>可以跨级进入目录</strong></p>
+<p><img src="Pasted%20image%2020250329153014.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>使用<code>cd</code>+<code>..</code>可以回到上一级目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">cd ..<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250329152809.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>使用<code>cd</code>+<code>~</code>可以从任意位置回到主文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">cd ~<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250329153115.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250329153133.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>~ = /home/用户名/<br>~ = 当前用户中的主文件夹</p>
+</blockquote>
+<p>cd后面可以跟绝对地址，也可以跟相对目前地址的地址</p>
+<p><img src="Pasted%20image%2020250329153704.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="clear清除输出"><a href="#clear清除输出" class="headerlink" title="clear清除输出"></a>clear清除输出</h5><p><img src="Pasted%20image%2020250329152507.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250329152517.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="touch创建文件"><a href="#touch创建文件" class="headerlink" title="touch创建文件"></a>touch创建文件</h5><p><img src="Pasted%20image%2020250329172910.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="对文件的常用操作（复制、粘贴、剪切）"><a href="#对文件的常用操作（复制、粘贴、剪切）" class="headerlink" title="对文件的常用操作（复制、粘贴、剪切）"></a>对文件的常用操作（复制、粘贴、剪切）</h5><blockquote>
+<p>剪切 mv</p>
+</blockquote>
+<p><img src="Pasted%20image%2020250329173251.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>cp 复制粘贴</p>
+</blockquote>
+<p><img src="Pasted%20image%2020250329173515.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h3><p><strong>gedit</strong> = 文本编辑器</p>
+<p>输入<code>gedit</code>可以打开文本编辑器</p>
+<p><img src="Pasted%20image%2020250329155137.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入<code>gedit</code>+<code>文件名</code>可以在当前位置</p>
+<p>打开对应文件名的文本</p>
+<p><img src="Pasted%20image%2020250329155302.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入内容后保存</p>
+<p><img src="Pasted%20image%2020250329155357.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250329155431.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Source指令"><a href="#Source指令" class="headerlink" title="Source指令"></a>Source指令</h3><blockquote>
+<p>source = 执行文件中的指令序列</p>
+</blockquote>
+<p>Source指令<strong>用于执行一个文本文件里的一连串指令</strong></p>
+<p>编辑内容</p>
+<p><img src="Pasted%20image%2020250329160033.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">source command.sh<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250329160140.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在Linux中，我们通常会把一连串的指令写到.sh文件里，然后通过source去加载运行</p>
+<h3 id="终端启动脚本"><a href="#终端启动脚本" class="headerlink" title="终端启动脚本"></a>终端启动脚本</h3><blockquote>
+<p>~/.bashrc = 终端程序启动脚本</p>
+</blockquote>
+<p>这个文件在<strong>主文件夹</strong>里，但是是一个<strong>隐藏文件</strong>，在文件管理器里是看不到的</p>
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">ls -a<br></code></pre></td></tr></table></figure>
+<p>能够显示所有文件，包括隐藏文件</p>
+<p><img src="Pasted%20image%2020250329160824.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>.bashrc</strong>可以理解为终端程序的初始化脚本，每次执行终端程序时，都会首先执行一下这个脚本，完成一些环境变量的赋值工作</p>
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">gedit ~/.bashrc<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250329161759.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在最后输入<code>echo 正在使用.bashrc</code>，后保存</p>
+<p><img src="Pasted%20image%2020250329162022.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>关闭终端，然后按下<code>Ctrl</code>+<code>Alt</code>+<code>T</code>重新打开终端</p>
+<p><img src="Pasted%20image%2020250329162209.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="执行管理员权限"><a href="#执行管理员权限" class="headerlink" title="执行管理员权限"></a>执行管理员权限</h3><blockquote>
+<p>sudo = 以管理员权限执行本条指令</p>
+</blockquote>
+<p>每个用户通常只能操作自己主文件夹里的数据，在主文件夹之外的区域，新建目录或者删除文件会提示权限不足</p>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>删除文件rm指令的介绍主要参考CSDN深码青年的文章《Linux 删除文件命令（超详细）》^[<a target="_blank" rel="noopener" href="https://blog.csdn.net/lcmaijia/article/details/134319542">https://blog.csdn.net/lcmaijia/article/details/134319542</a>]</p>
+<blockquote>
+<p>删除单个文件</p>
+</blockquote>
+<p>要删除单个文件，只需使用 rm 命令后跟要删除的文件名：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm 文件名<br></code></pre></td></tr></table></figure></p>
+<p>例如，要删除名为 “example.txt” 的文件，执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm example.txt<br></code></pre></td></tr></table></figure>
+<p><strong>这种方式删除的是文件，不能删除目录（文件夹）</strong></p>
+<p><img src="Pasted%20image%2020250329163024.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>删除多个文件</p>
+</blockquote>
+<p>如果要删除多个文件，可以将文件名放在 rm 命令后并用空格分隔：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm 文件1 文件2 文件3<br></code></pre></td></tr></table></figure>
+<p>例如，要删除 “file1.txt”、“file2.txt” 和 “file3.txt” 这三个文件，执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm file1.txt file2.txt file3.txt<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>删除文件夹及其内容</p>
+</blockquote>
+<p>如果要删除整个文件夹及其所有内容，可以使用 <code>-r</code>参数（递归删除）来确保连同子文件夹一起删除：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm -r 文件夹名<br></code></pre></td></tr></table></figure>
+<p>请注意，递归删除非常危险，因为它会将文件夹及其所有内容完全删除，无法恢复。确保在执行此操作前三思。</p>
+<p>例如，要删除名为 “my_folder” 的文件夹及其所有内容，执行以下命令：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm -r my_folder<br></code></pre></td></tr></table></figure></p>
+<p><img src="Pasted%20image%2020250329163709.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>确认删除</p>
+</blockquote>
+<p>在默认情况下，rm 命令会直接删除文件，不会询问确认。如果你希望在删除文件时得到确认提示，请使用<code>-i</code>参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm -i 文件名<br></code></pre></td></tr></table></figure>
+<p>例如，要删除 “important.txt” 文件，并在删除前确认，执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm -i important.txt<br></code></pre></td></tr></table></figure>
+<p>rm 命令会提示类似以下信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm: 是否删除 &quot;important.txt&quot;? <br></code></pre></td></tr></table></figure>
+<p>输入 “y” 表示确认删除，输入 “n” 表示取消删除。</p>
+<p><img src="Pasted%20image%2020250329163824.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>强制删除</p>
+</blockquote>
+<p>如果你希望在删除文件时不接收任何确认提示，并强制删除文件，可以使用 -f 参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm -f 文件名<br></code></pre></td></tr></table></figure>
+<p>例如，要强制删除名为 “temp.txt” 的文件，执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">rm -f temp.txt<br></code></pre></td></tr></table></figure>
+<p>请小心使用 -f 参数，因为它会立即删除文件，无法恢复。</p>
+<h3 id="软件安装和配置软件源"><a href="#软件安装和配置软件源" class="headerlink" title="软件安装和配置软件源"></a>软件安装和配置软件源</h3><h4 id="配置软件源"><a href="#配置软件源" class="headerlink" title="配置软件源"></a>配置软件源</h4><p>软件安装和配置软件源的介绍主要参考CSDN Raywit的文章《Linux换国内镜像源(Ubuntu、Debian等)》^[<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40520596/article/details/110194439">https://blog.csdn.net/qq_40520596/article/details/110194439</a>]</p>
+<p>先备份源列表/etc/apt/sources.list<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup<br></code></pre></td></tr></table></figure></p>
+<p><img src="Pasted%20image%2020250329165656.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>再打开sources.list文件修改 (可以用gedit、vim等来修改)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">sudo gedit /etc/apt/sources.list<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250329165925.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>往里面添加目标源的配置文件，最后保存即可。</p>
+<p><img src="Pasted%20image%2020250329170159.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>不同版本的系统的换源格式不太一样，可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40520596/article/details/110194439">Linux换国内镜像源(Ubuntu、Debian等)_linux jingxiangyuan-CSDN博客</a>这篇文章</p>
+<p>报错，但好像不影响使用</p>
+<p><img src="Pasted%20image%2020250329170514.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>更换源后更新</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">sudo apt-get update<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250329170620.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>也可以使用可视化界面进行换源</p>
+<p><img src="Pasted%20image%2020250329171546.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250329171603.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h4><p>安装软件，只需要简单使用命令来进行安装: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">sudo apt-get install &lt;package-name&gt;<br></code></pre></td></tr></table></figure>
+<p>软件库里没有的话就会提示错误</p>
+<p>删除软件则是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">sudo apt-get remove &lt;package-name&gt;<br></code></pre></td></tr></table></figure>
+<p>在Ubuntu系统上安装软件和Windows上不一样 (后者是exe文件，前者一般是apt、deb、run等格式)。</p>
+<p>#</p>
+<h1 id="Linux-ROS-rm-指令"><a href="#Linux-ROS-rm-指令" class="headerlink" title="Linux #ROS #rm #指令"></a>Linux #ROS #rm #指令</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ROS/" class="category-chain-item">ROS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/ROS/" class="print-no-link">#ROS</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>01-基础概述</div>
+      <div>https://pattianfang.github.io/2025/04/11/01-基础概述/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Pat Tian Fang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月11日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年5月4日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/11/01-Copilot%E9%85%8D%E5%90%88PyQt%E5%88%B6%E4%BD%9CUI/" title="01-Copilot配合PyQt制作UI">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01-Copilot配合PyQt制作UI</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/01/Pycharm%E8%AE%BE%E7%BD%AEconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" title="Pycharm设置conda虚拟环境">
+                        <span class="hidden-mobile">Pycharm设置conda虚拟环境</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"pattianfang/gittalk-comments","repo-id":"R_kgDOOnk8-w","category":"Announcements","category-id":"DIC_kwDOOnk8-84Cp_Bs","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

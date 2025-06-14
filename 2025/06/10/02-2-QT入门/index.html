@@ -1,0 +1,1024 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Pat Tian Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="文章主要参考CSDN会飞的鱼-blog的文章《QT入门看这一篇就够了——超详细讲解（40000多字详细讲解，涵盖qt大量知识）》^[https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_65635427&#x2F;article&#x2F;details&#x2F;130780280] 一、创建QT项目1-1-使用向导创建打开Qt Creator界面  点击New Project&gt;New  或者选择菜单栏中的文件&gt;新建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02-2-QT入门">
+<meta property="og:url" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="FangTian&#39;s Blogs">
+<meta property="og:description" content="文章主要参考CSDN会飞的鱼-blog的文章《QT入门看这一篇就够了——超详细讲解（40000多字详细讲解，涵盖qt大量知识）》^[https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_65635427&#x2F;article&#x2F;details&#x2F;130780280] 一、创建QT项目1-1-使用向导创建打开Qt Creator界面  点击New Project&gt;New  或者选择菜单栏中的文件&gt;新建">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610195544637.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610195638059.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610195829654.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610195911066.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610200210632.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610200324158.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610201240558.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610202822575.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610205233111.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610205505684.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610205538437.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610205557801.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610205718903.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610205901149.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250611173250158.png">
+<meta property="article:published_time" content="2025-06-10T11:45:09.000Z">
+<meta property="article:modified_time" content="2025-06-14T01:39:50.460Z">
+<meta property="article:author" content="Pat Tian Fang">
+<meta property="article:tag" content="QT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pattianfang.github.io/2025/06/10/02-2-QT%E5%85%A5%E9%97%A8/file-20250610195544637.png">
+  
+  
+  
+  <title>02-2-QT入门 - FangTian&#39;s Blogs</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"pattianfang.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FangTian&#39;s Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="02-2-QT入门"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-10 19:45" pubdate>
+          2025年6月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">02-2-QT入门</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>文章主要参考CSDN会飞的鱼-blog的文章《QT入门看这一篇就够了——超详细讲解（40000多字详细讲解，涵盖qt大量知识）》^[<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_65635427/article/details/130780280">https://blog.csdn.net/m0_65635427/article/details/130780280</a>]</p>
+<h1 id="一、创建QT项目"><a href="#一、创建QT项目" class="headerlink" title="一、创建QT项目"></a>一、创建QT项目</h1><h2 id="1-1-使用向导创建"><a href="#1-1-使用向导创建" class="headerlink" title="1-1-使用向导创建"></a>1-1-使用向导创建</h2><p>打开Qt Creator界面</p>
+<p><img src="file-20250610195544637.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击<code>New Project</code>&gt;<code>New</code></p>
+<p><img src="file-20250610195638059.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>或者选择菜单栏中的<code>文件</code>&gt;<code>新建文件或项目</code></p>
+<p><img src="file-20250610195829654.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>或者按下快捷键<code>Ctrl</code>+<code>N</code></p>
+<p><img src="file-20250610195911066.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择Qt Widgets Application</p>
+<p><img src="file-20250610200210632.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-1-1-新建项目时名称和路径的注意点"><a href="#1-1-1-新建项目时名称和路径的注意点" class="headerlink" title="1-1-1-新建项目时名称和路径的注意点"></a>1-1-1-新建项目时名称和路径的注意点</h3><p>填写项目名称和保存路径</p>
+<p><img src="file-20250610200324158.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>有两个注意点^<a target="_blank" rel="noopener" href="https://blog.csdn.net/maizousidemao/article/details/104152353">[[Qt 教程之开始的开始] —— 创建项目及注意事项_qt build system-CSDN博客</a>]</p>
+<ol>
+<li><p>项目名称不能有空格和中文</p>
+<p> 01 Qt第一天</p>
+<pre><code class="hljs"> [×] 有空格和中文
+</code></pre><p> 01_Qt_the First Day</p>
+<pre><code class="hljs"> [×] 有空格
+</code></pre><p> 01_HelloWorld </p>
+<pre><code class="hljs"> [√] 
+</code></pre></li>
+<li><p>路径不能有中文</p>
+<p> /home/vistar/桌面/Qt</p>
+<pre><code class="hljs"> [×]有中文
+</code></pre><p> /home/vistar/desktop/Qt </p>
+<pre><code class="hljs"> [√]
+</code></pre></li>
+</ol>
+<h3 id="1-1-2-QT编译方式qmake、CMake和Qbs的区别"><a href="#1-1-2-QT编译方式qmake、CMake和Qbs的区别" class="headerlink" title="1-1-2-QT编译方式qmake、CMake和Qbs的区别"></a>1-1-2-QT编译方式qmake、CMake和Qbs的区别</h3><p>选择一种编译方式</p>
+<p><img src="file-20250610201240558.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>三种方式的区别如下：</p>
+<p>可以参考官方文档<a target="_blank" rel="noopener" href="https://doc.qt.io/qtcreator/creator-how-to-select-build-system.html">选择构建系统 |Qt Creator 文档</a></p>
+<h4 id="Qbs"><a href="#Qbs" class="headerlink" title="Qbs"></a>Qbs</h4><p>先说Qbs，Qbs被官方废弃，Qbs与Qt Creator 4.9一起一直支持到2019年底，Qt6不支持Qbs</p>
+<h4 id="qmake"><a href="#qmake" class="headerlink" title="qmake"></a>qmake</h4><ul>
+<li>专注于使用Qt的项目</li>
+<li>QtCreator可以轻松生成项目文件(适合初学者)</li>
+<li>由QtCreator支持</li>
+</ul>
+<h4 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h4><ul>
+<li>用于广泛的项目</li>
+<li>支持多种平台和语言</li>
+<li>受多个IDE支持：例如QtCreator，Visual Studio</li>
+<li>生成多个IDE的项目描述</li>
+<li>包含简化Qt使用的命令</li>
+</ul>
+<p>总计来说CMake 很常用，功能也很强大，许多知名的项目都是用它，比如 OpenCV 和 VTK，但它的语法繁杂；qmake 是针对辅助 Qt 开发的，但也可以在非 Qt 项目使用，特点是语法简单明了，但功能也相对简单。^<a target="_blank" rel="noopener" href="https://blog.csdn.net/maizousidemao/article/details/104152353">[[Qt 教程之开始的开始] —— 创建项目及注意事项_qt build system-CSDN博客</a>]</p>
+<p><strong>新手直接使用qmake即可</strong></p>
+<h3 id="1-1-3-窗口继承类QWidget、QDialog、QMainWindow-的异同点"><a href="#1-1-3-窗口继承类QWidget、QDialog、QMainWindow-的异同点" class="headerlink" title="1-1-3-窗口继承类QWidget、QDialog、QMainWindow 的异同点"></a>1-1-3-窗口继承类QWidget、QDialog、QMainWindow 的异同点</h3><p>文章主要参考CSDN 一去丶二三里的文章《QWidget、QDialog、QMainWindow 的异同点》^[<a target="_blank" rel="noopener" href="https://blog.csdn.net/liang19890820/article/details/50533262">QWidget、QDialog、QMainWindow 的异同点_qdialog qwidget的区别-CSDN博客</a>]</p>
+<p>向导会默认添加一个继承自QMainWindow的类，可以在此修改类的名字和基类。默认的基类有QMainWindow、QWidget以及QDialog三个，我们可以选择QWidget（类似于空窗口），这里我们可以先创建一个不带UI的界面，继续下一步</p>
+<p><img src="file-20250610202822575.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>QWidget继承于QObject和QPaintDevice，QDialog和QMainWindow则继承于QWidget，QDialog、QMainWindow两者之间没有直接关系。</p>
+<pre><code class=" mermaid">flowchart LR
+A[&quot;QWidget&quot;]
+B[&quot;QObject&quot;]
+C[&quot;QPaintDevice&quot;]
+D[&quot;QDialog&quot;]
+E[&quot;QMainWindow&quot;]
+B --继承--&gt; A
+C --继承--&gt; A
+A --继承--&gt; E
+A --继承--&gt; D
+
+</code></pre>
+<h4 id="QWidget"><a href="#QWidget" class="headerlink" title="QWidget"></a>QWidget</h4><p>QWidget类是所有用户界面对象的基类。</p>
+<p>窗口部件是用户界面的一个原子：它从窗口系统接收鼠标、键盘和其它事件，并且将自己的表现形式绘制在屏幕上。每一个窗口部件都是矩形，并且它们按Z轴顺序排列。一个窗口部件可以被它的父窗口部件或者它前面的窗口部件盖住一部分。</p>
+<p>QWidget有很多成员函数，但是它们中的一些有少量的直接功能：例如，QWidget有字体属性，但是自己从来不用。为很多继承它的子类提供了实际的功能，比如QLabel、QPushButton、QCheckBox等等。</p>
+<p>没有父窗体的小部件始终是一个独立的窗口（顶级窗口部件）。非窗口的小部件为子部件，它们在父窗口中显示。Qt中大多数部件主要被用作子部件。例如：可以显示一个按钮作为顶层窗口，但大多数人更喜欢将按钮内置于其它部件，如QDialog。</p>
+<h4 id="QDialog"><a href="#QDialog" class="headerlink" title="QDialog"></a>QDialog</h4><p>QDialog类是对话框窗口的基类。</p>
+<p>对话框窗口是一个顶级窗体，主要用于短期任务以及和用户进行简要通讯。QDialog可以是模式的也可以是非模式的。QDialog支持扩展性并且可以提供返回值。它们可以有默认按钮。QDialog也可以有一个QSizeGrip在它的右下角，使用setSizeGripEnabled()。</p>
+<p>注意：QDialog（以及其它使用Qt::Dialog类型的widget）使用父窗口部件的方法和Qt中其它类稍微不同。对话框总是顶级窗口部件，但是如果它有一个父对象，它的默认位置就是父对象的中间。它也将和父对象共享工具条条目。</p>
+<h5 id="模式对话框"><a href="#模式对话框" class="headerlink" title="模式对话框"></a>模式对话框</h5><p>阻塞同一应用程序中其它可视窗口输入的对话框。模式对话框有自己的事件循环，用户必须完成这个对话框中的交互操作，并且关闭了它之后才能访问应用程序中的其它任何窗口。模式对话框仅阻止访问与对话相关联的窗口，允许用户继续使用其它窗口中的应用程序。</p>
+<p>显示模态对话框最常见的方法是调用其exec()函数，当用户关闭对话框，exec()将提供一个有用的返回值，并且这时流程控制继续从调用exec()的地方进行。通常情况下，要获得对话框关闭并返回相应的值，我们连接默认按钮，例如：”确定”按钮连接到accept()槽，”取消”按钮连接到reject()槽。另外我们也可以连接done()槽，传递给它Accepted或Rejected。</p>
+<h5 id="非模式对话框"><a href="#非模式对话框" class="headerlink" title="非模式对话框"></a>非模式对话框</h5><p>和同一个程序中其它窗口操作无关的对话框。在文字处理中的查找和替换对话框通常是非模式的，允许用户同时与应用程序的主窗口和对话框进行交互。调用show()来显示非模式对话框，并立即将控制返回给调用者。</p>
+<p>如果隐藏对话框后调用show()函数，对话框将显示在其原始位置，这是因为窗口管理器决定的窗户位置没有明确由程序员指定，为了保持被用户移动的对话框位置，在closeEvent()中进行处理，然后在显示之前，将对话框移动到该位置。</p>
+<h5 id="半模式对话框"><a href="#半模式对话框" class="headerlink" title="半模式对话框"></a>半模式对话框</h5><p>调用setModal(true)或者setWindowModality()，然后show()。有别于exec()，show() 立即返回给控制调用者。</p>
+<p>对于进度对话框来说，调用setModal(true)是非常有用的，用户必须拥有与其交互的能力，例如：取消长时间运行的操作。如果使用show()和setModal(true)共同执行一个长时间操作，则必须定期在执行过程中调用QApplication::processEvents()，以使用户能够与对话框交互（可以参考QProgressDialog）。</p>
+<h4 id="QMainWindow"><a href="#QMainWindow" class="headerlink" title="QMainWindow"></a>QMainWindow</h4><p>QMainWindow类提供一个有菜单条、工具栏、状态条的主应用程序窗口。</p>
+<p>一个主窗口提供了构建应用程序的用户界面框架。Qt拥有QMainWindow及其相关类来管理主窗口。</p>
+<p>QMainWindow拥有自己的布局，我们可以使用QMenuBar（菜单栏）、QToolBar（工具栏）、QStatusBar（状态栏）以及QDockWidget（悬浮窗体），布局有一个可由任何种类小窗口所占据的中心区域。</p>
+<p><img src="file-20250610205233111.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>语言可以先不选</p>
+<p><img src="file-20250610205505684.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择编译套件</p>
+<p><img src="file-20250610205538437.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>添加版本控制</p>
+<p><img src="file-20250610205557801.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>创建成功</p>
+<p><img src="file-20250610205718903.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-2-一个最简单的Qt应用程序"><a href="#1-2-一个最简单的Qt应用程序" class="headerlink" title="1-2-一个最简单的Qt应用程序"></a>1-2-一个最简单的Qt应用程序</h2><p>生成项目后默认生成的代码</p>
+<p><img src="file-20250610205901149.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;widget.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QApplication&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-function">QApplication <span class="hljs-title">a</span><span class="hljs-params">(argc, argv)</span></span>;<br>    Widget w;<br>    w.<span class="hljs-built_in">show</span>();<br>    <span class="hljs-keyword">return</span> a.<span class="hljs-built_in">exec</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="对代码逐句解释"><a href="#对代码逐句解释" class="headerlink" title="对代码逐句解释"></a>对代码逐句解释</h4><h5 id="include-quot-widget-h-quot"><a href="#include-quot-widget-h-quot" class="headerlink" title="#include &quot;widget.h&quot;"></a><code>#include &quot;widget.h&quot;</code></h5><ul>
+<li><p><strong>作用</strong> ：这是一个预处理指令，用于包含名为 <code>widget.h</code> 的头文件。这个头文件中通常定义了一个名为 <code>Widget</code> 的自定义类，该类继承自 <code>QWidget</code> 类（或者其他 Qt 的窗口类），它包含了应用程序主窗口的用户界面元素和相关功能的声明。</p>
+</li>
+<li><p><strong>示例说明</strong> ：在 <code>widget.h</code> 中定义了类 <code>Widget</code> 的成员变量、函数声明等，比如窗口中的按钮、标签等控件的声明以及相应的槽函数声明等，在 <code>main</code> 函数中通过包含这个头文件，就可以使用 <code>Widget</code> 类来创建窗口对象。</p>
+</li>
+</ul>
+<h5 id="widge-h文件"><a href="#widge-h文件" class="headerlink" title="widge.h文件"></a>widge.h文件</h5><p><code>widget.h</code>是下面这个文件</p>
+<p><img src="file-20250611173250158.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> WIDGET_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> WIDGET_H</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;QWidget&gt;</span></span><br><br>QT_BEGIN_NAMESPACE<br><span class="hljs-keyword">namespace</span> Ui &#123; <span class="hljs-keyword">class</span> <span class="hljs-title class_">Widget</span>; &#125;<br>QT_END_NAMESPACE<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Widget</span> : <span class="hljs-keyword">public</span> QWidget<br>&#123;<br>    Q_OBJECT<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Widget</span>(QWidget *parent = <span class="hljs-literal">nullptr</span>);<br>    ~<span class="hljs-built_in">Widget</span>();<br><br><span class="hljs-keyword">private</span>:<br>    Ui::Widget *ui;<br>&#125;;<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span> <span class="hljs-comment">// WIDGET_H</span></span><br></code></pre></td></tr></table></figure>
+<p>这段代码定义一个继承自 <code>QWidget</code> 的 <code>Widget</code> 类</p>
+<h6 id="ifndef-WIDGET-H-和-define-WIDGET-H"><a href="#ifndef-WIDGET-H-和-define-WIDGET-H" class="headerlink" title="#ifndef WIDGET_H 和 #define WIDGET_H"></a><code>#ifndef WIDGET_H</code> 和 <code>#define WIDGET_H</code></h6><ul>
+<li><p><strong>作用</strong> ：这两行代码是预处理器指令，用于防止该头文件被重复包含。当头文件被第一次包含时，<code>#ifndef WIDGET_H</code> 判断宏 <code>WIDGET_H</code> 是否未定义，如果是，则定义该宏（通过 <code>#define WIDGET_H</code>）并编译头文件中的代码。如果该头文件再次被包含，<code>#ifndef WIDGET_H</code> 判断宏 <code>WIDGET_H</code> 已经被定义，就会跳过头文件中后续的代码，避免重复定义类等编译错误。</p>
+</li>
+<li><p><strong>重要性</strong> ：这是 C++ 编程中常见的头文件保护机制，防止在复杂的项目中由于头文件的多次包含而导致的编译问题。</p>
+</li>
+</ul>
+<h6 id="include-lt-QWidget-gt"><a href="#include-lt-QWidget-gt" class="headerlink" title="#include &lt;QWidget&gt;"></a><code>#include &lt;QWidget&gt;</code></h6><ul>
+<li><p><strong>作用</strong> ：包含 Qt 的 <code>QWidget</code> 类的头文件。<code>QWidget</code> 是所有用户界面对象的基类，提供了基本的窗口系统、绘图和事件处理功能。<code>Widget</code> 类继承自 <code>QWidget</code>，因此需要包含这个头文件来使用 <code>QWidget</code> 的功能和属性。</p>
+</li>
+<li><p><strong>关联性</strong> ：<code>Widget</code> 类依赖于 <code>QWidget</code> 类来实现其窗口功能，通过继承可以获得 <code>QWidget</code> 的所有公有成员函数和信号槽机制等特性。</p>
+</li>
+</ul>
+<h6 id="QT-BEGIN-NAMESPACE-和-QT-END-NAMESPACE"><a href="#QT-BEGIN-NAMESPACE-和-QT-END-NAMESPACE" class="headerlink" title="QT_BEGIN_NAMESPACE 和 QT_END_NAMESPACE"></a><code>QT_BEGIN_NAMESPACE</code> 和 <code>QT_END_NAMESPACE</code></h6><ul>
+<li><p><strong>作用</strong> ：这两个宏是 Qt 提供的，用于处理 Qt 的命名空间问题。在不同的编译器和环境下，Qt 的类和函数可能被放置在不同的命名空间中。<code>QT_BEGIN_NAMESPACE</code> 和 <code>QT_END_NAMESPACE</code> 用于包围 Qt 的代码，使得这些代码在不同的命名空间配置下能够正确地被编译和使用。</p>
+</li>
+<li><p><strong>背景</strong> ：Qt 支持将类和函数放在一个命名空间中以避免命名冲突，但默认情况下是不使用命名空间的。这两个宏主要用于在生成文档和处理一些特殊编译器配置时发挥作用，对于普通的应用程序开发来说，通常不需要特别关注它们的具体实现。</p>
+</li>
+</ul>
+<h6 id="namespace-Ui-class-Widget"><a href="#namespace-Ui-class-Widget" class="headerlink" title="namespace Ui { class Widget; }"></a><code>namespace Ui &#123; class Widget; &#125;</code></h6><ul>
+<li><p><strong>作用</strong> ：声明了一个命名空间 <code>Ui</code>，并在该命名空间中声明了一个名为 <code>Widget</code> 的类。这个 <code>Widget</code> 类通常是通过 Qt 的用户界面设计器（Qt Designer）生成的 UI 文件（.ui 文件）对应的类，它包含了窗口的用户界面元素（如按钮、标签、布局等）的声明。</p>
+</li>
+<li><p><strong>关联性</strong> ：在使用 Qt Designer 设计用户界面时，Qt 会自动生成一个与 UI 文件对应的 C++ 头文件（通常在编译过程中生成），其中定义了 <code>Ui::Widget</code> 类，该类包含了一系列的成员变量，用于表示界面中的各个控件。<code>Widget</code> 类通过包含这个自动生成的头文件，并在其实现中使用 <code>Ui::Widget</code> 类来初始化和管理界面元素。</p>
+</li>
+</ul>
+<h6 id="class-Widget-public-QWidget"><a href="#class-Widget-public-QWidget" class="headerlink" title="class Widget : public QWidget"></a><code>class Widget : public QWidget</code></h6><ul>
+<li><p><strong>作用</strong> ：声明了一个名为 <code>Widget</code> 的类，它继承自 <code>QWidget</code> 类。通过继承，<code>Widget</code> 类可以获得 <code>QWidget</code> 的基本功能，并且可以添加自定义的成员变量、成员函数、信号和槽等，以实现特定的应用程序功能。</p>
+</li>
+<li><p><strong>继承的意义</strong> ：继承是面向对象编程的重要特性之一，它允许 <code>Widget</code> 类重用 <code>QWidget</code> 的代码，并且可以根据需要覆盖或扩展基类的行为。例如，<code>Widget</code> 类可以重写 <code>paintEvent</code> 函数来自定义窗口的绘制行为，或者添加新的槽函数来处理自定义的信号。</p>
+</li>
+</ul>
+<h6 id="Q-OBJECT"><a href="#Q-OBJECT" class="headerlink" title="Q_OBJECT"></a><code>Q_OBJECT</code></h6><ul>
+<li><p><strong>作用</strong> ：这是一个非常重要的宏，必须出现在使用 Qt 的信号和槽机制以及元对象系统的类的定义中。<code>Q_OBJECT</code> 宏会指示 Qt 的元对象编译器（moc，Meta - Object Compiler）为该类生成额外的代码，这些代码提供了信号和槽的实现、运行时类型信息、对象名等元数据。</p>
+</li>
+<li><p><strong>关键功能</strong> ：</p>
+<ul>
+<li><p><strong>信号和槽支持</strong> ：使得类可以定义信号（signals）和槽（slots），这是 Qt 的核心组件之间通信机制。例如，当用户点击按钮时，按钮可以发出一个信号，而 <code>Widget</code> 类中的一个槽函数可以连接到这个信号，从而在按钮点击时执行相应的操作。</p>
+</li>
+<li><p><strong>翻译支持</strong> ：支持多语言翻译，可以方便地将应用程序本地化为不同的语言。</p>
+</li>
+<li><p><strong>其他特性</strong> ：还支持定时器事件、自定义事件处理等特性，增强了类的功能和灵活性。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="公共部分"><a href="#公共部分" class="headerlink" title="公共部分"></a>公共部分</h6><ul>
+<li><p><strong><code>Widget(QWidget *parent = nullptr);</code></strong> ：</p>
+<ul>
+<li><p><strong>作用</strong> ：这是 <code>Widget</code> 类的构造函数声明。它接受一个指向 <code>QWidget</code> 的指针作为参数，该参数表示父窗口部件。在 Qt 中，窗口部件可以有父子关系，父窗口部件负责管理子窗口部件的生命周期和布局等。</p>
+</li>
+<li><p><strong>默认参数</strong> ：<code>nullptr</code> 是 C++ 11 中的 nullptr_t 类型，表示空指针。构造函数的参数 <code>parent</code> 有一个默认值 <code>nullptr</code>，这意味着当创建 <code>Widget</code> 对象时，可以不指定父窗口部件，此时该对象没有父窗口部件。</p>
+</li>
+<li><p><strong>用途</strong> ：构造函数用于初始化 <code>Widget</code> 对象，在创建对象时会调用该函数，并且可以将父窗口部件传递给它，以便建立父子关系。例如，在主函数中创建 <code>Widget</code> 对象时，如果没有指定父窗口部件，那么它可以作为一个独立的窗口存在。</p>
+</li>
+</ul>
+</li>
+<li><p><strong><code>~Widget();</code></strong> ：</p>
+<ul>
+<li><p><strong>作用</strong> ：这是 <code>Widget</code> 类的析构函数声明。析构函数在对象生命周期结束时被调用，用于清理和释放对象所占用的资源，如关闭文件、释放内存等。</p>
+</li>
+<li><p><strong>重要性</strong> ：在 C++ 中，正确地实现析构函数是确保资源管理安全的重要部分。对于 <code>Widget</code> 类来说，析构函数可能会负责清理其内部的子窗口部件、断开信号和槽的连接等操作，以确保程序的稳定运行。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="私有部分"><a href="#私有部分" class="headerlink" title="私有部分"></a>私有部分</h6><ul>
+<li><p><strong><code>Ui::Widget *ui;</code></strong> ：</p>
+<ul>
+<li><p><strong>作用</strong> ：这是一个指向 <code>Ui::Widget</code> 类型的指针，用于存储通过 Qt Designer 设计的用户界面元素。<code>Ui::Widget</code> 类是在 UI 文件编译时自动生成的，它包含了一系列的成员变量，每个变量对应界面中的一个控件。</p>
+</li>
+<li><p><strong>用途</strong> ：在 <code>Widget</code> 类的实现中，通常会在构造函数中调用 <code>ui - &gt; setupUi(this)</code> 方法来初始化界面元素，将设计好的界面加载到当前窗口中。然后可以通过 <code>ui</code> 指针来访问和操作界面中的各个控件，例如设置控件的文本、连接信号和槽等。</p>
+</li>
+<li><p><strong>生命周期</strong> ：<code>ui</code> 指针在 <code>Widget</code> 对象的构造过程中被分配内存，并在析构过程中释放内存，以确保资源的正确管理。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>这个头文件定义了一个基本的 <code>Widget</code> 类，用于创建一个继承自 <code>QWidget</code> 的窗口部件，结合了 Qt 的信号和槽机制、元对象系统以及通过 Qt Designer 设计的用户界面，是构建 Qt 应用程序中自定义窗口的基础。</p>
+<h5 id="include-lt-QApplication-gt"><a href="#include-lt-QApplication-gt" class="headerlink" title="#include &lt;QApplication&gt;"></a><code>#include &lt;QApplication&gt;</code></h5><ul>
+<li><p><strong>作用</strong> ：包含 Qt 的 <code>QApplication</code> 类的头文件。<code>QApplication</code> 是 Qt 应用程序的控制中心，它管理着应用程序的控制流和主要设置，每一个基于 Qt 的 GUI 应用程序都必须包含一个 <code>QApplication</code> 对象。</p>
+</li>
+<li><p><strong>关键功能</strong> ：</p>
+<ul>
+<li><p><strong>事件循环管理</strong> ：负责启动和管理事件循环，事件循环是应用程序运行时的核心机制，它不断监听和分发各种事件（如鼠标点击、键盘输入、窗口缩放等）到相应的窗口部件进行处理。</p>
+</li>
+<li><p><strong>资源管理</strong> ：管理应用程序的资源，如字体、图标、翻译文件等，还负责处理应用程序的命令行参数等。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="int-main-int-argc-char-argv"><a href="#int-main-int-argc-char-argv" class="headerlink" title="int main(int argc, char *argv[])"></a><code>int main(int argc, char *argv[])</code></h5><ul>
+<li><p><strong>作用</strong> ：这是 C++ 程序的入口点函数，每个程序的执行都从 <code>main</code> 函数开始。<code>argc</code> 是命令行参数的个数，<code>argv</code> 是指向命令行参数字符串的指针数组，用于向程序传递启动参数。</p>
+</li>
+<li><p><strong>示例说明</strong> ：比如在命令行中运行程序时，可以通过 <code>argv</code> 传递一些参数来指定程序的初始状态或行为等，程序可以通过解析 <code>argc</code> 和 <code>argv</code> 来获取这些参数并进行相应的处理。</p>
+</li>
+</ul>
+<h5 id="QApplication-a-argc-argv"><a href="#QApplication-a-argc-argv" class="headerlink" title="QApplication a(argc, argv);"></a><code>QApplication a(argc, argv);</code></h5><ul>
+<li><p><strong>作用</strong> ：创建一个 <code>QApplication</code> 对象 <code>a</code>，并将其初始化为命令行参数 <code>argc</code> 和 <code>argv</code>。这个对象是应用程序的核心，它负责初始化应用程序的环境，包括设置应用程序的名称、组织名称等信息，并且为后续的事件循环做好准备。</p>
+</li>
+<li><p><strong>重要性</strong> ：在 Qt 应用程序中，必须且只能有一个 <code>QApplication</code> 对象，它是整个应用程序的基础，所有与应用程序相关的操作（如窗口显示、事件处理等）都离不开这个对象。</p>
+</li>
+</ul>
+<h5 id="Widget-w"><a href="#Widget-w" class="headerlink" title="Widget w;"></a><code>Widget w;</code></h5><ul>
+<li><p><strong>作用</strong> ：创建一个 <code>Widget</code> 类的对象 <code>w</code>，这个对象就是应用程序的主窗口。<code>Widget</code> 类是在 <code>widget.h</code> 中定义的，它继承自 <code>QWidget</code> 类，具有 <code>QWidget</code> 的基本属性和方法，并且可以添加自定义的控件、布局和功能等。</p>
+</li>
+<li><p><strong>示例说明</strong> ：如果在 <code>Widget</code> 类中定义了一个按钮和一个标签，并且为按钮连接了相应的槽函数，那么创建 <code>Widget</code> 对象后，这些控件和功能就会被实例化并准备显示在窗口中。</p>
+</li>
+</ul>
+<h5 id="w-show"><a href="#w-show" class="headerlink" title="w.show();"></a><code>w.show();</code></h5><ul>
+<li><p><strong>作用</strong> ：调用 <code>Widget</code> 对象 <code>w</code> 的 <code>show()</code> 函数，使该窗口在屏幕上显示出来。在 Qt 中，窗口部件（如窗口、控件等）默认是隐藏的，只有通过调用 <code>show()</code> 函数或者类似的显示函数（如 <code>showMaximized()</code> 等），它们才会在屏幕上可见。</p>
+</li>
+<li><p><strong>显示过程</strong> ：<code>show()</code> 函数会触发一系列的绘制和显示操作，包括窗口的创建、布局调整、控件的渲染等，最终将窗口呈现给用户。</p>
+</li>
+</ul>
+<h5 id="return-a-exec"><a href="#return-a-exec" class="headerlink" title="return a.exec();"></a><code>return a.exec();</code></h5><ul>
+<li><p><strong>作用</strong> ：调用 <code>QApplication</code> 对象 <code>a</code> 的 <code>exec()</code> 函数，进入事件循环。事件循环是应用程序运行的关键部分，它会使应用程序处于等待状态，不断地监听和处理各种事件，如用户的输入事件、系统事件等，直到应用程序关闭。</p>
+</li>
+<li><p><strong>返回值</strong> ：<code>exec()</code> 函数会返回一个整数值，通常情况下，当应用程序正常退出时返回 0。这个返回值可以被操作系统的 shell 或其他调用该程序的实体捕获，用于判断程序的执行状态。</p>
+</li>
+</ul>
+<p>这段代码整体上就是一个简单的 Qt Widgets 应用程序的启动流程，它创建了一个应用程序对象和一个主窗口对象，显示主窗口并进入事件循环，等待用户的操作和事件的发生，从而实现应用程序的运行。</p>
+<p><strong>注意点</strong></p>
+<pre><code class="hljs">1.Qt系统提供的类头文件没有.h后缀
+
+2.Qt一个类对应一个头文件，类名和头文件名一致
+
+3.QApplication应用程序类
+</code></pre><p>管理图形用户界面应用程序的控制流和主要设置。</p>
+<p>是Qt生命，一个程序要确保一直运行，就肯定至少得有一个循环，这就是Qt主消息循环，在其中完成来自窗口系统和其它资源的所有事件消息处理和调度。它也处理应用程序的初始化和结束，并且提供对话管理。</p>
+<p>对于任何一个使用Qt的图形用户界面应用程序，都正好存在一个QApplication 对象，不论这个应用程序在同一时刻有多少个窗口。</p>
+<ol>
+<li>a.exec()</li>
+</ol>
+<p>程序进入消息循环，等待对用户输入进行响应。这里main()把控制权转交给Qt，Qt完成事件处理工作，当应用程序退出的时候exec()的值就会返回。在exec()中，Qt接受并处理用户和系统的事件并且把它们传递给适当的窗口部件。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/QT/" class="category-chain-item">QT</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/QT/" class="print-no-link">#QT</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>02-2-QT入门</div>
+      <div>https://pattianfang.github.io/2025/06/10/02-2-QT入门/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Pat Tian Fang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月10日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年6月14日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/05/22/05-Gazebo%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5%E6%97%A0%E8%99%9A%E6%8B%9F%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%9A%84%E8%A7%A3%E5%86%B3/" title="05-Gazebo启动失败无虚拟无人机的解决">
+                        <span class="hidden-mobile">05-Gazebo启动失败无虚拟无人机的解决</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"pattianfang/gittalk-comments","repo-id":"R_kgDOOnk8-w","category":"Announcements","category-id":"DIC_kwDOOnk8-84Cp_Bs","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

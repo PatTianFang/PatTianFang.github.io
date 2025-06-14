@@ -1,0 +1,822 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Pat Tian Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="任务一在项目week1中建立python脚本实现二维码识别，要求打印出二维码文本，并输出二维码四个角像素坐标 函数格式如下：123456789101112131415def decode_qr(img_path):	&quot;&quot;&quot;		输入：图片路径		输出：		&#123;				&#x27;content&#x27;: 二维码文本,				&#x27;points&amp;#x27">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二维码识别">
+<meta property="og:url" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/index.html">
+<meta property="og:site_name" content="FangTian&#39;s Blogs">
+<meta property="og:description" content="任务一在项目week1中建立python脚本实现二维码识别，要求打印出二维码文本，并输出二维码四个角像素坐标 函数格式如下：123456789101112131415def decode_qr(img_path):	&quot;&quot;&quot;		输入：图片路径		输出：		&#123;				&#x27;content&#x27;: 二维码文本,				&#x27;points&amp;#x27">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250316102012.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250316102142.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250316102357.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250316103736.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250316103943.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250316111608.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250316111737.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250316112422.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250317202124.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250317202602.png">
+<meta property="article:published_time" content="2025-04-01T09:56:40.000Z">
+<meta property="article:modified_time" content="2025-05-03T06:08:39.845Z">
+<meta property="article:author" content="Pat Tian Fang">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pattianfang.github.io/2025/04/01/%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/Pasted%20image%2020250316102012.png">
+  
+  
+  
+  <title>二维码识别 - FangTian&#39;s Blogs</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"pattianfang.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FangTian&#39;s Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="二维码识别"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-01 17:56" pubdate>
+          2025年4月1日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">二维码识别</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="任务一"><a href="#任务一" class="headerlink" title="任务一"></a>任务一</h2><p>在项目week1中建立python脚本实现二维码识别，要求打印出二维码文本，并输出二维码四个角像素坐标</p>
+<p>函数格式如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">decode_qr</span>(<span class="hljs-params">img_path</span>):<br>	<span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">	</span><br><span class="hljs-string">	输入：图片路径</span><br><span class="hljs-string">	</span><br><span class="hljs-string">	输出：</span><br><span class="hljs-string">		&#123;</span><br><span class="hljs-string">		</span><br><span class="hljs-string">		&#x27;content&#x27;: 二维码文本,</span><br><span class="hljs-string">		</span><br><span class="hljs-string">		&#x27;points&#x27;: [[x1,y1],...,[x4,y4]] # 四个角点像素坐标</span><br><span class="hljs-string">		</span><br><span class="hljs-string">		&#125;</span><br><span class="hljs-string">	</span><br><span class="hljs-string">	&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2  <br>  <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">decode_qr</span>(<span class="hljs-params">img_path</span>):  <br>    <span class="hljs-comment"># 读取图片  </span><br>    image = cv2.imread(img_path)  <br>    <span class="hljs-keyword">if</span> image <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:  <br>        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;无法读取图片，请检查路径是否正确&quot;</span>)  <br>  <br>    <span class="hljs-comment"># 创建 QRCodeDetector 对象  </span><br>    qr_detector = cv2.QRCodeDetector()  <br>  <br>    <span class="hljs-comment"># 检测并解码二维码  </span><br>    content, points, _ = qr_detector.detectAndDecode(image)  <br>  <br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> content:  <br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>  <span class="hljs-comment"># 如果没有检测到二维码，返回 None  </span><br>     <br>    points = points[<span class="hljs-number">0</span>].tolist()  <br>  <br>    <span class="hljs-comment"># 返回结果  </span><br>    <span class="hljs-keyword">return</span> &#123;  <br>        <span class="hljs-string">&#x27;content&#x27;</span>: content,  <br>        <span class="hljs-string">&#x27;points&#x27;</span>: points  <br>    &#125;  <br>   <br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:  <br>    result = decode_qr(<span class="hljs-string">&quot;mission1/1,2,3,left.png&quot;</span>)  <br>    <span class="hljs-keyword">if</span> result:  <br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;二维码内容:&quot;</span>, result[<span class="hljs-string">&#x27;content&#x27;</span>])  <br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;二维码角点:&quot;</span>, result[<span class="hljs-string">&#x27;points&#x27;</span>])  <br>    <span class="hljs-keyword">else</span>:  <br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;未检测到二维码&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<h2 id="代码思路"><a href="#代码思路" class="headerlink" title="代码思路"></a>代码思路</h2><p>先使用imread()函数读取指定路径的图片数据，如果无法读取，返回错误提示；若正常读取，使用detectAndDecode()方法检测和解码二维码，将返回值分别赋值给content,和points变量，然后将points变量转化为pyhton自带的列表形式，最后返回内容（保存在content变量中）和角点坐标（保存在points变量中）。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h4 id="imread-函数"><a href="#imread-函数" class="headerlink" title="imread()函数"></a>imread()函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">cv2.imread(filename, flags)<br></code></pre></td></tr></table></figure>
+<p>参数：</p>
+<ol>
+<li><code>filepath</code>：读入读取图片的路径（绝对/相对）</li>
+<li><code>flags</code>：标志位，可输入参数如下<ul>
+<li><code>cv2.IMREAD_COLOR</code>：默认参数，读入一副彩色图片，忽略alpha通道，可用1作为实参替代</li>
+<li><code>cv2.IMREAD_GRAYSCALE</code>：读入灰度图片，可用0作为实参替代</li>
+<li><code>cv2.IMREAD_UNCHANGED</code>：顾名思义，读入完整图片，包括alpha通道，可用-1作为实参替代</li>
+</ul>
+</li>
+</ol>
+<p>alpha通道，又称A通道，是一个8位的灰度通道，该通道用256级灰度来记录图像中的透明度复信息，定义透明、不透明和半透明区域，其中黑表示全透明，白表示不透明，灰表示半透明</p>
+<h5 id="路径注意点"><a href="#路径注意点" class="headerlink" title="路径注意点"></a>路径注意点</h5><p><code>filename</code>：要读取的图像的完整路径，注意文件名中<strong>不能有中文</strong>。</p>
+<p>比如当读取文件为中文名时，输入<code>image = cv2.imread(&quot;示范.png&quot;)</code></p>
+<p><img src="Pasted%20image%2020250316102012.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250316102142.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>报错无法找到<code>can&#39;t open/read file: check file path/integrity</code></p>
+<p><img src="Pasted%20image%2020250316102357.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="imread-的返回值"><a href="#imread-的返回值" class="headerlink" title="imread()的返回值"></a>imread()的返回值</h5><p>imread()函数返回的是一个numpy.ndarray类型的数据，一般是一个三维数组</p>
+<p><img src="Pasted%20image%2020250316103736.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250316103943.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>imread读取图片的颜色顺序是B-&gt;G-&gt;R<br>所以image[:,:,1] image[:,:,2] image[:,:,3] 这3个数组中分别存放图片各像素点BGR的值</p>
+<h5 id="imshow"><a href="#imshow" class="headerlink" title="imshow()"></a>imshow()</h5><p>使用imshow()函数时，必须将<strong>输入值补全</strong>，特别是<strong>显示窗口的名称</strong>，否则无法显示，比如输入以下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br>a1 = cv2.imread(<span class="hljs-string">&quot;mission1/1,2,3,left.png&quot;</span>)<br>cv2.imshow(a1)<br></code></pre></td></tr></table></figure>
+<p>显示错误</p>
+<p><img src="Pasted%20image%2020250316111608.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>加上窗口名称后</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2  <br>a1 = cv2.imread(<span class="hljs-string">&quot;mission1/1,2,3,left.png&quot;</span>)  <br>cv2.imshow(<span class="hljs-string">&quot;sample&quot;</span>,a1)<br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250316111737.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>正常运行，但界面一闪而过</p>
+<p><strong>图片显示后一闪而过的原因是缺少让程序暂停的等待操作。<code>cv2.imshow</code>函数只是负责显示图像窗口，但如果没有后续的等待指令，窗口会立即关闭。</strong></p>
+<p>增加语句<code>cv2.waitKey(0)</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2  <br>a1 = cv2.imread(<span class="hljs-string">&quot;mission1/1,2,3,left.png&quot;</span>)  <br>cv2.imshow(<span class="hljs-string">&quot;sample&quot;</span>,a1)  <br>cv2.waitKey(<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+<p>图片正常保持显示</p>
+<p><img src="Pasted%20image%2020250316112422.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><p>根据题目要求，函数decode_qr()的输入值<code>img_path</code>是二维码的路径</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">image = cv2.imread(img_path)<br></code></pre></td></tr></table></figure>
+<p>通过cv2.imread() 函数将<code>img_path</code>路径的图片文件加载为 NumPy 数组，数组中的每个元素分别表示像素值的BGR数值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> image <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>	<span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;无法读取图片，请检查路径是否正确&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>检查图片是否成功加载，当imread返回值为空（None）时，说明图片路径无效或文件损坏，抛出异常提示用户</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">qr_detector = cv2.QRCodeDetector()<br></code></pre></td></tr></table></figure>
+<p><code>cv2.QRCodeDetector()</code>是 OpenCV 提供的用于检测和解码二维码的类，创建一个了一个 QR 码检测器实例<code>qr_detector</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">content, points, _ = qr_detector.detectAndDecode(image)<br></code></pre></td></tr></table></figure>
+<p>利用创建的实例<code>qr_detector</code>的<code>detectAndDecode()</code>方法检测图片转化的数组<code>image</code>中的二维码并解码其内容。<br><code>detectAndDecode()</code>方法会返回三个值：</p>
+<ol>
+<li>content：二维码包含的信息（字符串格式）。</li>
+<li>points：二维码的四个角点坐标（NumPy 数组）。</li>
+<li>_：二维码的二进制数据（未使用）。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> content:<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
+<p>当没有检测到二维码时，<code>detectAndDecode()</code>方法会返回的第一个值<code>content</code>为空字符串，函数返回 None。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">points = points[<span class="hljs-number">0</span>].tolist()<br></code></pre></td></tr></table></figure>
+<p><code>detectAndDecode()</code> 方法返回的二维码在图像中的位置信息保存在<code>points</code>中，<code>points[0]</code>中包含多个点的坐标，形式如<code>points[0] = [[x1, y1], [x2, y2], [x3, y3], [x4, y4]]</code><br><code>tolist()</code>是NumPy数组的一个方法，用于将数组转换为Python原生的列表格式。<br>这一句也可以删去。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">return</span> &#123;<br>	<span class="hljs-string">&#x27;content&#x27;</span>: content,<br>	<span class="hljs-string">&#x27;points&#x27;</span>: points<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>按要求返回值。</p>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p>第一张二维码</p>
+<p><img src="Pasted%20image%2020250317202124.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>第二张二维码</p>
+<p><img src="Pasted%20image%2020250317202602.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="opencv-二维码-QR-二维码识别"><a href="#opencv-二维码-QR-二维码识别" class="headerlink" title="opencv #二维码 #QR #二维码识别"></a>opencv #二维码 #QR #二维码识别</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>二维码识别</div>
+      <div>https://pattianfang.github.io/2025/04/01/二维码识别/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Pat Tian Fang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月1日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年5月3日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/01/%E9%9C%8D%E5%A4%AB%E5%9C%86%E6%A3%80%E6%B5%8B/" title="霍夫圆检测">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">霍夫圆检测</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/01/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"pattianfang/gittalk-comments","repo-id":"R_kgDOOnk8-w","category":"Announcements","category-id":"DIC_kwDOOnk8-84Cp_Bs","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

@@ -1,0 +1,988 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Pat Tian Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、QT下载、安装、入门、配置文章主要参考CSDN_清豆°的文章《【保姆级图文教程】最新Windows系统QT下载、安装、入门、配置VS Qt环境，图文详细、内容充实》^[https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_62888264&#x2F;article&#x2F;details&#x2F;132645054] 1-下载安装QTQt的安装方式有两种：  在线 在线安装稍麻烦，能安装5.15及之后的版本，便于安装多个版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01-1-QT安装">
+<meta property="og:url" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="FangTian&#39;s Blogs">
+<meta property="og:description" content="一、QT下载、安装、入门、配置文章主要参考CSDN_清豆°的文章《【保姆级图文教程】最新Windows系统QT下载、安装、入门、配置VS Qt环境，图文详细、内容充实》^[https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_62888264&#x2F;article&#x2F;details&#x2F;132645054] 1-下载安装QTQt的安装方式有两种：  在线 在线安装稍麻烦，能安装5.15及之后的版本，便于安装多个版">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412203706.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412203733.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412203918.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412203951.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412204321.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412204415.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412204442.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412204600.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412204612.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412204740.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412204911.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412210533.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412210554.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412220547.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412221154.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412222703.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412222833.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412223339.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412223817.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412223944.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412224016.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412224252.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412224318.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412224538.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412224552.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412224633.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412225401.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412225457.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412232718.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412232903.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412232847.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412235034.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412235108.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412235158.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412235332.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412235403.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412235627.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412235725.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412235737.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412235902.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412200339.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412202228.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412202338.png">
+<meta property="article:published_time" content="2025-04-12T11:48:11.000Z">
+<meta property="article:modified_time" content="2025-05-03T05:58:46.570Z">
+<meta property="article:author" content="Pat Tian Fang">
+<meta property="article:tag" content="QT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pattianfang.github.io/2025/04/12/01-1-QT%E5%AE%89%E8%A3%85/Pasted%20image%2020250412203706.png">
+  
+  
+  
+  <title>01-1-QT安装 - FangTian&#39;s Blogs</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"pattianfang.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FangTian&#39;s Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="01-1-QT安装"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-12 19:48" pubdate>
+          2025年4月12日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">01-1-QT安装</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一、QT下载、安装、入门、配置"><a href="#一、QT下载、安装、入门、配置" class="headerlink" title="一、QT下载、安装、入门、配置"></a>一、QT下载、安装、入门、配置</h1><p>文章主要参考CSDN_清豆°的文章《【保姆级图文教程】最新Windows系统QT下载、安装、入门、配置VS Qt环境，图文详细、内容充实》^[<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_62888264/article/details/132645054">https://blog.csdn.net/qq_62888264/article/details/132645054</a>]</p>
+<h2 id="1-下载安装QT"><a href="#1-下载安装QT" class="headerlink" title="1-下载安装QT"></a>1-下载安装QT</h2><p>Qt的安装方式有两种：</p>
+<ol>
+<li>在线<pre><code class="hljs"> 在线安装稍麻烦，能安装5.15及之后的版本，便于安装多个版本在根目录下进行后期管理
+</code></pre></li>
+<li>离线<pre><code class="hljs"> 离线安装更简单，能安装5.14及之前的版本，安装速度不依赖于网速，但不便于多个版本的统一管理
+</code></pre></li>
+</ol>
+<p>进入官网<a target="_blank" rel="noopener" href="https://www.qt.io/zh-cn/">Qt | 软件开发全周期的各阶段工具</a>或直接进入下载页<a target="_blank" rel="noopener" href="https://www.qt.io/download-qt-installer-oss">Download Qt OSS: Get Qt Online Installer</a></p>
+<p><img src="Pasted%20image%2020250412203706.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择对应版本下载</p>
+<p><img src="Pasted%20image%2020250412203733.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>打开安装包所在的文件夹</p>
+<p><img src="Pasted%20image%2020250412203918.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击鼠标右键，点击<code>在终端中打开</code></p>
+<p><img src="Pasted%20image%2020250412203951.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">.\name --mirror https://mirrors.ustc.edu.cn/qtproject/  <br></code></pre></td></tr></table></figure>
+<p><code>name</code>为刚刚下载的安装包的名称，如此处为</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">.\qt-online-installer-windows-x64-<span class="hljs-number">4</span>.<span class="hljs-number">9</span>.<span class="hljs-number">0</span>_2.exe --mirror https://mirrors.ustc.edu.cn/qtproject/  <br></code></pre></td></tr></table></figure>
+<p><img src="Pasted%20image%2020250412204321.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>进入安装界面</p>
+<p><img src="Pasted%20image%2020250412204415.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>登录QT账号</p>
+<p><img src="Pasted%20image%2020250412204442.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>勾选后下一步</p>
+<p><img src="Pasted%20image%2020250412204600.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250412204612.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择<strong>合法的</strong>安装文件夹，点击<code>自定义安装</code>，勾选后点击<code>下一步</code><br><strong>合法的路径：整个路径一定不能包含中文字符、空格、特殊字符等</strong></p>
+<p><img src="Pasted%20image%2020250412204740.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>显示所有版本</p>
+<p><img src="Pasted%20image%2020250412204911.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>下一步</p>
+<p><img src="Pasted%20image%2020250412210533.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>关联文件</p>
+<p><img src="Pasted%20image%2020250412210554.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>安装完毕</p>
+<p><img src="Pasted%20image%2020250412220547.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>完成</p>
+<p><img src="Pasted%20image%2020250412221154.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-在Qt-Creator创建并编写第一个Qt程序"><a href="#2-在Qt-Creator创建并编写第一个Qt程序" class="headerlink" title="2-在Qt Creator创建并编写第一个Qt程序"></a>2-在Qt Creator创建并编写第一个Qt程序</h2><p>点击<code>创建项目</code></p>
+<p><img src="Pasted%20image%2020250412222703.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择项目模板后点击<code>选择</code>，一般选择<code>Application（Qt）</code>下的<code>Qt Widgets Application</code>即可：</p>
+<p><img src="Pasted%20image%2020250412222833.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入<code>项目名称</code>、选择<code>项目路径</code>、点击<code>下一步</code><br><strong>注意：项目名称和项目路径不能包含中文符号、空格、特殊字符等</strong></p>
+<p><img src="Pasted%20image%2020250412223339.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择构建工具：<br>qmake是Qt提供的构建工具，用于简化 Qt 项目的构建过程。<br>CMake是一个跨平台的开源构建工具，用于管理和构建 C++ 程序的软件项目。<br>Qbs，全称：Qt Build Suite，是由Qt官方提供的一个跨平台构建工具，用于构建和管理Qt和非Qt项目。它是Qt Creator集成开发环境（IDE）的一部分，但也可以独立使用。<br>一般选择默认的qmake即可，你会cmake选择cmake也可以。</p>
+<p><img src="Pasted%20image%2020250412223817.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择基础类和主类的名字：</p>
+<p>基础类提供了QMainWindow、QWidget、QDialog，选择默认的QMainWindow即可，QWidget要轻量简单一点，也可以，QDialog用的少。<strong>主类Class Name可以自定义，不过要符合C++的语言规范</strong>。</p>
+<p><img src="Pasted%20image%2020250412223944.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击<code>下一步</code></p>
+<p><img src="Pasted%20image%2020250412224016.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择构建套件</p>
+<p>我们这里是使用QtCreator编写时，必须选择MinGW编译套件<br>如果使用Microsoft Visual Studio编写Qt程序则必须选择MSVC编译套件，这个后文有说明</p>
+<p><img src="Pasted%20image%2020250412224252.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击<code>完成</code></p>
+<p><img src="Pasted%20image%2020250412224318.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>等待项目构建<br>1、此时Qt Creator会开始构建项目，右下角有进度条可以看见，如果<strong>全部是绿色则说明构建成功</strong><br>2、好像也可能出现一两个红杠，不管他，以下一步能否正确运行出现小窗口为准</p>
+<p>运行项目<br>此时我们点击<code>左下角运行按钮</code>，可以看见弹出一个窗口，说明项目成功运行，我们的环境安装没有问题。</p>
+<p><img src="Pasted%20image%2020250412224538.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250412224552.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250412224633.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-配置Visual-Studio编写Qt程序的环境"><a href="#3-配置Visual-Studio编写Qt程序的环境" class="headerlink" title="3-配置Visual Studio编写Qt程序的环境"></a>3-配置Visual Studio编写Qt程序的环境</h2><p>打开VS，在上方菜单栏找到并点击<code>扩展</code>-&gt;<code>管理扩展</code></p>
+<p><img src="Pasted%20image%2020250412225401.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如图，在浏览中搜索Qt，点击<code>安装</code>开始下载<code>Qt Visual Studio Tools</code>插件</p>
+<p><img src="Pasted%20image%2020250412225457.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>再次打开Visual Studio，进入<code>Qt Versions</code></p>
+<p><img src="Pasted%20image%2020250412232718.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击<code>Add</code>开始添加Qt版本</p>
+<p><img src="Pasted%20image%2020250412232903.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选中条目之后点击<code>...</code>去找到qmake.exe文件的位置<br><strong>注意：在VS环境中只能添加MSVC版本的套件，不能MinGW套件（添加了也无法使用）</strong></p>
+<p><img src="Pasted%20image%2020250412232847.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>随后使用同样的方法添加你下载的所有（<strong>MSVC</strong>）版本即可，添加完之后点击<code>确定</code>完成插件的设置</p>
+<p><img src="Pasted%20image%2020250412235034.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>接下来开始新建VS Qt项目运行：<br>点击<code>文件</code>-&gt;<code>新建</code>-&gt;<code>项目</code></p>
+<p><img src="Pasted%20image%2020250412235108.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在搜索框输入Qt可以查看插件为我们提供的所有VS Qt项目模板，一般我们选择<code>Qt Widgets Application</code>模板即可，选择后点击<code>下一步</code></p>
+<p><img src="Pasted%20image%2020250412235158.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入项目的<code>名称</code>、<code>位置</code>、<code>解决方案名称</code>等信息后点击创建<br><strong>上述信息一定不要包含中文、空格、特殊字符等，否则后续会报错</strong></p>
+<p><img src="Pasted%20image%2020250412235332.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击<code>Next</code></p>
+<p><img src="Pasted%20image%2020250412235403.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>选择构建系统，默认的方便适用，选择默认的即可；</li>
+<li>选择Debug版本和Release版本的各自使用的Qt版本（一般我们编写程序时运行Debug版本，Release则是发行的版本），建议两个要选择一致；</li>
+<li>然后选择对应用到的Qt模块（默认已经选择上Core、Gui、Widgets三个模块，这是三个基础模块，对付一般的简单应用已经足够，后续需要用到其他模块时还可以再添加）；</li>
+<li>不建议勾选Enable PCH Support；</li>
+<li>随后点击Next</li>
+</ol>
+<p><img src="Pasted%20image%2020250412235627.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>选择主要类的类名，符合C++规范即可；</li>
+<li>选择基础类，这是主要类会继承的类，有三个可以选择，一般选择默认的QMainWindow即可，QWidget更轻量，QDialog用的少；</li>
+<li>填写其他文件的名字，建议和主类的名字保持一致；</li>
+<li>勾选是否使用小写文件名（大小写无所谓）、是否添加默认的应用图标（勾选上运行出来的程序会带上Qt的默认图标，否则是一个终端的图标不那么美观），根据自己的喜好选择，我比较懒，就默认不勾选了；</li>
+<li>填写选择完毕之后点击Finish完成项目创建：</li>
+</ol>
+<p><img src="Pasted%20image%2020250412235725.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Pasted%20image%2020250412235737.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>随后运行项目，出现小窗口即说明VS中的Qt开发环境配置成功</p>
+<p><img src="Pasted%20image%2020250412235902.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="二、资源下载"><a href="#二、资源下载" class="headerlink" title="二、资源下载"></a>二、资源下载</h1><p>主要参考CSDNersaijun的文章《全网最全的Qt下载途径（多种下载通道+所有版本）》^[<a target="_blank" rel="noopener" href="https://blog.csdn.net/kaspar1992/article/details/107588850">https://blog.csdn.net/kaspar1992/article/details/107588850</a>]</p>
+<p>QT可以从官网下载，也可以使用国内的镜像网站进行下载</p>
+<h2 id="1-官网下载"><a href="#1-官网下载" class="headerlink" title="1-官网下载"></a>1-官网下载</h2><p>Qt 官网有一个专门的资源下载网站，所有的开发环境和相关工具都可以从这里下载，具体地址是：<a target="_blank" rel="noopener" href="https://download.qt.io/">https://download.qt.io/</a></p>
+<p>官网界面如下</p>
+<p><img src="Pasted%20image%2020250412200339.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="对目录结构的说明"><a href="#对目录结构的说明" class="headerlink" title="对目录结构的说明"></a>对目录结构的说明</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>目录</strong></th>
+<th><strong>介绍</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>snapshots</td>
+<td>预览版，最新的开发测试中的 Qt 库和开发工具</td>
+</tr>
+<tr>
+<td>online Qt</td>
+<td>在线安装源</td>
+</tr>
+<tr>
+<td>official_releases</td>
+<td>正式发布版，是与开发版相对的稳定版 Qt 库和开发工具（可以下载Qt开发环境和源代码）</td>
+</tr>
+<tr>
+<td>new_archive</td>
+<td></td>
+</tr>
+<tr>
+<td>ministro</td>
+<td>迷你版，目前是针对 Android 的版本</td>
+</tr>
+<tr>
+<td>linguist_releases</td>
+<td></td>
+</tr>
+<tr>
+<td>learning</td>
+<td>有学习 Qt 的文档教程和示范视频</td>
+</tr>
+<tr>
+<td>development_releases</td>
+<td>开发版，有新的和旧的不稳定版本，在 Qt 开发过程中的非正式版本</td>
+</tr>
+<tr>
+<td>community_releases</td>
+<td>社区定制的 Qt 库，Tizen 版 Qt 以及 Qt 附加源码包</td>
+</tr>
+<tr>
+<td>archive</td>
+<td>各种 Qt 开发工具安装包，新旧都有（可以下载 Qt 开发环境和源代码）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>archive 和 official_releases 两个目录都有最新的 Qt 开发环境安装包，我们以official_releases目录里的内容为例来说明。</p>
+<p><img src="Pasted%20image%2020250412202228.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>进入 qt 子目录</p>
+<p><img src="Pasted%20image%2020250412202338.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>有各种子版本</p>
+<h2 id="2-镜像源下载"><a href="#2-镜像源下载" class="headerlink" title="2-镜像源下载"></a>2-镜像源下载</h2><p>这里给大家推荐几个国内著名的 Qt 镜像网站，主要是各个高校的：</p>
+<p>中国科学技术大学：<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/qtproject/">http://mirrors.ustc.edu.cn/qtproject/</a><br>清华大学：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/qt/">https://mirrors.tuna.tsinghua.edu.cn/qt/</a><br>北京理工大学：<a target="_blank" rel="noopener" href="http://mirror.bit.edu.cn/qtproject/">http://mirror.bit.edu.cn/qtproject/</a><br>中国互联网络信息中心：<a target="_blank" rel="noopener" href="https://mirrors.cnnic.cn/qt/">https://mirrors.cnnic.cn/qt/</a></p>
+<hr>
+<h1 id="QT"><a href="#QT" class="headerlink" title="QT"></a>QT</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/QT/" class="category-chain-item">QT</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/QT/" class="print-no-link">#QT</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>01-1-QT安装</div>
+      <div>https://pattianfang.github.io/2025/04/12/01-1-QT安装/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Pat Tian Fang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月12日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年5月3日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/12/01-2-QT%205.14.2%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8/" title="01-2-QT 5.14.2下载使用">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01-2-QT 5.14.2下载使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/12/02-C++%E3%80%81Python%E6%9E%81%E7%AE%80%E5%9F%BA%E7%A1%80/" title="02-C++、Python极简基础">
+                        <span class="hidden-mobile">02-C++、Python极简基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"pattianfang/gittalk-comments","repo-id":"R_kgDOOnk8-w","category":"Announcements","category-id":"DIC_kwDOOnk8-84Cp_Bs","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
