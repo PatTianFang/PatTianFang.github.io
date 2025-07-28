@@ -4,13 +4,27 @@
   
   
   <entry>
-    <title></title>
+    <title>03-Word修改默认模板</title>
     <link href="/2025/07/28/03-Word%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E6%A8%A1%E6%9D%BF/"/>
     <url>/2025/07/28/03-Word%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E6%A8%A1%E6%9D%BF/</url>
     
-    <content type="html"><![CDATA[<p>如何<strong>每次打开一个新的word文档，都直接生成想要的格式</strong>？</p><p><strong>修改word模板文件（Normal.dotm）</strong></p><blockquote><p>在我们每次新建word文档的时候，word都会根据其中设定的“用户模板”路径，搜寻路径下一个名为Normal.dotm的文件，也即word的默认模板文件——我们可以把它理解成文档的一个母体，任何一个子文档都是对这一母体的完全复制。而我们目前打开的这一新建的word文档，实际上也就是这一模板文件的副本罢了。^[<a href="https://blog.csdn.net/pi_kaqiu/article/details/123702998">https://blog.csdn.net/pi_kaqiu/article/details/123702998</a>]</p></blockquote><p>打开任一word文档，</p><p>文件 → 选项 → 高级 → 下滑下滑，直到找到图中位置</p><p><img src="file-20250609154750722.png" alt=""></p><p><img src="file-20250609154717300.png" alt=""></p><p><img src="file-20250609154840153.png" alt=""></p><p>点击文件位置 → 双击用户模板 → 复制模板路径</p><p><img src="file-20250609154917501.png" alt=""></p><p><img src="file-20250609154941850.png" alt=""></p><p><img src="file-20250609155041055.png" alt=""></p><p> 在文件夹中打开，会发现路径下有一Normal.dotm文件：</p><p><img src="file-20250609155114139.png" alt=""></p><p>打开你所要使用的替换文件，删除其全部内容（否则之后的每个word都会保留这些内容）；</p><p>选择另存为，选择后缀为.dotm，并将文件名改为Normal，保存到桌面</p><p>删除原Normal.dotm文件，并将刚刚新建的Normal.dotm文件复制到模板路径中</p>]]></content>
+    <content type="html"><![CDATA[<p>如何<strong>每次打开一个新的word文档，都直接生成想要的格式</strong>？</p><p><strong>修改word模板文件（Normal.dotm）</strong></p><blockquote><p>在我们每次新建word文档的时候，word都会根据其中设定的“用户模板”路径，搜寻路径下一个名为Normal.dotm的文件，也即word的默认模板文件——我们可以把它理解成文档的一个母体，任何一个子文档都是对这一母体的完全复制。而我们目前打开的这一新建的word文档，实际上也就是这一模板文件的副本罢了。^[<a href="https://blog.csdn.net/pi_kaqiu/article/details/123702998">https://blog.csdn.net/pi_kaqiu/article/details/123702998</a>]</p></blockquote><p>打开任一word文档，</p><p>文件 → 选项 → 高级 → 下滑下滑，直到找到图中位置</p><p><img src="file-20250609154750722.png" alt=""></p><p><img src="file-20250609154717300.png" alt=""></p><p><img src="file-20250609154840153.png" alt=""></p><p>点击文件位置 → 双击用户模板 → 复制模板路径</p><p><img src="file-20250609154917501.png" alt=""></p><p><img src="file-20250609154941850.png" alt=""></p><p><img src="file-20250609155041055.png" alt=""></p><p> 在文件夹中打开，会发现路径下有一Normal.dotm文件：</p><p><img src="Blog/source/_posts/03-Word修改默认模板/file-20250609155114139.png" alt=""></p><p>打开你所要使用的替换文件，删除其全部内容（否则之后的每个word都会保留这些内容）；</p><p>选择另存为，选择后缀为.dotm，并将文件名改为Normal，保存到桌面</p><p>删除原Normal.dotm文件，并将刚刚新建的Normal.dotm文件复制到模板路径中</p>]]></content>
     
     
+    <categories>
+      
+      <category>Tips</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技巧</tag>
+      
+      <tag>word</tag>
+      
+    </tags>
     
   </entry>
   
