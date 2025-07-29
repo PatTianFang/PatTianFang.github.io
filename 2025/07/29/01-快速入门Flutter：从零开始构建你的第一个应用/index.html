@@ -1,0 +1,909 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Pat Tian Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="文章主要参考CSDN孤影过客的文章《快速入门Flutter：从零开始构建你的第一个应用》^[https:&#x2F;&#x2F;blog.csdn.net&#x2F;gygkhd&#x2F;article&#x2F;details&#x2F;139646716] 一、环境准备1-安装 Flutter SDK在官网Flutter - Build apps for any screen下载Flutter SDK。  可以参考文档开发 Windows 桌面应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01-快速入门Flutter：从零开始构建你的第一个应用">
+<meta property="og:url" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="FangTian&#39;s Blogs">
+<meta property="og:description" content="文章主要参考CSDN孤影过客的文章《快速入门Flutter：从零开始构建你的第一个应用》^[https:&#x2F;&#x2F;blog.csdn.net&#x2F;gygkhd&#x2F;article&#x2F;details&#x2F;139646716] 一、环境准备1-安装 Flutter SDK在官网Flutter - Build apps for any screen下载Flutter SDK。  可以参考文档开发 Windows 桌面应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729080900666.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729081105457.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729081326723.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729081558544.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729081620184.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729081650482.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729081846070.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729081926326.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729083104049.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729092009444.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729095500703.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729095647145.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729105120549.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729105530746.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729105553562.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729110128819.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729110153956.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729110642500.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729110714236.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729122208682.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729131621144.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729131918996.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729132012299.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729142010643.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729142028835.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729131000344.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729142645613.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729142739490.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729143527833.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729143807058.png">
+<meta property="article:published_time" content="2025-07-29T06:38:32.964Z">
+<meta property="article:modified_time" content="2025-07-29T06:38:07.116Z">
+<meta property="article:author" content="Pat Tian Fang">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pattianfang.github.io/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/file-20250729080900666.png">
+  
+  
+  
+  <title>01-快速入门Flutter：从零开始构建你的第一个应用 - FangTian&#39;s Blogs</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"pattianfang.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FangTian&#39;s Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="01-快速入门Flutter：从零开始构建你的第一个应用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-07-29 14:38" pubdate>
+          2025年7月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">01-快速入门Flutter：从零开始构建你的第一个应用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>文章主要参考CSDN孤影过客的文章《快速入门Flutter：从零开始构建你的第一个应用》^[<a target="_blank" rel="noopener" href="https://blog.csdn.net/gygkhd/article/details/139646716">https://blog.csdn.net/gygkhd/article/details/139646716</a>]</p>
+<h1 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h1><h2 id="1-安装-Flutter-SDK"><a href="#1-安装-Flutter-SDK" class="headerlink" title="1-安装 Flutter SDK"></a>1-安装 Flutter SDK</h2><p>在官网<a target="_blank" rel="noopener" href="https://flutter.dev/">Flutter - Build apps for any screen</a>下载Flutter SDK。</p>
+<p><img src="file-20250729080900666.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>可以参考文档<a target="_blank" rel="noopener" href="https://docs.flutter.cn/get-started/install/windows/desktop">开发 Windows 桌面应用 | Flutter 中文文档 - Flutter 中文开发者网站 - Flutter</a></p>
+<p><img src="file-20250729081105457.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>安装 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/setup/windows">Visual Studio Code</a> 以及 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter">Flutter extension for VS Code</a></p>
+<p>打开VS Code，下载Flutter拓展</p>
+<p><img src="file-20250729081326723.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-1-安装-Flutter"><a href="#1-1-安装-Flutter" class="headerlink" title="1-1-安装 Flutter"></a>1-1-安装 Flutter</h2><ol>
+<li>打开 <strong>命令面板 (Command Palette)</strong>，按下快捷键 Control + Shift + P。</li>
+</ol>
+<p><img src="file-20250729081558544.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>在 <strong>命令面板 (Command Palette)</strong> 中输入 <code>flutter</code>。</li>
+</ol>
+<p><img src="file-20250729081620184.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>选择 <strong>Flutter: New Project</strong>。</li>
+</ol>
+<p><img src="file-20250729081650482.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>显示没有安装 Flutter SDK, 单击 <strong>Download SDK</strong>。当对话框 Select Folder for Flutter SDK 显示时，选择你想要安装 Flutter 的位置。</li>
+</ol>
+<p><img src="file-20250729081846070.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>等待下载完成</li>
+</ol>
+<p><img src="file-20250729081926326.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>注意</strong></p>
+<p>不要将 Flutter 安装到以下情况的目录或路径中：</p>
+<ul>
+<li><p>路径包含特殊字符或空格。</p>
+</li>
+<li><p>路径需要较高的权限。</p>
+</li>
+</ul>
+<h2 id="1-2-解决Resolving-dependencies…问题"><a href="#1-2-解决Resolving-dependencies…问题" class="headerlink" title="1-2-解决Resolving dependencies…问题"></a>1-2-解决Resolving dependencies…问题</h2><p>发现卡在Resolving dependencies…这一步</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-function"><span class="hljs-title">Running</span></span> pub upgrade...<br><br><span class="hljs-function"><span class="hljs-title">Resolving</span></span> dependencies...<br><br>Got socket error trying to find package <span class="hljs-keyword">file</span> at https:<span class="hljs-comment">//pub.dev.</span><br></code></pre></td></tr></table></figure>
+<p>打开环境变量</p>
+<p><img src="file-20250729083104049.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在用户变量下添加下面两个变量名：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">PUB_HOSTED_URL https<span class="hljs-punctuation">:</span><span class="hljs-comment">//pub.flutter-io.cn</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">FLUTTER_STORAGE_BASE_URL https<span class="hljs-punctuation">:</span><span class="hljs-comment">//storage.flutter-io.cn</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250729092009444.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>成功后会显示通知：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">The Flutter SDK was added <span class="hljs-selector-tag">to</span> your <span class="hljs-selector-tag">PATH</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250729095500703.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-3-检查安装是否成功"><a href="#1-3-检查安装是否成功" class="headerlink" title="1-3-检查安装是否成功"></a>1-3-检查安装是否成功</h2><p>打开PowerShell。</p>
+<p><img src="file-20250729095647145.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>运行以下指令。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">flutter doctor</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250729105120549.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>安装成功</p>
+<h1 id="二、第一个应用"><a href="#二、第一个应用" class="headerlink" title="二、第一个应用"></a>二、第一个应用</h1><h2 id="2-1-创建应用"><a href="#2-1-创建应用" class="headerlink" title="2-1-创建应用"></a>2-1-创建应用</h2><p>打开你想要创建Flutter应用的位置</p>
+<p><img src="file-20250729105530746.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>打开终端</p>
+<p><img src="file-20250729105553562.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在终端中，运行以下命令创建一个新的 Flutter 项目：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">flutter create my_first_app</span><br></code></pre></td></tr></table></figure>
+<p>创建完毕</p>
+<p><img src="file-20250729110128819.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250729110153956.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>进入项目目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> my_first_app<br></code></pre></td></tr></table></figure>
+<h2 id="2-2-运行应用"><a href="#2-2-运行应用" class="headerlink" title="2-2-运行应用"></a>2-2-运行应用</h2><p>运行以下命令启动应用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flutter run<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250729110642500.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择设备后，弹出测试程序</p>
+<p><img src="file-20250729110714236.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在创建的项目中，目录结构如下：<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs nix">my_first_app<span class="hljs-symbol">/</span><br>├── android<span class="hljs-symbol">/</span><br>├── ios<span class="hljs-symbol">/</span><br>├── lib<span class="hljs-symbol">/</span><br>│   └── main.dart<br>├── test<span class="hljs-symbol">/</span><br>├── pubspec.yaml<br>└── README.md<br></code></pre></td></tr></table></figure><br>其中：</p>
+<p><code>lib/</code>：主要的 Dart 代码目录，<code>main.dart</code>是应用的入口文件。</p>
+<p><code>pubspec.yaml</code>：项目的配置文件，用于管理依赖包。</p>
+<h1 id="三、编译应用"><a href="#三、编译应用" class="headerlink" title="三、编译应用"></a>三、编译应用</h1><h2 id="3-1-生成apk文件"><a href="#3-1-生成apk文件" class="headerlink" title="3-1-生成apk文件"></a>3-1-生成apk文件</h2><p>在对应目录下打开终端，输入</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">flutter build apk</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250729122208682.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>但总是卡在</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-function"><span class="hljs-title">Running</span></span> Gradle task <span class="hljs-string">&#x27;assembleRelease&#x27;</span>...  <br></code></pre></td></tr></table></figure>
+<p>这一步，网上的各种教程都是说修改<code>/android/build.gradle</code>、<code>flutter/packages/flutter_tools/gradle/flutter.gradle</code>这些<code>.gradle</code>结尾的文件，但实际打开目录时发现这些文件后面多了<code>kts</code>后缀。</p>
+<p><img src="file-20250729131621144.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这种情况通常发生在较新的Android项目中，因为Google正在推动从Groovy转向Kotlin DSL作为构建脚本语言。新版Android Studio的gradle文件已经默认使用Kotlin脚本(KTS)。</p>
+<p>.gradle使用Groovy语言编写，而.gradle.kts使用Kotlin脚本。</p>
+<p>所以应该修改<code>settings.gradle.kts</code>文件和<code>build.gradle.kts</code>文件。</p>
+<p>对于<code>settings.gradle.kts</code>文件</p>
+<p><img src="file-20250729131918996.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在此处插入国内镜像源</p>
+<p><img src="file-20250729132012299.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">// Google 专属仓库（Android 项目必备）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/google&quot;</span>)</span></span><br><br><span class="hljs-comment">// 公共中央仓库（代理 Maven Central）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/public&quot;</span>)</span></span><br><br><span class="hljs-comment">// Gradle 插件仓库</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/gradle-plugin&quot;</span>)</span></span><br><br><span class="hljs-comment">// JCenter 仓库（兼容旧项目）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/jcenter&quot;</span>)</span></span><br><br><span class="hljs-comment">// 通用仓库（覆盖 Google + Central）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://repo.huaweicloud.com/repository/maven&quot;</span>)</span></span><br><br><span class="hljs-comment">// 公共仓库（代理 Central）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://mirrors.cloud.tencent.com/nexus/repository/maven-public&quot;</span>)</span></span><br><br><span class="hljs-comment">// 清华大学镜像</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://mirrors.tuna.tsinghua.edu.cn/maven&quot;</span>)</span></span><br><br><span class="hljs-comment">// 中国科学技术大学镜像</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://mirrors.ustc.edu.cn/maven&quot;</span>)</span></span><br></code></pre></td></tr></table></figure>
+<p>完整配置如下</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-variable">pluginManagement</span> &#123;<br>    <span class="hljs-variable">val</span> <span class="hljs-variable">flutterSdkPath</span> = <span class="hljs-variable">run</span> &#123;<br>        <span class="hljs-variable">val</span> <span class="hljs-variable">properties</span> = <span class="hljs-variable">java.util.Properties</span>()<br>        <span class="hljs-function"><span class="hljs-title">file</span>(<span class="hljs-string">&quot;local.properties&quot;</span>).inputStream().use &#123; <span class="hljs-variable">properties.load</span>(<span class="hljs-variable">it</span>) &#125;</span><br><span class="hljs-function">        <span class="hljs-variable">val</span> <span class="hljs-variable">flutterSdkPath</span> = <span class="hljs-variable">properties.getProperty</span>(<span class="hljs-string">&quot;flutter.sdk&quot;</span>)</span><br>        <span class="hljs-function"><span class="hljs-title">require</span>(<span class="hljs-variable">flutterSdkPath</span> <span class="hljs-variable">!</span>= <span class="hljs-variable"><span class="hljs-literal">null</span></span>) &#123; <span class="hljs-string">&quot;flutter.sdk not set in local.properties&quot;</span> &#125;</span><br><span class="hljs-function">        <span class="hljs-variable">flutterSdkPath</span></span><br><span class="hljs-function">    &#125;</span><br><span class="hljs-function"></span><br><span class="hljs-function">    <span class="hljs-title">includeBuild</span>(<span class="hljs-string">&quot;$flutterSdkPath/packages/flutter_tools/gradle&quot;</span>)</span><br><br>    <span class="hljs-variable">repositories</span> &#123;<br><br>	<span class="hljs-comment">// Google 专属仓库（Android 项目必备）</span><br>	<span class="hljs-function"><span class="hljs-title">maven</span>(<span class="hljs-variable">url</span> = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/google&quot;</span>)</span><br><br>	<span class="hljs-comment">// 公共中央仓库（代理 Maven Central）</span><br>	<span class="hljs-function"><span class="hljs-title">maven</span>(<span class="hljs-variable">url</span> = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/public&quot;</span>)</span><br><br>	<span class="hljs-comment">// Gradle 插件仓库</span><br>	<span class="hljs-function"><span class="hljs-title">maven</span>(<span class="hljs-variable">url</span> = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/gradle-plugin&quot;</span>)</span><br><br>	<span class="hljs-comment">// JCenter 仓库（兼容旧项目）</span><br>	<span class="hljs-function"><span class="hljs-title">maven</span>(<span class="hljs-variable">url</span> = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/jcenter&quot;</span>)</span><br><br>	<span class="hljs-comment">// 通用仓库（覆盖 Google + Central）</span><br>	<span class="hljs-function"><span class="hljs-title">maven</span>(<span class="hljs-variable">url</span> = <span class="hljs-string">&quot;https://repo.huaweicloud.com/repository/maven&quot;</span>)</span><br>	<br>	<span class="hljs-comment">// 公共仓库（代理 Central）</span><br>	<span class="hljs-function"><span class="hljs-title">maven</span>(<span class="hljs-variable">url</span> = <span class="hljs-string">&quot;https://mirrors.cloud.tencent.com/nexus/repository/maven-public&quot;</span>)</span><br><br>	<span class="hljs-comment">// 清华大学镜像</span><br>	<span class="hljs-function"><span class="hljs-title">maven</span>(<span class="hljs-variable">url</span> = <span class="hljs-string">&quot;https://mirrors.tuna.tsinghua.edu.cn/maven&quot;</span>)</span><br><br>	<span class="hljs-comment">// 中国科学技术大学镜像</span><br>	<span class="hljs-function"><span class="hljs-title">maven</span>(<span class="hljs-variable">url</span> = <span class="hljs-string">&quot;https://mirrors.ustc.edu.cn/maven&quot;</span>)</span><br><br>        <span class="hljs-function"><span class="hljs-title">google</span>()</span><br>        <span class="hljs-function"><span class="hljs-title">mavenCentral</span>()</span><br>        <span class="hljs-function"><span class="hljs-title">gradlePluginPortal</span>()</span><br>    &#125;<br>&#125;<br><br><span class="hljs-variable">plugins</span> &#123;<br>    <span class="hljs-function"><span class="hljs-title">id</span>(<span class="hljs-string">&quot;dev.flutter.flutter-plugin-loader&quot;</span>) <span class="hljs-variable">version</span> <span class="hljs-string">&quot;1.0.0&quot;</span></span><br><span class="hljs-function">    <span class="hljs-title">id</span>(<span class="hljs-string">&quot;com.android.application&quot;</span>) <span class="hljs-variable">version</span> <span class="hljs-string">&quot;8.7.3&quot;</span> <span class="hljs-variable">apply</span> <span class="hljs-variable"><span class="hljs-literal">false</span></span></span><br><span class="hljs-function">    <span class="hljs-title">id</span>(<span class="hljs-string">&quot;org.jetbrains.kotlin.android&quot;</span>) <span class="hljs-variable">version</span> <span class="hljs-string">&quot;2.1.0&quot;</span> <span class="hljs-variable">apply</span> <span class="hljs-variable"><span class="hljs-literal">false</span></span></span><br><span class="hljs-function">&#125;</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">include</span>(<span class="hljs-string">&quot;:app&quot;</span>)</span><br><br></code></pre></td></tr></table></figure>
+<p>对于<code>build.gradle.kts</code>文件</p>
+<p><img src="file-20250729142010643.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>添加</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">// Google 专属仓库（Android 项目必备）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/google&quot;</span>)</span></span><br><br><span class="hljs-comment">// 公共中央仓库（代理 Maven Central）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/public&quot;</span>)</span></span><br><br><span class="hljs-comment">// Gradle 插件仓库</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/gradle-plugin&quot;</span>)</span></span><br><br><span class="hljs-comment">// JCenter 仓库（兼容旧项目）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/jcenter&quot;</span>)</span></span><br><br><span class="hljs-comment">// 通用仓库（覆盖 Google + Central）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://repo.huaweicloud.com/repository/maven&quot;</span>)</span></span><br><br><span class="hljs-comment">// 公共仓库（代理 Central）</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://mirrors.cloud.tencent.com/nexus/repository/maven-public&quot;</span>)</span></span><br><br><span class="hljs-comment">// 清华大学镜像</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://mirrors.tuna.tsinghua.edu.cn/maven&quot;</span>)</span></span><br><br><span class="hljs-comment">// 中国科学技术大学镜像</span><br><span class="hljs-function"><span class="hljs-title">maven</span><span class="hljs-params">(url = <span class="hljs-string">&quot;https://mirrors.ustc.edu.cn/maven&quot;</span>)</span></span><br></code></pre></td></tr></table></figure>
+<p>完整配置如下</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs stylus">allprojects &#123;<br>    repositories &#123;<br>	<span class="hljs-comment">// Google 专属仓库（Android 项目必备）</span><br>	<span class="hljs-built_in">maven</span>(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/google&quot;</span>)<br><br>	<span class="hljs-comment">// 公共中央仓库（代理 Maven Central）</span><br>	<span class="hljs-built_in">maven</span>(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/public&quot;</span>)<br><br>	<span class="hljs-comment">// Gradle 插件仓库</span><br>	<span class="hljs-built_in">maven</span>(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/gradle-plugin&quot;</span>)<br><br>	<span class="hljs-comment">// JCenter 仓库（兼容旧项目）</span><br>	<span class="hljs-built_in">maven</span>(url = <span class="hljs-string">&quot;https://maven.aliyun.com/repository/jcenter&quot;</span>)<br><br>	<span class="hljs-comment">// 通用仓库（覆盖 Google + Central）</span><br>	<span class="hljs-built_in">maven</span>(url = <span class="hljs-string">&quot;https://repo.huaweicloud.com/repository/maven&quot;</span>)<br>	<br>	<span class="hljs-comment">// 公共仓库（代理 Central）</span><br>	<span class="hljs-built_in">maven</span>(url = <span class="hljs-string">&quot;https://mirrors.cloud.tencent.com/nexus/repository/maven-public&quot;</span>)<br><br>	<span class="hljs-comment">// 清华大学镜像</span><br>	<span class="hljs-built_in">maven</span>(url = <span class="hljs-string">&quot;https://mirrors.tuna.tsinghua.edu.cn/maven&quot;</span>)<br><br>	<span class="hljs-comment">// 中国科学技术大学镜像</span><br>	<span class="hljs-built_in">maven</span>(url = <span class="hljs-string">&quot;https://mirrors.ustc.edu.cn/maven&quot;</span>)<br><br>        <span class="hljs-built_in">google</span>()<br>        <span class="hljs-built_in">mavenCentral</span>()<br>    &#125;<br>&#125;<br><br>val newBuildDir: Directory = rootProject<span class="hljs-selector-class">.layout</span><span class="hljs-selector-class">.buildDirectory</span><span class="hljs-selector-class">.dir</span>(<span class="hljs-string">&quot;../../build&quot;</span>)<span class="hljs-selector-class">.get</span>()<br>rootProject<span class="hljs-selector-class">.layout</span><span class="hljs-selector-class">.buildDirectory</span><span class="hljs-selector-class">.value</span>(newBuildDir)<br><br>subprojects &#123;<br>    val newSubprojectBuildDir: Directory = newBuildDir<span class="hljs-selector-class">.dir</span>(project.name)<br>    project<span class="hljs-selector-class">.layout</span><span class="hljs-selector-class">.buildDirectory</span><span class="hljs-selector-class">.value</span>(newSubprojectBuildDir)<br>&#125;<br>subprojects &#123;<br>    project<span class="hljs-selector-class">.evaluationDependsOn</span>(<span class="hljs-string">&quot;:app&quot;</span>)<br>&#125;<br><br>tasks.register&lt;Delete&gt;(<span class="hljs-string">&quot;clean&quot;</span>) &#123;<br>    <span class="hljs-built_in">delete</span>(rootProject<span class="hljs-selector-class">.layout</span>.buildDirectory)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250729142028835.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>添加镜像源后速度恢复正常。</p>
+<p><img src="file-20250729131000344.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>编译apk成功</p>
+<p><img src="file-20250729142645613.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输出路径在<code>项目名\build\app\outputs\apk\release</code>内</p>
+<p><img src="file-20250729142739490.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-2-生成exe文件"><a href="#3-2-生成exe文件" class="headerlink" title="3-2-生成exe文件"></a>3-2-生成exe文件</h2><p>项目目录下，在命令行输入</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">flutter build windows</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250729143527833.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>生成exe成功</p>
+<p><img src="file-20250729143807058.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Flutter/" class="category-chain-item">Flutter</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Flutter/" class="print-no-link">#Flutter</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>01-快速入门Flutter：从零开始构建你的第一个应用</div>
+      <div>https://pattianfang.github.io/2025/07/29/01-快速入门Flutter：从零开始构建你的第一个应用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Pat Tian Fang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年7月29日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年7月29日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/07/28/03-Word%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E6%A8%A1%E6%9D%BF/" title="03-Word修改默认模板">
+                        <span class="hidden-mobile">03-Word修改默认模板</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"pattianfang/gittalk-comments","repo-id":"R_kgDOOnk8-w","category":"Announcements","category-id":"DIC_kwDOOnk8-84Cp_Bs","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
