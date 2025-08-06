@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>01-SQL Server安装</title>
+    <link href="/2025/08/06/01-SQL%20Server%E5%AE%89%E8%A3%85/"/>
+    <url>/2025/08/06/01-SQL%20Server%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<h1 id="01-安装包下载"><a href="#01-安装包下载" class="headerlink" title="01-安装包下载"></a>01-安装包下载</h1><h2 id="01-01-下载地址"><a href="#01-01-下载地址" class="headerlink" title="01-01-下载地址"></a>01-01-下载地址</h2><p>SQL Server下载可以在官网下载<a href="https://www.microsoft.com/zh-cn/sql-server/sql-server-downloads">SQL Server 下载 | Microsoft</a></p><p><img src="file-20250806171558744.png" alt=""></p><h2 id="01-02-版本区别"><a href="#01-02-版本区别" class="headerlink" title="01-02-版本区别"></a>01-02-版本区别</h2><p>可以发现有多个版本</p><p><img src="file-20250806171722467.png" alt=""></p><p>版本的区别如下<a href="https://learn.microsoft.com/zh-cn/sql/sql-server/editions-and-components-of-sql-server-2022?view=sql-server-ver17">SQL Server 2022 的版本和支持的功能 - SQL Server | Microsoft Learn</a></p><div class="table-container"><table><thead><tr><th>版本</th><th>定义</th></tr></thead><tbody><tr><td>企业</td><td>作为高级产品/服务，SQL Server Enterprise Edition 提供了全面的高端数据中心功能，具有极高的性能和无限虚拟化，还具有端到端商业智能，可为任务关键工作负载和最终用户访问数据见解提供高服务级别。</td></tr><tr><td>标准</td><td>SQL Server Standard 版提供了基本数据管理和商业智能数据库，使部门和小型组织能够顺利运行其应用程序并支持将常用开发工具用于内部部署和云部署，有助于以最少的 IT 资源获得高效的数据库管理。</td></tr><tr><td>网络</td><td>对于 Web 主机托管服务提供商（包括在 Azure 上的 IaaS 上选择 Web 版）和 Web VAP 而言，SQL Server Web 版本是一项总拥有成本较低的选择，可针对从小规模到大规模 Web 资产等内容提供可伸缩性、经济性和可管理性能力。</td></tr><tr><td>开发 人员</td><td>企业 SQL Server 开发人员版允许开发人员在 SQL Server 的基础上生成任何类型的应用程序。 它包括 <strong>企业版</strong>的所有功能，但许可用作开发和测试系统，而不是生产服务器。 SQL Server Developer 是构建和测试应用程序的人员的理想之选。</td></tr><tr><td>特快</td><td>SQL Server Express Edition 是入门级的免费数据库，是学习和构建桌面及小型服务器数据驱动应用程序的理想选择。 它是独立软件供应商、开发人员和热衷于构建客户端应用程序的人员的最佳选择。 如果您需要使用更高级的数据库功能，则可以将 SQL Server Express 无缝升级到其他更高端的 SQL Server版本。 SQL Server Express LocalDB 是 Express 版本的一种轻型版本，该版本具备所有可编程性功能，在用户模式下运行，并且具有快速零配置安装和必备组件要求较少的特点。</td></tr></tbody></table></div><p>我们下载SQL Server Express Edition版本即可</p><h1 id="02-安装"><a href="#02-安装" class="headerlink" title="02-安装"></a>02-安装</h1><h2 id="02-01-安装SQL-Server"><a href="#02-01-安装SQL-Server" class="headerlink" title="02-01-安装SQL Server"></a>02-01-安装SQL Server</h2><p>打开下载好的安装包</p><p><img src="file-20250806172140557.png" alt=""></p><p>选择基本即可</p><p><img src="file-20250806172239910.png" alt=""></p><p>点击接收</p><p><img src="file-20250806172306888.png" alt=""></p><p>选择安装位置后点击安装</p><p><img src="file-20250806172359020.png" alt=""></p><p><img src="file-20250806182328465.png" alt=""></p><p>安装完毕</p><p><img src="file-20250806182846516.png" alt=""></p><h2 id="02-02-安装SQL-Server-Management-Studio"><a href="#02-02-安装SQL-Server-Management-Studio" class="headerlink" title="02-02-安装SQL Server Management Studio"></a>02-02-安装SQL Server Management Studio</h2><p>点击安装SSMS</p><p><img src="file-20250806182956374.png" alt=""></p><p>进入网页<a href="https://learn.microsoft.com/zh-cn/ssms/install/install?redirectedfrom=MSDN">安装 SQL Server Management Studio | Microsoft Learn</a></p><p><img src="file-20250806183025748.png" alt=""></p><p>在里面下载，或者点击此链接<a href="https://aka.ms/ssms/21/release/vs_SSMS.exe">下载 SSMS 21</a></p><p><img src="file-20250806183337039.png" alt=""></p><p>打开安装包</p><p><img src="file-20250806183511966.png" alt=""></p><p><img src="file-20250806183523242.png" alt=""></p><p>安装完毕</p><p><img src="file-20250806184952718.png" alt=""></p><p>安装完成后，在开始菜单中找到SQL Server Management Studio打开</p><p><img src="file-20250806185315196.png" alt=""></p><p><img src="file-20250806191907491.png" alt=""></p><p>成功登录</p><p><img src="file-20250806192348020.png" alt=""></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>C Sharp</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SQL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>01-快速入门Flutter：从零开始构建你的第一个应用</title>
     <link href="/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/"/>
     <url>/2025/07/29/01-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8Flutter%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8/</url>
