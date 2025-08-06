@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>04-微信小程序开发</title>
+    <link href="/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/"/>
+    <url>/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</url>
+    
+    <content type="html"><![CDATA[<p>文章主要参考CSDN邢帥兵_的文章《微信小程序开发（超详细保姆式教程）》^[<a href="https://blog.csdn.net/m0_64875238/article/details/127796691">https://blog.csdn.net/m0_64875238/article/details/127796691</a>]</p><h1 id="01-注册微信小程序"><a href="#01-注册微信小程序" class="headerlink" title="01-注册微信小程序"></a>01-注册微信小程序</h1><p>打开网页<a href="https://mp.weixin.qq.com/wxopen/waregister?action=step1&amp;source=mpregister&amp;token=&amp;lang=zh_CN">小程序</a>注册一个小程序</p><p><img src="file-20250806190036374.png" alt=""></p><p>完成注册</p><p><img src="file-20250806190358719.png" alt=""></p><h1 id="02-下载微信开发者工具"><a href="#02-下载微信开发者工具" class="headerlink" title="02-下载微信开发者工具"></a>02-下载微信开发者工具</h1><p>下载<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">微信web开发者工具</a>，根据自己的操作系统下载对应的安装包进行安装即可。</p><p><img src="file-20250806190541976.png" alt=""></p><p>打开安装包</p><p><img src="file-20250806191026173.png" alt=""></p><p>点击下一步</p><p><img src="file-20250806191047989.png" alt=""></p><p>点击我接受</p><p><img src="file-20250806191107033.png" alt=""></p><p>选择安装位置后点击安装，开始安装</p><p><img src="file-20250806191145781.png" alt=""></p><p>安装完毕</p><h1 id="03-创建项目"><a href="#03-创建项目" class="headerlink" title="03-创建项目"></a>03-创建项目</h1><p>打开微信开发者工具</p><p><img src="file-20250806191552046.png" alt=""></p><p>扫码登陆</p><p><img src="file-20250806191649533.png" alt=""></p><p>新建项目</p><p><img src="file-20250806192555702.png" alt=""></p><p>进入小程序界面</p><p><img src="file-20250806193716058.png" alt=""></p><p>点击开发管理</p><p><img src="file-20250806193750219.png" alt=""></p><p>复制小程序ID</p><p><img src="file-20250806193838717.png" alt=""></p><p>填入appID处</p><p><img src="file-20250806193925712.png" alt=""></p><p>点击创建</p><p><img src="file-20250806194532057.png" alt=""></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tips</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技巧</tag>
+      
+      <tag>微信</tag>
+      
+      <tag>小程序</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>01-SQL Server安装</title>
     <link href="/2025/08/06/01-SQL%20Server%E5%AE%89%E8%A3%85/"/>
     <url>/2025/08/06/01-SQL%20Server%E5%AE%89%E8%A3%85/</url>
