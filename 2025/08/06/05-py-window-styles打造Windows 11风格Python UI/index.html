@@ -19,40 +19,35 @@
   <meta name="author" content="Pat Tian Fang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="文章主要参考CSDN邢帥兵_的文章《微信小程序开发（超详细保姆式教程）》^[https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_64875238&#x2F;article&#x2F;details&#x2F;127796691] 01-注册微信小程序打开网页小程序注册一个小程序  完成注册  02-下载微信开发者工具下载微信web开发者工具，根据自己的操作系统下载对应的安装包进行安装即可。  打开安装包  点击下一步  点击我接">
+    <meta name="description" content="支持多种库  Tkinter Customtkinter PyQt PySide WxPython Pygame Kivy PySimpleGUI DearPyGui  安装第三方库 1pip install pywinstyles  使用 pywinstyles.apply_style() 函数将主题应用到该窗口 下面是测试代码 123456789101112131415161718import">
 <meta property="og:type" content="article">
-<meta property="og:title" content="04-微信小程序开发">
-<meta property="og:url" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:title" content="05-py-window-styles打造Windows 11风格Python UI">
+<meta property="og:url" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/index.html">
 <meta property="og:site_name" content="FangTian&#39;s Blogs">
-<meta property="og:description" content="文章主要参考CSDN邢帥兵_的文章《微信小程序开发（超详细保姆式教程）》^[https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_64875238&#x2F;article&#x2F;details&#x2F;127796691] 01-注册微信小程序打开网页小程序注册一个小程序  完成注册  02-下载微信开发者工具下载微信web开发者工具，根据自己的操作系统下载对应的安装包进行安装即可。  打开安装包  点击下一步  点击我接">
+<meta property="og:description" content="支持多种库  Tkinter Customtkinter PyQt PySide WxPython Pygame Kivy PySimpleGUI DearPyGui  安装第三方库 1pip install pywinstyles  使用 pywinstyles.apply_style() 函数将主题应用到该窗口 下面是测试代码 123456789101112131415161718import">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806190036374.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806190358719.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806190541976.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806191026173.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806191047989.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806191107033.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806191145781.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806191552046.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806191649533.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806192555702.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806193716058.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806193750219.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806193838717.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806193925712.png">
-<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806194532057.png">
-<meta property="article:published_time" content="2025-08-06T10:55:21.000Z">
-<meta property="article:modified_time" content="2025-08-06T11:45:34.083Z">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213031708.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213625287.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213645783.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213712812.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213739395.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213758806.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213817915.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213849024.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213926856.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806214004342.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806214025039.png">
+<meta property="article:published_time" content="2025-08-06T13:23:44.000Z">
+<meta property="article:modified_time" content="2025-08-06T13:40:27.063Z">
 <meta property="article:author" content="Pat Tian Fang">
-<meta property="article:tag" content="技巧">
-<meta property="article:tag" content="微信">
-<meta property="article:tag" content="小程序">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="UI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pattianfang.github.io/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/file-20250806190036374.png">
+<meta name="twitter:image" content="https://pattianfang.github.io/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/file-20250806213031708.png">
   
   
   
-  <title>04-微信小程序开发 - FangTian&#39;s Blogs</title>
+  <title>05-py-window-styles打造Windows 11风格Python UI - FangTian&#39;s Blogs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -220,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="04-微信小程序开发"></span>
+            <span id="subtitle" data-typed-text="05-py-window-styles打造Windows 11风格Python UI"></span>
           
         </div>
 
@@ -231,7 +226,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-06 18:55" pubdate>
+        <time datetime="2025-08-06 21:23" pubdate>
           2025年8月6日 晚上
         </time>
       </span>
@@ -243,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          187 字
+          129 字
         
       </span>
     
@@ -291,43 +286,86 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">04-微信小程序开发</h1>
+            <h1 id="seo-header">05-py-window-styles打造Windows 11风格Python UI</h1>
             
             
               <div class="markdown-body">
                 
-                <p>文章主要参考CSDN邢帥兵_的文章《微信小程序开发（超详细保姆式教程）》^[<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_64875238/article/details/127796691">https://blog.csdn.net/m0_64875238/article/details/127796691</a>]</p>
-<h1 id="01-注册微信小程序"><a href="#01-注册微信小程序" class="headerlink" title="01-注册微信小程序"></a>01-注册微信小程序</h1><p>打开网页<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/wxopen/waregister?action=step1&amp;source=mpregister&amp;token=&amp;lang=zh_CN">小程序</a>注册一个小程序</p>
-<p><img src="file-20250806190036374.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>完成注册</p>
-<p><img src="file-20250806190358719.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1 id="02-下载微信开发者工具"><a href="#02-下载微信开发者工具" class="headerlink" title="02-下载微信开发者工具"></a>02-下载微信开发者工具</h1><p>下载<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">微信web开发者工具</a>，根据自己的操作系统下载对应的安装包进行安装即可。</p>
-<p><img src="file-20250806190541976.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>打开安装包</p>
-<p><img src="file-20250806191026173.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>点击下一步</p>
-<p><img src="file-20250806191047989.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>点击我接受</p>
-<p><img src="file-20250806191107033.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>选择安装位置后点击安装，开始安装</p>
-<p><img src="file-20250806191145781.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>安装完毕</p>
-<h1 id="03-创建项目"><a href="#03-创建项目" class="headerlink" title="03-创建项目"></a>03-创建项目</h1><p>打开微信开发者工具</p>
-<p><img src="file-20250806191552046.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>扫码登陆</p>
-<p><img src="file-20250806191649533.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>新建项目</p>
-<p><img src="file-20250806192555702.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>进入小程序界面</p>
-<p><img src="file-20250806193716058.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>点击开发管理</p>
-<p><img src="file-20250806193750219.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>复制小程序ID</p>
-<p><img src="file-20250806193838717.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>填入appID处</p>
-<p><img src="file-20250806193925712.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>点击创建</p>
-<p><img src="file-20250806194532057.png" srcset="/img/loading.gif" lazyload alt=""></p>
+                <p>支持多种库</p>
+<ul>
+<li>Tkinter</li>
+<li>Customtkinter</li>
+<li>PyQt</li>
+<li>PySide</li>
+<li>WxPython</li>
+<li>Pygame</li>
+<li>Kivy</li>
+<li>PySimpleGUI</li>
+<li>DearPyGui</li>
+</ul>
+<p>安装第三方库</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> pywinstyles<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250806213031708.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>使用 pywinstyles.apply_style() 函数将主题应用到该窗口</strong></p>
+<p>下面是测试代码</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import tkinter as tk<br>import pywinstyles<br><br><span class="hljs-comment"># 创建窗口</span><br>root = tk.Tk()<br><br><span class="hljs-comment"># 设置窗口大小</span><br>root.geometry(<span class="hljs-string">&quot;800x600&quot;</span>)      # 设置初始尺寸为800x600<br><br><span class="hljs-comment"># 应用Windows 11主题</span><br>pywinstyles.apply_style(root, <span class="hljs-string">&quot;acrylic&quot;</span>)<br><br><span class="hljs-comment"># 添加内容</span><br>label = tk.Label(root, <span class="hljs-attribute">text</span>=<span class="hljs-string">&quot;Hello, World!&quot;</span>, font=(<span class="hljs-string">&quot;Arial&quot;</span>, 24), <span class="hljs-attribute">bg</span>=<span class="hljs-string">&#x27;#F0F0F0&#x27;</span>)<br>label.pack(<span class="hljs-attribute">pady</span>=50)  # 增加垂直间距使内容居中<br><br><span class="hljs-comment"># 运行窗口</span><br>root.mainloop()<br></code></pre></td></tr></table></figure>
+<p>效果如下</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>风格</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mica</td>
+<td><img src="file-20250806213625287.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>acrylic</td>
+<td><img src="file-20250806213645783.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>aero (GPU Heavy)</td>
+<td><img src="file-20250806213712812.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>transparent (GPU Heavy)</td>
+<td><img src="file-20250806213739395.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>optimised</td>
+<td><img src="file-20250806213758806.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>win7</td>
+<td><img src="file-20250806213817915.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>inverse</td>
+<td><img src="file-20250806213849024.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>native</td>
+<td><img src="file-20250806213926856.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>popup</td>
+<td><img src="file-20250806214004342.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>dark</td>
+<td><img src="file-20250806214025039.png" srcset="/img/loading.gif" lazyload alt=""></td>
+</tr>
+<tr>
+<td>normal</td>
+<td>不修改</td>
+</tr>
+</tbody>
+</table>
+</div>
 
                 
               </div>
@@ -361,11 +399,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8A%80%E5%B7%A7/" class="print-no-link">#技巧</a>
+        <a href="/tags/python/" class="print-no-link">#python</a>
       
-        <a href="/tags/%E5%BE%AE%E4%BF%A1/" class="print-no-link">#微信</a>
-      
-        <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="print-no-link">#小程序</a>
+        <a href="/tags/UI/" class="print-no-link">#UI</a>
       
     </div>
   
@@ -377,8 +413,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>04-微信小程序开发</div>
-      <div>https://pattianfang.github.io/2025/08/06/04-微信小程序开发/</div>
+      <div>05-py-window-styles打造Windows 11风格Python UI</div>
+      <div>https://pattianfang.github.io/2025/08/06/05-py-window-styles打造Windows 11风格Python UI/</div>
     </div>
     <div class="license-meta">
       
@@ -427,18 +463,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/" title="05-py-window-styles打造Windows 11风格Python UI">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">05-py-window-styles打造Windows 11风格Python UI</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/06/01-SQL%20Server%E5%AE%89%E8%A3%85/" title="01-SQL Server安装">
-                        <span class="hidden-mobile">01-SQL Server安装</span>
+                      <a href="/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" title="04-微信小程序开发">
+                        <span class="hidden-mobile">04-微信小程序开发</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

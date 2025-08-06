@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>05-py-window-styles打造Windows 11风格Python UI</title>
+    <link href="/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/"/>
+    <url>/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/</url>
+    
+    <content type="html"><![CDATA[<p>支持多种库</p><ul><li>Tkinter</li><li>Customtkinter</li><li>PyQt</li><li>PySide</li><li>WxPython</li><li>Pygame</li><li>Kivy</li><li>PySimpleGUI</li><li>DearPyGui</li></ul><p>安装第三方库</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> pywinstyles<br></code></pre></td></tr></table></figure><p><img src="file-20250806213031708.png" alt=""></p><p><strong>使用 pywinstyles.apply_style() 函数将主题应用到该窗口</strong></p><p>下面是测试代码</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import tkinter as tk<br>import pywinstyles<br><br><span class="hljs-comment"># 创建窗口</span><br>root = tk.Tk()<br><br><span class="hljs-comment"># 设置窗口大小</span><br>root.geometry(<span class="hljs-string">&quot;800x600&quot;</span>)      # 设置初始尺寸为800x600<br><br><span class="hljs-comment"># 应用Windows 11主题</span><br>pywinstyles.apply_style(root, <span class="hljs-string">&quot;acrylic&quot;</span>)<br><br><span class="hljs-comment"># 添加内容</span><br>label = tk.Label(root, <span class="hljs-attribute">text</span>=<span class="hljs-string">&quot;Hello, World!&quot;</span>, font=(<span class="hljs-string">&quot;Arial&quot;</span>, 24), <span class="hljs-attribute">bg</span>=<span class="hljs-string">&#x27;#F0F0F0&#x27;</span>)<br>label.pack(<span class="hljs-attribute">pady</span>=50)  # 增加垂直间距使内容居中<br><br><span class="hljs-comment"># 运行窗口</span><br>root.mainloop()<br></code></pre></td></tr></table></figure><p>效果如下</p><div class="table-container"><table><thead><tr><th>风格</th><th>效果</th></tr></thead><tbody><tr><td>mica</td><td><img src="file-20250806213625287.png" alt=""></td></tr><tr><td>acrylic</td><td><img src="file-20250806213645783.png" alt=""></td></tr><tr><td>aero (GPU Heavy)</td><td><img src="file-20250806213712812.png" alt=""></td></tr><tr><td>transparent (GPU Heavy)</td><td><img src="file-20250806213739395.png" alt=""></td></tr><tr><td>optimised</td><td><img src="file-20250806213758806.png" alt=""></td></tr><tr><td>win7</td><td><img src="file-20250806213817915.png" alt=""></td></tr><tr><td>inverse</td><td><img src="file-20250806213849024.png" alt=""></td></tr><tr><td>native</td><td><img src="file-20250806213926856.png" alt=""></td></tr><tr><td>popup</td><td><img src="file-20250806214004342.png" alt=""></td></tr><tr><td>dark</td><td><img src="file-20250806214025039.png" alt=""></td></tr><tr><td>normal</td><td>不修改</td></tr></tbody></table></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tips</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+      <tag>UI</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>04-微信小程序开发</title>
     <link href="/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/"/>
     <url>/2025/08/06/04-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/</url>
