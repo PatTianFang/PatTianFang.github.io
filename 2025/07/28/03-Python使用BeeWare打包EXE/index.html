@@ -1,0 +1,941 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Pat Tian Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="官方教程在此处让我们开始吧！ - BeeWare Tutorial 0-准备工作创建虚拟环境，创建Python虚拟环境的命令是： 1conda create -n your_env_name   # your_env_name 为你虚拟环境名    然后激活这个环境 1conda activate BeeWare 01-第一个应用程序安装第三方库briefcase 1pip install bri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="03-Python使用BeeWare打包EXE">
+<meta property="og:url" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/index.html">
+<meta property="og:site_name" content="FangTian&#39;s Blogs">
+<meta property="og:description" content="官方教程在此处让我们开始吧！ - BeeWare Tutorial 0-准备工作创建虚拟环境，创建Python虚拟环境的命令是： 1conda create -n your_env_name   # your_env_name 为你虚拟环境名    然后激活这个环境 1conda activate BeeWare 01-第一个应用程序安装第三方库briefcase 1pip install bri">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728161424352.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728161503663.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728161540368.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728161847525.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728164720361.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728164805297.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728164843953.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728164910138.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728165107119.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728165134701.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728165601516.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728165942643.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807093136434.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807093333935.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807093412801.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807093537503.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807093700732.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807093718093.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807093821353.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807094100496.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807094108390.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807094209890.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807094250830.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807094303467.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807094630062.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807095320810.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807100634880.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807100656213.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807100802944.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807100816647.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807100909379.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807100924893.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807101841559.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807101914642.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807101938993.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807102044067.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807102106357.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807102308933.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807103225909.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807104821555.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807104958925.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807100802944.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807105014951.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807114907753.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250807121545983.png">
+<meta property="article:published_time" content="2025-07-28T07:46:49.000Z">
+<meta property="article:modified_time" content="2025-08-07T04:19:42.815Z">
+<meta property="article:author" content="Pat Tian Fang">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pattianfang.github.io/2025/07/28/03-Python%E4%BD%BF%E7%94%A8BeeWare%E6%89%93%E5%8C%85EXE/file-20250728161424352.png">
+  
+  
+  
+  <title>03-Python使用BeeWare打包EXE - FangTian&#39;s Blogs</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"pattianfang.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FangTian&#39;s Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="03-Python使用BeeWare打包EXE"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-07-28 15:46" pubdate>
+          2025年7月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          803 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">03-Python使用BeeWare打包EXE</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>官方教程在此处<a target="_blank" rel="noopener" href="https://docs.beeware.org/zh-cn/latest/tutorial/tutorial-0.html">让我们开始吧！ - BeeWare Tutorial</a></p>
+<h1 id="0-准备工作"><a href="#0-准备工作" class="headerlink" title="0-准备工作"></a>0-准备工作</h1><p>创建虚拟环境，创建Python虚拟环境的命令是：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">conda create -n your_env_name   # your_env_name 为你虚拟环境名<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250728161424352.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250728161503663.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250728161540368.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>然后激活这个环境</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">conda activate BeeWare<br></code></pre></td></tr></table></figure>
+<h1 id="01-第一个应用程序"><a href="#01-第一个应用程序" class="headerlink" title="01-第一个应用程序"></a>01-第一个应用程序</h1><p>安装第三方库<strong>briefcase</strong></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> briefcase<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250728161847525.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>创建默认模板</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">briefcase <span class="hljs-keyword">new</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250728164720361.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>下面的设置先全部默认</p>
+<p><img src="file-20250728164805297.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>打开的路径中生成了文件夹</p>
+<p><img src="file-20250728164843953.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>文件结构如下</p>
+<p><img src="file-20250728164910138.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs stylus">beeware-tutorial/<br>├── beeware-venv/<br>│   └── ...<br>└── helloworld/<br>    ├── CHANGELOG<br>    ├── LICENSE<br>    ├── pyproject<span class="hljs-selector-class">.toml</span><br>    ├── README<span class="hljs-selector-class">.rst</span><br>    ├── <span class="hljs-attribute">src</span>/<br>    │   └── helloworld/<br>    │       ├── app<span class="hljs-selector-class">.py</span><br>    │       ├── __init__<span class="hljs-selector-class">.py</span><br>    │       ├── __main__<span class="hljs-selector-class">.py</span><br>    │       └── resources/<br>    │           └── README<br>    └── tests/<br>        ├── helloworld<span class="hljs-selector-class">.py</span><br>        ├── __init__<span class="hljs-selector-class">.py</span><br>        └── test_app.py<br></code></pre></td></tr></table></figure>
+<p>移动到 <code>helloworld</code> 项目目录，告诉 Briefcase 以开发者（或 <code>dev</code>）模式启动项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> helloworld<br><br>briefcase dev<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250728165107119.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>弹出默认界面</p>
+<p><img src="file-20250728165134701.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="02-打包"><a href="#02-打包" class="headerlink" title="02-打包"></a>02-打包</h1><p>在 <code>helloworld</code> 目录中，运行:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">briefcase create</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250728165601516.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>报错</p>
+<p><img src="file-20250728165942643.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs delphi">Unable <span class="hljs-keyword">to</span> download support package; <span class="hljs-keyword">is</span> your computer offline?<br><br>The reported cause <span class="hljs-keyword">of</span> the problem was The <span class="hljs-keyword">read</span> operation timed <span class="hljs-keyword">out</span><br></code></pre></td></tr></table></figure>
+<p>按照官网教程<a target="_blank" rel="noopener" href="https://docs.beeware.org/zh-cn/latest/tutorial/tutorial-3.html">教程 3 - 打包与分发 - BeeWare Tutorial</a>打包时，执行briefcase create时</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">briefcase create</span><br></code></pre></td></tr></table></figure>
+<p>会出现网络错误</p>
+<p><img src="file-20250807093136434.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="02-01-联网超时问题解决"><a href="#02-01-联网超时问题解决" class="headerlink" title="02-01-联网超时问题解决"></a>02-01-联网超时问题解决</h2><p>参考<a href="04-使用BeeWare打包下载嵌入版Python的解决方法.md">04-使用BeeWare打包下载嵌入版Python的解决方法</a></p>
+<p><strong>解决方法通过手动下载并指定路径，可以避免去官网线上下载导致超时</strong></p>
+<h3 id="02-01-1-下载缺少的包"><a href="#02-01-1-下载缺少的包" class="headerlink" title="02-01-1-下载缺少的包"></a>02-01-1-下载缺少的包</h3><p>直接按住Ctrl点击对应链接</p>
+<p><img src="file-20250807093333935.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>完成下载</p>
+<p><img src="file-20250807093412801.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="02-01-2-移动到指定路径"><a href="#02-01-2-移动到指定路径" class="headerlink" title="02-01-2-移动到指定路径"></a>02-01-2-移动到指定路径</h3><p>将该文件移动到一个想要的路径上，并复制路径</p>
+<p><img src="file-20250807093537503.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript"><span class="hljs-name">C</span>:\Users\PatTi\Desktop\BeeWare<br></code></pre></td></tr></table></figure>
+<h3 id="02-01-3-修改pyproject-toml文件"><a href="#02-01-3-修改pyproject-toml文件" class="headerlink" title="02-01-3-修改pyproject.toml文件"></a>02-01-3-修改pyproject.toml文件</h3><p>打开项目的文件夹，找到其中的pyproject.toml文件</p>
+<p><img src="file-20250807093700732.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>打开这个文件</p>
+<p><img src="file-20250807093718093.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>按下Ctrl+F，输入tool.briefcase.app.helloworld.windows搜索</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">tool<span class="hljs-selector-class">.briefcase</span><span class="hljs-selector-class">.app</span><span class="hljs-selector-class">.helloworld</span>.windows<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807093821353.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在其下方四行添加刚刚记下的路径加<strong>文件名</strong></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># 手动指定本地 support package，避免联网下载</span><br><span class="hljs-attr">support_package</span> = <span class="hljs-string">&quot;C:/Users/PatTi/Desktop/BeeWare/python-3.12.9-embed-amd64.zip&quot;</span><br></code></pre></td></tr></table></figure>
+<p><strong>注意要把斜杠改为反斜杠</strong></p>
+<p><img src="file-20250807094100496.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250807094108390.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>保存</p>
+<h3 id="02-01-4-再次运行"><a href="#02-01-4-再次运行" class="headerlink" title="02-01-4-再次运行"></a>02-01-4-再次运行</h3><p>再次执行briefcase create</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">briefcase create</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807094209890.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>成功识别并跳过下载</p>
+<p><img src="file-20250807094250830.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>成功</p>
+<p><img src="file-20250807094303467.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="02-02-构建应用程序"><a href="#02-02-构建应用程序" class="headerlink" title="02-02-构建应用程序"></a>02-02-构建应用程序</h2><p>输入</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">briefcase build</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807094630062.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>出现错误</p>
+<p><img src="file-20250807095320810.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="02-03-解决打包无法下载RCEdit的问题"><a href="#02-03-解决打包无法下载RCEdit的问题" class="headerlink" title="02-03-解决打包无法下载RCEdit的问题"></a>02-03-解决打包无法下载RCEdit的问题</h2><h3 id="02-03-1-下载RCEdit"><a href="#02-03-1-下载RCEdit" class="headerlink" title="02-03-1-下载RCEdit"></a>02-03-1-下载RCEdit</h3><p>打开浏览器，访问 RCEdit 的 GitHub 发布页：  <a target="_blank" rel="noopener" href="https://github.com/electron/rcedit/releases">https://github.com/electron/rcedit/releases</a></p>
+<p><img src="file-20250807100634880.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>下载与你的系统对应的版本（通常是 <code>rcedit-x64.exe</code>）</p>
+<p><img src="file-20250807100656213.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="02-03-2-移动RCEdit"><a href="#02-03-2-移动RCEdit" class="headerlink" title="02-03-2-移动RCEdit"></a>02-03-2-移动RCEdit</h3><p>将下载好的<code>rcedit-x64.exe</code>文件放入以下路径：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript"><span class="hljs-name">C</span>:\Users\&lt;你的用户名&gt;\AppData\Local\BeeWare\briefcase\Cache\tools\<br></code></pre></td></tr></table></figure>
+<p>如果该路径不存在，手动创建。</p>
+<p><img src="file-20250807100802944.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250807100816647.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="02-03-3-重新运行"><a href="#02-03-3-重新运行" class="headerlink" title="02-03-3-重新运行"></a>02-03-3-重新运行</h3><p>重新运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">briefcase build<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807100909379.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>成功</p>
+<p><img src="file-20250807100924893.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="02-04-打包文件"><a href="#02-04-打包文件" class="headerlink" title="02-04-打包文件"></a>02-04-打包文件</h2><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">[helloworld] Built build\helloworld\windows\app\src\Hello World.exe<br></code></pre></td></tr></table></figure>
+<p>上述就是输出的exe文件</p>
+<p><img src="file-20250807101841559.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>打开对应目录</p>
+<p><img src="file-20250807101914642.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>EXE文件能够运行</p>
+<p><img src="file-20250807101938993.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>或使用</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">briefcase <span class="hljs-built_in">run</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807102044067.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250807102106357.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="03-创建安装程序"><a href="#03-创建安装程序" class="headerlink" title="03-创建安装程序"></a>03-创建安装程序</h1><p>使用 package 命令打包应用程序，以便发布。打包命令会执行将脚手架项目转换为最终可发布产品所需的编译工作。根据平台的不同，这可能涉及编译安装程序、执行代码签名或执行其他发布前任务。</p>
+<p>输入</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">briefcase <span class="hljs-keyword">package</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807102308933.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>出现问题，无法下载WiX</p>
+<p><img src="file-20250807103225909.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="03-1-下载WiX"><a href="#03-1-下载WiX" class="headerlink" title="03-1-下载WiX"></a>03-1-下载WiX</h2><p>打开浏览器，访问WiX的 GitHub 发布页：<a target="_blank" rel="noopener" href="https://github.com/wixtoolset/wix/releases">Releases · wixtoolset/wix</a></p>
+<p><img src="file-20250807104821555.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>下载与你的系统对应的版本（如<a target="_blank" rel="noopener" href="https://github.com/wixtoolset/wix/releases/download/v6.0.1/wix-cli-x64.msi">wix-cli-x64.msi</a>）</p>
+<p><img src="file-20250807104958925.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="03-2-移动WiX"><a href="#03-2-移动WiX" class="headerlink" title="03-2-移动WiX"></a>03-2-移动WiX</h2><p>将下载好的文件放入以下路径：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript"><span class="hljs-name">C</span>:\Users\&lt;你的用户名&gt;\AppData\Local\BeeWare\briefcase\Cache\tools\<br></code></pre></td></tr></table></figure>
+<p>如果该路径不存在，手动创建。</p>
+<p><img src="file-20250807100802944.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250807105014951.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="03-3-重新运行"><a href="#03-3-重新运行" class="headerlink" title="03-3-重新运行"></a>03-3-重新运行</h2><p>重新运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">briefcase package<br></code></pre></td></tr></table></figure>
+<p>成功</p>
+<p><img src="file-20250807114907753.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<p><img src="file-20250807121545983.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+        <a href="/tags/Android/" class="print-no-link">#Android</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>03-Python使用BeeWare打包EXE</div>
+      <div>https://pattianfang.github.io/2025/07/28/03-Python使用BeeWare打包EXE/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Pat Tian Fang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年7月28日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年8月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/08/06/01-SQL%20Server%E5%AE%89%E8%A3%85/" title="01-SQL Server安装">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01-SQL Server安装</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/07/28/03-Word%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E6%A8%A1%E6%9D%BF/" title="03-Word修改默认模板">
+                        <span class="hidden-mobile">03-Word修改默认模板</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"pattianfang/gittalk-comments","repo-id":"R_kgDOOnk8-w","category":"Announcements","category-id":"DIC_kwDOOnk8-84Cp_Bs","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
