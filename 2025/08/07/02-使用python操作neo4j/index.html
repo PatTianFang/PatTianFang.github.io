@@ -1,0 +1,939 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Pat Tian Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="文章主要参考微信公众号Python伊甸园的文章《使用python操作neo4j》^[https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;by6qzy7Omkv-tDAtt1muow] 一、基础环境准备1-1-创建 Conda 虚拟环境打开终端&#x2F;命令行，输入： 1conda create -n name python&#x3D;3.11 -y name：环境名称，可自定义，如neo4j。 python&#x3D;3.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02-使用python操作neo4j">
+<meta property="og:url" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/index.html">
+<meta property="og:site_name" content="FangTian&#39;s Blogs">
+<meta property="og:description" content="文章主要参考微信公众号Python伊甸园的文章《使用python操作neo4j》^[https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;by6qzy7Omkv-tDAtt1muow] 一、基础环境准备1-1-创建 Conda 虚拟环境打开终端&#x2F;命令行，输入： 1conda create -n name python&#x3D;3.11 -y name：环境名称，可自定义，如neo4j。 python&#x3D;3.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250729195316271.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250730153400213.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250731123237860.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250805151810824.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250805152351557.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250805152518379.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250805152644425.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250805153502924.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250805153534645.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250805153550465.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806103533630.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806103628445.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806104120748.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806104543361.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806104611642.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806104646450.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806105156263.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806105223727.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806105436890.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806105449553.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806105542805.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806105558092.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806110032778.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806110418490.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806111147012.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806111331526.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250806111415662.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807075303747.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807075614260.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807075642209.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807075934250.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807075959683.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807081406938.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807081638480.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807081913909.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807082606331.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807082905138.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807082928550.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807083311777.png">
+<meta property="og:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250807083355660.png">
+<meta property="article:published_time" content="2025-08-07T00:34:06.000Z">
+<meta property="article:modified_time" content="2025-08-07T00:34:11.765Z">
+<meta property="article:author" content="Pat Tian Fang">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="neo4j">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pattianfang.github.io/2025/08/07/02-%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9Cneo4j/file-20250729195316271.png">
+  
+  
+  
+  <title>02-使用python操作neo4j - FangTian&#39;s Blogs</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"pattianfang.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FangTian&#39;s Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="02-使用python操作neo4j"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-08-07 08:34" pubdate>
+          2025年8月7日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">02-使用python操作neo4j</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>文章主要参考微信公众号Python伊甸园的文章《使用python操作neo4j》^[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/by6qzy7Omkv-tDAtt1muow">https://mp.weixin.qq.com/s/by6qzy7Omkv-tDAtt1muow</a>]</p>
+<h1 id="一、基础环境准备"><a href="#一、基础环境准备" class="headerlink" title="一、基础环境准备"></a>一、基础环境准备</h1><h2 id="1-1-创建-Conda-虚拟环境"><a href="#1-1-创建-Conda-虚拟环境" class="headerlink" title="1-1-创建 Conda 虚拟环境"></a>1-1-创建 Conda 虚拟环境</h2><p>打开终端/命令行，输入：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">conda</span> create -n name python=<span class="hljs-number">3</span>.<span class="hljs-number">11</span> -y<br></code></pre></td></tr></table></figure>
+<p><code>name</code>：环境名称，可自定义，如neo4j。</p>
+<p><code>python=3.11</code>：指定Python版本。</p>
+<p><code>-y</code>：自动确认安装依赖。</p>
+<p><img src="file-20250729195316271.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p> 激活环境</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">conda <span class="hljs-built_in">activate</span> neo4j<br></code></pre></td></tr></table></figure>
+<h2 id="1-2-安装-Py2neo-库"><a href="#1-2-安装-Py2neo-库" class="headerlink" title="1-2-安装 Py2neo 库"></a>1-2-安装 Py2neo 库</h2><p>在终端输入</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> py2neo<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250730153400213.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-3-安装neo4j"><a href="#1-3-安装neo4j" class="headerlink" title="1-3-安装neo4j"></a>1-3-安装neo4j</h2><p>文章主要参考知乎watersprite的文章《windows下安装neo4j community版详细步骤（知识图谱 一）》^[<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26634070689">https://zhuanlan.zhihu.com/p/26634070689</a>]</p>
+<p>要搞清楚特定neo4j版本对应的java版本，两者之间版本需要对应</p>
+<p>java 下载路径：<a href="https://link.zhihu.com/?target=https%3A//download.oracle.com/java/17/archive/jdk-17.0.7_windows-x64_bin.exe">jdk</a></p>
+<p>neo4j下载路径：<a href="https://link.zhihu.com/?target=http%3A//dist.neo4j.org/neo4j-community-5.15.0-windows.zip">neo4j</a></p>
+<h3 id="1-3-1-java环境安装及配置"><a href="#1-3-1-java环境安装及配置" class="headerlink" title="1-3-1-java环境安装及配置"></a>1-3-1-java环境安装及配置</h3><p>打开安装包</p>
+<p><img src="file-20250731123237860.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>进入安装程序</p>
+<p><img src="file-20250805151810824.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-3-2-安装neo4j"><a href="#1-3-2-安装neo4j" class="headerlink" title="1-3-2-安装neo4j"></a>1-3-2-安装neo4j</h3><p>解压neo4j-community-5.15.0-windows.zip文件到目标地址</p>
+<p><img src="file-20250805152351557.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>进入neo4j的解压文件夹，然后进入bin目录，复制该路径</p>
+<p><img src="file-20250805152518379.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>编辑PATH变量，再新增一个环境变量</p>
+<p><img src="file-20250805152644425.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>打开cmd，输入neo4j console</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">neo4j <span class="hljs-built_in">console</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250805153502924.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如果显示<code>无法识别为cmdlet、函数、脚本文件或可运行程序的名称</code>可以重启电脑再次尝试</p>
+<p>打开给出的地址，可以进入后台</p>
+<p><img src="file-20250805153534645.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250805153550465.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-3-3-测试neo4j"><a href="#1-3-3-测试neo4j" class="headerlink" title="1-3-3-测试neo4j"></a>1-3-3-测试neo4j</h3><p>创建并登录库，具体界面如下图所示，用户名写neo4j，原始密码为neo4j，点击connect后进入设置新密码页面。</p>
+<p><img src="file-20250806103533630.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250806103628445.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>密码修改完毕</p>
+<p><img src="file-20250806104120748.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>进入数据库</p>
+<p><img src="file-20250806104543361.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250806104611642.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>此处为命令行</p>
+<p><img src="file-20250806104646450.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入下面两行代码创建两个节点，然后点击运行</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css">create (p1:Person &#123;name:<span class="hljs-string">&quot;zs&quot;</span>&#125;) <br>create (p2:Person &#123;name:<span class="hljs-string">&quot;ls&quot;</span>&#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250806105156263.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>运行结果如下图所示</p>
+<p><img src="file-20250806105223727.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>使用下面代码创建两个边</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">create (p1:Person &#123;name:<span class="hljs-string">&quot;zs&quot;</span>&#125;) -<span class="hljs-selector-attr">[:like]</span>-&gt; (p2:Person &#123;name:<span class="hljs-string">&quot;ls&quot;</span>&#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250806105436890.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250806105449553.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击关系类型中like关系，可显示显示图结构</p>
+<p><img src="file-20250806105542805.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250806105558092.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-4-验证安装"><a href="#1-4-验证安装" class="headerlink" title="1-4-验证安装"></a>1-4-验证安装</h2><p>在 Python 交互环境中测试：（<strong>别忘把代码中”你的密码“这一项修改</strong>）</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> py2neo import __version__<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Py2neo 版本:&quot;</span>, __version__)  # 应显示安装版本号<br><span class="hljs-comment"># 连接 Neo4j 测试（确保本地 Neo4j 服务已启动）</span><br><span class="hljs-keyword">from</span> py2neo import Graph<br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, auth=(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;你的密码&quot;</span>))<br><span class="hljs-built_in">print</span>(graph.<span class="hljs-built_in">run</span>(<span class="hljs-string">&quot;RETURN &#x27;连接成功&#x27;&quot;</span>).data())<br></code></pre></td></tr></table></figure>
+<p>如果直接运行会显示</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">py2neo.errors.ConnectionUnavailable: Cannot <span class="hljs-keyword">open</span> <span class="hljs-keyword">connection</span> <span class="hljs-keyword">to</span> ConnectionProfile(<span class="hljs-string">&#x27;bolt://localhost:7687&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250806110032778.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>需要先在后台打开数据库，还是输入neo4j console</p>
+<p><img src="file-20250806110418490.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>正常运行</p>
+<h1 id="二、neo4j的基础语法"><a href="#二、neo4j的基础语法" class="headerlink" title="二、neo4j的基础语法"></a>二、neo4j的基础语法</h1><h2 id="2-1-创建节点与关系"><a href="#2-1-创建节点与关系" class="headerlink" title="2-1-创建节点与关系"></a>2-1-创建节点与关系</h2><h3 id="2-1-1-创建节点"><a href="#2-1-1-创建节点" class="headerlink" title="2-1-1-创建节点"></a>2-1-1-创建节点</h3><p>创建一个Person的节点，名字是Alice。相当于Alice被划分为Person这个类别。</p>
+<p>对于Person节点，有name和age两个属性。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">from py2neo import Graph, <span class="hljs-keyword">Node</span><br><br><span class="hljs-title"># 连接 Docker</span> 内的 Neo4j<br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, <span class="hljs-attr">auth=</span>(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;12345678&quot;</span>))<br><br><span class="hljs-comment"># 创建节点</span><br><span class="hljs-keyword">node</span> <span class="hljs-title">= Node</span>(<span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-attr">name=</span><span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-attr">age=</span><span class="hljs-number">30</span>)<br>graph.create(<span class="hljs-keyword">node</span><span class="hljs-title">)</span><br></code></pre></td></tr></table></figure>
+<p>在neo4j内，每一个点称作一个实体(节点)，Alice就是一个实体，拥有age和name两个属性。</p>
+<p>运行后，效果如下图</p>
+<p><img src="file-20250806111147012.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-1-2-清空neo4j数据"><a href="#2-1-2-清空neo4j数据" class="headerlink" title="2-1-2-清空neo4j数据"></a>2-1-2-清空neo4j数据</h3><p>在neo4j后台中输入</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs excel"><span class="hljs-built_in">MATCH</span> (<span class="hljs-built_in">n</span>)<br>DETACH DELETE <span class="hljs-built_in">n</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250806111331526.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>结果如下</p>
+<p><img src="file-20250806111415662.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250807075303747.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-1-3-创建关系"><a href="#2-1-3-创建关系" class="headerlink" title="2-1-3-创建关系"></a>2-1-3-创建关系</h3><p>创建Alice与Bob的关系，设定他们是朋友关系，指向关系为：alice-&gt;bob；since表示朋友关系的开始时间。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> py2neo import Graph, Node, NodeMatcher,Relationship<br><br><span class="hljs-comment"># 连接Neo4j</span><br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, auth=(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;12345678&quot;</span>))<br><br><span class="hljs-comment"># 创建节点间关系</span><br>alice = Node(<span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;Alice&quot;</span>)<br>bob = Node(<span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;Bob&quot;</span>)<br>relation = Relationship(alice, <span class="hljs-string">&quot;FRIEND&quot;</span>, bob, <span class="hljs-attribute">since</span>=2025)<br>graph.create(relation)  # 提交关系<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807075614260.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>运行后</p>
+<p><img src="file-20250807075642209.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-1-4-重复执行"><a href="#2-1-4-重复执行" class="headerlink" title="2-1-4-重复执行"></a>2-1-4-重复执行</h3><p>重复执行创建关系，并不会覆盖，而是会新建节点与关系。</p>
+<p>再次执行2-1-3的代码，Alice和Bob再次形成新的实体，且id不同。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> py2neo import Graph, Node, NodeMatcher,Relationship<br><br><span class="hljs-comment"># 连接Neo4j</span><br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, auth=(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;12345678&quot;</span>))<br><br><span class="hljs-comment"># 创建节点间关系</span><br>alice = Node(<span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;Alice&quot;</span>)<br>bob = Node(<span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;Bob&quot;</span>)<br>relation = Relationship(alice, <span class="hljs-string">&quot;FRIEND&quot;</span>, bob, <span class="hljs-attribute">since</span>=2025)<br>graph.create(relation)  # 提交关系<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807075934250.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="file-20250807075959683.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-merge-创建节点和关系"><a href="#2-2-merge-创建节点和关系" class="headerlink" title="2-2-merge()创建节点和关系"></a>2-2-merge()创建节点和关系</h2><h3 id="2-2-1-creat-的缺点"><a href="#2-2-1-creat-的缺点" class="headerlink" title="2-2-1-creat()的缺点"></a>2-2-1-creat()的缺点</h3><p>在通过graph.create()进行节点、关系创建时，多次执行后，会重复创建节点与关系。</p>
+<p>而多数情况下，我们想要的是多次执行，仍然只创建一组实体，可以采用merge函数来解决这个问题。</p>
+<h3 id="2-2-2-merge-的效果"><a href="#2-2-2-merge-的效果" class="headerlink" title="2-2-2-merge()的效果"></a>2-2-2-merge()的效果</h3><p>存在则匹配：若指定模式已存在，则直接匹配并返回结果。</p>
+<p>不存在则创建：若模式不存在，则创建该模式的所有元素（节点、关系及属性）。</p>
+<p>在py2neo中，merge 会检查实体的 is_bound 状态（是否已绑定到数据库）。若实体未绑定（即未预先提交），则会自动创建并绑定实体，再创建关系。</p>
+<p>简单来说，若实体存在，就不再次创建实体，直接创建关系；如果不存在，就先创建实体再创建关系。</p>
+<h3 id="2-2-3-代码测试"><a href="#2-2-3-代码测试" class="headerlink" title="2-2-3-代码测试"></a>2-2-3-代码测试</h3><p>多次执行下述代码，也仅形成一个实体关系对。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> py2neo import Graph, Node, Relationship<br><br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, auth=(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;12345678&quot;</span>))<br><br>alice = Node(<span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;Alice&quot;</span>)<br>bob = Node(<span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;Bob&quot;</span>)<br>relation = Relationship(alice, <span class="hljs-string">&quot;FRIEND&quot;</span>, bob, <span class="hljs-attribute">since</span>=2026)<br><br><span class="hljs-comment"># 合并节点</span><br>graph.merge(alice, <span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-string">&quot;name&quot;</span>)<br>graph.merge(bob, <span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-string">&quot;name&quot;</span>)<br><br><span class="hljs-comment"># 创建关系</span><br>graph.merge(relation)<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807081406938.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-3-实体的查询"><a href="#2-3-实体的查询" class="headerlink" title="2-3-实体的查询"></a>2-3-实体的查询</h2><h3 id="2-3-1-查询节点"><a href="#2-3-1-查询节点" class="headerlink" title="2-3-1-查询节点"></a>2-3-1-查询节点</h3><p>通过NodeMatcher去匹配节点。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> py2neo <span class="hljs-keyword">import</span> Graph, Node, NodeMatcher,Relationship,RelationshipMatcher<br><br><span class="hljs-comment"># 连接Neo4j</span><br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, auth=(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;12345678&quot;</span>))<br><br><span class="hljs-comment"># 使用NodeMatcher</span><br>matcher = NodeMatcher(graph)<br><span class="hljs-comment"># 匹配name=Alice的节点</span><br>result = matcher.<span class="hljs-keyword">match</span>(<span class="hljs-string">&quot;Person&quot;</span>).where(<span class="hljs-string">&quot;_.name = &#x27;Alice&#x27;&quot;</span>).<span class="hljs-built_in">all</span>()<br><br><span class="hljs-built_in">print</span>(result)<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807081638480.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>得到结果</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">[<span class="hljs-name">Node</span>(<span class="hljs-symbol">&#x27;Person</span>&#x27;, name=<span class="hljs-symbol">&#x27;Alice</span>&#x27;)]<br></code></pre></td></tr></table></figure>
+<h3 id="2-3-2-查询关系"><a href="#2-3-2-查询关系" class="headerlink" title="2-3-2-查询关系"></a>2-3-2-查询关系</h3><p>通过RelationshipMatcher去匹配关系。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> py2neo <span class="hljs-keyword">import</span> Graph, Node, NodeMatcher,Relationship,RelationshipMatcher<br><br><span class="hljs-comment"># 连接Neo4j</span><br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, auth=(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;12345678&quot;</span>))<br><br><span class="hljs-comment"># 使用RelationshipMatcher</span><br>rel_matcher = RelationshipMatcher(graph)<br>relations = rel_matcher.<span class="hljs-keyword">match</span>(r_type=<span class="hljs-string">&quot;FRIEND&quot;</span>).<span class="hljs-built_in">all</span>()<br><br><span class="hljs-built_in">print</span>(relations)<br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807081913909.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>得到结果</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">[<span class="hljs-name">FRIEND</span>(<span class="hljs-name">Node</span>(<span class="hljs-symbol">&#x27;Person</span>&#x27;, name=<span class="hljs-symbol">&#x27;Alice</span>&#x27;), Node(<span class="hljs-symbol">&#x27;Person</span>&#x27;, name=<span class="hljs-symbol">&#x27;Bob</span>&#x27;), since=2026)]<br></code></pre></td></tr></table></figure>
+<h2 id="2-4-删除实体与关系"><a href="#2-4-删除实体与关系" class="headerlink" title="2-4-删除实体与关系"></a>2-4-删除实体与关系</h2><h3 id="2-4-1-删除实体"><a href="#2-4-1-删除实体" class="headerlink" title="2-4-1-删除实体"></a>2-4-1-删除实体</h3><p>通过graph.delete()删除指定实体，当实体被删除后，其关系将自动被删除。</p>
+<p>本质：匹配到指定节点，然后用delete删除。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">from py2neo import Graph, <span class="hljs-keyword">Node</span><span class="hljs-title">, NodeMatcher</span>, Relationship<br><br><span class="hljs-comment"># 连接 Docker 内的 Neo4j</span><br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, <span class="hljs-attr">auth=</span>(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;12345678&quot;</span>))<br><br><span class="hljs-comment"># 按条件删除节点</span><br>matcher = NodeMatcher(graph)<br><span class="hljs-comment"># 匹配第一个Alice的Person节点</span><br><span class="hljs-keyword">node</span> <span class="hljs-title">= matcher</span>.match(<span class="hljs-string">&quot;Person&quot;</span>, <span class="hljs-attr">name=</span><span class="hljs-string">&quot;Alice&quot;</span>).first()<br>if <span class="hljs-keyword">node</span><span class="hljs-title">:</span><br><span class="hljs-title">	graph</span>.delete(<span class="hljs-keyword">node</span><span class="hljs-title">)  # 自动删除关联关系</span><br><span class="hljs-title">	</span><br></code></pre></td></tr></table></figure>
+<p>在删除Alice实体后，Alice实体的关系也被删除，仅保留Bob实体。</p>
+<p><img src="file-20250807082606331.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-4-2-删除关系"><a href="#2-4-2-删除关系" class="headerlink" title="2-4-2-删除关系"></a>2-4-2-删除关系</h3><p>通过graph.delete()删除指定关系，实体会被保留。  </p>
+<p>本质：匹配到指定关系，然后用delete删除。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">from py2neo import Graph, <span class="hljs-keyword">Node</span><span class="hljs-title">, NodeMatcher</span>, Relationship, RelationshipMatcher<br><br><span class="hljs-comment"># 连接Neo4j</span><br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, <span class="hljs-attr">auth=</span>(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;12345678&quot;</span>))<br><br><br><span class="hljs-comment"># 删除特定关系</span><br>rel_matcher = RelationshipMatcher(graph)<br><span class="hljs-comment"># 匹配FRIEND的关系</span><br>relation = rel_matcher.match(<span class="hljs-attr">r_type=</span><span class="hljs-string">&quot;FRIEND&quot;</span>).first()<br>if relation:<br>    graph.separate(relation)  <span class="hljs-comment"># 仅删除关系，保留节点</span><br>    <br></code></pre></td></tr></table></figure>
+<p>运行前</p>
+<p><img src="file-20250807082905138.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>运行后</p>
+<p><img src="file-20250807082928550.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>实体间关系被删除，但是实体得以保留。</p>
+<h3 id="2-4-3-删除所有数据"><a href="#2-4-3-删除所有数据" class="headerlink" title="2-4-3-删除所有数据"></a>2-4-3-删除所有数据</h3><p>graph.delete_all()可以删除数据库内所有数据。</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-keyword">from</span> py2neo import Graph<br><br><span class="hljs-comment"># 1. 连接 Neo4j 数据库</span><br>graph = Graph(<span class="hljs-string">&quot;bolt://localhost:7687&quot;</span>, auth=(<span class="hljs-string">&quot;neo4j&quot;</span>, <span class="hljs-string">&quot;12345678&quot;</span>))<br><br><span class="hljs-comment"># 2. 删除所有节点和关系（谨慎操作！）</span><br>graph.delete_all()  <span class="hljs-comment"># 执行后数据库将被清空</span><br><br><span class="hljs-comment"># 3. 验证删除结果（可选）</span><br><span class="hljs-literal">result</span> = graph.<span class="hljs-built_in">run</span>(<span class="hljs-string">&quot;MATCH (n) RETURN COUNT(n) AS node_count&quot;</span>)<br>print(<span class="hljs-string">&quot;剩余节点数量:&quot;</span>, <span class="hljs-literal">result</span>.evaluate())  <span class="hljs-comment"># 输出应为 0</span><br></code></pre></td></tr></table></figure>
+<p>运行后</p>
+<p><img src="file-20250807083311777.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输出结果</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">剩余节点数量: 0</span><br></code></pre></td></tr></table></figure>
+<p><img src="file-20250807083355660.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+        <a href="/tags/neo4j/" class="print-no-link">#neo4j</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>02-使用python操作neo4j</div>
+      <div>https://pattianfang.github.io/2025/08/07/02-使用python操作neo4j/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Pat Tian Fang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年8月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年8月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/08/06/05-py-window-styles%E6%89%93%E9%80%A0Windows%2011%E9%A3%8E%E6%A0%BCPython%20UI/" title="05-py-window-styles打造Windows 11风格Python UI">
+                        <span class="hidden-mobile">05-py-window-styles打造Windows 11风格Python UI</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"pattianfang/gittalk-comments","repo-id":"R_kgDOOnk8-w","category":"Announcements","category-id":"DIC_kwDOOnk8-84Cp_Bs","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
