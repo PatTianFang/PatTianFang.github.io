@@ -1,0 +1,221 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #7f8c8d;
+    --accent-color: #3498db;
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+    --border-color: #e9ecef;
+    --container-width: 800px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+header h1 a:hover {
+    text-decoration: none;
+}
+
+nav a {
+    color: var(--secondary-color);
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a.active, nav a:hover {
+    color: var(--accent-color);
+}
+
+/* Main Content */
+main {
+    flex: 1;
+}
+
+/* Post List */
+.post-item {
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.post-title {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.post-title a {
+    color: var(--primary-color);
+}
+
+.post-title a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.post-category {
+    background-color: #f1f3f5;
+    color: #495057;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.post-excerpt {
+    color: #555;
+}
+
+/* Filters */
+.filter-section {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.filter-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.filter-btn.active {
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+}
+
+/* Post Content */
+.post-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+.post-content h1, .post-content h2, .post-content h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: var(--primary-color);
+}
+
+.post-content p {
+    margin-bottom: 1.2em;
+}
+
+.post-content ul, .post-content ol {
+    margin-bottom: 1.2em;
+    padding-left: 20px;
+}
+
+.post-content li {
+    margin-bottom: 0.5em;
+}
+
+.post-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-header h1 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.post-header .post-meta {
+    justify-content: center;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    background-color: #fff;
+}

@@ -1,0 +1,26 @@
+[
+    {
+        "id": "hello-world",
+        "title": "你好，世界！我的第一篇笔记",
+        "date": "2026-03-21",
+        "category": "others",
+        "url": "posts/others/hello-world.html",
+        "excerpt": "这是我的第一篇笔记。采用纯 HTML/CSS/JS 搭建，不需要复杂的框架，也不需要构建工具，专注阅读与内容本身。"
+    },
+    {
+        "id": "pdf-embed-demo",
+        "title": "网页嵌入 PDF 模板",
+        "date": "2026-03-21",
+        "category": "demo",
+        "url": "posts/demo/pdf-embed-demo.html",
+        "excerpt": "网页嵌入 PDF 模板。"
+    },
+    {
+        "id": "pdf-embed",
+        "title": "在网页中优雅地嵌入 PDF 文件",
+        "date": "2026-03-21",
+        "category": "others",
+        "url": "posts/others/pdf-embed.html",
+        "excerpt": "对于学术研究或者重度使用 Word/LaTeX 排版的作者来说，跳过网页排版直接在网页中嵌入 PDF 是一种非常高效的成果展示方式。"
+    }
+]
