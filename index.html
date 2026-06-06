@@ -17,12 +17,23 @@
         </div>
     </header>
     <main class="container">
+        <section class="search-section" aria-label="搜索文章">
+            <input
+                type="search"
+                id="post-search"
+                class="search-input"
+                placeholder="搜索标题、分类或摘要"
+                autocomplete="off"
+            >
+            <div id="result-count" class="result-count" aria-live="polite"></div>
+        </section>
         <div class="filter-section" id="filter-section">
             <!-- 分类过滤器由 JS 动态生成 -->
         </div>
         <div id="post-list" class="post-list">
             <p>正在加载文章列表...</p>
         </div>
+        <nav id="pagination" class="pagination" aria-label="文章分页"></nav>
     </main>
     <footer>
         <div class="container">
