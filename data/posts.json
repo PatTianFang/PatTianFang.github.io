@@ -24,15 +24,6 @@
         "excerpt": "对于学术研究或者重度使用 Word/LaTeX 排版的作者来说，跳过网页排版直接在网页中嵌入 PDF 是一种非常高效的成果展示方式。"
     },
     {
-        "id": "C Sharp应用程序界面开发",
-        "title": "C Sharp应用程序界面开发",
-        "date": "2026-03-21",
-        "category": "C Sharp",
-        "url": "posts/C Sharp/C Sharp应用程序界面开发.html",
-        "excerpt": "这是关于 C Sharp应用程序界面开发 的 PDF 文档预览。",
-        "generated_by": "Publish.py"
-    },
-    {
         "id": "Latex代码与渲染效果同时展示",
         "title": "Latex代码与渲染效果同时展示",
         "date": "2026-02-17",
@@ -159,21 +150,624 @@
         "generated_by": "Publish.py"
     },
     {
+        "id": "plot_csv",
+        "title": "plot_csv",
+        "date": "2026-05-09",
+        "category": "AI提示语",
+        "url": "posts/AI提示语/plot_csv.html",
+        "excerpt": "这是关于 plot_csv 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-Copilot配合PyQt制作UI",
+        "title": "01-Copilot配合PyQt制作UI",
+        "date": "2026-03-21",
+        "category": "others",
+        "url": "posts/others/01-Copilot配合PyQt制作UI.html",
+        "excerpt": "这是关于 01-Copilot配合PyQt制作UI 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "Ubuntu安装Claude Code CLI教程",
+        "title": "Ubuntu安装Claude Code CLI教程",
+        "date": "2026-05-28",
+        "category": "others",
+        "url": "posts/others/Ubuntu安装Claude Code CLI教程.html",
+        "excerpt": "这是关于 Ubuntu安装Claude Code CLI教程 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "VS Code使用Minimax API",
+        "title": "VS Code使用Minimax API",
+        "date": "2026-05-30",
+        "category": "others",
+        "url": "posts/others/VS Code使用Minimax API.html",
+        "excerpt": "这是关于 VS Code使用Minimax API 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "VSCode使用Ctrl+滚轮实现代码编辑的放大和缩小",
+        "title": "VSCode使用Ctrl+滚轮实现代码编辑的放大和缩小",
+        "date": "2026-03-21",
+        "category": "others",
+        "url": "posts/others/VSCode使用Ctrl+滚轮实现代码编辑的放大和缩小.html",
+        "excerpt": "这是关于 VSCode使用Ctrl+滚轮实现代码编辑的放大和缩小 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "02-1-VSCode中Jupyter Notebook的使用",
+        "title": "02-1-VSCode中Jupyter Notebook的使用",
+        "date": "2026-03-21",
+        "category": "人工智能",
+        "url": "posts/人工智能/02-1-VSCode中Jupyter Notebook的使用.html",
+        "excerpt": "这是关于 02-1-VSCode中Jupyter Notebook的使用 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
         "id": "01-Mattype打出期望符号",
         "title": "01-Mattype打出期望符号",
         "date": "2026-03-21",
-        "category": "Reinforcement Learning Note",
-        "url": "posts/Reinforcement Learning Note/01-Mattype打出期望符号.html",
+        "category": "人工智能",
+        "url": "posts/人工智能/01-Mattype打出期望符号.html",
         "excerpt": "这是关于 01-Mattype打出期望符号 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "强化学习（第2版）",
+        "title": "强化学习（第2版）",
+        "date": "2026-03-04",
+        "category": "人工智能",
+        "url": "posts/人工智能/强化学习（第2版）.html",
+        "excerpt": "这是关于 强化学习（第2版） 的 PDF 文档预览。",
         "generated_by": "Publish.py"
     },
     {
         "id": "01-多臂赌博机",
         "title": "01-多臂赌博机",
         "date": "2026-03-11",
-        "category": "Reinforcement Learning Note",
-        "url": "posts/Reinforcement Learning Note/01-多臂赌博机.html",
+        "category": "人工智能",
+        "url": "posts/人工智能/01-多臂赌博机.html",
         "excerpt": "这是关于 01-多臂赌博机 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "光子STM32F103C8T6小系统板使用说明V2.0",
+        "title": "光子STM32F103C8T6小系统板使用说明V2.0",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/光子STM32F103C8T6小系统板使用说明V2.0.html",
+        "excerpt": "这是关于 光子STM32F103C8T6小系统板使用说明V2.0 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "光子STM32F103C8T6小系统板验教程V3.0",
+        "title": "光子STM32F103C8T6小系统板验教程V3.0",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/光子STM32F103C8T6小系统板验教程V3.0.html",
+        "excerpt": "这是关于 光子STM32F103C8T6小系统板验教程V3.0 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "STM32F103C8T6核心板原理图V1.0",
+        "title": "STM32F103C8T6核心板原理图V1.0",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/STM32F103C8T6核心板原理图V1.0.html",
+        "excerpt": "这是关于 STM32F103C8T6核心板原理图V1.0 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "1.STM32F103C8T6芯片手册（中文）",
+        "title": "1.STM32F103C8T6芯片手册（中文）",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/1.STM32F103C8T6芯片手册（中文）.html",
+        "excerpt": "这是关于 1.STM32F103C8T6芯片手册（中文） 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "10.STM32F1 HAL库介绍（英文）",
+        "title": "10.STM32F1 HAL库介绍（英文）",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/10.STM32F1 HAL库介绍（英文）.html",
+        "excerpt": "这是关于 10.STM32F1 HAL库介绍（英文） 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "2.STM32F103C8T6参考手册（中文）",
+        "title": "2.STM32F103C8T6参考手册（中文）",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/2.STM32F103C8T6参考手册（中文）.html",
+        "excerpt": "这是关于 2.STM32F103C8T6参考手册（中文） 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "3.STM32F10x硬件开发使用入门（中文）",
+        "title": "3.STM32F10x硬件开发使用入门（中文）",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/3.STM32F10x硬件开发使用入门（中文）.html",
+        "excerpt": "这是关于 3.STM32F10x硬件开发使用入门（中文） 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "4.FreeRTOS实用教程（中文）",
+        "title": "4.FreeRTOS实用教程（中文）",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/4.FreeRTOS实用教程（中文）.html",
+        "excerpt": "这是关于 4.FreeRTOS实用教程（中文） 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "5.Cortex-M3技术参考手册（中文）",
+        "title": "5.Cortex-M3技术参考手册（中文）",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/5.Cortex-M3技术参考手册（中文）.html",
+        "excerpt": "这是关于 5.Cortex-M3技术参考手册（中文） 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "6.KEIL MDK使用方法1.0[光子物联]（中文）",
+        "title": "6.KEIL MDK使用方法1.0[光子物联]（中文）",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/6.KEIL MDK使用方法1.0[光子物联]（中文）.html",
+        "excerpt": "这是关于 6.KEIL MDK使用方法1.0[光子物联]（中文） 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "7.STM32CubeMX使用方法1.0[光子物联](中文)",
+        "title": "7.STM32CubeMX使用方法1.0[光子物联](中文)",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/7.STM32CubeMX使用方法1.0[光子物联](中文).html",
+        "excerpt": "这是关于 7.STM32CubeMX使用方法1.0[光子物联](中文) 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "8.STM32CubeProgrammer安装及使用方法1.0[光子物联]",
+        "title": "8.STM32CubeProgrammer安装及使用方法1.0[光子物联]",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/8.STM32CubeProgrammer安装及使用方法1.0[光子物联].html",
+        "excerpt": "这是关于 8.STM32CubeProgrammer安装及使用方法1.0[光子物联] 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "9.字库取模软件PCtoLCD2002使用说明",
+        "title": "9.字库取模软件PCtoLCD2002使用说明",
+        "date": "2026-05-27",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/9.字库取模软件PCtoLCD2002使用说明.html",
+        "excerpt": "这是关于 9.字库取模软件PCtoLCD2002使用说明 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "AT6558芯片数据手册-V1.21",
+        "title": "AT6558芯片数据手册-V1.21",
+        "date": "2026-05-05",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/AT6558芯片数据手册-V1.21.html",
+        "excerpt": "这是关于 AT6558芯片数据手册-V1.21 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "CASIC多模卫星导航接收机协议规范4.1v180412",
+        "title": "CASIC多模卫星导航接收机协议规范4.1v180412",
+        "date": "2026-05-05",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/CASIC多模卫星导航接收机协议规范4.1v180412.html",
+        "excerpt": "这是关于 CASIC多模卫星导航接收机协议规范4.1v180412 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "光子物联北斗GPS双模定位模块简介及驱动源码介绍",
+        "title": "光子物联北斗GPS双模定位模块简介及驱动源码介绍",
+        "date": "2026-05-05",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/光子物联北斗GPS双模定位模块简介及驱动源码介绍.html",
+        "excerpt": "这是关于 光子物联北斗GPS双模定位模块简介及驱动源码介绍 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "北斗GPS模块用户使用手册",
+        "title": "北斗GPS模块用户使用手册",
+        "date": "2026-05-05",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/北斗GPS模块用户使用手册.html",
+        "excerpt": "这是关于 北斗GPS模块用户使用手册 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "光子物联北斗GPS模块原理图",
+        "title": "光子物联北斗GPS模块原理图",
+        "date": "2026-05-26",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/光子物联北斗GPS模块原理图.html",
+        "excerpt": "这是关于 光子物联北斗GPS模块原理图 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "北斗GPS经纬度读取实验的小系统板实验说明文档",
+        "title": "北斗GPS经纬度读取实验的小系统板实验说明文档",
+        "date": "2026-05-26",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/北斗GPS经纬度读取实验的小系统板实验说明文档.html",
+        "excerpt": "这是关于 北斗GPS经纬度读取实验的小系统板实验说明文档 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "7.字库取模软件PCtoLCD2002使用说明",
+        "title": "7.字库取模软件PCtoLCD2002使用说明",
+        "date": "2026-05-05",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/7.字库取模软件PCtoLCD2002使用说明.html",
+        "excerpt": "这是关于 7.字库取模软件PCtoLCD2002使用说明 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "DEMO-A-0.5W_sch_V104",
+        "title": "DEMO-A-0.5W_sch_V104",
+        "date": "2026-04-23",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/DEMO-A-0.5W_sch_V104.html",
+        "excerpt": "这是关于 DEMO-A-0.5W_sch_V104 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "DEMO_A_1W-sch-V104",
+        "title": "DEMO_A_1W-sch-V104",
+        "date": "2026-04-23",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/DEMO_A_1W-sch-V104.html",
+        "excerpt": "这是关于 DEMO_A_1W-sch-V104 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "DEMO_A_2WUS_Sch_V102(2WUS 应用原理图)",
+        "title": "DEMO_A_2WUS_Sch_V102(2WUS 应用原理图)",
+        "date": "2026-04-23",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/DEMO_A_2WUS_Sch_V102(2WUS 应用原理图).html",
+        "excerpt": "这是关于 DEMO_A_2WUS_Sch_V102(2WUS 应用原理图) 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "DEMO_A_2WVS_Sch_V102",
+        "title": "DEMO_A_2WVS_Sch_V102",
+        "date": "2026-04-23",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/DEMO_A_2WVS_Sch_V102.html",
+        "excerpt": "这是关于 DEMO_A_2WVS_Sch_V102 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "SR_DEMO_A 无线对讲数据传输模块演示板说明书V107-202003",
+        "title": "SR_DEMO_A 无线对讲数据传输模块演示板说明书V107-202003",
+        "date": "2026-04-23",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/SR_DEMO_A 无线对讲数据传输模块演示板说明书V107-202003.html",
+        "excerpt": "这是关于 SR_DEMO_A 无线对讲数据传输模块演示板说明书V107-202003 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "DEMO_A_120V_Sch_V102",
+        "title": "DEMO_A_120V_Sch_V102",
+        "date": "2026-05-30",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/DEMO_A_120V_Sch_V102.html",
+        "excerpt": "这是关于 DEMO_A_120V_Sch_V102 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "SR120V规格书",
+        "title": "SR120V规格书",
+        "date": "2026-05-26",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/SR120V规格书.html",
+        "excerpt": "这是关于 SR120V规格书 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "circuit_diagram",
+        "title": "circuit_diagram",
+        "date": "2026-05-30",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/circuit_diagram.html",
+        "excerpt": "这是关于 circuit_diagram 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "pic2_circuit",
+        "title": "pic2_circuit",
+        "date": "2026-05-30",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/pic2_circuit.html",
+        "excerpt": "这是关于 pic2_circuit 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "pic3_circuit",
+        "title": "pic3_circuit",
+        "date": "2026-05-30",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/pic3_circuit.html",
+        "excerpt": "这是关于 pic3_circuit 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "02-采取方案",
+        "title": "02-采取方案",
+        "date": "2026-06-01",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/02-采取方案.html",
+        "excerpt": "这是关于 02-采取方案 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-答疑解惑",
+        "title": "03-答疑解惑",
+        "date": "2026-06-01",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/03-答疑解惑.html",
+        "excerpt": "这是关于 03-答疑解惑 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "00-硬件连接设计方法",
+        "title": "00-硬件连接设计方法",
+        "date": "2026-06-01",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/00-硬件连接设计方法.html",
+        "excerpt": "这是关于 00-硬件连接设计方法 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-总体思路",
+        "title": "01-总体思路",
+        "date": "2026-06-01",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/01-总体思路.html",
+        "excerpt": "这是关于 01-总体思路 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "02-答疑解惑",
+        "title": "02-答疑解惑",
+        "date": "2026-06-01",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/02-答疑解惑.html",
+        "excerpt": "这是关于 02-答疑解惑 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "00-对讲机模块",
+        "title": "00-对讲机模块",
+        "date": "2026-06-01",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/00-对讲机模块.html",
+        "excerpt": "这是关于 00-对讲机模块 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-连接思路",
+        "title": "01-连接思路",
+        "date": "2026-06-01",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/01-连接思路.html",
+        "excerpt": "这是关于 01-连接思路 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "02-对讲机模块本身设计思路",
+        "title": "02-对讲机模块本身设计思路",
+        "date": "2026-06-01",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/02-对讲机模块本身设计思路.html",
+        "excerpt": "这是关于 02-对讲机模块本身设计思路 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "摄像头预览脚本使用说明",
+        "title": "摄像头预览脚本使用说明",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/摄像头预览脚本使用说明.html",
+        "excerpt": "这是关于 摄像头预览脚本使用说明 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "YOLO实时检测脚本说明",
+        "title": "YOLO实时检测脚本说明",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/YOLO实时检测脚本说明.html",
+        "excerpt": "这是关于 YOLO实时检测脚本说明 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "00-Python版本管理(Conda虚拟环境)",
+        "title": "00-Python版本管理(Conda虚拟环境)",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/00-Python版本管理(Conda虚拟环境).html",
+        "excerpt": "这是关于 00-Python版本管理(Conda虚拟环境) 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-OpenCV库安装",
+        "title": "01-OpenCV库安装",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/01-OpenCV库安装.html",
+        "excerpt": "这是关于 01-OpenCV库安装 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "02-CUDA环境配置检查",
+        "title": "02-CUDA环境配置检查",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/02-CUDA环境配置检查.html",
+        "excerpt": "这是关于 02-CUDA环境配置检查 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-1-CUDA环境安装",
+        "title": "03-1-CUDA环境安装",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/03-1-CUDA环境安装.html",
+        "excerpt": "这是关于 03-1-CUDA环境安装 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-2-缺少工具补装",
+        "title": "03-2-缺少工具补装",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/03-2-缺少工具补装.html",
+        "excerpt": "这是关于 03-2-缺少工具补装 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-3-CUDA环境修复",
+        "title": "03-3-CUDA环境修复",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/03-3-CUDA环境修复.html",
+        "excerpt": "这是关于 03-3-CUDA环境修复 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "04-Pytorch安装",
+        "title": "04-Pytorch安装",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/04-Pytorch安装.html",
+        "excerpt": "这是关于 04-Pytorch安装 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "05-torchvision安装",
+        "title": "05-torchvision安装",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/05-torchvision安装.html",
+        "excerpt": "这是关于 05-torchvision安装 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "06-Yolo安装",
+        "title": "06-Yolo安装",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/06-Yolo安装.html",
+        "excerpt": "这是关于 06-Yolo安装 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "07-Yolo安装补充第三方库",
+        "title": "07-Yolo安装补充第三方库",
+        "date": "2026-06-02",
+        "category": "嵌入式开发",
+        "url": "posts/嵌入式开发/07-Yolo安装补充第三方库.html",
+        "excerpt": "这是关于 07-Yolo安装补充第三方库 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "图片生成小技巧",
+        "title": "图片生成小技巧",
+        "date": "2026-05-30",
+        "category": "科研",
+        "url": "posts/科研/图片生成小技巧.html",
+        "excerpt": "这是关于 图片生成小技巧 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "C Sharp应用程序界面开发",
+        "title": "C Sharp应用程序界面开发",
+        "date": "2026-03-21",
+        "category": "语言语法",
+        "url": "posts/语言语法/C Sharp应用程序界面开发.html",
+        "excerpt": "这是关于 C Sharp应用程序界面开发 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "快速入门Flutter：从零开始构建你的第一个应用",
+        "title": "快速入门Flutter：从零开始构建你的第一个应用",
+        "date": "2026-03-21",
+        "category": "语言语法",
+        "url": "posts/语言语法/快速入门Flutter：从零开始构建你的第一个应用.html",
+        "excerpt": "这是关于 快速入门Flutter：从零开始构建你的第一个应用 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-2-QT 5.14.2下载使用",
+        "title": "01-2-QT 5.14.2下载使用",
+        "date": "2026-03-21",
+        "category": "语言语法",
+        "url": "posts/语言语法/01-2-QT 5.14.2下载使用.html",
+        "excerpt": "这是关于 01-2-QT 5.14.2下载使用 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "02-1-QT简单界面的制作",
+        "title": "02-1-QT简单界面的制作",
+        "date": "2026-03-21",
+        "category": "语言语法",
+        "url": "posts/语言语法/02-1-QT简单界面的制作.html",
+        "excerpt": "这是关于 02-1-QT简单界面的制作 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "02-2-QT入门",
+        "title": "02-2-QT入门",
+        "date": "2026-03-21",
+        "category": "语言语法",
+        "url": "posts/语言语法/02-2-QT入门.html",
+        "excerpt": "这是关于 02-2-QT入门 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-2-1-手动安装Gradle",
+        "title": "03-2-1-手动安装Gradle",
+        "date": "2026-03-21",
+        "category": "语言语法",
+        "url": "posts/语言语法/03-2-1-手动安装Gradle.html",
+        "excerpt": "这是关于 03-2-1-手动安装Gradle 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-2-2-javax.net.ssl.SSLHandshakeException：PKIX path building failed问题的解决",
+        "title": "03-2-2-javax.net.ssl.SSLHandshakeException：PKIX path building failed问题的解决",
+        "date": "2026-03-21",
+        "category": "语言语法",
+        "url": "posts/语言语法/03-2-2-javax.net.ssl.SSLHandshakeException：PKIX path building failed问题的解决.html",
+        "excerpt": "这是关于 03-2-2-javax.net.ssl.SSLHandshakeException：PKIX path building failed问题的解决 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-2-QT打包为APK",
+        "title": "03-2-QT打包为APK",
+        "date": "2026-03-21",
+        "category": "语言语法",
+        "url": "posts/语言语法/03-2-QT打包为APK.html",
+        "excerpt": "这是关于 03-2-QT打包为APK 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-R语言入门-R和Rstudio安装与使用",
+        "title": "01-R语言入门-R和Rstudio安装与使用",
+        "date": "2026-03-21",
+        "category": "语言语法",
+        "url": "posts/语言语法/01-R语言入门-R和Rstudio安装与使用.html",
+        "excerpt": "这是关于 01-R语言入门-R和Rstudio安装与使用 的 PDF 文档预览。",
         "generated_by": "Publish.py"
     }
 ]
