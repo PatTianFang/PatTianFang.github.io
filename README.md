@@ -1,73 +1,79 @@
-# WebNote - 极简个人笔记/博客模板
+# WebNote
 
-WebNote 是一个基于 **纯 HTML/CSS/JS** 构建的静态网页模板，专为 GitHub Pages 设计。它摒弃了复杂的框架和构建工具，回归网页最原始的开发方式，旨在为用户提供一个极简、快速且易于维护的个人笔记空间。
+`PatTianFang.github.io` 是 Note to WebNote 的静态前端仓库。它只保存 HTML/CSS/JS/JSON 和少量静态资源，不保存 PDF 文件。
 
-## ✨ 特性
+线上站点：
 
-- **零依赖**：无 npm，无 Webpack，无外部框架。打开即运行，修改即生效。
-- **动态渲染**：通过 `data/posts.json` 统一管理文章元数据，JS 自动渲染列表。
-- **分类过滤**：内置分类过滤器，支持按标签筛选文章。
-- **PDF 嵌入**：特别优化了 PDF 文件的展示，适合学术研究或技术文档分享。
-- **响应式设计**：完美适配桌面端和移动端浏览器。
-- **一键部署**：由于是纯静态文件，完美支持 GitHub Pages、Vercel 等托管平台。
+- `https://www.patfang.xyz/`
+- GitHub Pages 源仓库：`PatTianFang/PatTianFang.github.io`
 
-## 🚀 快速开始
+PDF 文件由 Cloudflare R2 提供：
 
-### 1. 克隆仓库
-```bash
-git clone https://github.com/PatTianFang/WebNote.git
-cd WebNote
-```
+- `https://static.patfang.xyz/pdfs/...`
 
-### 2. 本地预览
-直接在浏览器中打开 `index.html` 即可预览效果。
-> **注意**：由于浏览器安全策略（CORS），直接通过 `file://` 协议打开可能无法加载 `posts.json` 数据。建议使用 VS Code 的 **Live Server** 扩展或简单的本地服务器（如 `python -m http.server`）运行。
+## 功能
 
-### 3. 部署到 GitHub Pages
-1. 将项目推送到你的 GitHub 仓库。
-2. 进入仓库设置：`Settings` > `Pages`。
-3. 在 `Build and deployment` 下选择 `Deploy from a branch`。
-4. 选择 `main` 分支并保存。
+- 纯静态站点，无 npm、无构建步骤。
+- 首页读取 `data/posts.json` 渲染文章列表。
+- 支持分类过滤。
+- 支持搜索标题、分类、摘要和日期。
+- 支持分页，每页 10 篇文章。
+- 文章详情页使用自适应宽屏布局，桌面端 PDF 预览更宽，移动端自动收缩。
+- PDF 使用 R2 公共 URL 嵌入，避免 GitHub 大文件限制。
 
-## 📝 如何添加文章
-
-1. **准备 HTML 文件**：在 `posts/` 相应的目录下（如 `posts/tech/`）创建你的文章 HTML 文件。
-2. **准备 PDF（可选）**：如果是 PDF 展示类文章，将 PDF 放入 `pdfs/` 目录。
-3. **更新索引**：在 `data/posts.json` 中添加新条目：
-   ```json
-   {
-       "id": "your-post-id",
-       "title": "文章标题",
-       "date": "2026-03-21",
-       "category": "分类名称",
-       "url": "posts/your-category/your-file.html",
-       "excerpt": "文章简短摘要..."
-   }
-   ```
-
-## 📁 目录结构
+## 目录结构
 
 ```text
-WebNote/
-├── css/            # 样式表
-├── data/           # 数据文件 (posts.json)
-├── js/             # 逻辑脚本
-├── posts/          # 文章 HTML 页面
-├── pdfs/           # PDF 资源文件
-├── images/         # 图片资源
-├── index.html      # 首页
-└── about.html      # 关于页
+.
+├── css/style.css
+├── data/posts.json
+├── js/main.js
+├── posts/                 # 文章 HTML；大多数由 Publish.py 生成
+├── images/
+├── index.html
+├── about.html
+├── CNAME
+└── README.md
 ```
 
-## 📄 开源协议
+## 生成规则
 
-本项目采用 [MIT License](LICENSE) 协议。
+大多数文章页由根仓库的 `Publish.py` 生成，不建议手动编辑生成页。发布脚本会：
 
-## 🤝 联系作者
+- 根据 `Note/` 下的 PDF 生成文章页。
+- 更新 `data/posts.json`。
+- 将 PDF 链接写成 R2 URL。
+- 清理已经失效的旧文章页和空目录。
 
-- **GitHub**: [FangTian](https://github.com/PatTianFang)
-- **Email**: PatTianFang@outlook.com
-- **Project Link**: [https://github.com/PatTianFang/WebNote](https://github.com/PatTianFang/WebNote)
+手写文章可以放在 `posts/` 下，但需要手动维护 `data/posts.json` 中的记录。
 
----
-*如果你觉得这个项目对你有帮助，欢迎点个 ⭐ Star！*
+## 本地预览
+
+直接打开 `index.html` 可能受浏览器 `file://` 限制，建议启动本地静态服务：
+
+```powershell
+cd WebNote\PatTianFang.github.io
+python -m http.server 5500
+```
+
+然后访问：
+
+```text
+http://127.0.0.1:5500/
+```
+
+## 部署
+
+本仓库推送后由 GitHub Pages 或已连接的 Cloudflare Pages 自动部署。
+
+当前自定义域名由 `CNAME` 指定：
+
+```text
+www.patfang.xyz
+```
+
+## 注意
+
+- 不要提交 `pdfs/` 目录。
+- 不要把 R2 manifest、Wrangler 本地状态或本地缓存提交到本仓库。
+- PDF 是否可访问取决于 Cloudflare R2 bucket、CORS 和自定义域名配置。

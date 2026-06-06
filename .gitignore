@@ -10,10 +10,16 @@ desktop.ini
 *.swp
 *.swo
 
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
 # Local caches
 .wrangler/
 .cache/
 __pycache__/
+node_modules/
 
 # Build and packaging artifacts
 build/
@@ -27,5 +33,8 @@ Publish.spec
 *.tmp
 *.temp
 
-# PDF binaries are served from Cloudflare R2
+# PDF binaries are served from Cloudflare R2.
 pdfs/
+
+# R2 sync state belongs to the root workspace, not the site repo.
+.webnote-r2-manifest.json
