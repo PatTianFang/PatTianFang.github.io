@@ -1,18 +1,31 @@
 # OS metadata
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# IDE
+# Editors / local assistants
 .vscode/
 .idea/
+.codebuddy/
 *.swp
 *.swo
 
-# Project specific
-.codebuddy/
-pdfs/
+# Local caches
+.wrangler/
+.cache/
+__pycache__/
 
-
+# Build and packaging artifacts
+build/
+dist/
 .build/
 .dist/
 Publish.spec
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+
+# PDF binaries are served from Cloudflare R2
+pdfs/
