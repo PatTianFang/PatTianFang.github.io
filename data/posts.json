@@ -22,5 +22,158 @@
         "category": "others",
         "url": "posts/others/pdf-embed.html",
         "excerpt": "对于学术研究或者重度使用 Word/LaTeX 排版的作者来说，跳过网页排版直接在网页中嵌入 PDF 是一种非常高效的成果展示方式。"
+    },
+    {
+        "id": "C Sharp应用程序界面开发",
+        "title": "C Sharp应用程序界面开发",
+        "date": "2026-03-21",
+        "category": "C Sharp",
+        "url": "posts/C Sharp/C Sharp应用程序界面开发.html",
+        "excerpt": "这是关于 C Sharp应用程序界面开发 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "Latex代码与渲染效果同时展示",
+        "title": "Latex代码与渲染效果同时展示",
+        "date": "2026-02-17",
+        "category": "MathNote",
+        "url": "posts/MathNote/Latex代码与渲染效果同时展示.html",
+        "excerpt": "这是关于 Latex代码与渲染效果同时展示 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "Latex基础语法",
+        "title": "Latex基础语法",
+        "date": "2026-02-22",
+        "category": "MathNote",
+        "url": "posts/MathNote/Latex基础语法.html",
+        "excerpt": "这是关于 Latex基础语法 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "Latex最简模板",
+        "title": "Latex最简模板",
+        "date": "2026-02-17",
+        "category": "MathNote",
+        "url": "posts/MathNote/Latex最简模板.html",
+        "excerpt": "这是关于 Latex最简模板 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "Latex语法",
+        "title": "Latex语法",
+        "date": "2026-02-17",
+        "category": "MathNote",
+        "url": "posts/MathNote/Latex语法.html",
+        "excerpt": "这是关于 Latex语法 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "Latex基础语法",
+        "title": "Latex基础语法",
+        "date": "2026-02-22",
+        "category": "MathNote",
+        "url": "posts/MathNote/Latex基础语法.html",
+        "excerpt": "这是关于 Latex基础语法 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "高数基础知识",
+        "title": "高数基础知识",
+        "date": "2026-02-17",
+        "category": "MathNote",
+        "url": "posts/MathNote/高数基础知识.html",
+        "excerpt": "这是关于 高数基础知识 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "高数基础知识",
+        "title": "高数基础知识",
+        "date": "2026-02-17",
+        "category": "MathNote",
+        "url": "posts/MathNote/高数基础知识.html",
+        "excerpt": "这是关于 高数基础知识 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "线性代数基础知识",
+        "title": "线性代数基础知识",
+        "date": "2026-02-17",
+        "category": "MathNote",
+        "url": "posts/MathNote/线性代数基础知识.html",
+        "excerpt": "这是关于 线性代数基础知识 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "线性代数基础知识",
+        "title": "线性代数基础知识",
+        "date": "2026-02-17",
+        "category": "MathNote",
+        "url": "posts/MathNote/线性代数基础知识.html",
+        "excerpt": "这是关于 线性代数基础知识 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "五角星五角和",
+        "title": "五角星五角和",
+        "date": "2026-03-21",
+        "category": "MathNote",
+        "url": "posts/MathNote/五角星五角和.html",
+        "excerpt": "这是关于 五角星五角和 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "Latex+TexLive+VSCode环境配置",
+        "title": "Latex+TexLive+VSCode环境配置",
+        "date": "2026-03-21",
+        "category": "MathNote",
+        "url": "posts/MathNote/Latex+TexLive+VSCode环境配置.html",
+        "excerpt": "这是关于 Latex+TexLive+VSCode环境配置 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "minted",
+        "title": "minted",
+        "date": "2026-02-17",
+        "category": "MathNote",
+        "url": "posts/MathNote/minted.html",
+        "excerpt": "这是关于 minted 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "minted",
+        "title": "minted",
+        "date": "2026-02-17",
+        "category": "MathNote",
+        "url": "posts/MathNote/minted.html",
+        "excerpt": "这是关于 minted 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "Word修改默认模板",
+        "title": "Word修改默认模板",
+        "date": "2026-03-21",
+        "category": "others",
+        "url": "posts/others/Word修改默认模板.html",
+        "excerpt": "这是关于 Word修改默认模板 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-Mattype打出期望符号",
+        "title": "01-Mattype打出期望符号",
+        "date": "2026-03-21",
+        "category": "Reinforcement Learning Note",
+        "url": "posts/Reinforcement Learning Note/01-Mattype打出期望符号.html",
+        "excerpt": "这是关于 01-Mattype打出期望符号 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-多臂赌博机",
+        "title": "01-多臂赌博机",
+        "date": "2026-03-11",
+        "category": "Reinforcement Learning Note",
+        "url": "posts/Reinforcement Learning Note/01-多臂赌博机.html",
+        "excerpt": "这是关于 01-多臂赌博机 的 PDF 文档预览。",
+        "generated_by": "Publish.py"
     }
 ]

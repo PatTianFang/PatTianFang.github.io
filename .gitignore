@@ -10,3 +10,9 @@ Thumbs.db
 
 # Project specific
 .codebuddy/
+pdfs/
+
+
+.build/
+.dist/
+Publish.spec
