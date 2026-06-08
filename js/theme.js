@@ -88,6 +88,39 @@
         });
     }
 
+    function ensureRecordsNav() {
+        const nav = document.querySelector('body > header nav');
+        if (!nav) {
+            return;
+        }
+
+        const links = Array.from(nav.querySelectorAll('a'));
+        const currentPath = window.location.pathname.replace(/\\/g, '/');
+        let recordsLink = links.find(link => /(^|\/)records\.html$/.test(link.getAttribute('href') || ''));
+
+        if (!recordsLink) {
+            const aboutLink = links.find(link => /(^|\/)about\.html$/.test(link.getAttribute('href') || ''));
+            const recordsHref = aboutLink
+                ? aboutLink.getAttribute('href').replace(/about\.html$/, 'records.html')
+                : 'records.html';
+
+            recordsLink = document.createElement('a');
+            recordsLink.href = recordsHref;
+            recordsLink.textContent = '记录';
+
+            if (aboutLink) {
+                nav.insertBefore(recordsLink, aboutLink);
+            } else {
+                nav.appendChild(recordsLink);
+            }
+        }
+
+        if (/\/records\.html$/.test(currentPath)) {
+            links.forEach(link => link.classList.remove('active'));
+            recordsLink.classList.add('active');
+        }
+    }
+
     function createReadingProgress() {
         if (document.querySelector('.reading-progress')) {
             return;
@@ -215,6 +248,7 @@
     }
 
     function initPageFeatures() {
+        ensureRecordsNav();
         createToggle();
         createReadingProgress();
         createBackToTop();

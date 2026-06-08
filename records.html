@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记录 - FangTian's Note</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/theme.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <h1><a href="index.html">FangTian's Note</a></h1>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="records.html" class="active">记录</a>
+                <a href="about.html">关于</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="records-page">
+        <section class="records-hero" aria-labelledby="records-title">
+            <img src="images/records/city-night.jpg" alt="城市夜色摄影记录" class="records-hero-image">
+            <div class="records-hero-content">
+                <p class="records-kicker">Records</p>
+                <h2 id="records-title">记录</h2>
+                <p>把照片、现场片段和技术笔记放在同一个展厅里，保留每一次观察的光线、路径和想法。</p>
+                <div class="records-hero-actions" aria-label="记录页快捷入口">
+                    <a href="#photo-wall">摄影照片</a>
+                    <a href="#record-posts">Post</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="records-section" id="photo-wall" aria-labelledby="photo-wall-title">
+            <div class="records-section-head">
+                <p class="records-kicker">Photography</p>
+                <h2 id="photo-wall-title">摄影照片</h2>
+            </div>
+            <div class="records-gallery">
+                <article class="record-photo record-photo-large">
+                    <a href="images/records/city-night.jpg">
+                        <img src="images/records/city-night.jpg" alt="夜晚城市天际线与灯光">
+                    </a>
+                    <div>
+                        <p>Urban Night</p>
+                        <h3>城市夜色</h3>
+                    </div>
+                </article>
+                <article class="record-photo">
+                    <a href="images/records/mountain-mist.jpg">
+                        <img src="images/records/mountain-mist.jpg" alt="山间晨雾与层叠远山">
+                    </a>
+                    <div>
+                        <p>Morning Mist</p>
+                        <h3>山间晨雾</h3>
+                    </div>
+                </article>
+                <article class="record-photo">
+                    <a href="images/records/rain-window.jpg">
+                        <img src="images/records/rain-window.jpg" alt="雨窗与城市虚焦灯光">
+                    </a>
+                    <div>
+                        <p>Rain Window</p>
+                        <h3>雨窗光影</h3>
+                    </div>
+                </article>
+                <article class="record-photo">
+                    <a href="images/records/desk-light.jpg">
+                        <img src="images/records/desk-light.jpg" alt="桌面、笔记与相机的创作场景">
+                    </a>
+                    <div>
+                        <p>Desk Light</p>
+                        <h3>桌面创作</h3>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="records-section" id="record-posts" aria-labelledby="record-posts-title">
+            <div class="records-section-head">
+                <p class="records-kicker">Posts</p>
+                <h2 id="record-posts-title">Post 记录</h2>
+            </div>
+            <div class="records-post-grid">
+                <a class="record-post-card" href="posts/others/hello-world.html">
+                    <span>随笔</span>
+                    <h3>你好，世界！我的第一篇笔记</h3>
+                    <p>从纯静态笔记站开始，记录这个 WebNote 的第一步。</p>
+                </a>
+                <a class="record-post-card" href="posts/others/pdf-embed.html">
+                    <span>展示</span>
+                    <h3>在网页中优雅地嵌入 PDF 文件</h3>
+                    <p>把 PDF 内容作为网页的一部分进行展示和归档。</p>
+                </a>
+                <a class="record-post-card record-post-template-link" href="posts/demo/record-post-template.html">
+                    <span>模板</span>
+                    <h3>记录 Post 模板</h3>
+                    <p>用于复制创建新的摄影记录、现场札记和图文 post。</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FangTian's Note | 基于纯 HTML/CSS/JS 构建</p>
+        </div>
+    </footer>
+</body>
+</html>
