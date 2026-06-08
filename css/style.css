@@ -785,6 +785,22 @@ main {
     line-height: 1.12;
 }
 
+.records-section-desc {
+    color: var(--secondary-color);
+    font-size: 0.96rem;
+    margin-top: 10px;
+    max-width: 640px;
+}
+
+.records-section-desc code {
+    background: var(--surface-muted-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    padding: 0.12em 0.4em;
+    font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9em;
+}
+
 .records-gallery {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
