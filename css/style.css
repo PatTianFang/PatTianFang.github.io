@@ -16,8 +16,9 @@
     --nav-active-color: #ffffff;
     --shadow-card: rgba(0, 0, 0, 0.12) 3px 5px 30px 0;
     --shadow-soft: rgba(0, 0, 0, 0.06) 0 10px 36px;
-    --container-width: 980px;
-    --post-container-width: 1180px;
+    --page-inline-space: 48px;
+    --container-width: 1040px;
+    --post-container-width: 1280px;
 }
 
 :root[data-theme="dark"] {
@@ -59,6 +60,22 @@
         --nav-active-color: #ffffff;
         --shadow-card: rgba(0, 0, 0, 0.5) 3px 5px 30px 0;
         --shadow-soft: rgba(0, 0, 0, 0.42) 0 10px 36px;
+    }
+}
+
+@media (min-width: 1280px) {
+    :root {
+        --page-inline-space: 64px;
+        --container-width: 1080px;
+        --post-container-width: 1320px;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --page-inline-space: 96px;
+        --container-width: 1120px;
+        --post-container-width: 1440px;
     }
 }
 
@@ -113,9 +130,10 @@ textarea:focus-visible {
 }
 
 .container {
+    width: calc(100% - var(--page-inline-space));
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 22px;
+    padding: 0;
 }
 
 /* Header */
@@ -435,6 +453,7 @@ main {
 
 /* Post Content */
 .post-container {
+    width: calc(100% - var(--page-inline-space));
     max-width: var(--post-container-width);
 }
 
@@ -445,6 +464,7 @@ main {
     border: 1px solid transparent;
     box-shadow: var(--shadow-soft);
     margin-bottom: 44px;
+    overflow-wrap: break-word;
 }
 
 .post-content h1,
@@ -536,6 +556,8 @@ main {
 }
 
 .post-body embed {
+    display: block;
+    width: 100% !important;
     height: min(82vh, 900px) !important;
     min-height: 520px;
     border-radius: 8px;
@@ -569,12 +591,16 @@ footer {
 }
 
 @media (max-width: 720px) {
+    :root {
+        --page-inline-space: 28px;
+    }
+
     body > header {
         margin-bottom: 30px;
     }
 
     .container {
-        padding: 0 18px;
+        padding: 0;
     }
 
     .header-container {
@@ -638,5 +664,11 @@ footer {
 
     .post-body embed {
         min-height: 420px;
+    }
+}
+
+@media (max-width: 420px) {
+    :root {
+        --page-inline-space: 20px;
     }
 }
