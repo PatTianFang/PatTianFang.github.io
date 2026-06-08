@@ -88,12 +88,146 @@
         });
     }
 
+    function createReadingProgress() {
+        if (document.querySelector('.reading-progress')) {
+            return;
+        }
+
+        const progress = document.createElement('div');
+        progress.className = 'reading-progress';
+        progress.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(progress);
+
+        const updateProgress = () => {
+            const scrollTop = window.scrollY || root.scrollTop || 0;
+            const scrollableHeight = root.scrollHeight - window.innerHeight;
+            const ratio = scrollableHeight > 0 ? Math.min(scrollTop / scrollableHeight, 1) : 0;
+            progress.style.transform = `scaleX(${ratio})`;
+        };
+
+        updateProgress();
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('resize', updateProgress);
+    }
+
+    function createBackToTop() {
+        if (document.querySelector('.back-to-top')) {
+            return;
+        }
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'back-to-top';
+        button.textContent = '↑';
+        button.setAttribute('aria-label', '返回顶部');
+        button.setAttribute('title', '返回顶部');
+        button.setAttribute('data-visible', 'false');
+
+        const updateVisibility = () => {
+            const shouldShow = (window.scrollY || root.scrollTop || 0) > 420;
+            button.setAttribute('data-visible', String(shouldShow));
+        };
+
+        button.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.body.appendChild(button);
+        updateVisibility();
+        window.addEventListener('scroll', updateVisibility, { passive: true });
+    }
+
+    async function copyText(value) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(value);
+            return true;
+        }
+
+        const textarea = document.createElement('textarea');
+        textarea.value = value;
+        textarea.setAttribute('readonly', '');
+        textarea.className = 'clipboard-fallback';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        let copied = false;
+        try {
+            copied = document.execCommand('copy');
+        } finally {
+            textarea.remove();
+        }
+
+        return copied;
+    }
+
+    function createCopyLinkButton() {
+        const postHeader = document.querySelector('.post-header');
+        if (!postHeader || document.querySelector('.copy-link-btn')) {
+            return;
+        }
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'copy-link-btn';
+        button.innerHTML = '<span class="copy-link-icon" aria-hidden="true"></span><span class="copy-link-label">复制链接</span>';
+
+        button.addEventListener('click', async () => {
+            const label = button.querySelector('.copy-link-label');
+            const originalText = label ? label.textContent : '';
+            const copied = await copyText(window.location.href);
+
+            if (label) {
+                label.textContent = copied ? '已复制' : '复制失败';
+                window.setTimeout(() => {
+                    label.textContent = originalText || '复制链接';
+                }, 1600);
+            }
+        });
+
+        postHeader.appendChild(button);
+    }
+
+    function bindSearchShortcut() {
+        const searchInput = document.getElementById('post-search');
+        if (!searchInput || searchInput.getAttribute('data-shortcut-bound') === 'true') {
+            return;
+        }
+
+        searchInput.setAttribute('data-shortcut-bound', 'true');
+        searchInput.setAttribute('aria-keyshortcuts', '/');
+
+        document.addEventListener('keydown', event => {
+            const target = event.target;
+            const isEditable = target && (
+                target.tagName === 'INPUT'
+                || target.tagName === 'TEXTAREA'
+                || target.isContentEditable
+            );
+
+            if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey || isEditable) {
+                return;
+            }
+
+            event.preventDefault();
+            searchInput.focus();
+            searchInput.select();
+        });
+    }
+
+    function initPageFeatures() {
+        createToggle();
+        createReadingProgress();
+        createBackToTop();
+        createCopyLinkButton();
+        bindSearchShortcut();
+    }
+
     applyTheme(getStoredTheme() || getSystemTheme());
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', createToggle);
+        document.addEventListener('DOMContentLoaded', initPageFeatures);
     } else {
-        createToggle();
+        initPageFeatures();
     }
 
     function handleSystemThemeChange(event) {
