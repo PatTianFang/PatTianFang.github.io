@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20260419青岛 - FangTian's Note</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/theme.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <h1><a href="../index.html">FangTian's Note</a></h1>
+            <nav>
+                <a href="../index.html">首页</a>
+                <a href="../records.html">记录</a>
+                <a href="../about.html">关于</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="record-auto-page">
+        <article class="record-auto-layout">
+            <header class="record-auto-header">
+                <p class="records-kicker">Record</p>
+                <h1>20260419青岛</h1>
+                <div class="post-meta">
+                    <span>2026年04月19日</span>
+                    <span class="post-category">记录</span>
+                </div>
+            </header>
+
+            <section class="record-auto-summary" aria-label="记录信息">
+                <div class="record-auto-intro">
+                    <p>保持热爱，奔赴山海。</p>
+                </div>
+                <div class="record-facts">
+                    <div>
+                        <span>拍摄地点</span>
+                        <strong>青岛</strong>
+                    </div>
+                    <div>
+                        <span>图片</span>
+                        <strong>5 张</strong>
+                    </div>
+                    <div>
+                        <span>时间</span>
+                        <strong>2026年04月19日</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="record-auto-gallery" aria-label="照片">
+                <figure class="record-auto-photo"><img src="20260419%E9%9D%92%E5%B2%9B/20260419%E9%9D%92%E5%B2%9B-1781508370549.webp" alt="20260419青岛-1781508370549"></figure>
+
+<figure class="record-auto-photo"><img src="20260419%E9%9D%92%E5%B2%9B/20260419%E9%9D%92%E5%B2%9B-1781508370547.webp" alt="20260419青岛-1781508370547"></figure>
+
+<figure class="record-auto-photo"><img src="20260419%E9%9D%92%E5%B2%9B/20260419%E9%9D%92%E5%B2%9B-1781508434804.webp" alt="20260419青岛-1781508434804"></figure>
+
+<figure class="record-auto-photo"><img src="20260419%E9%9D%92%E5%B2%9B/20260419%E9%9D%92%E5%B2%9B-1781508434800.webp" alt="20260419青岛-1781508434800"></figure>
+
+<figure class="record-auto-photo"><img src="20260419%E9%9D%92%E5%B2%9B/20260419%E9%9D%92%E5%B2%9B-1781508434799.webp" alt="20260419青岛-1781508434799"></figure>
+            </section>
+            <div class="record-lightbox" aria-hidden="true">
+                <button class="record-lightbox-close" type="button" aria-label="关闭">×</button>
+                <button class="record-lightbox-nav record-lightbox-prev" type="button" aria-label="上一张">‹</button>
+                <img class="record-lightbox-image" src="" alt="">
+                <button class="record-lightbox-nav record-lightbox-next" type="button" aria-label="下一张">›</button>
+                <div class="record-lightbox-toolbar">
+                    <span class="record-lightbox-count"></span>
+                    <a class="record-lightbox-download" href="" download>下载照片</a>
+                </div>
+            </div>
+        
+<!-- BEGIN PUBLISH PAGE NAV -->
+<nav class="page-neighbor-nav" aria-label="上一篇和下一篇">
+    <a class="page-neighbor-card" href="20260308%E5%A4%A9%E6%B4%A5.html">
+                    <span class="page-neighbor-label">上一篇</span>
+                    <strong>20260308天津</strong>
+                    <span class="page-neighbor-meta">2026年03月08日 · 天津</span>
+                    <p>2026年03月08日，拍摄地点：天津，共 7 张图片。</p>
+                </a>
+    <a class="page-neighbor-card" href="20260505%E9%9D%92%E5%B2%9B.html">
+                    <span class="page-neighbor-label">下一篇</span>
+                    <strong>20260505青岛</strong>
+                    <span class="page-neighbor-meta">2026年05月05日 · 青岛</span>
+                    <p>2026年05月05日，拍摄地点：青岛，共 5 张图片。</p>
+                </a>
+</nav>
+<!-- END PUBLISH PAGE NAV -->
+</article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FangTian's Note | 基于纯 HTML/CSS/JS 构建</p>
+        </div>
+    </footer>
+    <script>
+    (function () {
+        const images = Array.from(document.querySelectorAll('.record-auto-photo img'));
+        const lightbox = document.querySelector('.record-lightbox');
+        if (!images.length || !lightbox) return;
+
+        const imageEl = lightbox.querySelector('.record-lightbox-image');
+        const closeBtn = lightbox.querySelector('.record-lightbox-close');
+        const prevBtn = lightbox.querySelector('.record-lightbox-prev');
+        const nextBtn = lightbox.querySelector('.record-lightbox-next');
+        const countEl = lightbox.querySelector('.record-lightbox-count');
+        const downloadEl = lightbox.querySelector('.record-lightbox-download');
+        let activeIndex = 0;
+
+        function show(index) {
+            activeIndex = (index + images.length) % images.length;
+            const source = images[activeIndex];
+            const src = source.currentSrc || source.src;
+            imageEl.src = src;
+            imageEl.alt = source.alt || '';
+            countEl.textContent = `${activeIndex + 1} / ${images.length}`;
+            downloadEl.href = src;
+            downloadEl.download = source.alt || 'record-photo';
+        }
+
+        function open(index) {
+            show(index);
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('record-lightbox-open');
+            closeBtn.focus();
+        }
+
+        function close() {
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('record-lightbox-open');
+            imageEl.removeAttribute('src');
+        }
+
+        images.forEach((image, index) => {
+            image.addEventListener('click', () => open(index));
+            image.setAttribute('tabindex', '0');
+            image.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    open(index);
+                }
+            });
+        });
+
+        closeBtn.addEventListener('click', close);
+        prevBtn.addEventListener('click', () => show(activeIndex - 1));
+        nextBtn.addEventListener('click', () => show(activeIndex + 1));
+        lightbox.addEventListener('click', event => {
+            if (event.target === lightbox) close();
+        });
+        document.addEventListener('keydown', event => {
+            if (lightbox.getAttribute('aria-hidden') === 'true') return;
+            if (event.key === 'Escape') close();
+            if (event.key === 'ArrowLeft') show(activeIndex - 1);
+            if (event.key === 'ArrowRight') show(activeIndex + 1);
+        });
+    }());
+    </script>
+</body>
+</html>

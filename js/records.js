@@ -9,7 +9,7 @@
     const MAX_EXCERPT = 120;
     const records = [];
 
-    postList.innerHTML = '<p class="empty-message">正在扫描 images/ 下的记录…</p>';
+    postList.innerHTML = '<p class="empty-message">正在加载记录…</p>';
 
     function stripTags(value) {
         return String(value ?? '').replace(/<[^>]+>/g, '');
@@ -88,6 +88,28 @@
     }
 
     async function discoverRecords() {
+        try {
+            const response = await fetch('data/records.json');
+            if (response.ok) {
+                const items = await response.json();
+                items.forEach((item, index) => {
+                    if (!item || !item.url) return;
+                    records.push({
+                        id: item.id || index + 1,
+                        url: item.url,
+                        title: item.title || `记录 #${index + 1}`,
+                        excerpt: item.excerpt || '',
+                        cover: item.cover || null,
+                        date: item.display_date || item.date || '',
+                        place: item.place || '',
+                    });
+                });
+                if (records.length > 0) return;
+            }
+        } catch (_error) {
+            // Fall back to probing older numbered record pages.
+        }
+
         for (let start = 1; start <= MAX_PROBE; start += PROBE_BATCH) {
             const batch = [];
             for (let i = start; i < start + PROBE_BATCH && i <= MAX_PROBE; i += 1) {
@@ -103,7 +125,7 @@
             });
             if (allEmpty && start > 1) break;
         }
-        records.sort((a, b) => a.id - b.id);
+        records.sort((a, b) => String(a.id).localeCompare(String(b.id), 'zh-CN'));
     }
 
     function escapeHtml(value) {
@@ -127,8 +149,8 @@
         }
 
         postList.innerHTML = items.map(item => `
-            <a class="record-post-card" href="${escapeAttribute(item.url)}">
-                <span>记录 #${item.id}</span>
+            <a class="record-post-card${item.cover ? ' record-post-card-cover' : ''}" href="${escapeAttribute(item.url)}"${item.cover ? ` style="--record-cover: url('${escapeAttribute(item.cover)}')"` : ''}>
+                <span>记录 ${escapeHtml(item.id)}</span>
                 <h3>${escapeHtml(item.title)}</h3>
                 <p>${item.excerpt ? escapeHtml(item.excerpt) : '暂无摘要，进入查看完整内容。'}</p>
             </a>
@@ -151,6 +173,8 @@
                     ? records.filter(item =>
                         item.title.toLowerCase().includes(query)
                         || (item.excerpt && item.excerpt.toLowerCase().includes(query))
+                        || (item.date && item.date.toLowerCase().includes(query))
+                        || (item.place && item.place.toLowerCase().includes(query))
                     )
                     : records;
                 render(filtered);
