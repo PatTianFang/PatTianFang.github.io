@@ -9,7 +9,7 @@
     const MAX_EXCERPT = 120;
     const records = [];
 
-    postList.innerHTML = '<p class="empty-message">正在加载记录…</p>';
+    postList.innerHTML = '<p class="empty-message">正在加载记录...</p>';
 
     function stripTags(value) {
         return String(value ?? '').replace(/<[^>]+>/g, '');
@@ -31,20 +31,16 @@
     }
 
     function extractMeta(html) {
-        // 标题优先取 <h1>（页面里真正显示给读者看的那一行）
         const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
         let title = h1Match ? cleanInline(h1Match[1]) : '';
 
         if (!title) {
             const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
             if (titleMatch) {
-                title = cleanInline(
-                    titleMatch[1].replace(/\s*[-—|]\s*FangTian's Note\s*$/i, '')
-                );
+                title = cleanInline(titleMatch[1].replace(/\s*-\s*FangTian's Note\s*$/i, ''));
             }
         }
 
-        // 摘要：取 <article> 内第一段非空 <p>
         const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
         const searchHtml = articleMatch ? articleMatch[1] : html;
         let excerpt = '';
@@ -59,7 +55,7 @@
         }
 
         if (excerpt.length > MAX_EXCERPT) {
-            excerpt = excerpt.slice(0, MAX_EXCERPT).trimEnd() + '…';
+            excerpt = excerpt.slice(0, MAX_EXCERPT).trimEnd() + '...';
         }
 
         const coverMatch = html.match(/<img[^>]+src="([^"]+)"/i);
@@ -149,7 +145,8 @@
         }
 
         postList.innerHTML = items.map(item => `
-            <a class="record-post-card${item.cover ? ' record-post-card-cover' : ''}" href="${escapeAttribute(item.url)}"${item.cover ? ` style="--record-cover: url('${escapeAttribute(item.cover)}')"` : ''}>
+            <a class="record-post-card${item.cover ? ' record-post-card-cover' : ''}" href="${escapeAttribute(item.url)}">
+                ${item.cover ? `<img class="record-post-card-image" src="${escapeAttribute(item.cover)}" alt="">` : ''}
                 <span>记录 ${escapeHtml(item.id)}</span>
                 <h3>${escapeHtml(item.title)}</h3>
                 <p>${item.excerpt ? escapeHtml(item.excerpt) : '暂无摘要，进入查看完整内容。'}</p>

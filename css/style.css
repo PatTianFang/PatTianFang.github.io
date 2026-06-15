@@ -876,10 +876,25 @@ main {
 }
 
 .record-post-card-cover {
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.74)), var(--record-cover);
-    background-position: center;
-    background-size: cover;
     color: #ffffff;
+}
+
+.record-post-card-cover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.76));
+}
+
+.record-post-card-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.36s ease;
 }
 
 .record-post-card:hover {
@@ -888,7 +903,13 @@ main {
     transform: translateY(-2px);
 }
 
+.record-post-card-cover:hover .record-post-card-image {
+    transform: scale(1.035);
+}
+
 .record-post-card span {
+    position: relative;
+    z-index: 2;
     color: var(--accent-color);
     font-size: 0.78rem;
     font-weight: 600;
@@ -899,6 +920,8 @@ main {
 }
 
 .record-post-card h3 {
+    position: relative;
+    z-index: 2;
     color: var(--primary-color);
     font-size: 1.24rem;
     line-height: 1.22;
@@ -911,6 +934,8 @@ main {
 }
 
 .record-post-card p {
+    position: relative;
+    z-index: 2;
     color: var(--secondary-color);
     font-size: 0.94rem;
 }
