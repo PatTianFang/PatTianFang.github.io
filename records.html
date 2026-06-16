@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>记录 - FangTian's Note</title>
     <link rel="stylesheet" href="css/style.css?v=1781573828">
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIINfQ3p8pA5XEkX4T7pNfQWZwO2Gf1hRTk="
+        crossorigin=""
+    >
     <script src="js/theme.js"></script>
 </head>
 <body>
@@ -42,6 +48,17 @@
                     </div>
                 </div>
             </div>
+            <section class="record-map-panel" aria-labelledby="record-map-title">
+                <div class="section-heading-row">
+                    <div>
+                        <p class="records-kicker">Map</p>
+                        <h2 id="record-map-title">记录地图</h2>
+                    </div>
+                    <span id="record-map-count" class="panel-note">正在定位...</span>
+                </div>
+                <div id="record-map" class="record-map" aria-label="记录地点地图"></div>
+                <div id="record-map-fallback" class="record-map-fallback"></div>
+            </section>
             <section class="record-control-panel" aria-label="记录筛选和时间线">
                 <div class="record-toolbar">
                     <section class="search-section search-toolbar" aria-label="搜索记录">
@@ -89,6 +106,11 @@
             <p>&copy; 2026 FangTian's Note | 基于纯 HTML/CSS/JS 构建</p>
         </div>
     </footer>
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
     <script src="js/records.js"></script>
 </body>
 </html>

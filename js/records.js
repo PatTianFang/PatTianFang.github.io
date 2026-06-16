@@ -7,17 +7,28 @@
     const resultCount = document.getElementById('result-count');
     const timeline = document.getElementById('record-timeline');
     const timelineCount = document.getElementById('record-timeline-count');
+    const mapEl = document.getElementById('record-map');
+    const mapFallback = document.getElementById('record-map-fallback');
+    const mapCount = document.getElementById('record-map-count');
     if (!postList) return;
 
     const MAX_PROBE = 100;
     const PROBE_BATCH = 6;
     const MAX_EXCERPT = 120;
     const ALL_PLACE = '全部';
+    const PLACE_COORDS = {
+        '青岛': [36.0662, 120.3826],
+        '厦门': [24.4798, 118.0894],
+        '天津': [39.3434, 117.3616],
+    };
     const records = [];
 
     let currentSearch = '';
     let currentPlace = ALL_PLACE;
     let currentSort = 'newest';
+    let recordMap = null;
+    let markerLayer = null;
+    let mapReady = false;
 
     postList.innerHTML = '<p class="empty-message">正在加载记录...</p>';
 
@@ -217,6 +228,7 @@
     function render() {
         const items = getFilteredRecords();
         renderTimeline(items);
+        renderRecordMap(items);
         if (items.length === 0) {
             postList.innerHTML = '<p class="empty-message">没有匹配的记录。</p>';
             if (resultCount) resultCount.textContent = '没有找到记录';
@@ -266,6 +278,139 @@
                 <small>${escapeHtml(item.imageCount ? `${item.imageCount} 张照片` : item.excerpt || '')}</small>
             </a>
         `).join('');
+    }
+
+    function renderRecordMap(items) {
+        if (!mapEl) return;
+
+        const groups = getPlaceGroups(items);
+        const locatedGroups = groups.filter(group => group.coords);
+        const missingGroups = groups.filter(group => !group.coords);
+
+        if (mapCount) {
+            mapCount.textContent = locatedGroups.length
+                ? `${locatedGroups.length} 个地点`
+                : '暂无可定位地点';
+        }
+
+        renderMapFallback(groups);
+
+        if (!locatedGroups.length) {
+            mapEl.setAttribute('data-map-state', 'empty');
+            return;
+        }
+
+        if (!window.L) {
+            mapEl.setAttribute('data-map-state', 'fallback');
+            return;
+        }
+
+        mapEl.removeAttribute('data-map-state');
+
+        if (!mapReady) {
+            recordMap = window.L.map(mapEl, {
+                scrollWheelZoom: false,
+                zoomControl: true,
+            });
+            window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; OpenStreetMap',
+            }).addTo(recordMap);
+            markerLayer = window.L.layerGroup().addTo(recordMap);
+            mapReady = true;
+        }
+
+        markerLayer.clearLayers();
+
+        const bounds = [];
+        locatedGroups.forEach(group => {
+            const latest = group.records[0];
+            const marker = window.L.marker(group.coords)
+                .addTo(markerLayer)
+                .bindPopup(`
+                    <strong>${escapeHtml(group.place)}</strong>
+                    <span>${group.records.length} 条记录</span>
+                    ${latest ? `<a href="${escapeAttribute(latest.url)}">${escapeHtml(latest.displayDate || latest.date || latest.title)}</a>` : ''}
+                `);
+
+            marker.on('click', () => {
+                currentPlace = group.place;
+                syncPlaceButtons();
+                render();
+            });
+
+            bounds.push(group.coords);
+        });
+
+        window.requestAnimationFrame(() => {
+            recordMap.invalidateSize();
+
+            if (currentPlace !== ALL_PLACE) {
+                const activeGroup = locatedGroups.find(group => group.place === currentPlace);
+                if (activeGroup) {
+                    recordMap.setView(activeGroup.coords, 9);
+                    return;
+                }
+            }
+
+            if (bounds.length === 1) {
+                recordMap.setView(bounds[0], 7);
+            } else {
+                recordMap.fitBounds(bounds, { padding: [28, 28] });
+            }
+        });
+
+        if (missingGroups.length && mapFallback) {
+            mapFallback.insertAdjacentHTML(
+                'beforeend',
+                `<p class="record-map-note">未定位：${missingGroups.map(group => escapeHtml(group.place)).join('、')}</p>`,
+            );
+        }
+    }
+
+    function getPlaceGroups(items) {
+        const byPlace = new Map();
+        items.forEach(item => {
+            if (!item.place) return;
+            const group = byPlace.get(item.place) || {
+                place: item.place,
+                coords: PLACE_COORDS[item.place] || null,
+                records: [],
+            };
+            group.records.push(item);
+            byPlace.set(item.place, group);
+        });
+
+        return [...byPlace.values()]
+            .map(group => ({
+                ...group,
+                records: group.records.sort((a, b) => String(b.date || '').localeCompare(String(a.date || ''))),
+            }))
+            .sort((a, b) => String(a.place).localeCompare(String(b.place), 'zh-CN'));
+    }
+
+    function renderMapFallback(groups) {
+        if (!mapFallback) return;
+
+        if (!groups.length) {
+            mapFallback.innerHTML = '<p class="empty-message">没有可标注的地点。</p>';
+            return;
+        }
+
+        mapFallback.innerHTML = groups.map(group => `
+            <button class="record-map-place${group.place === currentPlace ? ' active' : ''}" type="button" data-place="${escapeAttribute(group.place)}">
+                <strong>${escapeHtml(group.place)}</strong>
+                <span>${group.records.length} 条</span>
+            </button>
+        `).join('');
+
+        mapFallback.querySelectorAll('.record-map-place').forEach(button => {
+            button.addEventListener('click', event => {
+                currentPlace = event.currentTarget.getAttribute('data-place') || ALL_PLACE;
+                syncPlaceButtons();
+                render();
+            });
+        });
     }
 
     function updateText(id, value) {
