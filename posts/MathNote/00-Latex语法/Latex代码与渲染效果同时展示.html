@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latex代码与渲染效果同时展示 - FangTian's Note</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=1781577052">
+    <link rel="stylesheet" href="../../../css/style.css?v=1781577909">
     <script src="../../../js/theme.js"></script>
 </head>
 <body>
@@ -30,10 +30,26 @@
             <div class="post-body">
                 <p>关于 Latex代码与渲染效果同时展示 的详细内容。</p>
 
-                    <!-- 实际项目中请取消下方注释并替换为真实路径 -->
-                    <embed src="https://static.patfang.xyz/pdfs/MathNote/00-Latex%E8%AF%AD%E6%B3%95/Latex%E4%BB%A3%E7%A0%81%E4%B8%8E%E6%B8%B2%E6%9F%93%E6%95%88%E6%9E%9C%E5%90%8C%E6%97%B6%E5%B1%95%E7%A4%BA.pdf?v=1771319863" type="application/pdf" width="100%" height="800px">
-                    
-                    <p style="font-size: 0.9em;">如果您的浏览器不支持直接预览，请 <a href="https://static.patfang.xyz/pdfs/MathNote/00-Latex%E8%AF%AD%E6%B3%95/Latex%E4%BB%A3%E7%A0%81%E4%B8%8E%E6%B8%B2%E6%9F%93%E6%95%88%E6%9E%9C%E5%90%8C%E6%97%B6%E5%B1%95%E7%A4%BA.pdf?v=1771319863" download>点击此处下载原始 PDF 文件</a>。</p>
+                    <section class="pdf-viewer" data-pdf-viewer data-pdf-url="https://static.patfang.xyz/pdfs/MathNote/00-Latex%E8%AF%AD%E6%B3%95/Latex%E4%BB%A3%E7%A0%81%E4%B8%8E%E6%B8%B2%E6%9F%93%E6%95%88%E6%9E%9C%E5%90%8C%E6%97%B6%E5%B1%95%E7%A4%BA.pdf?v=1771319863" data-root-prefix="../../../">
+                        <div class="pdf-viewer-toolbar">
+                            <div class="pdf-viewer-pages">
+                                <button type="button" data-pdf-prev>上一页</button>
+                                <span><span data-pdf-current>--</span> / <span data-pdf-total>--</span></span>
+                                <button type="button" data-pdf-next>下一页</button>
+                            </div>
+                            <div class="pdf-viewer-actions">
+                                <button type="button" data-pdf-zoom-out>缩小</button>
+                                <button type="button" data-pdf-zoom-in>放大</button>
+                                <a href="https://static.patfang.xyz/pdfs/MathNote/00-Latex%E8%AF%AD%E6%B3%95/Latex%E4%BB%A3%E7%A0%81%E4%B8%8E%E6%B8%B2%E6%9F%93%E6%95%88%E6%9E%9C%E5%90%8C%E6%97%B6%E5%B1%95%E7%A4%BA.pdf?v=1771319863" target="_blank" rel="noopener">打开 PDF</a>
+                                <a href="https://static.patfang.xyz/pdfs/MathNote/00-Latex%E8%AF%AD%E6%B3%95/Latex%E4%BB%A3%E7%A0%81%E4%B8%8E%E6%B8%B2%E6%9F%93%E6%95%88%E6%9E%9C%E5%90%8C%E6%97%B6%E5%B1%95%E7%A4%BA.pdf?v=1771319863" download>下载 PDF</a>
+                            </div>
+                        </div>
+                        <div class="pdf-viewer-stage">
+                            <canvas data-pdf-canvas></canvas>
+                            <p class="pdf-viewer-status" data-pdf-status>正在加载 PDF...</p>
+                        </div>
+                    </section>
+                    <p class="pdf-viewer-note">预览不可用时，可直接 <a href="https://static.patfang.xyz/pdfs/MathNote/00-Latex%E8%AF%AD%E6%B3%95/Latex%E4%BB%A3%E7%A0%81%E4%B8%8E%E6%B8%B2%E6%9F%93%E6%95%88%E6%9E%9C%E5%90%8C%E6%97%B6%E5%B1%95%E7%A4%BA.pdf?v=1771319863" target="_blank" rel="noopener">打开 PDF</a> 或 <a href="https://static.patfang.xyz/pdfs/MathNote/00-Latex%E8%AF%AD%E6%B3%95/Latex%E4%BB%A3%E7%A0%81%E4%B8%8E%E6%B8%B2%E6%9F%93%E6%95%88%E6%9E%9C%E5%90%8C%E6%97%B6%E5%B1%95%E7%A4%BA.pdf?v=1771319863" download>下载原始文件</a>。</p>
                 </div>
             </div>
 
@@ -58,5 +74,6 @@
             <p>&copy; 2026 FangTian's Note| 基于纯 HTML/CSS/JS 构建</p>
         </div>
     </footer>
+    <script src="../../../js/pdf-viewer.js"></script>
 </body>
 </html>

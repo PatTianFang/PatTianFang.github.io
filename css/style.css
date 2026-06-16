@@ -1112,13 +1112,91 @@ main {
     text-align: left;
 }
 
-.post-body embed {
-    display: block;
-    width: 100% !important;
-    height: min(82vh, 900px) !important;
-    min-height: 520px;
+.pdf-viewer {
+    margin: 28px 0 18px;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     background: var(--surface-muted-color);
+    overflow: hidden;
+}
+
+.pdf-viewer-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--surface-color);
+    padding: 12px;
+}
+
+.pdf-viewer-pages,
+.pdf-viewer-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pdf-viewer button,
+.pdf-viewer a {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--surface-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    padding: 8px 11px;
+    text-decoration: none;
+}
+
+.pdf-viewer button:hover,
+.pdf-viewer a:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.pdf-viewer button:disabled {
+    cursor: not-allowed;
+    opacity: 0.48;
+}
+
+.pdf-viewer-stage {
+    position: relative;
+    display: grid;
+    min-height: min(78vh, 820px);
+    place-items: start center;
+    overflow: auto;
+    padding: 18px;
+}
+
+.pdf-viewer canvas {
+    max-width: 100%;
+    height: auto !important;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: var(--shadow-soft);
+}
+
+.pdf-viewer-status {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 0;
+    max-width: min(520px, 80%);
+    transform: translate(-50%, -50%);
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.pdf-viewer-status:empty {
+    display: none;
+}
+
+.pdf-viewer-note {
+    color: var(--tertiary-color);
+    font-size: 0.92rem;
 }
 
 .post-header {
@@ -2310,8 +2388,14 @@ footer {
         min-height: 320px;
     }
 
-    .post-body embed {
+    .pdf-viewer-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .pdf-viewer-stage {
         min-height: 420px;
+        padding: 12px;
     }
 }
 
