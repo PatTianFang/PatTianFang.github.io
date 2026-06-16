@@ -1384,11 +1384,11 @@ main {
     background-size: 42px 42px;
 }
 
-.record-static-map::before {
-    content: "本地预览地图";
+.record-static-map-label {
     position: absolute;
     left: 18px;
     top: 16px;
+    margin: 0;
     color: var(--tertiary-color);
     font-size: 0.82rem;
     letter-spacing: 0;

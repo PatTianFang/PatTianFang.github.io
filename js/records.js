@@ -312,32 +312,37 @@
             return;
         }
 
+        renderStaticRecordMap(locatedGroups);
+
         if (!window.L) {
-            renderStaticRecordMap(locatedGroups);
-            if (missingGroups.length && mapFallback) {
-                mapFallback.insertAdjacentHTML(
-                    'beforeend',
-                    `<p class="record-map-note">未定位：${missingGroups.map(group => escapeHtml(group.place)).join('、')}</p>`,
-                );
+            appendMissingMapNote(missingGroups);
+            return;
+        }
+
+        try {
+            if (!mapReady) {
+                mapEl.innerHTML = '';
+                recordMap = window.L.map(mapEl, {
+                    scrollWheelZoom: false,
+                    zoomControl: true,
+                });
+                window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18,
+                    attribution: '&copy; OpenStreetMap',
+                }).addTo(recordMap);
+                markerLayer = window.L.layerGroup().addTo(recordMap);
+                mapReady = true;
             }
+        } catch (_error) {
+            recordMap = null;
+            markerLayer = null;
+            mapReady = false;
+            renderStaticRecordMap(locatedGroups);
+            appendMissingMapNote(missingGroups);
             return;
         }
 
         mapEl.removeAttribute('data-map-state');
-        mapEl.innerHTML = '';
-
-        if (!mapReady) {
-            recordMap = window.L.map(mapEl, {
-                scrollWheelZoom: false,
-                zoomControl: true,
-            });
-            window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '&copy; OpenStreetMap',
-            }).addTo(recordMap);
-            markerLayer = window.L.layerGroup().addTo(recordMap);
-            mapReady = true;
-        }
 
         markerLayer.clearLayers();
 
@@ -379,12 +384,7 @@
             }
         });
 
-        if (missingGroups.length && mapFallback) {
-            mapFallback.insertAdjacentHTML(
-                'beforeend',
-                `<p class="record-map-note">未定位：${missingGroups.map(group => escapeHtml(group.place)).join('、')}</p>`,
-            );
-        }
+        appendMissingMapNote(missingGroups);
     }
 
     function renderStaticRecordMap(groups) {
@@ -402,7 +402,8 @@
         const clamp = value => Math.min(86, Math.max(14, value));
 
         mapEl.innerHTML = `
-            <div class="record-static-map" aria-label="本地记录地点示意图">
+            <div class="record-static-map" aria-label="记录地点示意图">
+                <p class="record-static-map-label">记录地点 · 点击标注筛选</p>
                 ${groups.map(group => {
                     const x = clamp(14 + ((group.coords[1] - minLng) / lngSpan) * 72);
                     const y = clamp(86 - ((group.coords[0] - minLat) / latSpan) * 72);
@@ -431,6 +432,14 @@
                 render();
             });
         });
+    }
+
+    function appendMissingMapNote(missingGroups) {
+        if (!missingGroups.length || !mapFallback) return;
+        mapFallback.insertAdjacentHTML(
+            'beforeend',
+            `<p class="record-map-note">未定位：${missingGroups.map(group => escapeHtml(group.place)).join('、')}</p>`,
+        );
     }
 
     function getPlaceGroups(items) {
