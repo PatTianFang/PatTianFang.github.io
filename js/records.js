@@ -16,11 +16,6 @@
     const PROBE_BATCH = 6;
     const MAX_EXCERPT = 120;
     const ALL_PLACE = '全部';
-    const PLACE_COORDS = {
-        '青岛': [36.0662, 120.3826],
-        '厦门': [24.4798, 118.0894],
-        '天津': [39.3434, 117.3616],
-    };
     const records = [];
 
     let currentSearch = '';
@@ -151,8 +146,16 @@
             date: item.date || '',
             displayDate: item.display_date || item.date || '',
             place: item.place || '',
+            coords: normalizeCoords(item.coords),
             imageCount: extractImageCount(excerpt),
         };
+    }
+
+    function normalizeCoords(coords) {
+        if (!Array.isArray(coords) || coords.length !== 2) return null;
+        const lat = Number(coords[0]);
+        const lng = Number(coords[1]);
+        return Number.isFinite(lat) && Number.isFinite(lng) ? [lat, lng] : null;
     }
 
     function extractImageCount(excerpt) {
@@ -374,9 +377,12 @@
             if (!item.place) return;
             const group = byPlace.get(item.place) || {
                 place: item.place,
-                coords: PLACE_COORDS[item.place] || null,
+                coords: item.coords,
                 records: [],
             };
+            if (!group.coords && item.coords) {
+                group.coords = item.coords;
+            }
             group.records.push(item);
             byPlace.set(item.place, group);
         });
