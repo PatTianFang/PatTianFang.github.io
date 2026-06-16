@@ -28,19 +28,20 @@
             </header>
             <div class="post-body">
                 <p>如果你经常写作学术论文，或者有一份排版精美的排版笔记，将其转换为网页格式（HTML）往往会丢失原有的优美排版。</p>
-                <p>因此，最好的方式是：<strong>直接在网页中嵌入 PDF 进行展示。</strong></p>
-                    
-                    <!-- 实际项目中请取消下方注释并替换为真实的 PDF 路径 -->
-                    <embed src="../../pdfs/C Sharp/C Sharp应用程序界面开发.pdf" type="application/pdf" width="100%" height="800px">
-                    
-                    <p style="font-size: 0.9em;">如果您的浏览器不支持直接预览，请 <a href="../../pdfs/01-Anaconda建立Python虚拟环境.pdf" download>点击此处下载原始 PDF 文件</a>。</p>
+                <p>更稳的方式是用 PDF.js 渲染 PDF 页面，而不是依赖浏览器内置 PDF 插件。这样在 VSCode 预览和部分浏览器里，也不会出现“无法加载插件”的提示。</p>
+
+                <div class="pdf-viewer-note">
+                    <p>当前发布脚本已经自动使用 PDF.js 预览器生成 PDF 页面，并提供打开与下载按钮作为兜底。</p>
                 </div>
 
                 <h2>如何实现？</h2>
-                <p>只需要在你的 HTML 文章正文中加入以下标签即可：</p>
-                <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px;"><code>&lt;embed src="../../pdfs/papers/your-paper.pdf" type="application/pdf" width="100%" height="800px"&gt;</code></pre>
-                
-                <p>此方案极其适合重度 Markdown / LaTeX 用户，你只管专注写作并导出 PDF，剩下的交给 `embed`。</p>
+                <p>发布脚本会为每个 PDF 页面生成如下结构，并由本地的 <code>js/pdf-viewer.js</code> 调用 PDF.js 渲染：</p>
+                <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px;"><code>&lt;section class="pdf-viewer" data-pdf-viewer data-pdf-url="your-file.pdf"&gt;
+    &lt;canvas data-pdf-canvas&gt;&lt;/canvas&gt;
+    &lt;p data-pdf-status&gt;正在加载 PDF...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+
+                <p>如果当前环境不能直接渲染 PDF，页面会显示打开和下载入口，而不是让浏览器尝试加载 PDF 插件。</p>
             </div>
 
 <!-- BEGIN PUBLISH PAGE NAV -->
@@ -66,5 +67,6 @@
             <p>&copy; 2026 FangTian's Note| 基于纯 HTML/CSS/JS 构建</p>
         </div>
     </footer>
+    <script src="../../js/pdf-viewer.js"></script>
 </body>
 </html>
