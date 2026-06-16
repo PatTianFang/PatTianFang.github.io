@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>在网页中优雅地嵌入 PDF 文件 - FangTian's Note</title>
-    <link rel="stylesheet" href="../../css/style.css?v=1781577909">
+    <link rel="stylesheet" href="../../css/style.css?v=1781579423">
     <script src="../../js/theme.js"></script>
 </head>
 <body>
@@ -37,7 +37,8 @@
                 <h2>如何实现？</h2>
                 <p>发布脚本会为每个 PDF 页面生成如下结构，并由本地的 <code>js/pdf-viewer.js</code> 调用 PDF.js 渲染：</p>
                 <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px;"><code>&lt;section class="pdf-viewer" data-pdf-viewer data-pdf-url="your-file.pdf"&gt;
-    &lt;canvas data-pdf-canvas&gt;&lt;/canvas&gt;
+    &lt;div data-pdf-pages&gt;&lt;/div&gt;
+    &lt;div data-pdf-single hidden&gt;&lt;canvas data-pdf-canvas&gt;&lt;/canvas&gt;&lt;/div&gt;
     &lt;p data-pdf-status&gt;正在加载 PDF...&lt;/p&gt;
 &lt;/section&gt;</code></pre>
 

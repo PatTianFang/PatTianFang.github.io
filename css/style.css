@@ -140,7 +140,7 @@ textarea:focus-visible {
 body > header {
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 1200;
     background: var(--nav-bg-color);
     margin-bottom: 44px;
     backdrop-filter: saturate(180%) blur(20px);
@@ -1138,6 +1138,11 @@ main {
     gap: 8px;
 }
 
+.pdf-viewer-pages button.active {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
 .pdf-viewer button,
 .pdf-viewer a {
     border: 1px solid var(--border-color);
@@ -1169,8 +1174,40 @@ main {
     place-items: start center;
     overflow: auto;
     padding: 18px;
+    scroll-behavior: smooth;
 }
 
+.pdf-viewer-pages-list {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.pdf-viewer-pages-list[hidden],
+.pdf-viewer-single[hidden] {
+    display: none !important;
+}
+
+.pdf-viewer-single {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+}
+
+.pdf-page {
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+    width: 100%;
+}
+
+.pdf-page-label {
+    color: var(--tertiary-color);
+    font-size: 0.84rem;
+}
+
+.pdf-page canvas,
 .pdf-viewer canvas {
     max-width: 100%;
     height: auto !important;
@@ -1416,6 +1453,8 @@ main {
     border-radius: 8px;
     background: var(--surface-color);
     box-shadow: var(--shadow-soft);
+    position: relative;
+    z-index: 1;
 }
 
 .record-map {
@@ -1425,6 +1464,8 @@ main {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     background: var(--surface-muted-color);
+    position: relative;
+    z-index: 0;
 }
 
 .record-map[data-map-state="empty"]::before,
@@ -2396,6 +2437,11 @@ footer {
     .pdf-viewer-stage {
         min-height: 420px;
         padding: 12px;
+    }
+
+    .pdf-viewer-pages,
+    .pdf-viewer-actions {
+        justify-content: center;
     }
 }
 

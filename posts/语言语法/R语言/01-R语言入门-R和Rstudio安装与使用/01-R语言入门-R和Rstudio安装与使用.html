@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>01-R语言入门-R和Rstudio安装与使用 - FangTian's Note</title>
-    <link rel="stylesheet" href="../../../../css/style.css?v=1781577909">
+    <link rel="stylesheet" href="../../../../css/style.css?v=1781579423">
     <script src="../../../../js/theme.js"></script>
 </head>
 <body>
@@ -33,11 +33,13 @@
                     <section class="pdf-viewer" data-pdf-viewer data-pdf-url="https://static.patfang.xyz/pdfs/%E8%AF%AD%E8%A8%80%E8%AF%AD%E6%B3%95/R%E8%AF%AD%E8%A8%80/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8.pdf?v=1774079651" data-root-prefix="../../../../">
                         <div class="pdf-viewer-toolbar">
                             <div class="pdf-viewer-pages">
-                                <button type="button" data-pdf-prev>上一页</button>
+                                <button type="button" data-pdf-mode-list>纵向列表</button>
+                                <button type="button" data-pdf-mode-single>单页翻页</button>
                                 <span><span data-pdf-current>--</span> / <span data-pdf-total>--</span></span>
-                                <button type="button" data-pdf-next>下一页</button>
                             </div>
                             <div class="pdf-viewer-actions">
+                                <button type="button" data-pdf-prev>上一页</button>
+                                <button type="button" data-pdf-next>下一页</button>
                                 <button type="button" data-pdf-zoom-out>缩小</button>
                                 <button type="button" data-pdf-zoom-in>放大</button>
                                 <a href="https://static.patfang.xyz/pdfs/%E8%AF%AD%E8%A8%80%E8%AF%AD%E6%B3%95/R%E8%AF%AD%E8%A8%80/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/01-R%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8-R%E5%92%8CRstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8.pdf?v=1774079651" target="_blank" rel="noopener">打开 PDF</a>
@@ -45,7 +47,10 @@
                             </div>
                         </div>
                         <div class="pdf-viewer-stage">
-                            <canvas data-pdf-canvas></canvas>
+                            <div class="pdf-viewer-pages-list" data-pdf-pages></div>
+                            <div class="pdf-viewer-single" data-pdf-single hidden>
+                                <canvas data-pdf-canvas></canvas>
+                            </div>
                             <p class="pdf-viewer-status" data-pdf-status>正在加载 PDF...</p>
                         </div>
                     </section>

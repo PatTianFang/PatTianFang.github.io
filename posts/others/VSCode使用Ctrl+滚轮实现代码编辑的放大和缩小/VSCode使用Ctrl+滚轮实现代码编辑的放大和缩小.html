@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VSCode使用Ctrl+滚轮实现代码编辑的放大和缩小 - FangTian's Note</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=1781577909">
+    <link rel="stylesheet" href="../../../css/style.css?v=1781579423">
     <script src="../../../js/theme.js"></script>
 </head>
 <body>
@@ -33,11 +33,13 @@
                     <section class="pdf-viewer" data-pdf-viewer data-pdf-url="https://static.patfang.xyz/pdfs/others/VSCode%E4%BD%BF%E7%94%A8Ctrl%2B%E6%BB%9A%E8%BD%AE%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E7%9A%84%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F/VSCode%E4%BD%BF%E7%94%A8Ctrl%2B%E6%BB%9A%E8%BD%AE%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E7%9A%84%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F.pdf?v=1774075631" data-root-prefix="../../../">
                         <div class="pdf-viewer-toolbar">
                             <div class="pdf-viewer-pages">
-                                <button type="button" data-pdf-prev>上一页</button>
+                                <button type="button" data-pdf-mode-list>纵向列表</button>
+                                <button type="button" data-pdf-mode-single>单页翻页</button>
                                 <span><span data-pdf-current>--</span> / <span data-pdf-total>--</span></span>
-                                <button type="button" data-pdf-next>下一页</button>
                             </div>
                             <div class="pdf-viewer-actions">
+                                <button type="button" data-pdf-prev>上一页</button>
+                                <button type="button" data-pdf-next>下一页</button>
                                 <button type="button" data-pdf-zoom-out>缩小</button>
                                 <button type="button" data-pdf-zoom-in>放大</button>
                                 <a href="https://static.patfang.xyz/pdfs/others/VSCode%E4%BD%BF%E7%94%A8Ctrl%2B%E6%BB%9A%E8%BD%AE%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E7%9A%84%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F/VSCode%E4%BD%BF%E7%94%A8Ctrl%2B%E6%BB%9A%E8%BD%AE%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E7%9A%84%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F.pdf?v=1774075631" target="_blank" rel="noopener">打开 PDF</a>
@@ -45,7 +47,10 @@
                             </div>
                         </div>
                         <div class="pdf-viewer-stage">
-                            <canvas data-pdf-canvas></canvas>
+                            <div class="pdf-viewer-pages-list" data-pdf-pages></div>
+                            <div class="pdf-viewer-single" data-pdf-single hidden>
+                                <canvas data-pdf-canvas></canvas>
+                            </div>
                             <p class="pdf-viewer-status" data-pdf-status>正在加载 PDF...</p>
                         </div>
                     </section>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>plot_csv - FangTian's Note</title>
-    <link rel="stylesheet" href="../../../../../../css/style.css?v=1781577909">
+    <link rel="stylesheet" href="../../../../../../css/style.css?v=1781579423">
     <script src="../../../../../../js/theme.js"></script>
 </head>
 <body>
@@ -33,11 +33,13 @@
                     <section class="pdf-viewer" data-pdf-viewer data-pdf-url="https://static.patfang.xyz/pdfs/AI%E6%8F%90%E7%A4%BA%E8%AF%AD/01-%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E8%BF%87%E7%A8%8B/02-%E7%BB%98%E5%9B%BE/00-%E6%A8%A1%E6%9D%BF/01-%E6%A8%A1%E6%9D%BF1/plot_csv.pdf?v=1778284245" data-root-prefix="../../../../../../">
                         <div class="pdf-viewer-toolbar">
                             <div class="pdf-viewer-pages">
-                                <button type="button" data-pdf-prev>上一页</button>
+                                <button type="button" data-pdf-mode-list>纵向列表</button>
+                                <button type="button" data-pdf-mode-single>单页翻页</button>
                                 <span><span data-pdf-current>--</span> / <span data-pdf-total>--</span></span>
-                                <button type="button" data-pdf-next>下一页</button>
                             </div>
                             <div class="pdf-viewer-actions">
+                                <button type="button" data-pdf-prev>上一页</button>
+                                <button type="button" data-pdf-next>下一页</button>
                                 <button type="button" data-pdf-zoom-out>缩小</button>
                                 <button type="button" data-pdf-zoom-in>放大</button>
                                 <a href="https://static.patfang.xyz/pdfs/AI%E6%8F%90%E7%A4%BA%E8%AF%AD/01-%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E8%BF%87%E7%A8%8B/02-%E7%BB%98%E5%9B%BE/00-%E6%A8%A1%E6%9D%BF/01-%E6%A8%A1%E6%9D%BF1/plot_csv.pdf?v=1778284245" target="_blank" rel="noopener">打开 PDF</a>
@@ -45,7 +47,10 @@
                             </div>
                         </div>
                         <div class="pdf-viewer-stage">
-                            <canvas data-pdf-canvas></canvas>
+                            <div class="pdf-viewer-pages-list" data-pdf-pages></div>
+                            <div class="pdf-viewer-single" data-pdf-single hidden>
+                                <canvas data-pdf-canvas></canvas>
+                            </div>
                             <p class="pdf-viewer-status" data-pdf-status>正在加载 PDF...</p>
                         </div>
                     </section>
