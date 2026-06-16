@@ -1,0 +1,62 @@
+window.WEBNOTE_RECORDS = [
+    {
+        "id": "20260524厦门",
+        "title": "20260524厦门",
+        "date": "2026-05-24",
+        "display_date": "2026年05月24日",
+        "place": "厦门",
+        "coords": [
+            24.4798,
+            118.0894
+        ],
+        "url": "images/20260524%E5%8E%A6%E9%97%A8.html",
+        "excerpt": "2026年05月24日，拍摄地点：厦门，共 9 张图片。",
+        "cover": "https://static.patfang.xyz/images/20260524%E5%8E%A6%E9%97%A8/20260524-20260524%E5%8E%A6%E9%97%A8-1781508623807.webp?v=1781508624",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "20260505青岛",
+        "title": "20260505青岛",
+        "date": "2026-05-05",
+        "display_date": "2026年05月05日",
+        "place": "青岛",
+        "coords": [
+            36.0662,
+            120.3826
+        ],
+        "url": "images/20260505%E9%9D%92%E5%B2%9B.html",
+        "excerpt": "2026年05月05日，拍摄地点：青岛，共 5 张图片。",
+        "cover": "https://static.patfang.xyz/images/20260505%E9%9D%92%E5%B2%9B/20260505%E9%9D%92%E5%B2%9B-1781508476724.webp?v=1781508481",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "20260419青岛",
+        "title": "20260419青岛",
+        "date": "2026-04-19",
+        "display_date": "2026年04月19日",
+        "place": "青岛",
+        "coords": [
+            36.0662,
+            120.3826
+        ],
+        "url": "images/20260419%E9%9D%92%E5%B2%9B.html",
+        "excerpt": "2026年04月19日，拍摄地点：青岛，共 5 张图片。",
+        "cover": "https://static.patfang.xyz/images/20260419%E9%9D%92%E5%B2%9B/20260419%E9%9D%92%E5%B2%9B-1781508370547.webp?v=1781508384",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "20260308天津",
+        "title": "20260308天津",
+        "date": "2026-03-08",
+        "display_date": "2026年03月08日",
+        "place": "天津",
+        "coords": [
+            39.3434,
+            117.3616
+        ],
+        "url": "images/20260308%E5%A4%A9%E6%B4%A5.html",
+        "excerpt": "2026年03月08日，拍摄地点：天津，共 7 张图片。",
+        "cover": "https://static.patfang.xyz/images/20260308%E5%A4%A9%E6%B4%A5/20260308%E5%A4%A9%E6%B4%A5-1781508329247.webp?v=1781508340",
+        "generated_by": "Publish.py"
+    }
+];

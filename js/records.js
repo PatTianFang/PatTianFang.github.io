@@ -104,6 +104,14 @@
     }
 
     async function discoverRecords() {
+        if (Array.isArray(window.WEBNOTE_RECORDS) && window.WEBNOTE_RECORDS.length) {
+            window.WEBNOTE_RECORDS.forEach((item, index) => {
+                if (!item || !item.url) return;
+                records.push(normalizeRecord(item, index));
+            });
+            return;
+        }
+
         try {
             const response = await fetch('data/records.json');
             if (response.ok) {
@@ -299,16 +307,24 @@
         renderMapFallback(groups);
 
         if (!locatedGroups.length) {
+            if (!mapReady) mapEl.innerHTML = '';
             mapEl.setAttribute('data-map-state', 'empty');
             return;
         }
 
         if (!window.L) {
-            mapEl.setAttribute('data-map-state', 'fallback');
+            renderStaticRecordMap(locatedGroups);
+            if (missingGroups.length && mapFallback) {
+                mapFallback.insertAdjacentHTML(
+                    'beforeend',
+                    `<p class="record-map-note">未定位：${missingGroups.map(group => escapeHtml(group.place)).join('、')}</p>`,
+                );
+            }
             return;
         }
 
         mapEl.removeAttribute('data-map-state');
+        mapEl.innerHTML = '';
 
         if (!mapReady) {
             recordMap = window.L.map(mapEl, {
@@ -369,6 +385,52 @@
                 `<p class="record-map-note">未定位：${missingGroups.map(group => escapeHtml(group.place)).join('、')}</p>`,
             );
         }
+    }
+
+    function renderStaticRecordMap(groups) {
+        if (!mapEl) return;
+
+        mapEl.setAttribute('data-map-state', 'static');
+        const lats = groups.map(group => group.coords[0]);
+        const lngs = groups.map(group => group.coords[1]);
+        const minLat = Math.min(...lats);
+        const maxLat = Math.max(...lats);
+        const minLng = Math.min(...lngs);
+        const maxLng = Math.max(...lngs);
+        const latSpan = maxLat - minLat || 1;
+        const lngSpan = maxLng - minLng || 1;
+        const clamp = value => Math.min(86, Math.max(14, value));
+
+        mapEl.innerHTML = `
+            <div class="record-static-map" aria-label="本地记录地点示意图">
+                ${groups.map(group => {
+                    const x = clamp(14 + ((group.coords[1] - minLng) / lngSpan) * 72);
+                    const y = clamp(86 - ((group.coords[0] - minLat) / latSpan) * 72);
+                    const latest = group.records[0];
+                    return `
+                        <button
+                            class="record-static-marker${group.place === currentPlace ? ' active' : ''}"
+                            type="button"
+                            style="left:${x}%;top:${y}%"
+                            data-place="${escapeAttribute(group.place)}"
+                            aria-label="${escapeAttribute(group.place)}，${group.records.length} 条记录"
+                        >
+                            <span></span>
+                            <strong>${escapeHtml(group.place)}</strong>
+                            <small>${escapeHtml(latest ? latest.displayDate || latest.date || '' : '')}</small>
+                        </button>
+                    `;
+                }).join('')}
+            </div>
+        `;
+
+        mapEl.querySelectorAll('.record-static-marker').forEach(button => {
+            button.addEventListener('click', event => {
+                currentPlace = event.currentTarget.getAttribute('data-place') || ALL_PLACE;
+                syncPlaceButtons();
+                render();
+            });
+        });
     }
 
     function getPlaceGroups(items) {
