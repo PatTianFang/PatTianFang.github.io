@@ -42,38 +42,40 @@
                     </div>
                 </div>
             </div>
-            <div class="record-toolbar">
-                <section class="search-section search-toolbar" aria-label="搜索记录">
-                    <input
-                        type="search"
-                        id="post-search"
-                        class="search-input"
-                        placeholder="搜索记录标题、地点或日期"
-                        autocomplete="off"
-                    >
-                    <button type="button" id="clear-search" class="clear-search-btn">清除</button>
-                    <div id="result-count" class="result-count" aria-live="polite"></div>
-                </section>
-                <label class="sort-control">
-                    <span>排序</span>
-                    <select id="record-sort">
-                        <option value="newest">最新优先</option>
-                        <option value="oldest">最早优先</option>
-                        <option value="place">地点 A-Z</option>
-                    </select>
-                </label>
-            </div>
-            <div id="record-place-filters" class="filter-section"></div>
-            <section class="record-timeline-section" aria-labelledby="record-timeline-title">
-                <div class="section-heading-row">
-                    <div>
-                        <p class="records-kicker">Timeline</p>
-                        <h2 id="record-timeline-title">时间线</h2>
-                    </div>
-                    <span id="record-timeline-count" class="panel-note">正在整理...</span>
+            <section class="record-control-panel" aria-label="记录筛选和时间线">
+                <div class="record-toolbar">
+                    <section class="search-section search-toolbar" aria-label="搜索记录">
+                        <input
+                            type="search"
+                            id="post-search"
+                            class="search-input"
+                            placeholder="搜索记录标题、地点或日期"
+                            autocomplete="off"
+                        >
+                        <button type="button" id="clear-search" class="clear-search-btn">清除</button>
+                        <div id="result-count" class="result-count" aria-live="polite"></div>
+                    </section>
+                    <label class="sort-control">
+                        <span>排序</span>
+                        <select id="record-sort">
+                            <option value="newest">最新优先</option>
+                            <option value="oldest">最早优先</option>
+                            <option value="place">地点 A-Z</option>
+                        </select>
+                    </label>
                 </div>
-                <div id="record-timeline" class="record-timeline">
-                    <p class="empty-message">正在加载时间线...</p>
+                <div id="record-place-filters" class="filter-section record-place-filters"></div>
+                <div class="record-timeline-section" aria-labelledby="record-timeline-title">
+                    <div class="section-heading-row">
+                        <div>
+                            <p class="records-kicker">Timeline</p>
+                            <h2 id="record-timeline-title">时间线</h2>
+                        </div>
+                        <span id="record-timeline-count" class="panel-note">正在整理...</span>
+                    </div>
+                    <div id="record-timeline" class="record-timeline">
+                        <p class="empty-message">正在加载时间线...</p>
+                    </div>
                 </div>
             </section>
             <div id="record-post-list" class="records-post-grid">
