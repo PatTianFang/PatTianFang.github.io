@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FangTian's Note</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=1781573828">
     <script src="js/theme.js"></script>
 </head>
 <body>
@@ -18,8 +18,80 @@
             </nav>
         </div>
     </header>
-    <main class="container">
-        <section class="search-section" aria-label="搜索文章">
+    <main class="container home-page">
+        <section class="site-hero" aria-labelledby="site-title">
+            <div class="site-hero-copy">
+                <p class="records-kicker">Notebook</p>
+                <h2 id="site-title">FangTian's Note</h2>
+                <p>把学习笔记、PDF 资料和路上的照片整理成一个安静好找的个人知识库。</p>
+                <div class="site-hero-actions">
+                    <a href="#library" class="hero-action-primary">浏览笔记</a>
+                    <a href="records.html">查看记录</a>
+                </div>
+            </div>
+            <div class="site-stats" aria-label="站点概览">
+                <div>
+                    <span id="stat-posts">--</span>
+                    <p>文章</p>
+                </div>
+                <div>
+                    <span id="stat-categories">--</span>
+                    <p>分类</p>
+                </div>
+                <div>
+                    <span id="stat-records">--</span>
+                    <p>记录</p>
+                </div>
+                <div>
+                    <span id="stat-latest">--</span>
+                    <p>最近更新</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-panels" aria-label="最近内容">
+            <section class="home-panel" aria-labelledby="latest-posts-title">
+                <div class="section-heading-row">
+                    <div>
+                        <p class="records-kicker">Latest</p>
+                        <h2 id="latest-posts-title">最近文章</h2>
+                    </div>
+                    <a href="#library">全部文章</a>
+                </div>
+                <div id="latest-post-list" class="latest-list">
+                    <p class="empty-message">正在加载最近文章...</p>
+                </div>
+            </section>
+            <section class="home-panel" aria-labelledby="latest-records-title">
+                <div class="section-heading-row">
+                    <div>
+                        <p class="records-kicker">Records</p>
+                        <h2 id="latest-records-title">最近记录</h2>
+                    </div>
+                    <a href="records.html">全部记录</a>
+                </div>
+                <div id="latest-record-list" class="latest-record-list">
+                    <p class="empty-message">正在加载记录...</p>
+                </div>
+            </section>
+        </section>
+
+        <section class="library-section" id="library" aria-labelledby="library-title">
+            <div class="section-heading-row library-heading">
+                <div>
+                    <p class="records-kicker">Library</p>
+                    <h2 id="library-title">文章索引</h2>
+                </div>
+                <label class="sort-control">
+                    <span>排序</span>
+                    <select id="post-sort">
+                        <option value="newest">最新优先</option>
+                        <option value="oldest">最早优先</option>
+                        <option value="title">标题 A-Z</option>
+                    </select>
+                </label>
+            </div>
+        <section class="search-section search-toolbar" aria-label="搜索文章">
             <input
                 type="search"
                 id="post-search"
@@ -27,6 +99,7 @@
                 placeholder="搜索标题、分类或摘要"
                 autocomplete="off"
             >
+            <button type="button" id="clear-search" class="clear-search-btn">清除</button>
             <div id="result-count" class="result-count" aria-live="polite"></div>
         </section>
         <div class="filter-section" id="filter-section">
@@ -36,6 +109,7 @@
             <p>正在加载文章列表...</p>
         </div>
         <nav id="pagination" class="pagination" aria-label="文章分页"></nav>
+        </section>
     </main>
     <footer>
         <div class="container">

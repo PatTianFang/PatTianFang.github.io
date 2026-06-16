@@ -2,8 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const postList = document.getElementById('post-list');
     const filterSection = document.getElementById('filter-section');
     const searchInput = document.getElementById('post-search');
+    const clearSearchButton = document.getElementById('clear-search');
+    const sortSelect = document.getElementById('post-sort');
     const pagination = document.getElementById('pagination');
     const resultCount = document.getElementById('result-count');
+    const latestPostList = document.getElementById('latest-post-list');
+    const latestRecordList = document.getElementById('latest-record-list');
 
     if (!postList) return;
 
@@ -11,19 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const ALL_CATEGORY = '全部';
 
     let allPosts = [];
+    let allRecords = [];
     let currentCategory = ALL_CATEGORY;
     let currentSearch = '';
+    let currentSort = 'newest';
     let currentPage = 1;
 
-    fetch('data/posts.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('无法加载文章数据');
-            }
-            return response.json();
-        })
-        .then(posts => {
-            allPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    Promise.all([
+        fetchJson('data/posts.json'),
+        fetchJson('data/records.json').catch(() => []),
+    ])
+        .then(([posts, records]) => {
+            allPosts = Array.isArray(posts) ? posts : [];
+            allRecords = Array.isArray(records) ? records : [];
+            renderOverview();
+            renderLatestPosts();
+            renderLatestRecords();
             renderFilters(allPosts);
             render();
         })
@@ -31,6 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
             postList.innerHTML = `<p class="empty-message error-message">加载失败：${escapeHtml(error.message)}</p>`;
             if (pagination) pagination.innerHTML = '';
             if (resultCount) resultCount.textContent = '';
+            updateText('stat-posts', '--');
+            updateText('stat-categories', '--');
+            updateText('stat-records', '--');
+            updateText('stat-latest', '--');
         });
 
     if (searchInput) {
@@ -39,6 +50,86 @@ document.addEventListener('DOMContentLoaded', () => {
             currentPage = 1;
             render();
         });
+    }
+
+    if (clearSearchButton && searchInput) {
+        clearSearchButton.addEventListener('click', () => {
+            searchInput.value = '';
+            currentSearch = '';
+            currentPage = 1;
+            searchInput.focus();
+            render();
+        });
+    }
+
+    if (sortSelect) {
+        sortSelect.addEventListener('change', event => {
+            currentSort = event.target.value;
+            currentPage = 1;
+            render();
+        });
+    }
+
+    async function fetchJson(url) {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`无法加载 ${url}`);
+        }
+        return response.json();
+    }
+
+    function renderOverview() {
+        const categories = new Set(allPosts.map(post => post.category).filter(Boolean));
+        const latestDate = allPosts
+            .map(post => post.date)
+            .filter(Boolean)
+            .sort()
+            .pop();
+
+        updateText('stat-posts', allPosts.length);
+        updateText('stat-categories', categories.size);
+        updateText('stat-records', allRecords.length);
+        updateText('stat-latest', latestDate ? formatMonthDay(latestDate) : '--');
+    }
+
+    function renderLatestPosts() {
+        if (!latestPostList) return;
+
+        const latestPosts = sortPosts(allPosts, 'newest').slice(0, 4);
+        if (!latestPosts.length) {
+            latestPostList.innerHTML = '<p class="empty-message">暂无文章。</p>';
+            return;
+        }
+
+        latestPostList.innerHTML = latestPosts.map(post => `
+            <a class="latest-item" href="${escapeAttribute(post.url)}">
+                <span>${escapeHtml(post.category || '笔记')}</span>
+                <strong>${escapeHtml(post.title)}</strong>
+                <small>${escapeHtml(post.date || '')}</small>
+            </a>
+        `).join('');
+    }
+
+    function renderLatestRecords() {
+        if (!latestRecordList) return;
+
+        const records = [...allRecords]
+            .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))
+            .slice(0, 2);
+
+        if (!records.length) {
+            latestRecordList.innerHTML = '<p class="empty-message">暂无记录。</p>';
+            return;
+        }
+
+        latestRecordList.innerHTML = records.map(record => `
+            <a class="latest-record-card" href="${escapeAttribute(record.url)}">
+                ${record.cover ? `<img src="${escapeAttribute(record.cover)}" alt="">` : ''}
+                <span>${escapeHtml(record.display_date || record.date || '')}</span>
+                <strong>${escapeHtml(record.place || record.title || '记录')}</strong>
+                <small>${escapeHtml(record.excerpt || '')}</small>
+            </a>
+        `).join('');
     }
 
     function render() {
@@ -55,10 +146,14 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPosts(pagePosts);
         renderPagination(filteredPosts.length, pageCount);
         renderResultCount(filteredPosts.length);
+
+        if (clearSearchButton) {
+            clearSearchButton.disabled = !currentSearch;
+        }
     }
 
     function getFilteredPosts() {
-        return allPosts.filter(post => {
+        const filtered = allPosts.filter(post => {
             const matchesCategory = currentCategory === ALL_CATEGORY || post.category === currentCategory;
             const searchableText = [
                 post.title,
@@ -69,6 +164,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesSearch = !currentSearch || searchableText.includes(currentSearch);
 
             return matchesCategory && matchesSearch;
+        });
+
+        return sortPosts(filtered, currentSort);
+    }
+
+    function sortPosts(posts, sortMode) {
+        return [...posts].sort((a, b) => {
+            if (sortMode === 'oldest') {
+                return String(a.date || '').localeCompare(String(b.date || ''));
+            }
+
+            if (sortMode === 'title') {
+                return String(a.title || '').localeCompare(String(b.title || ''), 'zh-CN');
+            }
+
+            return String(b.date || '').localeCompare(String(a.date || ''));
         });
     }
 
@@ -82,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <article class="post-item">
                 <h2 class="post-title"><a href="${escapeAttribute(post.url)}">${escapeHtml(post.title)}</a></h2>
                 <div class="post-meta">
-                    <span>${escapeHtml(post.date)}</span>
+                    <span>${escapeHtml(post.date || '')}</span>
                     ${post.category ? `<span class="post-category">${escapeHtml(post.category)}</span>` : ''}
                 </div>
                 <p class="post-excerpt">${escapeHtml(post.excerpt || '')}</p>
@@ -140,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 currentPage = nextPage;
                 render();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                document.getElementById('library')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     }
@@ -171,6 +282,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         pages.push(pageCount);
         return pages;
+    }
+
+    function updateText(id, value) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = value;
+        }
+    }
+
+    function formatMonthDay(dateText) {
+        const parts = String(dateText).split('-');
+        if (parts.length < 3) return dateText;
+        return `${Number(parts[1])}.${Number(parts[2])}`;
     }
 
     function escapeHtml(value) {
