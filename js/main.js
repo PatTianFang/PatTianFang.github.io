@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultCount = document.getElementById('result-count');
     const latestPostList = document.getElementById('latest-post-list');
     const latestRecordList = document.getElementById('latest-record-list');
+    const categoryOverview = document.getElementById('category-overview');
+    const categoryOverviewCount = document.getElementById('category-overview-count');
+    const randomPostButton = document.getElementById('random-post');
 
     if (!postList) return;
 
@@ -32,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
             renderLatestPosts();
             renderLatestRecords();
             renderFilters(allPosts);
+            renderCategoryOverview();
+            applyStateFromUrl();
             render();
         })
         .catch(error => {
@@ -67,6 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSort = event.target.value;
             currentPage = 1;
             render();
+        });
+    }
+
+    if (randomPostButton) {
+        randomPostButton.addEventListener('click', () => {
+            const source = getFilteredPosts();
+            const candidates = source.length ? source : allPosts;
+            if (!candidates.length) return;
+            const item = candidates[Math.floor(Math.random() * candidates.length)];
+            if (item && item.url) {
+                window.location.href = item.url;
+            }
         });
     }
 
@@ -132,6 +149,42 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
+    function renderCategoryOverview() {
+        if (!categoryOverview) return;
+
+        const groups = getCategoryGroups()
+            .sort((a, b) => b.count - a.count || a.category.localeCompare(b.category, 'zh-CN'));
+
+        if (categoryOverviewCount) {
+            categoryOverviewCount.textContent = `${groups.length} 个分类`;
+        }
+
+        if (!groups.length) {
+            categoryOverview.innerHTML = '<p class="empty-message">暂无分类。</p>';
+            return;
+        }
+
+        const maxCount = Math.max(...groups.map(item => item.count), 1);
+        categoryOverview.innerHTML = groups.map(item => `
+            <button class="category-card" type="button" data-category="${escapeAttribute(item.category)}">
+                <span>${escapeHtml(item.category)}</span>
+                <strong>${item.count}</strong>
+                <small>${escapeHtml(item.latestDate || '')}</small>
+                <i style="--category-ratio: ${item.count / maxCount}" aria-hidden="true"></i>
+            </button>
+        `).join('');
+
+        categoryOverview.querySelectorAll('.category-card').forEach(button => {
+            button.addEventListener('click', event => {
+                currentCategory = event.currentTarget.getAttribute('data-category') || ALL_CATEGORY;
+                currentPage = 1;
+                syncFilterButtons();
+                render();
+                document.getElementById('library')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    }
+
     function render() {
         const filteredPosts = getFilteredPosts();
         const pageCount = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
@@ -146,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPosts(pagePosts);
         renderPagination(filteredPosts.length, pageCount);
         renderResultCount(filteredPosts.length);
+        syncUrlState();
 
         if (clearSearchButton) {
             clearSearchButton.disabled = !currentSearch;
@@ -214,10 +268,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentCategory = event.currentTarget.getAttribute('data-category') || ALL_CATEGORY;
                 currentPage = 1;
 
-                filterSection.querySelectorAll('.filter-btn').forEach(item => item.classList.remove('active'));
-                event.currentTarget.classList.add('active');
+                syncFilterButtons();
                 render();
             });
+        });
+    }
+
+    function syncFilterButtons() {
+        if (!filterSection) return;
+        filterSection.querySelectorAll('.filter-btn').forEach(item => {
+            item.classList.toggle('active', item.getAttribute('data-category') === currentCategory);
         });
     }
 
@@ -289,6 +349,49 @@ document.addEventListener('DOMContentLoaded', () => {
         if (element) {
             element.textContent = value;
         }
+    }
+
+    function getCategoryGroups() {
+        const byCategory = new Map();
+        allPosts.forEach(post => {
+            const category = post.category || '未分类';
+            const item = byCategory.get(category) || { category, count: 0, latestDate: '' };
+            item.count += 1;
+            if (post.date && post.date > item.latestDate) {
+                item.latestDate = post.date;
+            }
+            byCategory.set(category, item);
+        });
+        return [...byCategory.values()];
+    }
+
+    function applyStateFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get('category');
+        const query = params.get('q');
+        const sort = params.get('sort');
+        const page = Number(params.get('page'));
+
+        if (category) currentCategory = category;
+        if (query) currentSearch = query.toLowerCase();
+        if (sort && ['newest', 'oldest', 'title'].includes(sort)) currentSort = sort;
+        if (Number.isFinite(page) && page > 0) currentPage = page;
+
+        if (searchInput) searchInput.value = currentSearch;
+        if (sortSelect) sortSelect.value = currentSort;
+        syncFilterButtons();
+    }
+
+    function syncUrlState() {
+        const params = new URLSearchParams();
+        if (currentCategory !== ALL_CATEGORY) params.set('category', currentCategory);
+        if (currentSearch) params.set('q', currentSearch);
+        if (currentSort !== 'newest') params.set('sort', currentSort);
+        if (currentPage > 1) params.set('page', String(currentPage));
+
+        const query = params.toString();
+        const nextUrl = query ? `${window.location.pathname}?${query}${window.location.hash}` : `${window.location.pathname}${window.location.hash}`;
+        window.history.replaceState(null, '', nextUrl);
     }
 
     function formatMonthDay(dateText) {

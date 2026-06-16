@@ -5,6 +5,8 @@
     const sortSelect = document.getElementById('record-sort');
     const placeFilters = document.getElementById('record-place-filters');
     const resultCount = document.getElementById('result-count');
+    const timeline = document.getElementById('record-timeline');
+    const timelineCount = document.getElementById('record-timeline-count');
     if (!postList) return;
 
     const MAX_PROBE = 100;
@@ -167,10 +169,16 @@
         placeFilters.querySelectorAll('.filter-btn').forEach(button => {
             button.addEventListener('click', event => {
                 currentPlace = event.currentTarget.getAttribute('data-place') || ALL_PLACE;
-                placeFilters.querySelectorAll('.filter-btn').forEach(item => item.classList.remove('active'));
-                event.currentTarget.classList.add('active');
+                syncPlaceButtons();
                 render();
             });
+        });
+    }
+
+    function syncPlaceButtons() {
+        if (!placeFilters) return;
+        placeFilters.querySelectorAll('.filter-btn').forEach(item => {
+            item.classList.toggle('active', item.getAttribute('data-place') === currentPlace);
         });
     }
 
@@ -208,10 +216,12 @@
 
     function render() {
         const items = getFilteredRecords();
+        renderTimeline(items);
         if (items.length === 0) {
             postList.innerHTML = '<p class="empty-message">没有匹配的记录。</p>';
             if (resultCount) resultCount.textContent = '没有找到记录';
             if (clearSearchButton) clearSearchButton.disabled = !currentSearch;
+            syncUrlState();
             return;
         }
 
@@ -233,6 +243,29 @@
         if (clearSearchButton) {
             clearSearchButton.disabled = !currentSearch;
         }
+        syncUrlState();
+    }
+
+    function renderTimeline(items) {
+        if (!timeline) return;
+
+        if (timelineCount) {
+            timelineCount.textContent = items.length ? `${items.length} 个节点` : '暂无节点';
+        }
+
+        if (!items.length) {
+            timeline.innerHTML = '<p class="empty-message">没有匹配的时间线。</p>';
+            return;
+        }
+
+        const timelineItems = [...items].sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+        timeline.innerHTML = timelineItems.map(item => `
+            <a class="timeline-item" href="${escapeAttribute(item.url)}">
+                <span>${escapeHtml(item.displayDate || item.date || '')}</span>
+                <strong>${escapeHtml(item.place || item.title)}</strong>
+                <small>${escapeHtml(item.imageCount ? `${item.imageCount} 张照片` : item.excerpt || '')}</small>
+            </a>
+        `).join('');
     }
 
     function updateText(id, value) {
@@ -255,9 +288,36 @@
         return escapeHtml(value).replace(/`/g, '&#096;');
     }
 
+    function applyStateFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const place = params.get('place');
+        const query = params.get('q');
+        const sort = params.get('sort');
+
+        if (place) currentPlace = place;
+        if (query) currentSearch = query.toLowerCase();
+        if (sort && ['newest', 'oldest', 'place'].includes(sort)) currentSort = sort;
+
+        if (searchInput) searchInput.value = currentSearch;
+        if (sortSelect) sortSelect.value = currentSort;
+        syncPlaceButtons();
+    }
+
+    function syncUrlState() {
+        const params = new URLSearchParams();
+        if (currentPlace !== ALL_PLACE) params.set('place', currentPlace);
+        if (currentSearch) params.set('q', currentSearch);
+        if (currentSort !== 'newest') params.set('sort', currentSort);
+
+        const query = params.toString();
+        const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+        window.history.replaceState(null, '', nextUrl);
+    }
+
     discoverRecords().then(() => {
         renderStats();
         renderPlaceFilters();
+        applyStateFromUrl();
         render();
 
         if (searchInput) {

@@ -387,14 +387,18 @@ main {
     margin-top: 28px;
 }
 
-.site-hero-actions a {
+.site-hero-actions a,
+.hero-action-button {
     border: 1px solid var(--border-color);
     border-radius: 980px;
+    background: var(--surface-color);
     color: var(--primary-color);
+    cursor: pointer;
     padding: 8px 16px;
 }
 
 .site-hero-actions a:hover,
+.hero-action-button:hover,
 .site-hero-actions .hero-action-primary {
     border-color: var(--accent-color);
     background: var(--accent-color);
@@ -442,6 +446,10 @@ main {
     margin-bottom: 34px;
 }
 
+.category-panel {
+    margin-bottom: 34px;
+}
+
 .home-panel,
 .library-section {
     padding: 26px;
@@ -476,6 +484,75 @@ main {
     border-color: var(--accent-color);
     color: var(--accent-color);
     text-decoration: none;
+}
+
+.panel-note {
+    color: var(--tertiary-color);
+    font-size: 0.86rem;
+}
+
+.category-overview {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.category-card {
+    position: relative;
+    min-height: 128px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface-muted-color);
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 18px;
+    text-align: left;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.category-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-2px);
+}
+
+.category-card span,
+.category-card strong,
+.category-card small {
+    position: relative;
+    z-index: 1;
+    display: block;
+}
+
+.category-card span {
+    color: var(--primary-color);
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.category-card strong {
+    color: var(--accent-color);
+    font-size: 2rem;
+    line-height: 1;
+    margin-top: 20px;
+}
+
+.category-card small {
+    color: var(--tertiary-color);
+    margin-top: 8px;
+}
+
+.category-card i {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px;
+    background: var(--accent-color);
+    opacity: 0.72;
+    transform: scaleX(var(--category-ratio));
+    transform-origin: left center;
 }
 
 .latest-list,
@@ -1150,6 +1227,68 @@ main {
     margin-bottom: 18px;
 }
 
+.record-timeline-section {
+    margin: 26px 0 28px;
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface-color);
+    box-shadow: var(--shadow-soft);
+}
+
+.record-timeline {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(220px, 280px);
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+}
+
+.timeline-item {
+    position: relative;
+    min-height: 132px;
+    scroll-snap-align: start;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface-muted-color);
+    color: var(--text-color);
+    padding: 18px;
+    transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent-color);
+}
+
+.timeline-item:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.timeline-item span,
+.timeline-item small {
+    color: var(--tertiary-color);
+    font-size: 0.84rem;
+}
+
+.timeline-item strong {
+    display: block;
+    color: var(--primary-color);
+    font-size: 1.22rem;
+    line-height: 1.2;
+    margin: 18px 0 10px;
+}
+
 .records-gallery {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -1681,6 +1820,15 @@ footer {
         padding: 20px;
     }
 
+    .category-overview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .category-card {
+        min-height: 116px;
+        padding: 16px;
+    }
+
     .section-heading-row,
     .library-heading {
         align-items: flex-start;
@@ -1720,6 +1868,14 @@ footer {
 
     .records-stats span {
         font-size: 1.35rem;
+    }
+
+    .record-timeline-section {
+        padding: 18px;
+    }
+
+    .record-timeline {
+        grid-auto-columns: minmax(190px, 78vw);
     }
 
     .post-list {

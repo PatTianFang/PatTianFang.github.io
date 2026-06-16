@@ -27,6 +27,7 @@
                 <div class="site-hero-actions">
                     <a href="#library" class="hero-action-primary">浏览笔记</a>
                     <a href="records.html">查看记录</a>
+                    <button type="button" id="random-post" class="hero-action-button">随机一篇</button>
                 </div>
             </div>
             <div class="site-stats" aria-label="站点概览">
@@ -74,6 +75,19 @@
                     <p class="empty-message">正在加载记录...</p>
                 </div>
             </section>
+        </section>
+
+        <section class="home-panel category-panel" aria-labelledby="category-overview-title">
+            <div class="section-heading-row">
+                <div>
+                    <p class="records-kicker">Categories</p>
+                    <h2 id="category-overview-title">分类看板</h2>
+                </div>
+                <span id="category-overview-count" class="panel-note">正在统计...</span>
+            </div>
+            <div id="category-overview" class="category-overview">
+                <p class="empty-message">正在加载分类...</p>
+            </div>
         </section>
 
         <section class="library-section" id="library" aria-labelledby="library-title">
