@@ -2,6 +2,8 @@
 
 本目录是独立的静态回忆页，入口为 `index.html`。
 
+当前照片故事共 62 张，每张照片在 `assets/images/`、`assets/webp/large/`、`assets/webp/thumbs/` 和 `assets/originals/` 中保持同编号资源。
+
 ## 结构
 
 - `index.html`：页面主体，包含主视觉、时间线、章节、相册、逐张照片故事与尾声。
