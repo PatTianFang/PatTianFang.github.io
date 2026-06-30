@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="一页关于大学毕业、宿舍、同行与夏天的回忆。">
+    <title>大学毕业回忆 | FangTian's Note</title>
+    <link rel="stylesheet" href="assets/css/recall.css">
+</head>
+<body>
+    <header class="hero" id="top">
+        <nav class="topbar" aria-label="页面导航">
+            <a class="brand" href="../../index.html">FangTian's Note</a>
+            <div class="nav-links">
+                <a href="#story">片段</a>
+                <a href="#gallery">相册</a>
+                <a href="#letter">留白</a>
+            </div>
+        </nav>
+
+        <div class="hero-media" aria-hidden="true">
+            <img src="assets/images/photo-02.jpg" alt="">
+        </div>
+
+        <div class="hero-copy">
+            <p class="eyebrow">2026 · University Graduation</p>
+            <h1><span>大学毕业</span><span>回忆</span></h1>
+            <p class="lead">把散落在宿舍、校园、路上和合照里的夏天，收进一个慢慢翻看的页面。</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro reveal">
+            <p class="intro-kicker">从此以后</p>
+            <p class="intro-text">
+                那些普通到没有被认真命名的日子，后来都成了很难再复制的坐标。楼道里的脚步、临走前的合影、
+                半夜的聊天、毕业季突然变亮的天空，都在这里停一下。
+            </p>
+        </section>
+
+        <section class="chapter chapter-left reveal" id="story">
+            <div class="chapter-image">
+                <img src="assets/images/photo-26.jpg" alt="宿舍床铺上的毕业前日常">
+            </div>
+            <div class="chapter-copy">
+                <span class="chapter-mark">01</span>
+                <h2>宿舍还没醒</h2>
+                <p>毕业不是一个瞬间，更像某个上午醒来时发现，熟悉的床、桌子和窗外的声音，已经开始变成过去。</p>
+            </div>
+        </section>
+
+        <section class="chapter chapter-right reveal">
+            <div class="chapter-image">
+                <img src="assets/images/photo-18.jpg" alt="朋友同行的旅途照片">
+            </div>
+            <div class="chapter-copy">
+                <span class="chapter-mark">02</span>
+                <h2>同行的人</h2>
+                <p>路过的桥、遇见的人、随手拍下的表情，后来会比具体地点更清楚。很多故事，就是从一起出门开始的。</p>
+            </div>
+        </section>
+
+        <section class="chapter chapter-left reveal">
+            <div class="chapter-image">
+                <img src="assets/images/photo-08.jpg" alt="毕业季朋友合影">
+            </div>
+            <div class="chapter-copy">
+                <span class="chapter-mark">03</span>
+                <h2>站在台阶上</h2>
+                <p>合影把时间压成一张纸。看起来只是站了一会儿，其实身后已经排好了四年的早八、晚归和下一程。</p>
+            </div>
+        </section>
+
+        <section class="film-strip reveal" aria-label="毕业回忆照片带">
+            <div class="strip-track">
+                <img src="assets/images/photo-14.jpg" alt="回忆照片 1">
+                <img src="assets/images/photo-15.jpg" alt="回忆照片 2">
+                <img src="assets/images/photo-19.jpg" alt="回忆照片 3">
+                <img src="assets/images/photo-24.jpg" alt="回忆照片 4">
+                <img src="assets/images/photo-25.jpg" alt="回忆照片 5">
+                <img src="assets/images/photo-01.jpg" alt="回忆照片 6">
+            </div>
+        </section>
+
+        <section class="gallery-section" id="gallery">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Album</p>
+                <h2>相册</h2>
+            </div>
+            <div class="gallery" id="photoGallery" aria-label="大学毕业回忆相册"></div>
+        </section>
+
+        <section class="letter reveal" id="letter">
+            <p class="letter-date">写在毕业后的夏天</p>
+            <h2>愿每一次再见，都能把人带回更好的地方。</h2>
+            <p>
+                大学结束得很快，快到很多话还没认真说完。但照片会替我们留住一部分：留住并肩站过的楼前，
+                留住迟迟不肯散场的晚上，也留住那些没有被安排却刚好发生的快乐。
+            </p>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <p>&copy; 2026 FangTian's Note | 基于纯 HTML/CSS/JS 构建 | <a href="./">回忆</a></p>
+    </footer>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" type="button" aria-label="关闭照片预览">×</button>
+        <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张照片">‹</button>
+        <img class="lightbox-image" alt="">
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张照片">›</button>
+        <p class="lightbox-caption"></p>
+    </div>
+
+    <script src="assets/js/recall.js"></script>
+</body>
+</html>
