@@ -153,8 +153,13 @@ const closeButton = lightbox.querySelector(".lightbox-close");
 const prevButton = lightbox.querySelector(".lightbox-prev");
 const nextButton = lightbox.querySelector(".lightbox-next");
 let activeIndex = 0;
+let galleryBuilt = false;
+let memoryListBuilt = false;
 
 function buildGallery() {
+    if (galleryBuilt) return;
+    galleryBuilt = true;
+
     const fragment = document.createDocumentFragment();
 
     photos.forEach((photo, index) => {
@@ -168,6 +173,7 @@ function buildGallery() {
         image.alt = photo.alt;
         image.loading = "lazy";
         image.decoding = "async";
+        image.fetchPriority = "low";
 
         const meta = document.createElement("span");
         meta.className = "photo-tile-meta";
@@ -179,9 +185,13 @@ function buildGallery() {
     });
 
     gallery.appendChild(fragment);
+    initReveal(gallery);
 }
 
 function buildMemoryList() {
+    if (memoryListBuilt) return;
+    memoryListBuilt = true;
+
     const fragment = document.createDocumentFragment();
 
     photos.forEach((photo, index) => {
@@ -194,20 +204,17 @@ function buildMemoryList() {
         imageWrap.dataset.index = String(index);
         imageWrap.setAttribute("aria-label", `打开照片：${photo.title}`);
 
-        const picture = document.createElement("picture");
-        const source = document.createElement("source");
-        source.srcset = photo.large;
-        source.type = "image/webp";
-
         const image = document.createElement("img");
-        image.src = photo.fallback;
+        image.className = "memory-photo";
+        image.src = photo.thumb;
+        image.dataset.large = photo.large;
+        image.dataset.fallback = photo.fallback;
         image.alt = photo.alt;
         image.loading = "lazy";
         image.decoding = "async";
+        image.fetchPriority = "low";
 
-        picture.appendChild(source);
-        picture.appendChild(image);
-        imageWrap.appendChild(picture);
+        imageWrap.appendChild(image);
 
         const copy = document.createElement("div");
         copy.className = "memory-copy";
@@ -237,6 +244,8 @@ function buildMemoryList() {
     });
 
     memoryList.appendChild(fragment);
+    initReveal(memoryList);
+    initMemoryImageLoading();
 }
 
 function openLightbox(index) {
@@ -264,8 +273,8 @@ function showNextPhoto(step) {
     openLightbox(activeIndex + step);
 }
 
-function initReveal() {
-    const targets = document.querySelectorAll(".reveal");
+function initReveal(root = document) {
+    const targets = root.querySelectorAll(".reveal:not(.is-observed)");
 
     if (!("IntersectionObserver" in window)) {
         targets.forEach((target) => target.classList.add("is-visible"));
@@ -276,6 +285,7 @@ function initReveal() {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("is-visible");
+                entry.target.classList.remove("is-observed");
                 observer.unobserve(entry.target);
             }
         });
@@ -284,11 +294,87 @@ function initReveal() {
         rootMargin: "0px 0px -8% 0px"
     });
 
-    targets.forEach((target) => observer.observe(target));
+    targets.forEach((target) => {
+        target.classList.add("is-observed");
+        observer.observe(target);
+    });
 }
 
-buildGallery();
-buildMemoryList();
+function upgradeMemoryImage(image) {
+    if (image.dataset.loaded === "true") return;
+    image.dataset.loaded = "true";
+
+    const highRes = new Image();
+    highRes.decoding = "async";
+    highRes.onload = () => {
+        image.src = image.dataset.large;
+        image.classList.add("is-loaded");
+    };
+    highRes.onerror = () => {
+        image.src = image.dataset.fallback;
+        image.classList.add("is-loaded");
+    };
+    highRes.src = image.dataset.large;
+}
+
+function initMemoryImageLoading() {
+    const images = document.querySelectorAll(".memory-photo[data-large]:not([data-watch])");
+
+    if (!("IntersectionObserver" in window)) {
+        images.forEach(upgradeMemoryImage);
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            upgradeMemoryImage(entry.target);
+            observer.unobserve(entry.target);
+        });
+    }, {
+        rootMargin: "700px 0px",
+        threshold: 0.01
+    });
+
+    images.forEach((image) => {
+        image.dataset.watch = "true";
+        observer.observe(image);
+    });
+}
+
+function initDeferredSections() {
+    const shouldBuildImmediately = ["#gallery", "#moments"].includes(window.location.hash);
+
+    if (shouldBuildImmediately || !("IntersectionObserver" in window)) {
+        buildGallery();
+        buildMemoryList();
+        return;
+    }
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            if (entry.target.id === "gallery") {
+                buildGallery();
+            }
+
+            if (entry.target.id === "moments") {
+                buildMemoryList();
+            }
+
+            sectionObserver.unobserve(entry.target);
+        });
+    }, {
+        rootMargin: "1100px 0px",
+        threshold: 0.01
+    });
+
+    sectionObserver.observe(document.querySelector("#gallery"));
+    sectionObserver.observe(document.querySelector("#moments"));
+}
+
+initDeferredSections();
 initReveal();
 
 gallery.addEventListener("click", (event) => {

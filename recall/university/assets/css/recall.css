@@ -461,6 +461,8 @@ main {
     gap: clamp(22px, 5vw, 70px);
     align-items: center;
     margin: 0 0 clamp(52px, 9vw, 110px);
+    content-visibility: auto;
+    contain-intrinsic-size: 760px;
 }
 
 .memory-card:last-child {
@@ -520,6 +522,16 @@ main {
     height: clamp(380px, 58vw, 720px);
     object-fit: cover;
     transition: transform 760ms ease, filter 760ms ease;
+}
+
+.memory-photo {
+    filter: blur(8px) saturate(0.92);
+    transform: scale(1.01);
+}
+
+.memory-photo.is-loaded {
+    filter: none;
+    transform: scale(1);
 }
 
 .memory-image:hover img,
