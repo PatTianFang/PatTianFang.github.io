@@ -2,7 +2,7 @@
 
 本目录是独立的静态回忆页，入口为 `index.html`。
 
-当前照片故事共 91 张，每张照片在 `assets/images/`、`assets/webp/large/`、`assets/webp/thumbs/` 和 `assets/originals/` 中保持同编号资源。
+当前照片故事共 126 张，每张照片在 `assets/images/`、`assets/webp/large/`、`assets/webp/thumbs/` 和 `assets/originals/` 中保持同编号资源。
 主视觉使用 `photo-00`，对应资源同样位于上述图片目录中。
 
 ## 结构
