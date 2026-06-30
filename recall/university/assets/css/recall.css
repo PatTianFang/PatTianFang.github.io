@@ -241,6 +241,18 @@ main {
     font-size: 1rem;
 }
 
+.person-entry {
+    display: block;
+    border-radius: 8px;
+    transition: transform 220ms ease, background 220ms ease;
+}
+
+.person-entry:hover,
+.person-entry:focus-visible {
+    background: rgba(255, 255, 255, 0.42);
+    transform: translateY(-4px);
+}
+
 .chapter {
     width: min(1180px, calc(100% - 36px));
     margin: clamp(44px, 8vw, 96px) auto;
@@ -343,12 +355,6 @@ main {
     }
 }
 
-.gallery-section {
-    width: min(1220px, calc(100% - 28px));
-    margin: 0 auto;
-    padding: clamp(26px, 7vw, 72px) 0 clamp(64px, 10vw, 120px);
-}
-
 .section-heading {
     display: flex;
     align-items: end;
@@ -361,60 +367,6 @@ main {
 
 .section-heading h2 {
     margin: 0;
-}
-
-.gallery {
-    column-count: 4;
-    column-gap: 16px;
-}
-
-.photo-tile {
-    position: relative;
-    display: block;
-    width: 100%;
-    margin: 0 0 16px;
-    padding: 0;
-    break-inside: avoid;
-    border: 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #ddd6c7;
-    box-shadow: 0 12px 32px rgba(35, 31, 25, 0.12);
-    cursor: pointer;
-}
-
-.photo-tile img {
-    width: 100%;
-    height: auto;
-    transition: transform 420ms ease, filter 420ms ease;
-}
-
-.photo-tile:hover img {
-    transform: scale(1.035);
-    filter: saturate(1.05);
-}
-
-.photo-tile-meta {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 32px 12px 10px;
-    color: var(--white);
-    background: linear-gradient(180deg, transparent, rgba(18, 17, 15, 0.72));
-    font-size: 0.88rem;
-    font-weight: 700;
-    line-height: 1.25;
-    text-align: left;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 220ms ease, transform 220ms ease;
-}
-
-.photo-tile:hover .photo-tile-meta,
-.photo-tile:focus-visible .photo-tile-meta {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .moments-section {
@@ -757,10 +709,6 @@ main {
         left: 16px;
     }
 
-    .gallery {
-        column-count: 3;
-    }
-
     .moments-heading,
     .memory-card,
     .memory-right,
@@ -833,15 +781,6 @@ main {
         padding-left: 18px;
     }
 
-    .gallery {
-        column-count: 2;
-        column-gap: 10px;
-    }
-
-    .photo-tile {
-        margin-bottom: 10px;
-    }
-
     .lightbox {
         padding: 58px 10px 70px;
     }
@@ -872,10 +811,6 @@ main {
 }
 
 @media (max-width: 430px) {
-
-    .gallery {
-        column-count: 1;
-    }
 
     .chapter-image picture,
     .chapter-image img,

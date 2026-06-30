@@ -724,6 +724,146 @@ const photoStories = [
         title: "楼前再聚齐",
         text: "一群人站在蓝色台阶前，手势和笑脸把画面撑得很满。大学里最难得的，常常就是大家还能这样聚在同一个地方。",
         tag: "合影"
+    },
+    {
+        title: "木桥上的并排",
+        text: "几个人坐在木桥上，身体往镜头前伸开，春天的光也跟着变得松弛。毕业回忆里需要这种不用站得笔直的合影。",
+        tag: "桥上"
+    },
+    {
+        title: "城门前的三人",
+        text: "古城门和来往的人群在身后，三个人站成一排。旅行照最清楚的地方，是它把地点和同行的人同时留下。",
+        tag: "古城"
+    },
+    {
+        title: "夜色里的楼",
+        text: "亮起来的楼把夜晚照得很有层次，人站在前面抱臂，像给这一次到达留了一个正式的标记。",
+        tag: "夜景"
+    },
+    {
+        title: "沙发上的正式感",
+        text: "灯光、沙发和坐得很正的人，让画面有一点奇妙的仪式感。旅行中偶尔认真一下，也会成为很有记忆点的照片。",
+        tag: "室内"
+    },
+    {
+        title: "近距离头像",
+        text: "一张很近的头像没有复杂背景，却能把当时的神情直接保存下来。相册里也需要这种简单到只剩人的画面。",
+        tag: "人像"
+    },
+    {
+        title: "路边低头",
+        text: "蹲下来的动作像是在检查什么，也像是行程中的一个小插曲。那些不经意的动作，后来反而最像真实生活。",
+        tag: "抓拍"
+    },
+    {
+        title: "路牌旁的弯腰",
+        text: "黄色衣服、路牌和低头的姿势一起出现在画面里。旅行路上总有一些瞬间不够正式，却很有现场感。",
+        tag: "路边"
+    },
+    {
+        title: "狗狗的特写",
+        text: "一张狗狗的近照突然把回忆放软。毕业相册并不只记录人，也记录那些在路上遇见的温柔小片段。",
+        tag: "遇见"
+    },
+    {
+        title: "海边大合照",
+        text: "一群人在海边栏杆旁举起手，海面和城市都在后面。能一起站到这样的地方，本身就是值得保存的事。",
+        tag: "海边"
+    },
+    {
+        title: "餐桌前的安静",
+        text: "盘子、饮料和低头吃饭的人，把旅行落回到很具体的一餐。走再远，最后还是要靠一顿饭把人安顿下来。",
+        tag: "吃饭"
+    },
+    {
+        title: "帽檐下的举手",
+        text: "帽子和制服让画面带着一点表演感，抬起的手又把它变得轻松。这样的照片像是旅途中突然冒出来的角色。",
+        tag: "玩笑"
+    },
+    {
+        title: "山顶遮住脸",
+        text: "帽子、墨镜和面罩把脸遮得很严，只剩一个指向镜头的动作。山顶的风很强，照片里的气势也很足。",
+        tag: "山顶"
+    },
+    {
+        title: "栏杆边的远眺",
+        text: "站在高处栏杆旁，远处的城市和山都摊开来。旅行里这种开阔画面，会让毕业季的情绪变得轻一些。",
+        tag: "远眺"
+    },
+    {
+        title: "雪山前的站立",
+        text: "雪山和阳光在身后，人站在木栏边显得很安静。冷一点的风景，也能把那段路记得很清楚。",
+        tag: "雪山"
+    },
+    {
+        title: "铁桥上的自拍",
+        text: "铁桥、灰色天空和几张靠近镜头的脸，把城市的硬朗和朋友的热闹放在一起。这样的自拍总是很耐看。",
+        tag: "桥上"
+    },
+    {
+        title: "白色阳台",
+        text: "白色建筑和站在阳台上的人，让画面显得干净明亮。旅行中遇到好看的门廊，总会忍不住停下来拍一张。",
+        tag: "建筑"
+    },
+    {
+        title: "草地边走过",
+        text: "草地、人群和远处建筑组成很轻松的背景。一个人从画面里走过，像是把那天下午的节奏也带了进来。",
+        tag: "草地"
+    },
+    {
+        title: "桌边的热菜",
+        text: "木桌、碗筷和热气腾腾的菜，让照片有很具体的温度。旅途中被认真吃掉的一餐，也是一种纪念。",
+        tag: "聚餐"
+    },
+    {
+        title: "河岸前的四人",
+        text: "四个人在水边自拍，背后是开阔的城市风景。镜头举起来的时候，目的地就被压缩成一张很近的合影。",
+        tag: "同行"
+    },
+    {
+        title: "手里的门票",
+        text: "把票据举到镜头前，身后的水面和天空都变成了背景。旅行的证据有时候很小，却能准确指向那一天。",
+        tag: "票据"
+    },
+    {
+        title: "海边栏杆旁",
+        text: "一个人站在海边栏杆前，远处的山和水都很淡。安静的单人照，会给热闹的毕业回忆留出一点呼吸。",
+        tag: "海边"
+    },
+    {
+        title: "报纸里的天津",
+        text: "报纸式画面把城市欢迎语和人放在一起，带着一点玩笑，也带着明确的到达感。这样的打卡很有趣。",
+        tag: "天津"
+    },
+    {
+        title: "桥边两个人",
+        text: "两个人站在铁桥旁边，栏杆和结构线条把画面撑起来。城市里的桥，总像是在提示一段路正在经过。",
+        tag: "桥边"
+    },
+    {
+        title: "摩天轮前的背影",
+        text: "人站在河边看向摩天轮，镜头从后面把这一刻收住。不是每次都要看镜头，背影也能说明心情。",
+        tag: "摩天轮"
+    },
+    {
+        title: "拼在一起的表情",
+        text: "几张表情被拼在同一张图里，像是相册里突然插入的笑点。回忆不必全都严肃，玩笑也值得留下。",
+        tag: "梗图"
+    },
+    {
+        title: "山石边坐下",
+        text: "坐在山石边看向镜头，远处城市被雾气压得很淡。爬上去以后停一会儿，照片就有了完成感。",
+        tag: "山上"
+    },
+    {
+        title: "头盔里的吻",
+        text: "头盔和墨镜把表情变得夸张，贴纸文字又添了一点玩笑。旅行里的自拍，有时就是要这样轻松。",
+        tag: "自拍"
+    },
+    {
+        title: "落日压过屋顶",
+        text: "太阳落在屋顶和树枝之间，整张照片安静下来。用一张风景作为结尾，也像给这段路留了一个慢慢暗下去的句号。",
+        tag: "落日"
     }
 ];
 
@@ -741,7 +881,6 @@ const photos = photoStories.map((story, index) => {
     };
 });
 
-const gallery = document.querySelector("#photoGallery");
 const memoryList = document.querySelector("#memoryList");
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = lightbox.querySelector(".lightbox-image");
@@ -750,40 +889,7 @@ const closeButton = lightbox.querySelector(".lightbox-close");
 const prevButton = lightbox.querySelector(".lightbox-prev");
 const nextButton = lightbox.querySelector(".lightbox-next");
 let activeIndex = 0;
-let galleryBuilt = false;
 let memoryListBuilt = false;
-
-function buildGallery() {
-    if (galleryBuilt) return;
-    galleryBuilt = true;
-
-    const fragment = document.createDocumentFragment();
-
-    photos.forEach((photo, index) => {
-        const button = document.createElement("button");
-        button.className = "photo-tile reveal";
-        button.type = "button";
-        button.dataset.index = String(index);
-
-        const image = document.createElement("img");
-        image.src = photo.thumb;
-        image.alt = photo.alt;
-        image.loading = "lazy";
-        image.decoding = "async";
-        image.fetchPriority = "low";
-
-        const meta = document.createElement("span");
-        meta.className = "photo-tile-meta";
-        meta.textContent = photo.title;
-
-        button.appendChild(image);
-        button.appendChild(meta);
-        fragment.appendChild(button);
-    });
-
-    gallery.appendChild(fragment);
-    initReveal(gallery);
-}
 
 function buildMemoryList() {
     if (memoryListBuilt) return;
@@ -998,10 +1104,9 @@ function initMemoryImageLoading() {
 }
 
 function initDeferredSections() {
-    const shouldBuildImmediately = ["#gallery", "#moments"].includes(window.location.hash);
+    const shouldBuildImmediately = window.location.hash === "#moments";
 
     if (shouldBuildImmediately || !("IntersectionObserver" in window)) {
-        buildGallery();
         buildMemoryList();
         return;
     }
@@ -1009,10 +1114,6 @@ function initDeferredSections() {
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
-
-            if (entry.target.id === "gallery") {
-                buildGallery();
-            }
 
             if (entry.target.id === "moments") {
                 buildMemoryList();
@@ -1025,18 +1126,11 @@ function initDeferredSections() {
         threshold: 0.01
     });
 
-    sectionObserver.observe(document.querySelector("#gallery"));
     sectionObserver.observe(document.querySelector("#moments"));
 }
 
 initDeferredSections();
 initReveal();
-
-gallery.addEventListener("click", (event) => {
-    const tile = event.target.closest(".photo-tile");
-    if (!tile) return;
-    openLightbox(Number(tile.dataset.index));
-});
 
 memoryList.addEventListener("click", (event) => {
     const image = event.target.closest(".memory-image");
