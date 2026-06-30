@@ -892,5 +892,155 @@
         "excerpt": "这是关于 01-R语言入门-R和Rstudio安装与使用 的 PDF 文档预览。",
         "r2_object_key": "pdfs/语言语法/R语言/01-R语言入门-R和Rstudio安装与使用/01-R语言入门-R和Rstudio安装与使用.pdf",
         "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-Anaconda建立Python虚拟环境",
+        "title": "01-Anaconda建立Python虚拟环境",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/01-Anaconda建立Python虚拟环境.html",
+        "excerpt": "这是关于 01-Anaconda建立Python虚拟环境 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/01-Anaconda建立Python虚拟环境.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-基础概述",
+        "title": "01-基础概述",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/01-基础概述.html",
+        "excerpt": "这是关于 01-基础概述 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/01-基础概述.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "02-C++、Python极简基础",
+        "title": "02-C++、Python极简基础",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/02-C++、Python极简基础.html",
+        "excerpt": "这是关于 02-C++、Python极简基础 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/02-C++、Python极简基础.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "02-Pycharm设置conda虚拟环境",
+        "title": "02-Pycharm设置conda虚拟环境",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/02-Pycharm设置conda虚拟环境.html",
+        "excerpt": "这是关于 02-Pycharm设置conda虚拟环境 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/02-Pycharm设置conda虚拟环境.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-1-二维码识别",
+        "title": "03-1-二维码识别",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/03-1-二维码识别.html",
+        "excerpt": "这是关于 03-1-二维码识别 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/03-1-二维码识别.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-2-霍夫圆检测",
+        "title": "03-2-霍夫圆检测",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/03-2-霍夫圆检测.html",
+        "excerpt": "这是关于 03-2-霍夫圆检测 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/03-2-霍夫圆检测.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-3-视频二维码检测",
+        "title": "03-3-视频二维码检测",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/03-3-视频二维码检测.html",
+        "excerpt": "这是关于 03-3-视频二维码检测 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/03-3-视频二维码检测.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-Ubuntu和ROS基础",
+        "title": "03-Ubuntu和ROS基础",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/03-Ubuntu和ROS基础.html",
+        "excerpt": "这是关于 03-Ubuntu和ROS基础 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/03-Ubuntu和ROS基础.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "04-Git进行代码托管",
+        "title": "04-Git进行代码托管",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/04-Git进行代码托管.html",
+        "excerpt": "这是关于 04-Git进行代码托管 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/04-Git进行代码托管.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "04-虚拟机的安装",
+        "title": "04-虚拟机的安装",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/04-虚拟机的安装.html",
+        "excerpt": "这是关于 04-虚拟机的安装 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/04-虚拟机的安装.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "05-Gazebo启动失败无虚拟无人机的解决",
+        "title": "05-Gazebo启动失败无虚拟无人机的解决",
+        "date": "2026-03-21",
+        "category": "无人机",
+        "url": "posts/无人机/05-Gazebo启动失败无虚拟无人机的解决.html",
+        "excerpt": "这是关于 05-Gazebo启动失败无虚拟无人机的解决 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/05-Gazebo启动失败无虚拟无人机的解决.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "无人机后台连接",
+        "title": "无人机后台连接",
+        "date": "2026-05-26",
+        "category": "无人机",
+        "url": "posts/无人机/无人机后台连接.html",
+        "excerpt": "这是关于 无人机后台连接 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/无人机后台连接.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "01-精简入门教程",
+        "title": "01-精简入门教程",
+        "date": "2026-06-03",
+        "category": "无人机",
+        "url": "posts/无人机/无人机比赛/01-精简入门教程.html",
+        "excerpt": "这是关于 01-精简入门教程 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/无人机比赛/01-精简入门教程.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "03-准备流程",
+        "title": "03-准备流程",
+        "date": "2026-05-26",
+        "category": "无人机",
+        "url": "posts/无人机/无人机比赛/03-准备流程.html",
+        "excerpt": "这是关于 03-准备流程 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/无人机比赛/03-准备流程.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "电池充电教程",
+        "title": "电池充电教程",
+        "date": "2026-05-26",
+        "category": "无人机",
+        "url": "posts/无人机/无人机比赛/电池充电教程.html",
+        "excerpt": "这是关于 电池充电教程 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/无人机/无人机比赛/电池充电教程.pdf",
+        "generated_by": "Publish.py"
     }
 ]
