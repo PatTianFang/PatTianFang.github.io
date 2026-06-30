@@ -1,7 +1,9 @@
 const photos = Array.from({ length: 26 }, (_, index) => {
     const number = String(index + 1).padStart(2, "0");
     return {
-        src: `assets/images/photo-${number}.jpg`,
+        thumb: `assets/webp/thumbs/photo-${number}.webp`,
+        large: `assets/webp/large/photo-${number}.webp`,
+        fallback: `assets/images/photo-${number}.jpg`,
         alt: `大学毕业回忆照片 ${index + 1}`,
         caption: `大学毕业回忆 · ${number}`
     };
@@ -26,9 +28,9 @@ function buildGallery() {
         button.dataset.index = String(index);
 
         const image = document.createElement("img");
-        image.src = photo.src;
+        image.src = photo.thumb;
         image.alt = photo.alt;
-        image.loading = index < 4 ? "eager" : "lazy";
+        image.loading = "lazy";
         image.decoding = "async";
 
         button.appendChild(image);
@@ -41,8 +43,12 @@ function buildGallery() {
 function openLightbox(index) {
     activeIndex = (index + photos.length) % photos.length;
     const photo = photos[activeIndex];
-    lightboxImage.src = photo.src;
+    lightboxImage.src = photo.large;
     lightboxImage.alt = photo.alt;
+    lightboxImage.onerror = () => {
+        lightboxImage.onerror = null;
+        lightboxImage.src = photo.fallback;
+    };
     lightboxCaption.textContent = photo.caption;
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
