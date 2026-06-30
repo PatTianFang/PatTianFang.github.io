@@ -732,6 +732,7 @@ const photos = photoStories.map((story, index) => {
     return {
         number,
         thumb: `assets/webp/thumbs/photo-${number}.webp`,
+        story: `assets/webp/story/photo-${number}.webp`,
         large: `assets/webp/large/photo-${number}.webp`,
         fallback: `assets/images/photo-${number}.jpg`,
         alt: `${story.title}，大学毕业回忆照片 ${index + 1}`,
@@ -803,6 +804,7 @@ function buildMemoryList() {
         const image = document.createElement("img");
         image.className = "memory-photo";
         image.src = photo.thumb;
+        image.dataset.story = photo.story;
         image.dataset.large = photo.large;
         image.dataset.fallback = photo.fallback;
         image.alt = photo.alt;
@@ -896,39 +898,93 @@ function initReveal(root = document) {
     });
 }
 
-function upgradeMemoryImage(image) {
-    if (image.dataset.loaded === "true") return;
-    image.dataset.loaded = "true";
+const memoryImageQueue = [];
+const queuedMemoryImages = new Set();
+let activeMemoryLoads = 0;
+let memoryQueueScheduled = false;
+const maxMemoryImageLoads = 3;
 
+function getDistanceToViewport(element) {
+    const rect = element.getBoundingClientRect();
+    if (rect.bottom < 0) return Math.abs(rect.bottom);
+    if (rect.top > window.innerHeight) return rect.top - window.innerHeight;
+    return 0;
+}
+
+function scheduleMemoryQueueSort() {
+    if (memoryQueueScheduled) return;
+    memoryQueueScheduled = true;
+
+    requestAnimationFrame(() => {
+        memoryQueueScheduled = false;
+        memoryImageQueue.sort((a, b) => getDistanceToViewport(a) - getDistanceToViewport(b));
+        processMemoryImageQueue();
+    });
+}
+
+function enqueueMemoryImage(image) {
+    if (image.dataset.loaded === "true" || image.dataset.loading === "true" || queuedMemoryImages.has(image)) return;
+    queuedMemoryImages.add(image);
+    memoryImageQueue.push(image);
+    scheduleMemoryQueueSort();
+}
+
+function loadMemoryImage(image) {
+    image.dataset.loading = "true";
+    image.fetchPriority = getDistanceToViewport(image) < 80 ? "high" : "auto";
+
+    const storySource = image.dataset.story || image.dataset.large;
     const highRes = new Image();
     highRes.decoding = "async";
+    highRes.fetchPriority = image.fetchPriority;
     highRes.onload = () => {
-        image.src = image.dataset.large;
+        image.src = storySource;
         image.classList.add("is-loaded");
+        image.dataset.loaded = "true";
+        delete image.dataset.loading;
+        activeMemoryLoads -= 1;
+        processMemoryImageQueue();
     };
     highRes.onerror = () => {
         image.src = image.dataset.fallback;
         image.classList.add("is-loaded");
+        image.dataset.loaded = "true";
+        delete image.dataset.loading;
+        activeMemoryLoads -= 1;
+        processMemoryImageQueue();
     };
-    highRes.src = image.dataset.large;
+    highRes.src = storySource;
+}
+
+function processMemoryImageQueue() {
+    while (activeMemoryLoads < maxMemoryImageLoads && memoryImageQueue.length) {
+        const image = memoryImageQueue.shift();
+        queuedMemoryImages.delete(image);
+
+        if (!image.isConnected || image.dataset.loaded === "true" || image.dataset.loading === "true") {
+            continue;
+        }
+
+        activeMemoryLoads += 1;
+        loadMemoryImage(image);
+    }
 }
 
 function initMemoryImageLoading() {
-    const images = document.querySelectorAll(".memory-photo[data-large]:not([data-watch])");
+    const images = document.querySelectorAll(".memory-photo[data-story]:not([data-watch])");
 
     if (!("IntersectionObserver" in window)) {
-        images.forEach(upgradeMemoryImage);
+        images.forEach(enqueueMemoryImage);
         return;
     }
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
-            upgradeMemoryImage(entry.target);
-            observer.unobserve(entry.target);
+            enqueueMemoryImage(entry.target);
         });
     }, {
-        rootMargin: "700px 0px",
+        rootMargin: "260px 0px",
         threshold: 0.01
     });
 
@@ -936,6 +992,9 @@ function initMemoryImageLoading() {
         image.dataset.watch = "true";
         observer.observe(image);
     });
+
+    window.addEventListener("scroll", scheduleMemoryQueueSort, { passive: true });
+    window.addEventListener("resize", scheduleMemoryQueueSort);
 }
 
 function initDeferredSections() {
