@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="一页关于大学毕业、宿舍、同行与夏天的回忆。">
     <title>大学毕业回忆 | FangTian's Note</title>
+    <link
+        rel="preload"
+        as="image"
+        href="assets/hero/photo-00-1100.webp?v=20260630-1628"
+        imagesrcset="assets/hero/photo-00-720.webp?v=20260630-1628 720w, assets/hero/photo-00-1100.webp?v=20260630-1628 1100w, assets/hero/photo-00-1600.webp?v=20260630-1628 1600w"
+        imagesizes="100vw"
+        type="image/webp"
+        fetchpriority="high"
+    >
     <link rel="stylesheet" href="assets/css/recall.css?v=20260630-1535">
 </head>
 <body>
@@ -22,8 +31,19 @@
 
         <div class="hero-media" aria-hidden="true">
             <picture>
-                <source srcset="assets/webp/large/photo-00.webp?v=20260630-1535" type="image/webp">
-                <img src="assets/images/photo-00.jpg?v=20260630-1535" alt="" fetchpriority="high" decoding="async">
+                <source
+                    srcset="assets/hero/photo-00-720.webp?v=20260630-1628 720w, assets/hero/photo-00-1100.webp?v=20260630-1628 1100w, assets/hero/photo-00-1600.webp?v=20260630-1628 1600w"
+                    sizes="100vw"
+                    type="image/webp"
+                >
+                <img
+                    src="assets/images/photo-00.jpg?v=20260630-1628"
+                    alt=""
+                    width="1800"
+                    height="810"
+                    fetchpriority="high"
+                    decoding="sync"
+                >
             </picture>
         </div>
 
