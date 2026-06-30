@@ -425,6 +425,11 @@ main {
         linear-gradient(90deg, rgba(73, 111, 157, 0.08), transparent 34%, rgba(64, 107, 88, 0.08));
 }
 
+.moments-section-top {
+    padding-top: clamp(58px, 9vw, 104px);
+    border-top: 1px solid rgba(28, 27, 24, 0.08);
+}
+
 .moments-heading {
     width: min(980px, calc(100% - 36px));
     margin: 0 auto clamp(46px, 8vw, 86px);

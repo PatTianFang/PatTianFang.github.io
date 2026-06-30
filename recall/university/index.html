@@ -12,18 +12,18 @@
         <nav class="topbar" aria-label="页面导航">
             <a class="brand" href="../../index.html">FangTian's Note</a>
             <div class="nav-links">
+                <a href="#moments">照片故事</a>
                 <a href="#story">片段</a>
                 <a href="#timeline">时间</a>
                 <a href="#gallery">相册</a>
-                <a href="#moments">照片故事</a>
                 <a href="#letter">留白</a>
             </div>
         </nav>
 
         <div class="hero-media" aria-hidden="true">
             <picture>
-                <source srcset="assets/webp/large/photo-02.webp" type="image/webp">
-                <img src="assets/images/photo-02.jpg" alt="" fetchpriority="high" decoding="async">
+                <source srcset="assets/webp/large/photo-00.webp" type="image/webp">
+                <img src="assets/images/photo-00.jpg" alt="" fetchpriority="high" decoding="async">
             </picture>
         </div>
 
@@ -35,6 +35,18 @@
     </header>
 
     <main>
+        <section class="moments-section moments-section-top" id="moments">
+            <div class="moments-heading reveal">
+                <p class="eyebrow">Every Frame</p>
+                <h2>每一张照片，都有自己的位置</h2>
+                <p>
+                    相册适合快速翻看，这里把每张照片放回它的语境里。没有刻意排序成宏大的故事，
+                    只是让宿舍、旅途、饭桌、夜晚和玩笑都能各自停留一会儿。
+                </p>
+            </div>
+            <div class="memory-list" id="memoryList" aria-label="逐张照片回忆"></div>
+        </section>
+
         <section class="intro reveal">
             <p class="intro-kicker">从此以后</p>
             <p class="intro-text">
@@ -129,18 +141,6 @@
                 <h2>相册</h2>
             </div>
             <div class="gallery" id="photoGallery" aria-label="大学毕业回忆相册"></div>
-        </section>
-
-        <section class="moments-section" id="moments">
-            <div class="moments-heading reveal">
-                <p class="eyebrow">Every Frame</p>
-                <h2>每一张照片，都有自己的位置</h2>
-                <p>
-                    相册适合快速翻看，这里把每张照片放回它的语境里。没有刻意排序成宏大的故事，
-                    只是让宿舍、旅途、饭桌、夜晚和玩笑都能各自停留一会儿。
-                </p>
-            </div>
-            <div class="memory-list" id="memoryList" aria-label="逐张照片回忆"></div>
         </section>
 
         <section class="afterglow reveal">
