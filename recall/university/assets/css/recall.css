@@ -369,6 +369,12 @@ main {
     margin: 0;
 }
 
+.section-note {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
 .moments-section {
     position: relative;
     padding: clamp(66px, 10vw, 118px) 0 clamp(48px, 9vw, 96px);
