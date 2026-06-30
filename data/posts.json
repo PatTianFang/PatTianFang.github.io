@@ -1042,5 +1042,45 @@
         "excerpt": "这是关于 电池充电教程 的 PDF 文档预览。",
         "r2_object_key": "pdfs/无人机/无人机比赛/电池充电教程.pdf",
         "generated_by": "Publish.py"
+    },
+    {
+        "id": "main",
+        "title": "main",
+        "date": "2026-06-17",
+        "category": "LatexLearn",
+        "url": "posts/LatexLearn/00-Template/main.html",
+        "excerpt": "这是关于 main 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/LatexLearn/00-Template/main.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "main",
+        "title": "main",
+        "date": "2026-06-17",
+        "category": "LatexLearn",
+        "url": "posts/LatexLearn/00-Template/build/main.html",
+        "excerpt": "这是关于 main 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/LatexLearn/00-Template/build/main.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "main",
+        "title": "main",
+        "date": "2026-06-22",
+        "category": "LatexLearn",
+        "url": "posts/LatexLearn/01-Introduction to Reinforcement Learning/main.html",
+        "excerpt": "这是关于 main 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/LatexLearn/01-Introduction to Reinforcement Learning/main.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "main",
+        "title": "main",
+        "date": "2026-06-22",
+        "category": "LatexLearn",
+        "url": "posts/LatexLearn/01-Introduction to Reinforcement Learning/build/main.html",
+        "excerpt": "这是关于 main 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/LatexLearn/01-Introduction to Reinforcement Learning/build/main.pdf",
+        "generated_by": "Publish.py"
     }
 ]
