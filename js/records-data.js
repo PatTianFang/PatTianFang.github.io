@@ -1,5 +1,20 @@
 window.WEBNOTE_RECORDS = [
     {
+        "id": "20260714青岛",
+        "title": "20260714青岛",
+        "date": "2026-07-14",
+        "display_date": "2026年07月14日",
+        "place": "青岛",
+        "coords": [
+            36.0662,
+            120.3826
+        ],
+        "url": "images/20260714%E9%9D%92%E5%B2%9B.html",
+        "excerpt": "2026年07月14日，拍摄地点：青岛，共 17 张图片。",
+        "cover": "https://static.patfang.xyz/images/20260714%E9%9D%92%E5%B2%9B/20260714%E9%9D%92%E5%B2%9B-1784987255315.webp?v=1784987256",
+        "generated_by": "Publish.py"
+    },
+    {
         "id": "20260524厦门",
         "title": "20260524厦门",
         "date": "2026-05-24",
