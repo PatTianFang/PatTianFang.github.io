@@ -1,5 +1,29 @@
 window.WEBNOTE_RECORDS = [
     {
+        "id": "20260724济南",
+        "title": "20260724济南",
+        "date": "2026-07-24",
+        "display_date": "2026年07月24日",
+        "place": "济南",
+        "coords": null,
+        "url": "images/20260724%E6%B5%8E%E5%8D%97.html",
+        "excerpt": "2026年07月24日，拍摄地点：济南，共 29 张图片。",
+        "cover": "https://static.patfang.xyz/images/20260724%E6%B5%8E%E5%8D%97/20260724%E6%B5%8E%E5%8D%97-1785074585353.webp?v=1785074586",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "20260722烟台",
+        "title": "20260722烟台",
+        "date": "2026-07-22",
+        "display_date": "2026年07月22日",
+        "place": "烟台",
+        "coords": null,
+        "url": "images/20260722%E7%83%9F%E5%8F%B0.html",
+        "excerpt": "2026年07月22日，拍摄地点：烟台，共 12 张图片。",
+        "cover": "https://static.patfang.xyz/images/20260722%E7%83%9F%E5%8F%B0/20260722%E7%83%9F%E5%8F%B0-1785074412566.webp?v=1785074413",
+        "generated_by": "Publish.py"
+    },
+    {
         "id": "20260714青岛",
         "title": "20260714青岛",
         "date": "2026-07-14",
