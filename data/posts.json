@@ -1066,7 +1066,7 @@
     {
         "id": "main",
         "title": "main",
-        "date": "2026-07-04",
+        "date": "2026-07-27",
         "category": "LatexLearn",
         "url": "posts/LatexLearn/01-Introduction to Reinforcement Learning/main.html",
         "excerpt": "这是关于 main 的 PDF 文档预览。",
@@ -1076,11 +1076,111 @@
     {
         "id": "main",
         "title": "main",
-        "date": "2026-07-04",
+        "date": "2026-07-27",
         "category": "LatexLearn",
         "url": "posts/LatexLearn/01-Introduction to Reinforcement Learning/build/main.html",
         "excerpt": "这是关于 main 的 PDF 文档预览。",
         "r2_object_key": "pdfs/LatexLearn/01-Introduction to Reinforcement Learning/build/main.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "FERS-Windows构建流程",
+        "title": "FERS-Windows构建流程",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/01-构建编译流程/FERS-Windows构建流程.html",
+        "excerpt": "这是关于 FERS-Windows构建流程 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/01-构建编译流程/FERS-Windows构建流程.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "cl.exe加载x86而非x64路径",
+        "title": "cl.exe加载x86而非x64路径",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/02-问题解决教程/cl.exe加载x86而非x64路径/cl.exe加载x86而非x64路径.html",
+        "excerpt": "这是关于 cl.exe加载x86而非x64路径 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/02-问题解决教程/cl.exe加载x86而非x64路径/cl.exe加载x86而非x64路径.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "libiconv 错误 77",
+        "title": "libiconv 错误 77",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/02-问题解决教程/libiconv 错误 77/libiconv 错误 77.html",
+        "excerpt": "这是关于 libiconv 错误 77 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/02-问题解决教程/libiconv 错误 77/libiconv 错误 77.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "Ninja显示无法识别",
+        "title": "Ninja显示无法识别",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/02-问题解决教程/Ninja显示无法识别/Ninja显示无法识别.html",
+        "excerpt": "这是关于 Ninja显示无法识别 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/02-问题解决教程/Ninja显示无法识别/Ninja显示无法识别.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "vcpkg 下载 libaec 时出现 HTTP 429",
+        "title": "vcpkg 下载 libaec 时出现 HTTP 429",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/02-问题解决教程/vcpkg 下载 libaec 时出现 HTTP 429/vcpkg 下载 libaec 时出现 HTTP 429.html",
+        "excerpt": "这是关于 vcpkg 下载 libaec 时出现 HTTP 429 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/02-问题解决教程/vcpkg 下载 libaec 时出现 HTTP 429/vcpkg 下载 libaec 时出现 HTTP 429.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "vcpkg 下载出现 SSL error 35",
+        "title": "vcpkg 下载出现 SSL error 35",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/02-问题解决教程/vcpkg 下载出现 SSL error 35/vcpkg 下载出现 SSL error 35.html",
+        "excerpt": "这是关于 vcpkg 下载出现 SSL error 35 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/02-问题解决教程/vcpkg 下载出现 SSL error 35/vcpkg 下载出现 SSL error 35.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "反复出现429错误",
+        "title": "反复出现429错误",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/02-问题解决教程/反复出现429错误/反复出现429错误.html",
+        "excerpt": "这是关于 反复出现429错误 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/02-问题解决教程/反复出现429错误/反复出现429错误.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "找不到 vcpkg toolchain",
+        "title": "找不到 vcpkg toolchain",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/02-问题解决教程/找不到 vcpkg toolchain/找不到 vcpkg toolchain.html",
+        "excerpt": "这是关于 找不到 vcpkg toolchain 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/02-问题解决教程/找不到 vcpkg toolchain/找不到 vcpkg toolchain.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "未找到合适版本的cmake",
+        "title": "未找到合适版本的cmake",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/02-问题解决教程/未找到合适版本的cmake/未找到合适版本的cmake.html",
+        "excerpt": "这是关于 未找到合适版本的cmake 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/02-问题解决教程/未找到合适版本的cmake/未找到合适版本的cmake.pdf",
+        "generated_by": "Publish.py"
+    },
+    {
+        "id": "未找到合适版本的powershell",
+        "title": "未找到合适版本的powershell",
+        "date": "2026-07-28",
+        "category": "雷达智能化",
+        "url": "posts/雷达智能化/README/02-问题解决教程/未找到合适版本的powershell/未找到合适版本的powershell.html",
+        "excerpt": "这是关于 未找到合适版本的powershell 的 PDF 文档预览。",
+        "r2_object_key": "pdfs/雷达智能化/README/02-问题解决教程/未找到合适版本的powershell/未找到合适版本的powershell.pdf",
         "generated_by": "Publish.py"
     }
 ]
