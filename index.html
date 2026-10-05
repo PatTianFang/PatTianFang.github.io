@@ -1,138 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FangTian's Note</title>
-    <link rel="stylesheet" href="css/style.css?v=1781579423">
-    <script src="js/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111315">
+  <meta name="description" content="Pat Fang 的个人入口，连接 Gallery、Note 与 Photo。">
+  <title>Pat Fang / Personal Collection</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect width='20' height='20' fill='%23f4f1e8'/%3E%3Cpath d='M3 3h6v6H3zM11 3h6v6h-6zM3 11h6v6H3zM11 11h6v6h-6z' fill='%23111315'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="container header-container">
-            <h1><a href="index.html">FangTian's Note</a></h1>
-            <nav>
-                <a href="index.html" class="active">首页</a>
-                <a href="records.html">记录</a>
-                <a href="about.html">关于</a>
-            </nav>
-        </div>
+  <div class="console-shell" id="home">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="回到首页">
+        <span class="brand__mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span class="brand__copy">
+          <strong>PAT FANG</strong>
+          <small>PERSONAL COLLECTION</small>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="主导航">
+        <a class="is-active" href="#home">HOME</a>
+        <a href="#collection">COLLECTION</a>
+      </nav>
+
+      <div class="topbar__status" aria-label="系统状态">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>ONLINE</span>
+        <span class="topbar__divider" aria-hidden="true"></span>
+        <span id="clock">--:--</span>
+      </div>
     </header>
-    <main class="container home-page">
-        <section class="site-hero" aria-labelledby="site-title">
-            <div class="site-hero-copy">
-                <p class="records-kicker">Notebook</p>
-                <h2 id="site-title">FangTian's Note</h2>
-                <p>把学习笔记、PDF 资料和路上的照片整理成一个安静好找的个人知识库。</p>
-                <div class="site-hero-actions">
-                    <a href="#library" class="hero-action-primary">浏览笔记</a>
-                    <a href="records.html">查看记录</a>
-                    <button type="button" id="random-post" class="hero-action-button">随机一篇</button>
-                </div>
-            </div>
-            <div class="site-stats" aria-label="站点概览">
-                <div>
-                    <span id="stat-posts">--</span>
-                    <p>文章</p>
-                </div>
-                <div>
-                    <span id="stat-categories">--</span>
-                    <p>分类</p>
-                </div>
-                <div>
-                    <span id="stat-records">--</span>
-                    <p>记录</p>
-                </div>
-                <div>
-                    <span id="stat-latest">--</span>
-                    <p>最近更新</p>
-                </div>
-            </div>
-        </section>
 
-        <div class="home-shell">
-            <section class="library-section" id="library" aria-labelledby="library-title">
-                <div class="section-heading-row library-heading">
-                    <div>
-                        <p class="records-kicker">Library</p>
-                        <h2 id="library-title">文章索引</h2>
-                    </div>
-                    <label class="sort-control">
-                        <span>排序</span>
-                        <select id="post-sort">
-                            <option value="newest">最新优先</option>
-                            <option value="oldest">最早优先</option>
-                            <option value="title">标题 A-Z</option>
-                        </select>
-                    </label>
-                </div>
-                <section class="search-section search-toolbar" aria-label="搜索文章">
-                    <input
-                        type="search"
-                        id="post-search"
-                        class="search-input"
-                        placeholder="搜索标题、分类或摘要"
-                        autocomplete="off"
-                    >
-                    <button type="button" id="clear-search" class="clear-search-btn">清除</button>
-                    <div id="result-count" class="result-count" aria-live="polite"></div>
-                </section>
-                <div class="filter-section" id="filter-section">
-                    <!-- 分类过滤器由 JS 动态生成 -->
-                </div>
-                <div id="post-list" class="post-list">
-                    <p>正在加载文章列表...</p>
-                </div>
-                <nav id="pagination" class="pagination" aria-label="文章分页"></nav>
-            </section>
-
-            <aside class="home-sidebar" aria-label="站点侧栏">
-                <section class="home-panel compact-panel" aria-labelledby="latest-posts-title">
-                    <div class="section-heading-row">
-                        <div>
-                            <p class="records-kicker">Latest</p>
-                            <h2 id="latest-posts-title">最近文章</h2>
-                        </div>
-                        <a href="#library">全部</a>
-                    </div>
-                    <div id="latest-post-list" class="latest-list">
-                        <p class="empty-message">正在加载最近文章...</p>
-                    </div>
-                </section>
-
-                <section class="home-panel compact-panel" aria-labelledby="latest-records-title">
-                    <div class="section-heading-row">
-                        <div>
-                            <p class="records-kicker">Records</p>
-                            <h2 id="latest-records-title">最近记录</h2>
-                        </div>
-                        <a href="records.html">全部</a>
-                    </div>
-                    <div id="latest-record-list" class="latest-record-list">
-                        <p class="empty-message">正在加载记录...</p>
-                    </div>
-                </section>
-
-                <section class="home-panel compact-panel category-panel" aria-labelledby="category-overview-title">
-                    <div class="section-heading-row">
-                        <div>
-                            <p class="records-kicker">Categories</p>
-                            <h2 id="category-overview-title">分类</h2>
-                        </div>
-                        <span id="category-overview-count" class="panel-note">统计中</span>
-                    </div>
-                    <div id="category-overview" class="category-overview">
-                        <p class="empty-message">正在加载分类...</p>
-                    </div>
-                </section>
-            </aside>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__media">
+          <img id="hero-image" src="assets/sites/gallery.webp" alt="Gallery 画册封面：飞过水面的海鸟" fetchpriority="high">
+          <span class="hero__wash" aria-hidden="true"></span>
+          <span class="hero__grain" aria-hidden="true"></span>
         </div>
+
+        <div class="hero__topline">
+          <span id="hero-kicker">01 / 03 · GALLERY</span>
+          <span id="hero-state">LIVE COLLECTION</span>
+        </div>
+
+        <div class="hero__content">
+          <div class="hero__copy">
+            <h1 id="hero-title">Gallery</h1>
+            <p class="hero__subtitle" id="hero-subtitle">照片、画册与正在发生的旅途。</p>
+            <p class="hero__description" id="hero-description">把值得留下的画面，放在一个可以慢慢浏览的房间。</p>
+            <div class="hero__actions">
+              <a class="primary-button" id="open-site" href="https://gallery.patfang.xyz/" target="_blank" rel="noreferrer">
+                <span id="open-label">OPEN GALLERY</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <span class="action-hint"><kbd>ENTER</kbd> 打开入口</span>
+            </div>
+          </div>
+
+          <div class="hero__meta" id="hero-meta" aria-label="入口信息">
+            <div>
+              <span>COLLECTION</span>
+              <strong>07 VOLUMES</strong>
+            </div>
+            <div>
+              <span>LAST UPDATE</span>
+              <strong>2026 / 10 / 04</strong>
+            </div>
+            <div>
+              <span>MODE</span>
+              <strong>PHOTO ARCHIVE</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__controls" aria-label="主视觉切换">
+          <button class="round-button" type="button" data-direction="prev" aria-label="上一个入口">‹</button>
+          <div class="hero__dots" id="hero-dots" aria-label="当前入口位置"></div>
+          <button class="round-button" type="button" data-direction="next" aria-label="下一个入口">›</button>
+        </div>
+      </section>
+
+      <section class="selector" id="collection" aria-labelledby="selector-title">
+        <div class="selector__head">
+          <div>
+            <span class="section-label">YOUR SPACES</span>
+            <h2 id="selector-title">选择一个入口</h2>
+          </div>
+          <div class="selection-count" aria-label="当前选择序号">
+            <strong id="selection-count">01</strong>
+            <span>/ 03</span>
+          </div>
+        </div>
+
+        <div class="site-rail-wrap">
+          <button class="rail-button" type="button" data-rail="prev" aria-label="向左滚动入口">‹</button>
+          <div class="site-rail" id="site-grid" role="tablist" aria-label="网站入口列表"></div>
+          <button class="rail-button" type="button" data-rail="next" aria-label="向右滚动入口">›</button>
+        </div>
+
+        <div class="selector__foot">
+          <span id="selection-hint">Gallery 已选中 · 按方向键切换</span>
+          <div class="selector__controls" aria-label="键盘控制提示">
+            <span><kbd>←</kbd><kbd>→</kbd> 切换</span>
+            <span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> 直达</span>
+            <span><kbd>↵</kbd> 打开</span>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 FangTian's Note | 基于纯 HTML/CSS/JS 构建 | <a href="recall/university">回忆</a></p>
-        </div>
+
+    <footer class="footer">
+      <span>BUILT FOR CURIOUS PEOPLE</span>
+      <span class="footer__rule" aria-hidden="true"></span>
+      <span>© <span id="year">2026</span> PAT FANG</span>
     </footer>
-    <script src="js/main.js"></script>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>

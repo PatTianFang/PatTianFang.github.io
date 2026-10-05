@@ -1,0 +1,107 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - link "回到首页" [ref=e4] [cursor=pointer]:
+      - /url: "#home"
+      - generic [ref=e10]:
+        - strong [ref=e11]: PAT FANG
+        - generic [ref=e12]: PERSONAL COLLECTION
+    - navigation "主导航" [ref=e13]:
+      - link "HOME" [ref=e14] [cursor=pointer]:
+        - /url: "#home"
+      - link "COLLECTION" [ref=e15] [cursor=pointer]:
+        - /url: "#collection"
+    - generic "系统状态" [ref=e16]:
+      - generic [ref=e18]: ONLINE
+      - generic [ref=e20]: 22:38
+  - main [ref=e21]:
+    - region [ref=e117]:
+      - img "Note 封面照片：蓝天下的建筑结构" [ref=e118]
+      - generic [ref=e26]:
+        - generic [ref=e27]: 02 / 03 · NOTE
+        - generic [ref=e28]: IN PROGRESS
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - heading "Note" [level=1] [ref=e119]
+          - paragraph [ref=e32]: 记录想法，也记录还没有结论的东西。
+          - paragraph [ref=e33]: 技术、学习和生活的片段，先放在这里，再慢慢长出形状。
+          - generic [ref=e34]:
+            - link "OPEN NOTE" [ref=e120] [cursor=pointer]:
+              - /url: https://note.patfang.xyz/
+              - generic [aria-hidden] [ref=e37]: ↗
+            - generic [ref=e38]:
+              - generic [ref=e39]: ENTER
+              - text: 打开入口
+        - generic "入口信息" [ref=e40]:
+          - generic [ref=e121]:
+            - generic [ref=e122]: COLLECTION
+            - strong [ref=e123]: FIELD NOTES
+          - generic [ref=e124]:
+            - generic [ref=e125]: LAST UPDATE
+            - strong [ref=e126]: IN PROGRESS
+          - generic [ref=e127]:
+            - generic [ref=e128]: MODE
+            - strong [ref=e129]: WRITING SPACE
+      - generic "主视觉切换" [ref=e50]:
+        - button "上一个入口" [ref=e51] [cursor=pointer]: ‹
+        - generic "当前入口位置" [ref=e52]:
+          - button "查看 Gallery" [ref=e53] [cursor=pointer]
+          - button "查看 Note" [ref=e54] [cursor=pointer]
+          - button "查看 Photo" [ref=e55] [cursor=pointer]
+        - button "下一个入口" [ref=e56] [cursor=pointer]: ›
+    - region [ref=e57]:
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - text: YOUR SPACES
+          - heading "选择一个入口" [level=2] [ref=e60]
+        - generic "当前选择序号" [ref=e61]:
+          - strong [ref=e62]: "02"
+          - generic [ref=e63]: / 03
+      - generic [ref=e64]:
+        - button "向左滚动入口" [ref=e65] [cursor=pointer]: ‹
+        - tablist "网站入口列表" [ref=e66]:
+          - tab "选择 Gallery 入口" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "01"
+            - generic [ref=e71]:
+              - generic [ref=e72]: GALLERY
+              - strong [ref=e73]: Gallery
+              - generic [ref=e74]: 作品 / 收藏 / 现场
+            - generic [aria-hidden] [ref=e75]: ↗
+          - tab "选择 Note 入口" [active] [selected] [ref=e76] [cursor=pointer]:
+            - generic [ref=e77]: "02"
+            - generic [ref=e80]:
+              - generic [ref=e81]: NOTE
+              - strong [ref=e82]: Note
+              - generic [ref=e83]: 技术 / 学习 / 生活
+            - generic [aria-hidden] [ref=e84]: ↗
+          - tab "选择 Photo 入口" [ref=e85] [cursor=pointer]:
+            - generic [ref=e86]: "03"
+            - generic [ref=e89]:
+              - generic [ref=e90]: PHOTO
+              - strong [ref=e91]: Photo
+              - generic [ref=e92]: 影像 / 片段 / 记忆
+            - generic [aria-hidden] [ref=e93]: ↗
+          - generic "未来入口占位" [ref=e94]:
+            - generic [aria-hidden] [ref=e95]: +
+            - generic [ref=e96]:
+              - generic [ref=e97]: COMING SOON
+              - strong [ref=e98]: 下一个空间
+              - generic [ref=e99]: 等你命名
+        - button "向右滚动入口" [ref=e100] [cursor=pointer]: ›
+      - generic [ref=e101]:
+        - generic [ref=e102]: Note 已选中 · 按方向键切换
+        - generic "键盘控制提示" [ref=e103]:
+          - generic [ref=e104]:
+            - generic [ref=e105]: ←
+            - generic [ref=e106]: →
+            - text: 切换
+          - generic [ref=e107]:
+            - generic [ref=e108]: "1"
+            - generic [ref=e109]: "2"
+            - generic [ref=e110]: "3"
+            - text: 直达
+          - generic [ref=e111]:
+            - generic [ref=e112]: ↵
+            - text: 打开
+  - contentinfo [ref=e113]:
+    - generic [ref=e114]: BUILT FOR CURIOUS PEOPLE
+    - generic [ref=e116]: © 2026 PAT FANG
