@@ -4,24 +4,28 @@ const sites = {
         url: 'https://gallery.patfang.xyz/',
         title: 'Gallery',
         description: '探索视觉作品集 · Explore visual collections',
-        color: '#ff8c00'
+        color: '#e89a3c',
+        slideIndex: 1
     },
     note: {
         url: 'https://note.patfang.xyz/',
         title: 'Notes',
         description: '阅读思考与记录 · Read thoughts and records',
-        color: '#0078d4'
+        color: '#5b8dc9',
+        slideIndex: 2
     },
     photo: {
         url: 'https://photo.patfang.xyz/',
         title: 'Photos',
         description: '发现精彩瞬间 · Discover amazing moments',
-        color: '#b146c2'
+        color: '#9575cd',
+        slideIndex: 3
     },
     home: {
         title: 'Welcome',
         description: 'Select a destination below',
-        color: '#107c10'
+        color: '#7cb342',
+        slideIndex: 0
     }
 };
 
@@ -34,12 +38,50 @@ const progressFill = heroSection.querySelector('.progress-fill');
 const navTiles = document.querySelectorAll('.nav-tile');
 const timeDisplay = document.getElementById('timeDisplay');
 const particleCanvas = document.getElementById('particleCanvas');
+const carouselSlides = document.querySelectorAll('.carousel-slide');
 
 // State
 let currentSection = 'home';
 let isAnimating = false;
 let particleContext = null;
 let particles = [];
+let autoSlideInterval = null;
+
+// Carousel Management
+function showSlide(index) {
+    carouselSlides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+            slide.classList.add('active');
+        }
+    });
+}
+
+function startAutoSlide() {
+    // Auto-rotate slides every 6 seconds
+    if (autoSlideInterval) clearInterval(autoSlideInterval);
+
+    autoSlideInterval = setInterval(() => {
+        const site = sites[currentSection];
+        if (site) {
+            showSlide(site.slideIndex);
+        }
+    }, 6000);
+}
+
+// Fluent Reveal Effect
+function initRevealEffect() {
+    navTiles.forEach(tile => {
+        tile.addEventListener('mousemove', (e) => {
+            const rect = tile.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            tile.style.setProperty('--mouse-x', `${x}px`);
+            tile.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+}
 
 // Particle System
 class Particle {
@@ -131,9 +173,15 @@ function init() {
     // Initialize particles
     initParticles();
 
+    // Initialize Fluent reveal effect
+    initRevealEffect();
+
     // Update time
     updateTime();
     setInterval(updateTime, 1000);
+
+    // Start carousel auto-rotation
+    startAutoSlide();
 
     // Add click handlers to nav tiles
     navTiles.forEach(tile => {
@@ -218,7 +266,11 @@ function previewSection(sectionId) {
     heroTitle.textContent = site.title;
     heroTitle.setAttribute('data-text', site.title);
     heroDescription.textContent = site.description;
-    heroImage.setAttribute('data-section', sectionId);
+
+    // Change carousel slide
+    if (site.slideIndex !== undefined) {
+        showSlide(site.slideIndex);
+    }
 }
 
 // Update section
@@ -237,6 +289,12 @@ function updateSection(sectionId) {
 
     // Update hero with animation
     updateHeroContent(sectionId, true);
+
+    // Update carousel
+    const site = sites[sectionId];
+    if (site && site.slideIndex !== undefined) {
+        showSlide(site.slideIndex);
+    }
 
     // Reset progress bar
     if (progressFill) {
@@ -262,15 +320,14 @@ function updateHeroContent(sectionId, animate = true) {
         // Fade out
         heroTitle.style.opacity = '0';
         heroDescription.style.opacity = '0';
-        heroTitle.style.transform = 'translateY(20px)';
-        heroDescription.style.transform = 'translateY(20px)';
+        heroTitle.style.transform = 'translateY(10px)';
+        heroDescription.style.transform = 'translateY(10px)';
 
         setTimeout(() => {
             // Update content
             heroTitle.textContent = site.title;
             heroTitle.setAttribute('data-text', site.title);
             heroDescription.textContent = site.description;
-            heroImage.setAttribute('data-section', sectionId);
 
             // Fade in
             setTimeout(() => {
@@ -279,13 +336,12 @@ function updateHeroContent(sectionId, animate = true) {
                 heroTitle.style.transform = 'translateY(0)';
                 heroDescription.style.transform = 'translateY(0)';
             }, 50);
-        }, 250);
+        }, 200);
     } else {
         // Update without animation
         heroTitle.textContent = site.title;
         heroTitle.setAttribute('data-text', site.title);
         heroDescription.textContent = site.description;
-        heroImage.setAttribute('data-section', sectionId);
     }
 }
 

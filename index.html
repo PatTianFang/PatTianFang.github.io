@@ -23,8 +23,32 @@
         <main class="content-area">
             <div class="hero-section" id="heroSection">
                 <div class="hero-image">
+                    <!-- Image Carousel -->
+                    <div class="carousel" id="carousel">
+                        <div class="carousel-track">
+                            <div class="carousel-slide active" data-section="home">
+                                <img src="https://images.unsplash.com/photo-1557683316-973673baf926?w=1920&q=80" alt="Abstract gradient">
+                            </div>
+                            <div class="carousel-slide" data-section="gallery">
+                                <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1920&q=80" alt="Gradient waves">
+                            </div>
+                            <div class="carousel-slide" data-section="note">
+                                <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=1920&q=80" alt="Blue abstract">
+                            </div>
+                            <div class="carousel-slide" data-section="photo">
+                                <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=1920&q=80" alt="Purple gradient">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Acrylic overlay -->
+                    <div class="acrylic-overlay"></div>
+
                     <canvas id="particleCanvas"></canvas>
-                    <div class="scan-line"></div>
+
+                    <!-- Reveal effect border -->
+                    <div class="reveal-border"></div>
+
                     <div class="corner-frame top-left"></div>
                     <div class="corner-frame top-right"></div>
                     <div class="corner-frame bottom-left"></div>
