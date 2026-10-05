@@ -1,0 +1,285 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Xbox/Metro Color Palette */
+    --xbox-green: #107c10;
+    --xbox-green-hover: #0e6b0e;
+    --gamepass-lime: #9bf00b;
+    --background-dark: #0a0a0a;
+    --background-card: #1a1a1a;
+    --background-elevated: #252525;
+    --text-primary: #ffffff;
+    --text-secondary: #b4b4b4;
+    --accent-blue: #0078d4;
+    --accent-orange: #ff8c00;
+    --accent-purple: #b146c2;
+
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 20px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: var(--background-dark);
+    color: var(--text-primary);
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.content-area {
+    flex: 1;
+    padding: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    overflow: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 0;
+    overflow: hidden;
+    background: var(--background-card);
+}
+
+.hero-image {
+    flex: 1;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    position: relative;
+    transition: all var(--transition-slow);
+}
+
+.hero-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+/* Dynamic background patterns for different sections */
+.hero-image[data-section="gallery"] {
+    background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 50%, #1a1a1a 100%);
+}
+
+.hero-image[data-section="note"] {
+    background: linear-gradient(135deg, #0078d4 0%, #005a9e 50%, #1a1a1a 100%);
+}
+
+.hero-image[data-section="photo"] {
+    background: linear-gradient(135deg, #b146c2 0%, #8b2c9e 50%, #1a1a1a 100%);
+}
+
+.hero-image[data-section="home"] {
+    background: linear-gradient(135deg, #107c10 0%, #0e6b0e 50%, #1a1a1a 100%);
+}
+
+.hero-info {
+    padding: var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    z-index: 2;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.1;
+}
+
+.hero-description {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    background: var(--background-elevated);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.nav-container {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-tile {
+    flex: 1;
+    max-width: 200px;
+    aspect-ratio: 1;
+    background: var(--background-card);
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.nav-tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.nav-tile:hover::before {
+    opacity: 1;
+}
+
+.nav-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.nav-tile.active {
+    background: var(--xbox-green);
+    box-shadow: 0 4px 16px rgba(16, 124, 16, 0.4);
+}
+
+.nav-tile.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gamepass-lime);
+}
+
+.tile-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile-icon svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.tile-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-area {
+        padding: var(--spacing-md);
+    }
+
+    .nav-container {
+        gap: var(--spacing-xs);
+    }
+
+    .nav-tile {
+        max-width: 120px;
+        padding: var(--spacing-sm);
+    }
+
+    .tile-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .tile-label {
+        font-size: 0.75rem;
+    }
+
+    .hero-info {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    .nav-tile {
+        flex: 1 1 calc(50% - var(--spacing-xs));
+        aspect-ratio: 1.2;
+    }
+
+    .tile-label {
+        font-size: 0.7rem;
+    }
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(90deg, var(--background-card) 0%, var(--background-elevated) 50%, var(--background-card) 100%);
+    background-size: 1000px 100%;
+}
+
+/* Accessibility */
+.nav-tile:focus {
+    outline: 2px solid var(--gamepass-lime);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,126 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111315">
-  <meta name="description" content="Pat Fang 的个人入口，连接 Gallery、Note 与 Photo。">
-  <title>Pat Fang / Personal Collection</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect width='20' height='20' fill='%23f4f1e8'/%3E%3Cpath d='M3 3h6v6H3zM11 3h6v6h-6zM3 11h6v6H3zM11 11h6v6h-6z' fill='%23111315'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pat's Hub</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="console-shell" id="home">
-    <header class="topbar">
-      <a class="brand" href="#home" aria-label="回到首页">
-        <span class="brand__mark" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-        </span>
-        <span class="brand__copy">
-          <strong>PAT FANG</strong>
-          <small>PERSONAL COLLECTION</small>
-        </span>
-      </a>
-
-      <nav class="top-nav" aria-label="主导航">
-        <a class="is-active" href="#home">HOME</a>
-        <a href="#collection">COLLECTION</a>
-      </nav>
-
-      <div class="topbar__status" aria-label="系统状态">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span>ONLINE</span>
-        <span class="topbar__divider" aria-hidden="true"></span>
-        <span id="clock">--:--</span>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__media">
-          <img id="hero-image" src="assets/sites/gallery.webp" alt="Gallery 画册封面：飞过水面的海鸟" fetchpriority="high">
-          <span class="hero__wash" aria-hidden="true"></span>
-          <span class="hero__grain" aria-hidden="true"></span>
-        </div>
-
-        <div class="hero__topline">
-          <span id="hero-kicker">01 / 03 · GALLERY</span>
-          <span id="hero-state">LIVE COLLECTION</span>
-        </div>
-
-        <div class="hero__content">
-          <div class="hero__copy">
-            <h1 id="hero-title">Gallery</h1>
-            <p class="hero__subtitle" id="hero-subtitle">照片、画册与正在发生的旅途。</p>
-            <p class="hero__description" id="hero-description">把值得留下的画面，放在一个可以慢慢浏览的房间。</p>
-            <div class="hero__actions">
-              <a class="primary-button" id="open-site" href="https://gallery.patfang.xyz/" target="_blank" rel="noreferrer">
-                <span id="open-label">OPEN GALLERY</span>
-                <span aria-hidden="true">↗</span>
-              </a>
-              <span class="action-hint"><kbd>ENTER</kbd> 打开入口</span>
+    <div class="dashboard">
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <div class="hero-section" id="heroSection">
+                <div class="hero-image"></div>
+                <div class="hero-info">
+                    <h1 class="hero-title">Welcome</h1>
+                    <p class="hero-description">Select a destination below</p>
+                </div>
             </div>
-          </div>
+        </main>
 
-          <div class="hero__meta" id="hero-meta" aria-label="入口信息">
-            <div>
-              <span>COLLECTION</span>
-              <strong>07 VOLUMES</strong>
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-container">
+                <button class="nav-tile" data-id="gallery" data-title="Gallery" data-description="探索视觉作品集 · Explore visual collections">
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                    </div>
+                    <span class="tile-label">Gallery</span>
+                </button>
+
+                <button class="nav-tile" data-id="note" data-title="Notes" data-description="阅读思考与记录 · Read thoughts and records">
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                        </svg>
+                    </div>
+                    <span class="tile-label">Notes</span>
+                </button>
+
+                <button class="nav-tile" data-id="photo" data-title="Photos" data-description="发现精彩瞬间 · Discover amazing moments">
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 6h-3.17L16 4h-6v2h5.12l1.83 2H21v12H5v-9H3v9c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM8 14c0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5-5 2.24-5 5zm5-3c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3zM5 6h3V4H5V1H3v3H0v2h3v3h2z"/>
+                        </svg>
+                    </div>
+                    <span class="tile-label">Photos</span>
+                </button>
+
+                <button class="nav-tile nav-tile-home active" data-id="home" data-title="Welcome" data-description="Select a destination below">
+                    <div class="tile-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                        </svg>
+                    </div>
+                    <span class="tile-label">Home</span>
+                </button>
             </div>
-            <div>
-              <span>LAST UPDATE</span>
-              <strong>2026 / 10 / 04</strong>
-            </div>
-            <div>
-              <span>MODE</span>
-              <strong>PHOTO ARCHIVE</strong>
-            </div>
-          </div>
-        </div>
+        </nav>
+    </div>
 
-        <div class="hero__controls" aria-label="主视觉切换">
-          <button class="round-button" type="button" data-direction="prev" aria-label="上一个入口">‹</button>
-          <div class="hero__dots" id="hero-dots" aria-label="当前入口位置"></div>
-          <button class="round-button" type="button" data-direction="next" aria-label="下一个入口">›</button>
-        </div>
-      </section>
-
-      <section class="selector" id="collection" aria-labelledby="selector-title">
-        <div class="selector__head">
-          <div>
-            <span class="section-label">YOUR SPACES</span>
-            <h2 id="selector-title">选择一个入口</h2>
-          </div>
-          <div class="selection-count" aria-label="当前选择序号">
-            <strong id="selection-count">01</strong>
-            <span>/ 03</span>
-          </div>
-        </div>
-
-        <div class="site-rail-wrap">
-          <button class="rail-button" type="button" data-rail="prev" aria-label="向左滚动入口">‹</button>
-          <div class="site-rail" id="site-grid" role="tablist" aria-label="网站入口列表"></div>
-          <button class="rail-button" type="button" data-rail="next" aria-label="向右滚动入口">›</button>
-        </div>
-
-        <div class="selector__foot">
-          <span id="selection-hint">Gallery 已选中 · 按方向键切换</span>
-          <div class="selector__controls" aria-label="键盘控制提示">
-            <span><kbd>←</kbd><kbd>→</kbd> 切换</span>
-            <span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> 直达</span>
-            <span><kbd>↵</kbd> 打开</span>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <span>BUILT FOR CURIOUS PEOPLE</span>
-      <span class="footer__rule" aria-hidden="true"></span>
-      <span>© <span id="year">2026</span> PAT FANG</span>
-    </footer>
-  </div>
-
-  <script src="app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
