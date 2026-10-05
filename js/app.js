@@ -28,21 +28,113 @@ const sites = {
 // DOM Elements
 const heroSection = document.getElementById('heroSection');
 const heroImage = heroSection.querySelector('.hero-image');
-const heroTitle = heroSection.querySelector('.hero-title');
+const heroTitle = heroSection.querySelector('.hero-title .glitch');
 const heroDescription = heroSection.querySelector('.hero-description');
+const progressFill = heroSection.querySelector('.progress-fill');
 const navTiles = document.querySelectorAll('.nav-tile');
+const timeDisplay = document.getElementById('timeDisplay');
+const particleCanvas = document.getElementById('particleCanvas');
 
 // State
 let currentSection = 'home';
 let isAnimating = false;
+let particleContext = null;
+let particles = [];
+
+// Particle System
+class Particle {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.reset();
+    }
+
+    reset() {
+        this.x = Math.random() * this.canvas.width;
+        this.y = Math.random() * this.canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2 + 0.5;
+        this.opacity = Math.random() * 0.5 + 0.3;
+        this.life = 1;
+    }
+
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.life -= 0.001;
+
+        if (this.life <= 0 || this.x < 0 || this.x > this.canvas.width ||
+            this.y < 0 || this.y > this.canvas.height) {
+            this.reset();
+        }
+    }
+
+    draw(ctx) {
+        ctx.save();
+        ctx.globalAlpha = this.opacity * this.life;
+        ctx.fillStyle = currentSection === 'gallery' ? '#ff8c00' :
+                        currentSection === 'note' ? '#0078d4' :
+                        currentSection === 'photo' ? '#b146c2' : '#9bf00b';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
+function initParticles() {
+    if (!particleCanvas) return;
+
+    particleCanvas.width = particleCanvas.offsetWidth;
+    particleCanvas.height = particleCanvas.offsetHeight;
+    particleContext = particleCanvas.getContext('2d');
+
+    // Create particles
+    const particleCount = Math.min(100, Math.floor((particleCanvas.width * particleCanvas.height) / 10000));
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle(particleCanvas));
+    }
+
+    animateParticles();
+}
+
+function animateParticles() {
+    if (!particleContext) return;
+
+    particleContext.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+
+    particles.forEach(particle => {
+        particle.update();
+        particle.draw(particleContext);
+    });
+
+    requestAnimationFrame(animateParticles);
+}
+
+// Time Display
+function updateTime() {
+    if (!timeDisplay) return;
+
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+}
 
 // Initialize
 function init() {
+    // Initialize particles
+    initParticles();
+
+    // Update time
+    updateTime();
+    setInterval(updateTime, 1000);
+
     // Add click handlers to nav tiles
     navTiles.forEach(tile => {
         tile.addEventListener('click', handleTileClick);
-
-        // Hover preview
         tile.addEventListener('mouseenter', handleTileHover);
         tile.addEventListener('mouseleave', handleTileLeave);
     });
@@ -50,11 +142,32 @@ function init() {
     // Keyboard navigation
     document.addEventListener('keydown', handleKeyPress);
 
+    // Window resize handler
+    window.addEventListener('resize', () => {
+        if (particleCanvas) {
+            particleCanvas.width = particleCanvas.offsetWidth;
+            particleCanvas.height = particleCanvas.offsetHeight;
+        }
+    });
+
     // Initial animation
     setTimeout(() => {
         heroSection.style.opacity = '1';
         heroSection.style.transform = 'translateY(0)';
+        if (progressFill) {
+            progressFill.style.width = '100%';
+        }
     }, 100);
+
+    // Glitch effect on title occasionally
+    setInterval(() => {
+        if (Math.random() > 0.95) {
+            heroTitle.style.animation = 'none';
+            setTimeout(() => {
+                heroTitle.style.animation = '';
+            }, 50);
+        }
+    }, 3000);
 }
 
 // Handle tile click
@@ -66,7 +179,13 @@ function handleTileClick(e) {
 
     // If clicking the same section, navigate to URL
     if (sectionId === currentSection && sites[sectionId].url) {
-        window.location.href = sites[sectionId].url;
+        // Animate out
+        heroSection.style.opacity = '0';
+        heroSection.style.transform = 'scale(0.95)';
+
+        setTimeout(() => {
+            window.location.href = sites[sectionId].url;
+        }, 300);
         return;
     }
 
@@ -94,7 +213,6 @@ function handleTileLeave(e) {
     const sectionId = tile.dataset.id;
 
     if (sectionId !== currentSection) {
-        // Return to current section
         updateHeroContent(currentSection, false);
     }
 }
@@ -104,8 +222,8 @@ function previewSection(sectionId) {
     const site = sites[sectionId];
     if (!site) return;
 
-    // Update hero content without changing active state
     heroTitle.textContent = site.title;
+    heroTitle.setAttribute('data-text', site.title);
     heroDescription.textContent = site.description;
     heroImage.setAttribute('data-section', sectionId);
 }
@@ -126,6 +244,14 @@ function updateSection(sectionId) {
 
     // Update hero with animation
     updateHeroContent(sectionId, true);
+
+    // Reset progress bar
+    if (progressFill) {
+        progressFill.style.width = '0%';
+        setTimeout(() => {
+            progressFill.style.width = '100%';
+        }, 100);
+    }
 
     currentSection = sectionId;
 
@@ -149,6 +275,7 @@ function updateHeroContent(sectionId, animate = true) {
         setTimeout(() => {
             // Update content
             heroTitle.textContent = site.title;
+            heroTitle.setAttribute('data-text', site.title);
             heroDescription.textContent = site.description;
             heroImage.setAttribute('data-section', sectionId);
 
@@ -163,6 +290,7 @@ function updateHeroContent(sectionId, animate = true) {
     } else {
         // Update without animation
         heroTitle.textContent = site.title;
+        heroTitle.setAttribute('data-text', site.title);
         heroDescription.textContent = site.description;
         heroImage.setAttribute('data-section', sectionId);
     }
@@ -189,9 +317,14 @@ function handleKeyPress(e) {
             }
             break;
         case 'Enter':
+        case ' ':
             e.preventDefault();
             if (sites[currentSection].url) {
-                window.location.href = sites[currentSection].url;
+                heroSection.style.opacity = '0';
+                heroSection.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    window.location.href = sites[currentSection].url;
+                }, 300);
             }
             break;
     }

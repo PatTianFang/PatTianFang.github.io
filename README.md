@@ -1,6 +1,6 @@
-# Pat's Hub
+# Pat's Gaming Hub
 
-Gaming console-style personal website hub with Metro/Xbox aesthetic. A modern dashboard interface that serves as an entry point to multiple personal sites.
+Next-gen gaming console-style personal website hub with immersive Metro/Xbox aesthetic. A futuristic dashboard interface with animated particles, neon glows, and sci-fi effects.
 
 ## 🎮 Design Philosophy
 
@@ -8,6 +8,7 @@ Inspired by:
 - **Xbox Dashboard** - Hard-edged tiles, 0px corners, glanceable navigation
 - **Windows 8 Metro UI** - Typography-focused, content before chrome, flat design
 - **PlayStation 5 UI** - Large interactive cards, content front and center
+- **Gaming UI Elements** - Neon glows, particle systems, scan lines, HUD-style accents
 
 ## 🌐 Current Sites
 
@@ -34,22 +35,31 @@ pattianfang.github.io/
 
 ```css
 --xbox-green: #107c10        /* Primary brand color */
---gamepass-lime: #9bf00b     /* Accent highlights */
+--gamepass-lime: #9bf00b     /* Neon accent highlights */
+--neon-cyan: #00f0ff         /* Cyberpunk cyan glow */
+--neon-pink: #ff00ff         /* Glitch effect accent */
+--neon-orange: #ff6600       /* Energy effects */
 --accent-blue: #0078d4       /* Notes section */
 --accent-orange: #ff8c00     /* Gallery section */
 --accent-purple: #b146c2     /* Photos section */
---background-dark: #0a0a0a   /* Main background */
---background-card: #1a1a1a   /* Tile background */
+--background-dark: #000000   /* Pure black background */
+--background-card: #0d0d0d   /* Tile background */
 ```
 
 ## ✨ Features
 
+- **Immersive Animations** - Floating particles, animated grid overlay, glowing orbs
+- **Neon Aesthetics** - Cyberpunk-inspired glows, scan lines, corner frames
+- **Interactive Tiles** - Hover effects with glow pulses, 3D transforms
+- **Particle System** - Canvas-based dynamic particles that change color per section
+- **HUD Elements** - Live time display, status indicators, progress bars
+- **Glitch Effects** - Subtle text glitches for gaming atmosphere
 - **Responsive Design** - Works on desktop, tablet, and mobile
-- **Keyboard Navigation** - Arrow keys to navigate, Enter to open
+- **Keyboard Navigation** - Arrow keys to navigate, Enter/Space to open
 - **Hover Previews** - Preview section info before clicking
-- **Smooth Animations** - Metro-style transitions
-- **Accessibility** - Focus indicators, reduced motion support
-- **Zero Dependencies** - Vanilla HTML/CSS/JS
+- **Accessibility** - Focus indicators, reduced motion support, high contrast mode
+- **Performance Optimized** - Hardware-accelerated animations, efficient rendering
+- **Zero Dependencies** - Pure vanilla HTML/CSS/JS
 
 ## 🔧 Adding New Sites
 
