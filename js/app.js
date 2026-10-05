@@ -51,17 +51,17 @@ class Particle {
     reset() {
         this.x = Math.random() * this.canvas.width;
         this.y = Math.random() * this.canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.size = Math.random() * 2 + 0.5;
-        this.opacity = Math.random() * 0.5 + 0.3;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.opacity = Math.random() * 0.3 + 0.1;
         this.life = 1;
     }
 
     update() {
         this.x += this.vx;
         this.y += this.vy;
-        this.life -= 0.001;
+        this.life -= 0.0005;
 
         if (this.life <= 0 || this.x < 0 || this.x > this.canvas.width ||
             this.y < 0 || this.y > this.canvas.height) {
@@ -72,9 +72,12 @@ class Particle {
     draw(ctx) {
         ctx.save();
         ctx.globalAlpha = this.opacity * this.life;
-        ctx.fillStyle = currentSection === 'gallery' ? '#ff8c00' :
-                        currentSection === 'note' ? '#0078d4' :
-                        currentSection === 'photo' ? '#b146c2' : '#9bf00b';
+
+        // Softer colors for light theme
+        ctx.fillStyle = currentSection === 'gallery' ? '#e89a3c' :
+                        currentSection === 'note' ? '#5b8dc9' :
+                        currentSection === 'photo' ? '#9575cd' : '#7cb342';
+
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -89,8 +92,8 @@ function initParticles() {
     particleCanvas.height = particleCanvas.offsetHeight;
     particleContext = particleCanvas.getContext('2d');
 
-    // Create particles
-    const particleCount = Math.min(100, Math.floor((particleCanvas.width * particleCanvas.height) / 10000));
+    // Fewer particles for subtle effect
+    const particleCount = Math.min(50, Math.floor((particleCanvas.width * particleCanvas.height) / 15000));
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle(particleCanvas));
     }
@@ -158,16 +161,6 @@ function init() {
             progressFill.style.width = '100%';
         }
     }, 100);
-
-    // Glitch effect on title occasionally
-    setInterval(() => {
-        if (Math.random() > 0.95) {
-            heroTitle.style.animation = 'none';
-            setTimeout(() => {
-                heroTitle.style.animation = '';
-            }, 50);
-        }
-    }, 3000);
 }
 
 // Handle tile click
