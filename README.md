@@ -1,14 +1,15 @@
 # Pat's Gaming Hub
 
-Next-gen gaming console-style personal website hub with immersive Metro/Xbox aesthetic. A futuristic dashboard interface with animated particles, neon glows, and sci-fi effects.
+Modern personal website hub with Microsoft Fluent Design System aesthetics. Features acrylic materials, reveal effects, and smooth animations for an elegant, professional experience.
 
-## 🎮 Design Philosophy
+## 🎨 Design Philosophy
 
 Inspired by:
-- **Xbox Dashboard** - Hard-edged tiles, 0px corners, glanceable navigation
-- **Windows 8 Metro UI** - Typography-focused, content before chrome, flat design
-- **PlayStation 5 UI** - Large interactive cards, content front and center
-- **Gaming UI Elements** - Neon glows, particle systems, scan lines, HUD-style accents
+- **Microsoft Fluent Design System** - Light, depth, motion, material, and scale
+- **Acrylic Material** - Translucent textures with backdrop blur
+- **Reveal Highlight** - Interactive light effects that follow your cursor
+- **Xbox Dashboard** - Tile-based navigation structure
+- **Windows 11** - Modern rounded corners and soft shadows
 
 ## 🌐 Current Sites
 
@@ -34,32 +35,48 @@ pattianfang.github.io/
 ## 🎨 Color Palette
 
 ```css
---xbox-green: #107c10        /* Primary brand color */
---gamepass-lime: #9bf00b     /* Neon accent highlights */
---neon-cyan: #00f0ff         /* Cyberpunk cyan glow */
---neon-pink: #ff00ff         /* Glitch effect accent */
---neon-orange: #ff6600       /* Energy effects */
---accent-blue: #0078d4       /* Notes section */
---accent-orange: #ff8c00     /* Gallery section */
---accent-purple: #b146c2     /* Photos section */
---background-dark: #000000   /* Pure black background */
---background-card: #0d0d0d   /* Tile background */
+/* Light & Refined */
+--primary-green: #2d7a2e        /* Primary brand color */
+--primary-green-light: #4a9d4b  /* Hover states */
+--accent-soft: #7cb342          /* Accents and highlights */
+--background-light: #fafafa     /* Page background */
+--background-card: #ffffff      /* Card surfaces */
+--text-primary: #1a1a1a         /* Main text */
+--text-secondary: #666666       /* Secondary text */
+
+/* Section Accents */
+--accent-blue: #5b8dc9          /* Notes section */
+--accent-orange: #e89a3c        /* Gallery section */
+--accent-purple: #9575cd        /* Photos section */
 ```
 
 ## ✨ Features
 
-- **Immersive Animations** - Floating particles, animated grid overlay, glowing orbs
-- **Neon Aesthetics** - Cyberpunk-inspired glows, scan lines, corner frames
-- **Interactive Tiles** - Hover effects with glow pulses, 3D transforms
-- **Particle System** - Canvas-based dynamic particles that change color per section
-- **HUD Elements** - Live time display, status indicators, progress bars
-- **Glitch Effects** - Subtle text glitches for gaming atmosphere
-- **Responsive Design** - Works on desktop, tablet, and mobile
-- **Keyboard Navigation** - Arrow keys to navigate, Enter/Space to open
-- **Hover Previews** - Preview section info before clicking
+**Fluent Design Elements:**
+- **Acrylic Material** - Translucent surfaces with backdrop blur (60px) and saturation boost
+- **Reveal Highlight** - Interactive glow that follows mouse movement on tiles
+- **Depth & Layering** - Multi-layer shadow system following Fluent shadow tokens
+- **Connected Animations** - Smooth, purposeful transitions between states
+- **Image Carousel** - Auto-rotating hero images from Unsplash (6-second intervals)
+
+**Interactive Features:**
+- **Hover Previews** - Preview section content before clicking
+- **Keyboard Navigation** - Arrow keys navigate, Enter/Space opens
+- **Live Time Display** - Pill-style clock in top-right corner
+- **Progress Indicator** - Animated bar with shimmer effect
+- **Status Badge** - Live indicator with subtle pulse animation
+
+**Visual Polish:**
+- **Subtle Particles** - Canvas-based ambient particle system
+- **Smooth Gradients** - Soft color transitions per section
+- **Corner Frames** - Minimal HUD-style decorative elements
+- **Responsive Design** - Adapts to desktop, tablet, and mobile
 - **Accessibility** - Focus indicators, reduced motion support, high contrast mode
-- **Performance Optimized** - Hardware-accelerated animations, efficient rendering
+
+**Technical:**
 - **Zero Dependencies** - Pure vanilla HTML/CSS/JS
+- **Performance Optimized** - Hardware-accelerated animations
+- **Modern CSS** - Backdrop filters, CSS custom properties, containment
 
 ## 🔧 Adding New Sites
 
@@ -75,7 +92,8 @@ const sites = {
         url: 'https://newsite.patfang.xyz/',
         title: 'New Site',
         description: '网站描述 · Site description',
-        color: '#hexcolor'  // Choose from palette or custom
+        color: '#hexcolor',  // Choose from palette
+        slideIndex: 4  // Next available slide index
     }
 };
 ```
@@ -86,25 +104,34 @@ In `index.html`, add a new button in the `<nav class="bottom-nav">` section:
 
 ```html
 <button class="nav-tile" data-id="newsite" data-title="New Site" data-description="网站描述 · Site description">
-    <div class="tile-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <!-- Add your SVG icon path here -->
-            <path d="M..."/>
-        </svg>
+    <div class="tile-glow"></div>
+    <div class="tile-content">
+        <div class="tile-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <!-- Add your SVG icon path here -->
+                <path d="M..."/>
+            </svg>
+        </div>
+        <span class="tile-label">New Site</span>
+        <div class="tile-accent"></div>
     </div>
-    <span class="tile-label">New Site</span>
 </button>
 ```
 
-### 3. Add Background Gradient (Optional)
+### 3. Add Carousel Image
 
-In `css/style.css`, add a gradient style for your section:
+In `index.html`, add a new slide in the carousel:
 
-```css
-.hero-image[data-section="newsite"] {
-    background: linear-gradient(135deg, #yourcolor 0%, #darkercolor 50%, #1a1a1a 100%);
-}
+```html
+<div class="carousel-slide" data-section="newsite">
+    <img src="https://images.unsplash.com/photo-xxxxx?w=1920&q=80" alt="Description">
+</div>
 ```
+
+**Finding Images:**
+- [Unsplash Abstract](https://unsplash.com/s/photos/abstract) - Free high-quality images
+- Use `?w=1920&q=80` parameters for optimized loading
+- Choose images that match your section's theme and color
 
 ## 🎯 Icon Resources
 
@@ -160,9 +187,18 @@ Replace gradient backgrounds with images:
 
 ## 🔗 Related Resources
 
-- [Metro Design Principles](https://medium.com/mossyblog/the-principles-of-microsoft-metro-ui-decoded-e52fa8bf9f4c)
-- [Xbox Design System](https://www.shadcn.io/design/xbox)
-- [PS5 UI Breakdown](https://www.digitalfoundry.net/articles/digitalfoundry-2020-a-first-look-at-the-ps5-user-interface)
+**Fluent Design:**
+- [Fluent Design System](https://docs.microsoft.com/windows/apps/design/style/acrylic) - Official Microsoft documentation
+- [Acrylic Material](https://docs.microsoft.com/windows/apps/design/style/acrylic) - Translucent texture guide
+- [Reveal Highlight](https://docs.microsoft.com/windows/apps/design/style/reveal) - Interactive lighting
+
+**Images:**
+- [Unsplash](https://unsplash.com/s/photos/abstract) - Free high-quality photos
+- [Unsplash API](https://unsplash.com/developers) - Programmatic image access
+
+**Design Inspiration:**
+- [Microsoft Design](https://microsoft.design/) - Microsoft's design blog
+- [Windows 11 Design](https://www.microsoft.com/design/fluent/) - Latest Fluent updates
 
 ## 📄 License
 
