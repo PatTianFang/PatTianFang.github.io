@@ -1,211 +1,255 @@
-# Pat's Gaming Hub
+# Pat's Portal - 现代化网站入口
 
-Modern personal website hub with Microsoft Fluent Design System aesthetics. Features acrylic materials, reveal effects, and smooth animations for an elegant, professional experience.
+一个参考 Microsoft Store、Apple TV 和 PS5 风格设计的现代化网站入口页面，提供优雅的视觉体验和流畅的交互效果。
 
-## 🎨 Design Philosophy
+![Version](https://img.shields.io/badge/version-2.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-Inspired by:
-- **Microsoft Fluent Design System** - Light, depth, motion, material, and scale
-- **Acrylic Material** - Translucent textures with backdrop blur
-- **Reveal Highlight** - Interactive light effects that follow your cursor
-- **Xbox Dashboard** - Tile-based navigation structure
-- **Windows 11** - Modern rounded corners and soft shadows
+## 🎨 设计特点
 
-## 🌐 Current Sites
+- **左侧导航栏**：固定式侧边栏，包含主导航和用户信息
+- **顶部搜索栏**：实时搜索过滤应用
+- **大型轮播图**：自动播放的英雄区域，展示主要网站入口
+- **卡片式布局**：网格化的应用展示，支持悬停效果
+- **响应式设计**：完美适配桌面、平板和移动设备
+- **流畅动画**：精心设计的过渡效果和交互反馈
 
-- **Gallery** - [gallery.patfang.xyz](https://gallery.patfang.xyz/) - Visual collections
-- **Notes** - [note.patfang.xyz](https://note.patfang.xyz/) - Thoughts and records
-- **Photos** - [photo.patfang.xyz](https://photo.patfang.xyz/) - Amazing moments
-
-## 📁 Project Structure
+## 📁 项目结构
 
 ```
-pattianfang.github.io/
-├── index.html          # Main entry point
+.
+├── index.html          # 主页面结构
 ├── css/
-│   └── style.css      # All styles with Metro/Xbox theming
+│   └── style.css       # 样式文件（Microsoft Store 风格）
 ├── js/
-│   └── app.js         # Interactive navigation logic
-├── assets/            # Images and media (optional)
-│   ├── images/
-│   └── icons/
-└── README.md          # This file
+│   └── app.js          # 功能脚本和配置
+└── README.md           # 项目文档
 ```
 
-## 🎨 Color Palette
+## 🚀 快速开始
 
-```css
-/* Light & Refined */
---primary-green: #2d7a2e        /* Primary brand color */
---primary-green-light: #4a9d4b  /* Hover states */
---accent-soft: #7cb342          /* Accents and highlights */
---background-light: #fafafa     /* Page background */
---background-card: #ffffff      /* Card surfaces */
---text-primary: #1a1a1a         /* Main text */
---text-secondary: #666666       /* Secondary text */
+### 本地预览
 
-/* Section Accents */
---accent-blue: #5b8dc9          /* Notes section */
---accent-orange: #e89a3c        /* Gallery section */
---accent-purple: #9575cd        /* Photos section */
-```
+1. 克隆或下载项目到本地
+2. 用浏览器打开 `index.html` 文件
+3. 无需构建工具，即开即用
 
-## ✨ Features
+### 部署到 GitHub Pages
 
-**Fluent Design Elements:**
-- **Acrylic Material** - Translucent surfaces with backdrop blur (60px) and saturation boost
-- **Reveal Highlight** - Interactive glow that follows mouse movement on tiles
-- **Depth & Layering** - Multi-layer shadow system following Fluent shadow tokens
-- **Connected Animations** - Smooth, purposeful transitions between states
-- **Image Carousel** - Auto-rotating hero images from Unsplash (6-second intervals)
+项目已配置 GitHub Pages，推送到 master 分支后自动部署。
 
-**Interactive Features:**
-- **Hover Previews** - Preview section content before clicking
-- **Keyboard Navigation** - Arrow keys navigate, Enter/Space opens
-- **Live Time Display** - Pill-style clock in top-right corner
-- **Progress Indicator** - Animated bar with shimmer effect
-- **Status Badge** - Live indicator with subtle pulse animation
+访问地址：`https://yourusername.github.io/`
 
-**Visual Polish:**
-- **Subtle Particles** - Canvas-based ambient particle system
-- **Smooth Gradients** - Soft color transitions per section
-- **Corner Frames** - Minimal HUD-style decorative elements
-- **Responsive Design** - Adapts to desktop, tablet, and mobile
-- **Accessibility** - Focus indicators, reduced motion support, high contrast mode
+## ➕ 添加新网站
 
-**Technical:**
-- **Zero Dependencies** - Pure vanilla HTML/CSS/JS
-- **Performance Optimized** - Hardware-accelerated animations
-- **Modern CSS** - Backdrop filters, CSS custom properties, containment
+### 步骤 1: 编辑配置文件
 
-## 🔧 Adding New Sites
-
-### 1. Update JavaScript Configuration
-
-Edit `js/app.js` and add your new site to the `sites` object:
+打开 `js/app.js`，在 `SITES_CONFIG` 对象中添加新网站配置：
 
 ```javascript
-const sites = {
-    // ... existing sites ...
+const SITES_CONFIG = {
+    // 现有网站...
     
+    // 添加新网站
     newsite: {
         url: 'https://newsite.patfang.xyz/',
-        title: 'New Site',
-        description: '网站描述 · Site description',
-        color: '#hexcolor',  // Choose from palette
-        slideIndex: 4  // Next available slide index
+        title: 'New Site',                    // 显示标题
+        description: '网站描述 · Description', // 双语描述
+        category: '分类名称',                  // 应用分类
+        badge: '标签',                        // 推荐/热门/新品
+        image: 'https://...hero.jpg',         // 轮播图（1920x1080）
+        thumbnail: 'https://...thumb.jpg',    // 卡片缩略图（400x225）
+        featured: 'https://...featured.jpg',  // 推荐区图片（800x600）
+        rating: 5.0                           // 评分
     }
 };
 ```
 
-### 2. Add Navigation Tile
+### 步骤 2: 添加轮播图
 
-In `index.html`, add a new button in the `<nav class="bottom-nav">` section:
+在 `index.html` 中找到 `.carousel-track`，添加新的轮播幻灯片：
 
 ```html
-<button class="nav-tile" data-id="newsite" data-title="New Site" data-description="网站描述 · Site description">
-    <div class="tile-glow"></div>
-    <div class="tile-content">
-        <div class="tile-icon">
+<div class="carousel-slide">
+    <img src="https://...hero.jpg" alt="New Site">
+    <div class="slide-content">
+        <span class="slide-badge">标签</span>
+        <h2 class="slide-title">New Site</h2>
+        <p class="slide-description">网站描述 · Description</p>
+        <button class="slide-btn" data-url="https://newsite.patfang.xyz/">
+            <span>立即访问</span>
             <svg viewBox="0 0 24 24" fill="currentColor">
-                <!-- Add your SVG icon path here -->
-                <path d="M..."/>
+                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
             </svg>
-        </div>
-        <span class="tile-label">New Site</span>
-        <div class="tile-accent"></div>
+        </button>
     </div>
-</button>
-```
-
-### 3. Add Carousel Image
-
-In `index.html`, add a new slide in the carousel:
-
-```html
-<div class="carousel-slide" data-section="newsite">
-    <img src="https://images.unsplash.com/photo-xxxxx?w=1920&q=80" alt="Description">
+    <div class="slide-overlay"></div>
 </div>
 ```
 
-**Finding Images:**
-- [Unsplash Abstract](https://unsplash.com/s/photos/abstract) - Free high-quality images
-- Use `?w=1920&q=80` parameters for optimized loading
-- Choose images that match your section's theme and color
+### 步骤 3: 添加应用卡片
 
-## 🎯 Icon Resources
+在 `index.html` 中找到 `.apps-grid`，在占位符卡片前添加：
 
-Find Material Design icons at:
-- [Material Design Icons](https://fonts.google.com/icons)
-- [Heroicons](https://heroicons.com/)
-- [Feather Icons](https://feathericons.com/)
-
-Copy SVG paths into the `<svg>` elements in your nav tiles.
-
-## 🚀 Deployment
-
-This is a GitHub Pages site. To deploy:
-
-```bash
-git add .
-git commit -m "Update site"
-git push origin master
+```html
+<div class="app-card" data-url="https://newsite.patfang.xyz/">
+    <div class="card-image">
+        <img src="https://...thumb.jpg" alt="New Site">
+        <div class="card-hover-overlay"></div>
+    </div>
+    <div class="card-info">
+        <h4 class="card-title">New Site</h4>
+        <p class="card-category">分类名称</p>
+        <div class="card-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-text">5.0</span>
+        </div>
+    </div>
+</div>
 ```
 
-Changes will be live at [https://patfang.xyz](https://patfang.xyz) within minutes.
+### 步骤 4: 添加推荐卡片（可选）
 
-## 🎨 Customization Tips
+在 `.recommended-grid` 中添加：
 
-### Change Primary Color
-Update `--xbox-green` in `css/style.css` to any color you prefer.
-
-### Adjust Tile Size
-Modify `.nav-tile` `aspect-ratio` and `max-width` properties.
-
-### Change Animation Speed
-Update transition variables:
-```css
---transition-fast: 150ms
---transition-normal: 250ms
---transition-slow: 350ms
+```html
+<div class="recommended-card" data-url="https://newsite.patfang.xyz/">
+    <img src="https://...featured.jpg" alt="New Site Featured">
+    <div class="recommended-overlay"></div>
+    <div class="recommended-content">
+        <span class="recommended-badge">标签</span>
+        <h4>New Site</h4>
+        <p>简短描述</p>
+    </div>
+</div>
 ```
 
-### Add Background Images
-Replace gradient backgrounds with images:
+## 🎯 当前网站
+
+| 网站 | URL | 描述 |
+|------|-----|------|
+| Gallery | https://gallery.patfang.xyz/ | 探索视觉作品集 |
+| Notes | https://note.patfang.xyz/ | 阅读思考与记录 |
+| Photos | https://photo.patfang.xyz/ | 发现精彩瞬间 |
+
+## 🎨 自定义样式
+
+### 修改主题色
+
+编辑 `css/style.css` 中的 CSS 变量：
+
 ```css
-.hero-image[data-section="gallery"] {
-    background: url('../assets/images/gallery-bg.jpg') center/cover;
+:root {
+    --primary-color: #0067c0;      /* 主色调 */
+    --primary-hover: #005a9e;      /* 悬停色 */
+    --accent-color: #00bcf2;       /* 强调色 */
+    --background: #f3f3f3;         /* 背景色 */
+    --surface: #ffffff;            /* 卡片背景 */
+    /* ... 更多变量 */
 }
 ```
 
-## 📱 Browser Support
+### 调整侧边栏宽度
 
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Mobile browsers (iOS Safari, Chrome Mobile)
+```css
+:root {
+    --sidebar-width: 240px;        /* 展开宽度 */
+    --sidebar-collapsed: 60px;     /* 折叠宽度（移动端）*/
+}
+```
 
-## 🔗 Related Resources
+## ⌨️ 键盘快捷键
 
-**Fluent Design:**
-- [Fluent Design System](https://docs.microsoft.com/windows/apps/design/style/acrylic) - Official Microsoft documentation
-- [Acrylic Material](https://docs.microsoft.com/windows/apps/design/style/acrylic) - Translucent texture guide
-- [Reveal Highlight](https://docs.microsoft.com/windows/apps/design/style/reveal) - Interactive lighting
+- `←` / `→` - 切换轮播图
+- `/` - 聚焦搜索框
+- `Esc` - 取消搜索焦点
 
-**Images:**
-- [Unsplash](https://unsplash.com/s/photos/abstract) - Free high-quality photos
-- [Unsplash API](https://unsplash.com/developers) - Programmatic image access
+## 📱 响应式断点
 
-**Design Inspiration:**
-- [Microsoft Design](https://microsoft.design/) - Microsoft's design blog
-- [Windows 11 Design](https://www.microsoft.com/design/fluent/) - Latest Fluent updates
+- **桌面**: > 1200px - 完整布局
+- **平板**: 768px - 1200px - 自适应网格
+- **移动**: < 768px - 折叠侧边栏，单列布局
 
-## 📄 License
+## 🔧 技术栈
 
-Personal use only.
+- **HTML5** - 语义化结构
+- **CSS3** - 现代样式和动画
+- **Vanilla JavaScript** - 无依赖，轻量级
+- **Unsplash API** - 高质量图片（可替换为自己的图片）
+
+## 🌐 浏览器支持
+
+- Chrome / Edge (推荐)
+- Firefox
+- Safari
+- Opera
+
+最低要求：支持 ES6 和 CSS Grid 的现代浏览器
+
+## 📝 维护建议
+
+### 图片资源
+
+**推荐尺寸：**
+- 轮播图：1920 x 1080px (16:9)
+- 应用卡片：400 x 225px (16:9)
+- 推荐卡片：800 x 600px (4:3)
+- 大型推荐：1200 x 800px (3:2)
+
+**优化建议：**
+- 使用 WebP 格式提高加载速度
+- 压缩图片，保持文件大小 < 500KB
+- 使用 CDN 加速图片加载
+
+### 性能优化
+
+- ✅ 已实现延迟加载
+- ✅ 使用 CSS 动画代替 JS 动画
+- ✅ 防抖搜索输入
+- ✅ 最小化重排和重绘
+
+### SEO 优化
+
+建议在 `<head>` 中添加：
+
+```html
+<meta name="description" content="Pat's Portal - 现代化网站入口">
+<meta name="keywords" content="gallery, notes, photos, portfolio">
+<meta property="og:title" content="Pat's Portal">
+<meta property="og:description" content="探索视觉作品集、笔记和照片">
+<meta property="og:image" content="https://...preview.jpg">
+```
+
+## 🐛 故障排除
+
+### 轮播图不自动播放
+
+检查 `js/app.js` 中的 `startAutoPlay()` 函数，确认间隔时间设置正确（默认 5000ms）。
+
+### 卡片点击无响应
+
+确认 `data-url` 属性已正确设置在对应的 HTML 元素上。
+
+### 样式错乱
+
+清除浏览器缓存，确保 CSS 文件正确加载。
+
+## 📄 许可证
+
+MIT License - 自由使用和修改
+
+## 👤 作者
+
+**PatFang**
+- Website: https://patfang.xyz
+- Gallery: https://gallery.patfang.xyz
+- Notes: https://note.patfang.xyz
+- Photos: https://photo.patfang.xyz
+
+## 📮 反馈与贡献
+
+欢迎提交 Issues 和 Pull Requests！
 
 ---
 
-**Built with**: Vanilla HTML/CSS/JS  
-**Design inspiration**: Xbox, Metro UI, PlayStation 5  
-**Last updated**: 2025
+**享受你的现代化入口页面！** ✨

@@ -3,135 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pat's Gaming Hub</title>
+    <title>Pat's Portal</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="dashboard">
-        <!-- Animated Background -->
-        <div class="animated-bg">
-            <div class="grid-overlay"></div>
-            <div class="particles"></div>
-            <div class="glow-orbs">
-                <div class="orb orb-1"></div>
-                <div class="orb orb-2"></div>
-                <div class="orb orb-3"></div>
+    <!-- Left Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                </svg>
+                <span>Portal</span>
             </div>
         </div>
 
-        <!-- Main Content Area -->
-        <main class="content-area">
-            <div class="hero-section" id="heroSection">
-                <div class="hero-image">
-                    <!-- Image Carousel -->
-                    <div class="carousel" id="carousel">
-                        <div class="carousel-track">
-                            <div class="carousel-slide active" data-section="home">
-                                <img src="https://images.unsplash.com/photo-1557683316-973673baf926?w=1920&q=80" alt="Abstract gradient">
-                            </div>
-                            <div class="carousel-slide" data-section="gallery">
-                                <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1920&q=80" alt="Gradient waves">
-                            </div>
-                            <div class="carousel-slide" data-section="note">
-                                <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=1920&q=80" alt="Blue abstract">
-                            </div>
-                            <div class="carousel-slide" data-section="photo">
-                                <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=1920&q=80" alt="Purple gradient">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Acrylic overlay -->
-                    <div class="acrylic-overlay"></div>
-
-                    <canvas id="particleCanvas"></canvas>
-
-                    <!-- Reveal effect border -->
-                    <div class="reveal-border"></div>
-
-                    <div class="corner-frame top-left"></div>
-                    <div class="corner-frame top-right"></div>
-                    <div class="corner-frame bottom-left"></div>
-                    <div class="corner-frame bottom-right"></div>
-                </div>
-                <div class="hero-info">
-                    <div class="title-container">
-                        <h1 class="hero-title">
-                            <span class="glitch" data-text="Welcome">Welcome</span>
-                        </h1>
-                        <div class="status-indicator">
-                            <span class="status-dot"></span>
-                            <span class="status-text">ONLINE</span>
-                        </div>
-                    </div>
-                    <p class="hero-description">Select a destination below</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav">
-            <div class="nav-container">
-                <button class="nav-tile" data-id="gallery" data-title="Gallery" data-description="探索视觉作品集 · Explore visual collections">
-                    <div class="tile-glow"></div>
-                    <div class="tile-content">
-                        <div class="tile-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                            </svg>
-                        </div>
-                        <span class="tile-label">Gallery</span>
-                        <div class="tile-accent"></div>
-                    </div>
-                </button>
-
-                <button class="nav-tile" data-id="note" data-title="Notes" data-description="阅读思考与记录 · Read thoughts and records">
-                    <div class="tile-glow"></div>
-                    <div class="tile-content">
-                        <div class="tile-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-                            </svg>
-                        </div>
-                        <span class="tile-label">Notes</span>
-                        <div class="tile-accent"></div>
-                    </div>
-                </button>
-
-                <button class="nav-tile" data-id="photo" data-title="Photos" data-description="发现精彩瞬间 · Discover amazing moments">
-                    <div class="tile-glow"></div>
-                    <div class="tile-content">
-                        <div class="tile-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M21 6h-3.17L16 4h-6v2h5.12l1.83 2H21v12H5v-9H3v9c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM8 14c0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5-5 2.24-5 5zm5-3c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3zM5 6h3V4H5V1H3v3H0v2h3v3h2z"/>
-                            </svg>
-                        </div>
-                        <span class="tile-label">Photos</span>
-                        <div class="tile-accent"></div>
-                    </div>
-                </button>
-
-                <button class="nav-tile nav-tile-home active" data-id="home" data-title="Welcome" data-description="Select a destination below">
-                    <div class="tile-glow"></div>
-                    <div class="tile-content">
-                        <div class="tile-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                            </svg>
-                        </div>
-                        <span class="tile-label">Home</span>
-                        <div class="tile-accent"></div>
-                    </div>
-                </button>
-            </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="home">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span>主页</span>
+            </a>
+            <a href="#" class="nav-item" data-section="apps">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/>
+                </svg>
+                <span>应用</span>
+            </a>
+            <a href="#" class="nav-item" data-section="featured">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                <span>精选</span>
+            </a>
         </nav>
 
-        <!-- Time Display -->
-        <div class="time-display" id="timeDisplay"></div>
-    </div>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">P</div>
+                <span class="user-name">PatFang</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+            <input type="text" placeholder="搜索应用、游戏等" class="search-input">
+        </div>
+
+        <!-- Hero Carousel Section -->
+        <section class="hero-carousel" id="heroCarousel">
+            <div class="carousel-container">
+                <button class="carousel-btn prev" id="prevBtn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                    </svg>
+                </button>
+
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide active">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1920&q=80" alt="Gallery">
+                        <div class="slide-content">
+                            <span class="slide-badge">推荐</span>
+                            <h2 class="slide-title">Gallery</h2>
+                            <p class="slide-description">探索视觉作品集 · Explore visual collections</p>
+                            <button class="slide-btn" data-url="https://gallery.patfang.xyz/">
+                                <span>立即访问</span>
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="slide-overlay"></div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80" alt="Notes">
+                        <div class="slide-content">
+                            <span class="slide-badge">热门</span>
+                            <h2 class="slide-title">Notes</h2>
+                            <p class="slide-description">阅读思考与记录 · Read thoughts and records</p>
+                            <button class="slide-btn" data-url="https://note.patfang.xyz/">
+                                <span>立即访问</span>
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="slide-overlay"></div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1920&q=80" alt="Photos">
+                        <div class="slide-content">
+                            <span class="slide-badge">新品</span>
+                            <h2 class="slide-title">Photos</h2>
+                            <p class="slide-description">发现精彩瞬间 · Discover amazing moments</p>
+                            <button class="slide-btn" data-url="https://photo.patfang.xyz/">
+                                <span>立即访问</span>
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="slide-overlay"></div>
+                    </div>
+                </div>
+
+                <button class="carousel-btn next" id="nextBtn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </button>
+
+                <div class="carousel-indicators" id="indicators"></div>
+            </div>
+        </section>
+
+        <!-- Apps Grid Section -->
+        <section class="apps-section">
+            <div class="section-header">
+                <h3 class="section-title">我的应用</h3>
+                <a href="#" class="see-all">查看全部 →</a>
+            </div>
+
+            <div class="apps-grid" id="appsGrid">
+                <div class="app-card" data-url="https://gallery.patfang.xyz/">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1561998338-13ad7883b20f?w=400&q=80" alt="Gallery">
+                        <div class="card-hover-overlay"></div>
+                    </div>
+                    <div class="card-info">
+                        <h4 class="card-title">Gallery</h4>
+                        <p class="card-category">视觉作品</p>
+                        <div class="card-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card" data-url="https://note.patfang.xyz/">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&q=80" alt="Notes">
+                        <div class="card-hover-overlay"></div>
+                    </div>
+                    <div class="card-info">
+                        <h4 class="card-title">Notes</h4>
+                        <p class="card-category">笔记文档</p>
+                        <div class="card-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card" data-url="https://photo.patfang.xyz/">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1495510096568-254f3153c4c5?w=400&q=80" alt="Photos">
+                        <div class="card-hover-overlay"></div>
+                    </div>
+                    <div class="card-info">
+                        <h4 class="card-title">Photos</h4>
+                        <p class="card-category">摄影相册</p>
+                        <div class="card-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Placeholder for future apps -->
+                <div class="app-card placeholder">
+                    <div class="card-image">
+                        <div class="placeholder-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h4 class="card-title">即将推出</h4>
+                        <p class="card-category">敬请期待</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Section -->
+        <section class="apps-section">
+            <div class="section-header">
+                <h3 class="section-title">推荐内容</h3>
+            </div>
+
+            <div class="recommended-grid">
+                <div class="recommended-card large" data-url="https://gallery.patfang.xyz/">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80" alt="Gallery Featured">
+                    <div class="recommended-overlay"></div>
+                    <div class="recommended-content">
+                        <span class="recommended-badge">编辑精选</span>
+                        <h4>Gallery 作品集</h4>
+                        <p>精心策划的视觉体验</p>
+                    </div>
+                </div>
+
+                <div class="recommended-card" data-url="https://note.patfang.xyz/">
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&q=80" alt="Notes Featured">
+                    <div class="recommended-overlay"></div>
+                    <div class="recommended-content">
+                        <span class="recommended-badge">热门</span>
+                        <h4>Notes 笔记</h4>
+                        <p>记录精彩思考</p>
+                    </div>
+                </div>
+
+                <div class="recommended-card" data-url="https://photo.patfang.xyz/">
+                    <img src="https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=400&q=80" alt="Photos Featured">
+                    <div class="recommended-overlay"></div>
+                    <div class="recommended-content">
+                        <span class="recommended-badge">最新</span>
+                        <h4>Photos 相册</h4>
+                        <p>捕捉美好瞬间</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script src="js/app.js"></script>
 </body>

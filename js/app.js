@@ -1,394 +1,385 @@
-// Site Configuration
-const sites = {
+// ==========================================
+// Site Configuration - Easy to Maintain
+// ==========================================
+
+const SITES_CONFIG = {
     gallery: {
         url: 'https://gallery.patfang.xyz/',
         title: 'Gallery',
         description: '探索视觉作品集 · Explore visual collections',
-        color: '#e89a3c',
-        slideIndex: 1
+        category: '视觉作品',
+        badge: '推荐',
+        image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1920&q=80',
+        thumbnail: 'https://images.unsplash.com/photo-1561998338-13ad7883b20f?w=400&q=80',
+        featured: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80',
+        rating: 5.0
     },
     note: {
         url: 'https://note.patfang.xyz/',
         title: 'Notes',
         description: '阅读思考与记录 · Read thoughts and records',
-        color: '#5b8dc9',
-        slideIndex: 2
+        category: '笔记文档',
+        badge: '热门',
+        image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80',
+        thumbnail: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&q=80',
+        featured: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&q=80',
+        rating: 5.0
     },
     photo: {
         url: 'https://photo.patfang.xyz/',
         title: 'Photos',
         description: '发现精彩瞬间 · Discover amazing moments',
-        color: '#9575cd',
-        slideIndex: 3
-    },
-    home: {
-        title: 'Welcome',
-        description: 'Select a destination below',
-        color: '#7cb342',
-        slideIndex: 0
+        category: '摄影相册',
+        badge: '新品',
+        image: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1920&q=80',
+        thumbnail: 'https://images.unsplash.com/photo-1495510096568-254f3153c4c5?w=400&q=80',
+        featured: 'https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=400&q=80',
+        rating: 5.0
     }
+    // Add more sites here following the same structure:
+    // newsite: {
+    //     url: 'https://newsite.patfang.xyz/',
+    //     title: 'New Site',
+    //     description: 'Site description',
+    //     category: 'Category Name',
+    //     badge: 'Badge Text',
+    //     image: 'hero image URL',
+    //     thumbnail: 'card thumbnail URL',
+    //     featured: 'featured section image URL',
+    //     rating: 5.0
+    // }
 };
 
+// ==========================================
 // DOM Elements
-const heroSection = document.getElementById('heroSection');
-const heroImage = heroSection.querySelector('.hero-image');
-const heroTitle = heroSection.querySelector('.hero-title .glitch');
-const heroDescription = heroSection.querySelector('.hero-description');
-const progressFill = heroSection.querySelector('.progress-fill');
-const navTiles = document.querySelectorAll('.nav-tile');
-const timeDisplay = document.getElementById('timeDisplay');
-const particleCanvas = document.getElementById('particleCanvas');
-const carouselSlides = document.querySelectorAll('.carousel-slide');
+// ==========================================
 
-// State
-let currentSection = 'home';
-let isAnimating = false;
-let particleContext = null;
-let particles = [];
-let autoSlideInterval = null;
+const elements = {
+    carouselTrack: document.getElementById('carouselTrack'),
+    indicators: document.getElementById('indicators'),
+    prevBtn: document.getElementById('prevBtn'),
+    nextBtn: document.getElementById('nextBtn'),
+    appsGrid: document.getElementById('appsGrid'),
+    navItems: document.querySelectorAll('.nav-item'),
+    searchInput: document.querySelector('.search-input')
+};
 
-// Carousel Management
-function showSlide(index) {
-    carouselSlides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === index) {
-            slide.classList.add('active');
-        }
+// ==========================================
+// State Management
+// ==========================================
+
+let state = {
+    currentSlide: 0,
+    totalSlides: 0,
+    autoPlayInterval: null,
+    isTransitioning: false
+};
+
+// ==========================================
+// Carousel Functionality
+// ==========================================
+
+function initCarousel() {
+    const slides = elements.carouselTrack.querySelectorAll('.carousel-slide');
+    state.totalSlides = slides.length;
+
+    // Create indicators
+    createIndicators();
+
+    // Set up event listeners
+    elements.prevBtn?.addEventListener('click', () => navigateCarousel(-1));
+    elements.nextBtn?.addEventListener('click', () => navigateCarousel(1));
+
+    // Click on slide button to navigate
+    slides.forEach(slide => {
+        const btn = slide.querySelector('.slide-btn');
+        btn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const url = btn.dataset.url;
+            if (url) {
+                animateNavigation(url);
+            }
+        });
     });
+
+    // Start autoplay
+    startAutoPlay();
+
+    // Pause on hover
+    elements.carouselTrack?.addEventListener('mouseenter', stopAutoPlay);
+    elements.carouselTrack?.addEventListener('mouseleave', startAutoPlay);
 }
 
-function startAutoSlide() {
-    // Auto-rotate slides every 6 seconds
-    if (autoSlideInterval) clearInterval(autoSlideInterval);
+function createIndicators() {
+    if (!elements.indicators) return;
 
-    autoSlideInterval = setInterval(() => {
-        const site = sites[currentSection];
-        if (site) {
-            showSlide(site.slideIndex);
-        }
-    }, 6000);
+    elements.indicators.innerHTML = '';
+
+    for (let i = 0; i < state.totalSlides; i++) {
+        const indicator = document.createElement('div');
+        indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
+        indicator.addEventListener('click', () => goToSlide(i));
+        elements.indicators.appendChild(indicator);
+    }
 }
 
-// Fluent Reveal Effect
-function initRevealEffect() {
-    navTiles.forEach(tile => {
-        tile.addEventListener('mousemove', (e) => {
-            const rect = tile.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+function navigateCarousel(direction) {
+    if (state.isTransitioning) return;
 
-            tile.style.setProperty('--mouse-x', `${x}px`);
-            tile.style.setProperty('--mouse-y', `${y}px`);
+    const newSlide = state.currentSlide + direction;
+
+    if (newSlide < 0) {
+        goToSlide(state.totalSlides - 1);
+    } else if (newSlide >= state.totalSlides) {
+        goToSlide(0);
+    } else {
+        goToSlide(newSlide);
+    }
+}
+
+function goToSlide(index) {
+    if (state.isTransitioning || index === state.currentSlide) return;
+
+    state.isTransitioning = true;
+    const slides = elements.carouselTrack.querySelectorAll('.carousel-slide');
+    const indicators = elements.indicators?.querySelectorAll('.indicator');
+
+    // Update slides
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+
+    // Update indicators
+    indicators?.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === index);
+    });
+
+    state.currentSlide = index;
+
+    setTimeout(() => {
+        state.isTransitioning = false;
+    }, 350);
+}
+
+function startAutoPlay() {
+    stopAutoPlay();
+    state.autoPlayInterval = setInterval(() => {
+        navigateCarousel(1);
+    }, 5000);
+}
+
+function stopAutoPlay() {
+    if (state.autoPlayInterval) {
+        clearInterval(state.autoPlayInterval);
+        state.autoPlayInterval = null;
+    }
+}
+
+// ==========================================
+// Apps Grid Functionality
+// ==========================================
+
+function initAppsGrid() {
+    // App cards click handlers
+    const appCards = document.querySelectorAll('.app-card:not(.placeholder)');
+    appCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const url = this.dataset.url;
+            if (url) {
+                animateNavigation(url);
+            }
+        });
+    });
+
+    // Recommended cards click handlers
+    const recommendedCards = document.querySelectorAll('.recommended-card');
+    recommendedCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const url = this.dataset.url;
+            if (url) {
+                animateNavigation(url);
+            }
         });
     });
 }
 
-// Particle System
-class Particle {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.reset();
-    }
+// ==========================================
+// Navigation Functionality
+// ==========================================
 
-    reset() {
-        this.x = Math.random() * this.canvas.width;
-        this.y = Math.random() * this.canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.3;
-        this.vy = (Math.random() - 0.5) * 0.3;
-        this.size = Math.random() * 1.5 + 0.5;
-        this.opacity = Math.random() * 0.3 + 0.1;
-        this.life = 1;
-    }
+function initNavigation() {
+    elements.navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = item.dataset.section;
 
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.life -= 0.0005;
+            // Update active state
+            elements.navItems.forEach(nav => nav.classList.remove('active'));
+            item.classList.add('active');
 
-        if (this.life <= 0 || this.x < 0 || this.x > this.canvas.width ||
-            this.y < 0 || this.y > this.canvas.height) {
-            this.reset();
-        }
-    }
-
-    draw(ctx) {
-        ctx.save();
-        ctx.globalAlpha = this.opacity * this.life;
-
-        // Softer colors for light theme
-        ctx.fillStyle = currentSection === 'gallery' ? '#e89a3c' :
-                        currentSection === 'note' ? '#5b8dc9' :
-                        currentSection === 'photo' ? '#9575cd' : '#7cb342';
-
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-    }
+            // Handle section navigation
+            handleSectionChange(section);
+        });
+    });
 }
 
-function initParticles() {
-    if (!particleCanvas) return;
-
-    particleCanvas.width = particleCanvas.offsetWidth;
-    particleCanvas.height = particleCanvas.offsetHeight;
-    particleContext = particleCanvas.getContext('2d');
-
-    // Fewer particles for subtle effect
-    const particleCount = Math.min(50, Math.floor((particleCanvas.width * particleCanvas.height) / 15000));
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle(particleCanvas));
-    }
-
-    animateParticles();
+function handleSectionChange(section) {
+    // You can add custom logic here for different sections
+    // For now, just scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function animateParticles() {
-    if (!particleContext) return;
+// ==========================================
+// Search Functionality
+// ==========================================
 
-    particleContext.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+function initSearch() {
+    if (!elements.searchInput) return;
 
-    particles.forEach(particle => {
-        particle.update();
-        particle.draw(particleContext);
+    elements.searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        filterApps(query);
     });
 
-    requestAnimationFrame(animateParticles);
-}
-
-// Time Display
-function updateTime() {
-    if (!timeDisplay) return;
-
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-
-    timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
-}
-
-// Initialize
-function init() {
-    // Initialize particles
-    initParticles();
-
-    // Initialize Fluent reveal effect
-    initRevealEffect();
-
-    // Update time
-    updateTime();
-    setInterval(updateTime, 1000);
-
-    // Start carousel auto-rotation
-    startAutoSlide();
-
-    // Add click handlers to nav tiles
-    navTiles.forEach(tile => {
-        tile.addEventListener('click', handleTileClick);
-        tile.addEventListener('mouseenter', handleTileHover);
-        tile.addEventListener('mouseleave', handleTileLeave);
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', handleKeyPress);
-
-    // Window resize handler
-    window.addEventListener('resize', () => {
-        if (particleCanvas) {
-            particleCanvas.width = particleCanvas.offsetWidth;
-            particleCanvas.height = particleCanvas.offsetHeight;
+    elements.searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch(e.target.value);
         }
     });
-
-    // Initial animation
-    setTimeout(() => {
-        heroSection.style.opacity = '1';
-        heroSection.style.transform = 'translateY(0)';
-        if (progressFill) {
-            progressFill.style.width = '100%';
-        }
-    }, 100);
 }
 
-// Handle tile click
-function handleTileClick(e) {
-    if (isAnimating) return;
-
-    const tile = e.currentTarget;
-    const sectionId = tile.dataset.id;
-
-    // If clicking the same section, navigate to URL
-    if (sectionId === currentSection && sites[sectionId].url) {
-        // Animate out
-        heroSection.style.opacity = '0';
-        heroSection.style.transform = 'scale(0.95)';
-
-        setTimeout(() => {
-            window.location.href = sites[sectionId].url;
-        }, 300);
+function filterApps(query) {
+    if (!query) {
+        // Show all apps
+        document.querySelectorAll('.app-card').forEach(card => {
+            card.style.display = '';
+        });
         return;
     }
 
-    // Update section
-    updateSection(sectionId);
-}
+    document.querySelectorAll('.app-card:not(.placeholder)').forEach(card => {
+        const title = card.querySelector('.card-title')?.textContent.toLowerCase();
+        const category = card.querySelector('.card-category')?.textContent.toLowerCase();
 
-// Handle tile hover (preview)
-function handleTileHover(e) {
-    if (isAnimating) return;
-
-    const tile = e.currentTarget;
-    const sectionId = tile.dataset.id;
-
-    if (sectionId !== currentSection) {
-        previewSection(sectionId);
-    }
-}
-
-// Handle tile leave
-function handleTileLeave(e) {
-    if (isAnimating) return;
-
-    const tile = e.currentTarget;
-    const sectionId = tile.dataset.id;
-
-    if (sectionId !== currentSection) {
-        updateHeroContent(currentSection, false);
-    }
-}
-
-// Preview section on hover
-function previewSection(sectionId) {
-    const site = sites[sectionId];
-    if (!site) return;
-
-    heroTitle.textContent = site.title;
-    heroTitle.setAttribute('data-text', site.title);
-    heroDescription.textContent = site.description;
-
-    // Change carousel slide
-    if (site.slideIndex !== undefined) {
-        showSlide(site.slideIndex);
-    }
-}
-
-// Update section
-function updateSection(sectionId) {
-    if (sectionId === currentSection) return;
-
-    isAnimating = true;
-
-    // Update active tile
-    navTiles.forEach(tile => {
-        tile.classList.remove('active');
-        if (tile.dataset.id === sectionId) {
-            tile.classList.add('active');
+        if (title?.includes(query) || category?.includes(query)) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
         }
     });
+}
 
-    // Update hero with animation
-    updateHeroContent(sectionId, true);
+function performSearch(query) {
+    console.log('Searching for:', query);
+    // You can implement more advanced search logic here
+}
 
-    // Update carousel
-    const site = sites[sectionId];
-    if (site && site.slideIndex !== undefined) {
-        showSlide(site.slideIndex);
-    }
+// ==========================================
+// Animation & Navigation Helpers
+// ==========================================
 
-    // Reset progress bar
-    if (progressFill) {
-        progressFill.style.width = '0%';
-        setTimeout(() => {
-            progressFill.style.width = '100%';
-        }, 100);
-    }
-
-    currentSection = sectionId;
+function animateNavigation(url) {
+    // Add fade out animation
+    document.body.style.opacity = '0.7';
+    document.body.style.transform = 'scale(0.98)';
+    document.body.style.transition = 'all 0.3s ease';
 
     setTimeout(() => {
-        isAnimating = false;
-    }, 500);
+        window.location.href = url;
+    }, 300);
 }
 
-// Update hero content
-function updateHeroContent(sectionId, animate = true) {
-    const site = sites[sectionId];
-    if (!site) return;
+// ==========================================
+// Keyboard Shortcuts
+// ==========================================
 
-    if (animate) {
-        // Fade out
-        heroTitle.style.opacity = '0';
-        heroDescription.style.opacity = '0';
-        heroTitle.style.transform = 'translateY(10px)';
-        heroDescription.style.transform = 'translateY(10px)';
+function initKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        // Ignore if typing in search
+        if (document.activeElement === elements.searchInput) return;
 
-        setTimeout(() => {
-            // Update content
-            heroTitle.textContent = site.title;
-            heroTitle.setAttribute('data-text', site.title);
-            heroDescription.textContent = site.description;
-
-            // Fade in
-            setTimeout(() => {
-                heroTitle.style.opacity = '1';
-                heroDescription.style.opacity = '1';
-                heroTitle.style.transform = 'translateY(0)';
-                heroDescription.style.transform = 'translateY(0)';
-            }, 50);
-        }, 200);
-    } else {
-        // Update without animation
-        heroTitle.textContent = site.title;
-        heroTitle.setAttribute('data-text', site.title);
-        heroDescription.textContent = site.description;
-    }
+        switch(e.key) {
+            case 'ArrowLeft':
+                e.preventDefault();
+                navigateCarousel(-1);
+                break;
+            case 'ArrowRight':
+                e.preventDefault();
+                navigateCarousel(1);
+                break;
+            case '/':
+                e.preventDefault();
+                elements.searchInput?.focus();
+                break;
+            case 'Escape':
+                elements.searchInput?.blur();
+                break;
+        }
+    });
 }
 
-// Keyboard navigation
-function handleKeyPress(e) {
-    if (isAnimating) return;
+// ==========================================
+// Responsive Behavior
+// ==========================================
 
-    const tiles = Array.from(navTiles);
-    const currentIndex = tiles.findIndex(tile => tile.dataset.id === currentSection);
-
-    switch(e.key) {
-        case 'ArrowLeft':
-            e.preventDefault();
-            if (currentIndex > 0) {
-                updateSection(tiles[currentIndex - 1].dataset.id);
-            }
-            break;
-        case 'ArrowRight':
-            e.preventDefault();
-            if (currentIndex < tiles.length - 1) {
-                updateSection(tiles[currentIndex + 1].dataset.id);
-            }
-            break;
-        case 'Enter':
-        case ' ':
-            e.preventDefault();
-            if (sites[currentSection].url) {
-                heroSection.style.opacity = '0';
-                heroSection.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    window.location.href = sites[currentSection].url;
-                }, 300);
-            }
-            break;
-    }
+function handleResize() {
+    // Add any responsive behavior here if needed
 }
 
-// Add transition styles
-heroTitle.style.transition = 'opacity 250ms ease, transform 250ms ease';
-heroDescription.style.transition = 'opacity 250ms ease, transform 250ms ease';
-heroSection.style.transition = 'opacity 500ms ease, transform 500ms ease';
-heroSection.style.opacity = '0';
-heroSection.style.transform = 'translateY(20px)';
+window.addEventListener('resize', debounce(handleResize, 250));
 
-// Initialize on load
+// ==========================================
+// Utility Functions
+// ==========================================
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// ==========================================
+// Initialization
+// ==========================================
+
+function init() {
+    initCarousel();
+    initAppsGrid();
+    initNavigation();
+    initSearch();
+    initKeyboardShortcuts();
+
+    // Add fade-in animation on load
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+        document.body.style.transition = 'opacity 0.5s ease';
+    }, 100);
+
+    console.log('Portal initialized successfully!');
+    console.log('Available sites:', Object.keys(SITES_CONFIG));
+}
+
+// Start when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
 }
+
+// ==========================================
+// Export for external use (if needed)
+// ==========================================
+
+window.PortalApp = {
+    config: SITES_CONFIG,
+    goToSlide,
+    navigateCarousel,
+    filterApps
+};
