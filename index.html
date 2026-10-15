@@ -11,10 +11,8 @@
     <aside class="sidebar">
         <div class="sidebar-header">
             <div class="logo">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                </svg>
-                <span>Portal</span>
+                <img src="assets/images/logo.png" alt="Logo" class="logo-image">
+                <span>PatFang</span>
             </div>
         </div>
 
@@ -38,13 +36,6 @@
                 <span>精选</span>
             </a>
         </nav>
-
-        <div class="sidebar-footer">
-            <div class="user-info">
-                <div class="user-avatar">P</div>
-                <span class="user-name">PatFang</span>
-            </div>
-        </div>
     </aside>
 
     <!-- Main Content -->
@@ -133,103 +124,47 @@
                 <a href="#" class="see-all">查看全部 →</a>
             </div>
 
-            <div class="apps-grid" id="appsGrid">
-                <div class="app-card" data-url="https://gallery.patfang.xyz/">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1561998338-13ad7883b20f?w=400&q=80" alt="Gallery">
-                        <div class="card-hover-overlay"></div>
-                    </div>
-                    <div class="card-info">
-                        <h4 class="card-title">Gallery</h4>
-                        <p class="card-category">视觉作品</p>
-                        <div class="card-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-text">5.0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="app-card" data-url="https://note.patfang.xyz/">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&q=80" alt="Notes">
-                        <div class="card-hover-overlay"></div>
-                    </div>
-                    <div class="card-info">
-                        <h4 class="card-title">Notes</h4>
-                        <p class="card-category">笔记文档</p>
-                        <div class="card-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-text">5.0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="app-card" data-url="https://photo.patfang.xyz/">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1495510096568-254f3153c4c5?w=400&q=80" alt="Photos">
-                        <div class="card-hover-overlay"></div>
-                    </div>
-                    <div class="card-info">
-                        <h4 class="card-title">Photos</h4>
-                        <p class="card-category">摄影相册</p>
-                        <div class="card-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-text">5.0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Placeholder for future apps -->
-                <div class="app-card placeholder">
-                    <div class="card-image">
-                        <div class="placeholder-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <h4 class="card-title">即将推出</h4>
-                        <p class="card-category">敬请期待</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recommended Section -->
-        <section class="apps-section">
-            <div class="section-header">
-                <h3 class="section-title">推荐内容</h3>
-            </div>
-
             <div class="recommended-grid">
                 <div class="recommended-card large" data-url="https://gallery.patfang.xyz/">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80" alt="Gallery Featured">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80" alt="Gallery">
                     <div class="recommended-overlay"></div>
                     <div class="recommended-content">
-                        <span class="recommended-badge">编辑精选</span>
-                        <h4>Gallery 作品集</h4>
-                        <p>精心策划的视觉体验</p>
+                        <span class="recommended-badge">推荐</span>
+                        <h4>Gallery</h4>
+                        <p>探索视觉作品集</p>
                     </div>
                 </div>
 
                 <div class="recommended-card" data-url="https://note.patfang.xyz/">
-                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&q=80" alt="Notes Featured">
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&q=80" alt="Notes">
                     <div class="recommended-overlay"></div>
                     <div class="recommended-content">
                         <span class="recommended-badge">热门</span>
-                        <h4>Notes 笔记</h4>
-                        <p>记录精彩思考</p>
+                        <h4>Notes</h4>
+                        <p>阅读思考与记录</p>
                     </div>
                 </div>
 
                 <div class="recommended-card" data-url="https://photo.patfang.xyz/">
-                    <img src="https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=400&q=80" alt="Photos Featured">
+                    <img src="https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=400&q=80" alt="Photos">
                     <div class="recommended-overlay"></div>
                     <div class="recommended-content">
                         <span class="recommended-badge">最新</span>
-                        <h4>Photos 相册</h4>
-                        <p>捕捉美好瞬间</p>
+                        <h4>Photos</h4>
+                        <p>发现精彩瞬间</p>
+                    </div>
+                </div>
+
+                <!-- Placeholder for future apps -->
+                <div class="recommended-card placeholder">
+                    <div class="placeholder-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                    </div>
+                    <div class="recommended-content">
+                        <h4>即将推出</h4>
+                        <p>敬请期待</p>
                     </div>
                 </div>
             </div>

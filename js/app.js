@@ -180,19 +180,8 @@ function stopAutoPlay() {
 // ==========================================
 
 function initAppsGrid() {
-    // App cards click handlers
-    const appCards = document.querySelectorAll('.app-card:not(.placeholder)');
-    appCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const url = this.dataset.url;
-            if (url) {
-                animateNavigation(url);
-            }
-        });
-    });
-
-    // Recommended cards click handlers
-    const recommendedCards = document.querySelectorAll('.recommended-card');
+    // Recommended cards click handlers (now used as main app cards)
+    const recommendedCards = document.querySelectorAll('.recommended-card:not(.placeholder)');
     recommendedCards.forEach(card => {
         card.addEventListener('click', function() {
             const url = this.dataset.url;
@@ -251,17 +240,17 @@ function initSearch() {
 function filterApps(query) {
     if (!query) {
         // Show all apps
-        document.querySelectorAll('.app-card').forEach(card => {
+        document.querySelectorAll('.recommended-card').forEach(card => {
             card.style.display = '';
         });
         return;
     }
 
-    document.querySelectorAll('.app-card:not(.placeholder)').forEach(card => {
-        const title = card.querySelector('.card-title')?.textContent.toLowerCase();
-        const category = card.querySelector('.card-category')?.textContent.toLowerCase();
+    document.querySelectorAll('.recommended-card:not(.placeholder)').forEach(card => {
+        const title = card.querySelector('h4')?.textContent.toLowerCase();
+        const description = card.querySelector('p')?.textContent.toLowerCase();
 
-        if (title?.includes(query) || category?.includes(query)) {
+        if (title?.includes(query) || description?.includes(query)) {
             card.style.display = '';
         } else {
             card.style.display = 'none';

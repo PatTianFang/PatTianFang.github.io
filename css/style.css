@@ -84,6 +84,13 @@ body {
     font-weight: 600;
 }
 
+.logo-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
 .logo svg {
     width: 28px;
     height: 28px;
@@ -136,42 +143,7 @@ body {
     border-radius: 0 2px 2px 0;
 }
 
-.sidebar-footer {
-    padding: var(--spacing-md);
-    border-top: 1px solid var(--border);
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background var(--transition-fast);
-}
-
-.user-info:hover {
-    background: var(--surface-hover);
-}
-
-.user-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.user-name {
-    font-size: 14px;
-    color: var(--text-primary);
-}
+/* Sidebar footer removed */
 
 /* ==========================================
    MAIN CONTENT
@@ -430,118 +402,7 @@ body {
     color: var(--primary-hover);
 }
 
-/* Apps Grid */
-.apps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
-}
-
-.app-card {
-    background: var(--surface);
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    border: 1px solid var(--border);
-}
-
-.app-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--shadow-strong);
-    border-color: var(--border-hover);
-}
-
-.app-card.placeholder {
-    cursor: default;
-    opacity: 0.6;
-}
-
-.app-card.placeholder:hover {
-    transform: none;
-    box-shadow: none;
-}
-
-.card-image {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
-    overflow: hidden;
-    background: var(--surface-hover);
-}
-
-.card-image img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-slow);
-}
-
-.app-card:hover .card-image img {
-    transform: scale(1.05);
-}
-
-.card-hover-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0);
-    transition: background var(--transition-normal);
-}
-
-.app-card:hover .card-hover-overlay {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.placeholder-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 64px;
-    height: 64px;
-    color: var(--text-tertiary);
-}
-
-.placeholder-icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-.card-info {
-    padding: var(--spacing-md);
-}
-
-.card-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: var(--text-primary);
-}
-
-.card-category {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: var(--spacing-xs);
-}
-
-.card-rating {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    font-size: 13px;
-}
-
-.stars {
-    color: #ffa500;
-    letter-spacing: 2px;
-}
-
-.rating-text {
-    color: var(--text-secondary);
-}
+/* Apps Grid - Now using recommended card style */
 
 /* ==========================================
    RECOMMENDED SECTION
@@ -621,9 +482,37 @@ body {
     font-size: 32px;
 }
 
-.recommended-content p {
-    font-size: 14px;
-    opacity: 0.9;
+.recommended-card.placeholder {
+    background: var(--surface-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    opacity: 0.6;
+}
+
+.recommended-card.placeholder:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.recommended-card.placeholder .placeholder-icon {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    color: var(--text-tertiary);
+}
+
+.recommended-card.placeholder .placeholder-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.recommended-card.placeholder .recommended-content {
+    position: static;
+    padding: 0;
+    text-align: center;
+    color: var(--text-secondary);
 }
 
 /* ==========================================
@@ -651,9 +540,13 @@ body {
         padding: var(--spacing-lg);
     }
 
+    .logo-image {
+        width: 32px;
+        height: 32px;
+    }
+
     .logo span,
-    .nav-item span,
-    .user-name {
+    .nav-item span {
         display: none;
     }
 
